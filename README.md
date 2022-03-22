@@ -2,5 +2,5 @@
 
 3/21/2022
 - Cleveland: Github, basic files (based on trello & Mr. Peck)
-- Abdi: 
+- Abdi: Slack Group Chat 
 
