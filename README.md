@@ -1,5 +1,6 @@
-Init Update
+**Second Session SDLC**
 
-3/21/2022 Session One
+3/21/2022
+- Cleveland: Github, basic files (based on trello & Mr. Peck)
+- Abdi: 
 
-3/21/2022 - Git repository, slack group chat, init files
