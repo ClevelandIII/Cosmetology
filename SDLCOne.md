@@ -17,4 +17,4 @@ Jason Enciso: continued work on the wireframe for login and created a signup wir
 
 Reid Gill: basic setup in some files and folders
 
-Daniel Nijdl: created table versions for Student list, Client list and Profile page
+Daniel Nijdl: Finished Desktop and Ipad Profile Page wireframes. Created and finished Ipad Student and Client list wireframes.
