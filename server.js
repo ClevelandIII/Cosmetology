@@ -31,7 +31,6 @@ const handler = nextApp.getRequestHandler();
 
 //* ROUTERS */
 
-
 // //*SOCKETS */
 
 
@@ -41,6 +40,6 @@ nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));
   app.listen(PORT, (err) => {
     if (err) console.log(err);
-    else console.log(`Server listening @ ${PORT}`);
+    else console.log(`Server listening @ port ${PORT}`);
   });
 });
