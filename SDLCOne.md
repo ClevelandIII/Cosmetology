@@ -25,3 +25,10 @@ Jason Enciso: added to trello and when over the figma
 Reid Gill: brainstormed on the what we need to do in what order and add it to the to do list
 
 Daniel Nijdl: added the server to the files
+
+3-25-22
+Jason Enciso: worked on the signup and login pages
+
+Reid Gill: worked on StylistModel,TeacherModel,ClientModel
+
+Daniel Nijdl: worked on the navbar
