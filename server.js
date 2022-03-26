@@ -3,7 +3,6 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 
-
 require("dotenv").config();
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -12,7 +11,7 @@ cloudinary.config({
 });
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 //* NEXT APP SETUP */
 const next = require("next");
@@ -26,13 +25,13 @@ const nextApp = next({ dev });
 const handler = nextApp.getRequestHandler();
 
 //* MIDDLEWARES */
-
-
+app.use(express.json());
 
 //* ROUTERS */
+const profileRoutes = require("./server/routes/profileRoute");
 
+app.use("/api/v1/profile", profileRoutes);
 // //*SOCKETS */
-
 
 connectDB();
 

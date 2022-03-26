@@ -1,6 +1,7 @@
 // import { Container, Grid, Ref, Sticky, Visibility } from "semantic-ui-react";
 // import HeadTag from "./HeadTag";
 import Navbar from "./Navbar";
+import StudentProfile from "../../StudentProfile";
 // import nprogress from "nprogress";
 // import Router from "next/router";
 import { createRef } from "react";
