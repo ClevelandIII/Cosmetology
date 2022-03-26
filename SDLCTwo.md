@@ -15,3 +15,7 @@
 3/24/2022
 - Cleveland: Fixing errors
 - Abdi: Postman
+
+3/25/2022
+- Cleveland: Student Profile Page
+- Abdi: Client Profile Page
