@@ -42,40 +42,56 @@ const Navbar = () => {
     //       Welcome student/teacher, please make an account or sign in to begin!
     //     </Menu.Item>
     //   </Container>
-    <Menu fixed pointing secondary className="navBar" size="large">
+    <Menu
+      fluid
+      borderless
+      pointing
+      secondary
+      className="nav-bar navBar"
+      size="large"
+    >
       <Container>
-        <Menu.Item>
-          <Image
-            size="small"
-            src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-            // src="https://i.postimg.cc/s2jpD6Mq/NewLogo.png"
-            // src="https://i.postimg.cc/GmSw3N2S/NewLogo.png"
-          />
+        <Menu.Item style={{ cursor: "pointer" }}>
+          <Link href="/">
+            <Image
+              size="small"
+              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+            />
+          </Link>
         </Menu.Item>
-
         <Menu.Item position="left">
           <Button
             href="/login"
-            header
+            
             active={isActive("/login")}
-            style={{ fontSize: "1.25rem" }}
+            style={{ fontSize: "1.3rem", width: "12rem" }}
             className="menuItem"
             inverted
+            color={isActive("/login") ? "blue" : "white"}
           >
+            <Icon name="sign in" size="large"/>
             Log in
           </Button>
           <Button
-            href="/login"
-            header
+            href="/signup"
             active={isActive("/signup")}
-            style={{ fontSize: "1.25rem",marginLeft: "0.5em" }}
+            style={{
+              fontSize: "1.3rem",
+              marginLeft: "0.5em",
+              width: "12rem",
+            }}
             className="menuItem"
             inverted
-            primary
-
+            color={isActive("/signup") ? "blue" : "white"}
           >
+            <Icon name="signup" size="large" />
             Sign Up
           </Button>
+        </Menu.Item>
+        <Menu.Item  style={{ fontSize: "1.75rem" }}>
+          <p className="welcomeItem">
+            Welcome student/teacher, please make an account or sign in to begin!
+          </p>
         </Menu.Item>
       </Container>
     </Menu>
