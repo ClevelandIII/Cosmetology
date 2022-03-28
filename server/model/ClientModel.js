@@ -22,22 +22,22 @@ const ClientSchema =  new Schema({
   Zip:{type: Number},
   Phone:{type: Number},
 
-  hairCondition:{type: String ,enum: ["", ""],},
-  hairClassification: {type: String ,enum: ["", ""],},
-  scalpCondition:{type: String ,enum: ["", ""],},
-  hairTexture: {type: String ,enum: ["", ""],},
-  growthPatterns: {type: String ,enum: ["", ""],},
-  hairDensity: {type: String ,enum: ["", ""],},
-  hairPorosity: {type: String ,enum: ["", ""],},
-  hairElasticity: {type: String ,enum: ["", ""],},
-  hairLength: {type: String ,enum: ["", ""],},
+  hairCondition:{type: String ,enum: ["Dry","Normal","Greasy","Chemical Damage","Environmental Damage","Heat Damage","Product Build-up"],},
+  hairClassification: {type: String ,enum: ["Straight", "Wavy", "Curly", "Very Curly"],},
+  scalpCondition:{type: String ,enum: ["Dry Oily", "Dandruff Normal", "Product Build-up"],},
+  hairTexture: {type: String ,enum: ["Very Fine", "Fine", "Medium", "Coarse"],},
+  growthPatterns: {type: String ,enum: ["Nape Whorls", "Widows Peak", "Cowlick", "Double Crown",],},
+  hairDensity: {type: String ,enum: ["Very High", "High", "Medium", "Low", "Mix"],},
+  hairPorosity: {type: String ,enum: ["Low", "Average", "High"],},
+  hairElasticity: {type: String ,enum: ["Good", "Average","Poor","Mix"],},
+  hairLength: {type: String ,enum: ["Short", "Medium", "Long"],},
 
 
   currentStylist:{type: String},
   latestVisit:{type: Date},
 
-  pastStylist:{type: Array},
-  pastVisit:{type: Array},
+  pastStylist:{ type: schema.Types.ObjectId, ref:"Stylist"},
+  pastVisit:{type: schema.Types.ObjectId, ref:"Visit"},
   
   dateCreated:{
     type: Date,
