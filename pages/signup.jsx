@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
 
 const signup = () => {
   return (
-    <div>signup</div>
-  )
-}
+    <>
+     <Form>
+    <Form.Input>
+      
+    </Form.Input>
 
-export default signup
+
+     </Form>
+    </>
+  );
+};
+
+export default signup;

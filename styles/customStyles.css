@@ -29,8 +29,14 @@
   border-radius: 10px;
 }
 
+<<<<<<< HEAD
 /* Welcome User Paragraph */
 .welcomeItem{
   color: white !important;
 }
 
+=======
+.login-div {
+  color: red;
+}
+>>>>>>> 865c6e430a586c747806cd741c7f36d02a2ebf69
