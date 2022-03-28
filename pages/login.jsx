@@ -1,16 +1,10 @@
 import React from "react";
 import { Divider } from "semantic-ui-react";
+import { Form, Segment, Button } from "semantic-ui-react";
 
-const login = () => {
+const Login = () => {
   return (
     <>
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
       <Form>
         <Segment>
           <Form.Input
@@ -36,4 +30,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
