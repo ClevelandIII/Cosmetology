@@ -1,10 +1,9 @@
 const router = require("express").Router();
 
 const {
-  // getUsernameAvailable,
   // createUser,
   postLoginUser,
-} = require("../controllers/user");
+} = require("../controllers/clientProfile");
 
 // router.route("/signup").post(createUser);
 router.route("/login").post(postLoginUser);

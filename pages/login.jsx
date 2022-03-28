@@ -1,23 +1,24 @@
 import React from "react";
-import { Divider } from "semantic-ui-react";
+import { Form, Segment, Divider, Button, Message } from "semantic-ui-react";
+
 
 const login = () => {
   return (
     <>
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
+      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />
+      <Divider />
+      {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
       <Divider />
       <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
       <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
+      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />; */}
       <Form>
         <Segment>
           <Form.Input
             required
             label="Email"
             placeholder="Email"
-            value={email}
+            // value={email}
             name="email"
             type="email"
           ></Form.Input>
@@ -25,7 +26,7 @@ const login = () => {
             required
             label="Password"
             placeholder="Password"
-            value={password}
+            // value={password}
             name="password"
           ></Form.Input>
           <Divider hidden />

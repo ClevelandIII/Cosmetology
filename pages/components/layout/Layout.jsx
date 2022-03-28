@@ -1,16 +1,11 @@
 // import { Container, Grid, Ref, Sticky, Visibility } from "semantic-ui-react";
-// import HeadTag from "./HeadTag";
-import isActive from "./Navbar"
-import Navbar from "./Navbar";
-import Login from "../../login";
-import Signup from "../../signup";
-import StudentProfile from "../../StudentProfile";
-// import nprogress from "nprogress";
-// import Router from "next/router";
-import { createRef } from "react";
 import HeadTag from "./HeadTag";
-// import SearchComponent from "./SearchComponent";
-// import SideMenu from "./SideMenu";
+import Navbar from "./Navbar";
+import Login from "../../login"
+import SignUp from "../../signup"
+import Router from "next/router";
+import { createRef } from "react";
+
 
 
 const Layout = ({ children, user }) => {
@@ -26,7 +21,8 @@ const Layout = ({ children, user }) => {
     <>
       <HeadTag />
       <Navbar />
-      {}
+      <Login />
+
       
     </>
   );
