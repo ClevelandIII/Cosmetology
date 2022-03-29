@@ -11,7 +11,7 @@ const signup = () => {
             required
             placeholder="firstName"
             name="firstName"
-            value={name}
+            // value={name}
           ></Form.Input>
 
           <Form.Input
@@ -19,7 +19,7 @@ const signup = () => {
             required
             placeholder="lastName"
             name="lastName"
-            value={name}
+            // value={name}
           ></Form.Input>
 
           <Form.input
@@ -27,7 +27,7 @@ const signup = () => {
             required
             placeholder="email"
             name="email"
-            value={email}
+            // value={email}
             type="email"
           ></Form.input>
 
@@ -36,7 +36,7 @@ const signup = () => {
             required
             placeholder="password"
             name="password"
-            value={password}
+            // value={password}
           ></Form.Input>
 
           <Form.Input
