@@ -8,6 +8,7 @@ import Signup from "../../signup";
 // import ClientProfile from "../../clientProfile";
 import Router from "next/router";
 // import nprogress from "nprogress";
+import StudentList from "../../studentList"
 // import Router from "next/router";
 import { createRef } from "react";
 
