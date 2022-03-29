@@ -67,7 +67,7 @@ const Navbar = () => {
             style={{ fontSize: "1.3rem", width: "12rem" }}
             className="menuItem"
             inverted
-            color={isActive("/login") ? "blue" : "white"}
+            color={isActive("/login") ? "blue" : "grey"}
           >
             <Icon name="sign in" size="large"/>
             Log in
@@ -82,7 +82,7 @@ const Navbar = () => {
             }}
             className="menuItem"
             inverted
-            color={isActive("/signup") ? "blue" : "white"}
+            color={isActive("/signup") ? "blue" : "grey"}
           >
             <Icon name="signup" size="large" />
             Sign Up

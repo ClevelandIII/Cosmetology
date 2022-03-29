@@ -2,6 +2,7 @@
 const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
+const fileUpload = require("express-fileupload")
 
 require("dotenv").config();
 cloudinary.config({
@@ -26,16 +27,14 @@ const handler = nextApp.getRequestHandler();
 
 //* MIDDLEWARES */
 app.use(express.json());
+app.use(fileUpload({ useTempFiles: true }));
 
 //* ROUTERS */
 const profileRoutes = require("./server/routes/profileRoute");
+// const userRoutes = require("./server/routes/userRoute");
 
 app.use("/api/v1/profile", profileRoutes);
-
-// const clientRoute = require("./server/routes/clientRoute");
-
-// app.use("/api/v1/client", clientRoute)
-// //*SOCKETS */
+//*SOCKETS */
 
 connectDB();
 
@@ -45,4 +44,4 @@ nextApp.prepare().then(() => {
     if (err) console.log(err);
     else console.log(`Server listening @ port ${PORT}`);
   });
-});
+})
