@@ -1,85 +1,153 @@
 import React, { useState } from "react";
-import { Grid, Card, Icon, Image, Divider } from "semantic-ui-react";
+import { Grid, Card, Icon, Image, Divider, Rating } from "semantic-ui-react";
 
 const StudentProfile = () => {
   const [user, setUser] = useState(false);
   return (
     <>
-      <Grid stackable style={{ padding: "3rem" }}>
-        <Grid.Column width={7}>
-          <>
+      <Grid stackable style={{ margin: "3rem" }}>
+        <Grid.Column width={8}>
+          <Grid.Row style={{margin: '3.8rem'}}>
+            <Image
+              src="https://freesvg.org/img/abstract-user-flat-4.png"
+              avatar
+              size="large"
+              bordered
+              centered
+              circular
+            />
+          </Grid.Row>
+          <Divider hidden />
+          <Grid.Row style={{ marginLeft: "9.2rem", textAlign: "center" }}>
             <Card>
-              <Image
-                src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-                wrapped
-                ui={false}
-              />
               <Card.Content>
-                <Card.Header>Matthew</Card.Header>
+                <Card.Header>Name Of the Stylist</Card.Header>
                 <Card.Meta>
-                  <span className="date">Joined in 2015</span>
+                  <span className="date">Session & Teacher</span>
                 </Card.Meta>
-                <Card.Description>
-                  Matthew is a musician living in Nashville.
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <a>
-                  <Icon name="user" />
-                  22 Friends
-                </a>
+                <Card.Description>Stylist </Card.Description>
               </Card.Content>
             </Card>
-          </>
+          </Grid.Row>
         </Grid.Column>
-        <Grid.Column width={7}>
-          <Grid.Row>
-            <div
-              style={{
-                border: "1px solid white",
-                background: "orange",
-                color: "white",
-              }}
-            >
-              Hours
-            </div>
+        <Grid.Column
+          width={7}
+          style={{ textAlign: "center", marginTop: "10rem" }}
+        >
+          <Grid.Row
+            style={{
+              border: "1px solid white",
+              height: "5rem",
+              background: "orange",
+              color: "white",
+              textAlign: "center",
+              paddingTop: "1.2rem",
+            }}
+          >
+            <h1>Hours</h1>
           </Grid.Row>
-          <Divider />
-          <Grid.Row>
-            <div
-              style={{
-                border: "1px solid white",
-                background: "orange",
-                color: "white",
-              }}
-            >
-              Clients
-            </div>
+          <Divider hidden />
+          <Grid.Row
+            style={{
+              border: "1px solid white",
+              height: "5rem",
+              background: "orange",
+              color: "white",
+              textAlign: "center",
+              paddingTop: "1.2rem",
+            }}
+          >
+            <h1>Clients</h1>
           </Grid.Row>
-          <Divider />
-          <Grid.Row>
-            <div
-              style={{
-                border: "1px solid white",
-                background: "orange",
-                color: "white",
-              }}
-            >
-              Rating
-            </div>
+          <Divider hidden />
+          <Grid.Row
+            style={{
+              border: "1px solid white",
+              height: "5rem",
+              background: "orange",
+              color: "white",
+              textAlign: "center",
+              paddingTop: "1.6rem",
+            }}
+          >
+            {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
+            {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
+            <Rating icon="star" defaultRating={0} maxRating={5} />
           </Grid.Row>
         </Grid.Column>
       </Grid>
-      <div style={{ padding: "3rem" }}>
-        <div
+      <Grid stackable style={{ padding: "3rem" }}>
+        <Grid.Row style={{ paddingLeft: "42%" }}>
+          <h1>Previous Clients</h1>
+        </Grid.Row>
+        <Divider hidden />
+        <Grid.Row
           style={{
-            border: "2px solid black",
-            height: "30rem",
+            border: "1px solid white",
+            height: "35rem",
+            background: "orange",
+            color: "white",
+            textAlign: "center",
           }}
         >
-          Previous Clients
-        </div>
-      </div>
+          {/*Im only including two information bits here. */}
+          {/*There is no reason to add the name of the stylist since this is their profile page. */}
+          <Grid.Column
+            width={4}
+            style={{
+              color: "white",
+              margin: "2rem",
+            }}
+          >
+            <Grid.Row>
+              <h2>Client Name</h2>
+            </Grid.Row>
+            <Divider hidden />
+            <Grid.Row
+              style={{
+                backgroundColor: "#d1d1d1",
+                height: "80%",
+              }}
+            ></Grid.Row>
+          </Grid.Column>
+          <Grid.Column
+            width={5}
+            style={{
+              color: "white",
+              margin: "2rem",
+            }}
+          >
+            <Grid.Row>
+              <h2>First Added</h2>
+            </Grid.Row>
+            <Divider hidden />
+            <Grid.Row
+              style={{
+                backgroundColor: "#d1d1d1",
+                height: "80%",
+              }}
+            ></Grid.Row>
+          </Grid.Column>
+          <Grid.Column
+            width={5}
+            style={{
+              color: "white",
+              margin: "2rem",
+            }}
+          >
+            <Grid.Row>
+              <h2>Most Recent Appointment</h2>
+            </Grid.Row>
+            <Divider hidden />
+            <Grid.Row
+              style={{
+                backgroundColor: "#d1d1d1",
+                height: "80%",
+              }}
+            ></Grid.Row>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };
