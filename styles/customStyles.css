@@ -16,7 +16,7 @@
 ::-webkit-scrollbar-track {
   background: rgba(red, green, blue, rgba(255, 0, 0, 0))
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: orange; 
@@ -28,6 +28,7 @@
   background: #cc8b00; 
   border-radius: 10px;
 }
+
 
 /* Welcome User Paragraph */
 .welcomeItem{
