@@ -44,4 +44,5 @@ const studentList = () => {
     </>
   );
 };
-export default studentList
+
+export default studentList;
