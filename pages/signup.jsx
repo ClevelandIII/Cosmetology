@@ -8,7 +8,7 @@ const signup = () => {
     <Form.Input>
       
     </Form.Input>
-
+    Signup Page
 
      </Form>
     </>
