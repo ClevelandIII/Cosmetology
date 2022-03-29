@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Segment, Divider, Button, Message } from "semantic-ui-react";
 
 
-const login = () => {
+const Login = () => {
   return (
     <>
       <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />
@@ -37,4 +37,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default Login;
