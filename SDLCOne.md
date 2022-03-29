@@ -32,3 +32,10 @@ Jason Enciso: worked on the signup and login pages
 Reid Gill: worked on StylistModel,TeacherModel,ClientModel
 
 Daniel Nijdl: worked on the navbar
+
+3-28-22
+Jason Enciso: worked on the signup and login pages as well styles
+
+Reid Gill: finished Stylist and teacher models started student list worked on Client and visit Models 
+
+Daniel Nijdl: finished navbar and auth.js and started working on user routes
