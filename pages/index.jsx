@@ -9,3 +9,5 @@ const index = () => {
     <div>index page</div>
   )
 }
+
+export default index;

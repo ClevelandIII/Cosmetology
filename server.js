@@ -34,13 +34,14 @@ const profileRoutes = require("./server/routes/profileRoute");
 // const userRoutes = require("./server/routes/userRoute");
 
 app.use("/api/v1/profile", profileRoutes);
-// //*SOCKETS */
+//*SOCKETS */
 
 connectDB();
 
+nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));
   app.listen(PORT, (err) => {
     if (err) console.log(err);
     else console.log(`Server listening @ port ${PORT}`);
   });
-
+})

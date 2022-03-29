@@ -2,9 +2,9 @@
 import HeadTag from "./HeadTag";
 import Navbar from "./Navbar";
 import Login from "../../login";
-import Signup from "../../signup";
-import StudentProfile from "../../StudentProfile";
-import ClientProfile from "../../clientProfile";
+// import Signup from "../../signup";
+// import StudentProfile from "../../StudentProfile";
+// import ClientProfile from "../../clientProfile";
 import Router from "next/router";
 // import nprogress from "nprogress";
 // import Router from "next/router";
