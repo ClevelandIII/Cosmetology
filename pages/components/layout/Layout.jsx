@@ -2,6 +2,7 @@
 import HeadTag from "./HeadTag";
 import Navbar from "./Navbar";
 import Login from "../../login";
+import Signup from "../../signup";
 // import Signup from "../../signup";
 // import StudentProfile from "../../StudentProfile";
 // import ClientProfile from "../../clientProfile";
@@ -25,7 +26,8 @@ const Layout = ({ children, user }) => {
     <>
       <HeadTag />
       <Navbar />
-      <Login />
+      {/* <Login /> */}
+      <Signup />
     </>
   );
 };

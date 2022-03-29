@@ -1,68 +1,72 @@
 import React from "react";
 import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
 
-const signup = () => {
+const Signup = () => {
   return (
     <>
       <Form>
         <Segment>
           <Form.Input
-            label="firstName"
+            label="First name"
             required
-            placeholder="firstName"
+            placeholder="John"
             name="firstName"
             // value={name}
           ></Form.Input>
 
           <Form.Input
-            label="lastName"
+            label="Last name"
             required
-            placeholder="lastName"
+            placeholder="Doe"
             name="lastName"
             // value={name}
           ></Form.Input>
 
-          <Form.input
-            label="email"
+          <Form.Input
+            label="Email"
             required
-            placeholder="email"
+            placeholder="johndoe@example.com"
             name="email"
             // value={email}
             type="email"
-          ></Form.input>
+          ></Form.Input>
 
           <Form.Input
-            label="password"
+            label="Password"
             required
-            placeholder="password"
+            placeholder=""
             name="password"
+            type="password"
             // value={password}
           ></Form.Input>
 
           <Form.Input
-            label="class"
+            label="Class"
             required
-            placeholder="class"
+            placeholder=""
             name="class"
           ></Form.Input>
 
           <Form.Input
-            label="teacherCode"
+            label="Teacher code"
             required
-            placeholder="teacherCode"
+            placeholder=""
             name="teacherCode"
           ></Form.Input>
 
           <Form.Input
-            label="session"
+            label="Session"
             required
-            placeholder="session"
+            placeholder=""
             name="session"
           ></Form.Input>
         </Segment>
       </Form>
+      <Divider hidden />
+      <Button color="orange" content="Login" icon="signup" type="submit" />
     </>
   );
 };
 
-export default signup;
+export default Signup;
+
