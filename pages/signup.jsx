@@ -4,23 +4,11 @@ import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
 const signup = () => {
   return (
     <>
-      <Form>
-        <Segment>
-          <Form.Input
-            label="firstName"
-            required
-            placeholder="firstName"
-            name="firstName"
-            // value={name}
-          ></Form.Input>
-
-          <Form.Input
-            label="lastName"
-            required
-            placeholder="lastName"
-            name="lastName"
-            // value={name}
-          ></Form.Input>
+     <Form>
+    <Form.Input>
+      
+    </Form.Input>
+    Signup Page
 
           <Form.input
             label="email"
