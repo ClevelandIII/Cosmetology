@@ -2,7 +2,7 @@ import { Grid, Image, Divider, Container, Loader } from "semantic-ui-react";
 
 import React from "react";
 
-export const studentList = () => {
+const studentList = () => {
   return (
     <>
       <Grid columns="four" divided>
@@ -16,3 +16,5 @@ export const studentList = () => {
     </>
   );
 };
+
+export default studentList;

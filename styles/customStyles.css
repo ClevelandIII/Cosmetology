@@ -33,3 +33,11 @@
 .welcomeItem{
   color: white !important;
 }
+
+.clientList{
+  background: #FFB81C !important;
+}
+
+.cListHeader{
+  background: #F4F4F4 !important;
+}
