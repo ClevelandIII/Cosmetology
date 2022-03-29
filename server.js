@@ -31,6 +31,10 @@ app.use(express.json());
 const profileRoutes = require("./server/routes/profileRoute");
 
 app.use("/api/v1/profile", profileRoutes);
+
+// const clientRoute = require("./server/routes/clientRoute");
+
+// app.use("/api/v1/client", clientRoute)
 // //*SOCKETS */
 
 connectDB();

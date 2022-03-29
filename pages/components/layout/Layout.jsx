@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Login from "../../login";
 import Signup from "../../signup";
 import StudentProfile from "../../StudentProfile";
+import ClientProfile from "../../clientProfile";
 // import nprogress from "nprogress";
 // import Router from "next/router";
 import { createRef } from "react";
@@ -26,6 +27,8 @@ const Layout = ({ children, user }) => {
     <>
       <HeadTag />
       <Navbar />
+      <ClientProfile />
+      {/* <StudentProfile /> */}
       
     </>
   );
