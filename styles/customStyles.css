@@ -16,10 +16,10 @@
 ::-webkit-scrollbar-track {
   background: rgba(red, green, blue, rgba(255, 0, 0, 0))
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ffae00; 
+  background: orange; 
   border-radius: 10px;
 }
 
@@ -29,8 +29,16 @@
   border-radius: 10px;
 }
 
+
 /* Welcome User Paragraph */
 .welcomeItem{
   color: white !important;
 }
 
+.clientList{
+  background: #FFB81C !important;
+}
+
+.cListHeader{
+  background: #F4F4F4 !important;
+}

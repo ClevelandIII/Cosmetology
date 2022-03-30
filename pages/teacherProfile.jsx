@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Grid, Card, Icon, Image, Divider, Rating } from "semantic-ui-react";
+import { Grid, Card, Icon, Image, Divider } from "semantic-ui-react";
 
-const StudentProfile = () => {
+// Very Similar to StudentProfile, only differences are studentList instead of clientList and
+// class they teach/session
+const TeacherProfile = () => {
   const [user, setUser] = useState(false);
   return (
     <>
       <Grid stackable style={{ margin: "3rem" }}>
         <Grid.Column width={8}>
-          <Grid.Row style={{margin: '3.8rem'}}>
+          <Grid.Row style={{ margin: "3.8rem" }}>
             <Image
               src="https://freesvg.org/img/abstract-user-flat-4.png"
               avatar
@@ -21,15 +23,16 @@ const StudentProfile = () => {
           <Grid.Row style={{ marginLeft: "9.2rem", textAlign: "center" }}>
             <Card>
               <Card.Content>
-                <Card.Header>Name Of the Stylist</Card.Header>
+                <Card.Header>Teachers Name</Card.Header>
                 <Card.Meta>
-                  <span className="date">Session & Teacher</span>
+                  <span className="date">Session</span>
                 </Card.Meta>
-                <Card.Description>Stylist </Card.Description>
               </Card.Content>
             </Card>
           </Grid.Row>
         </Grid.Column>
+
+
         <Grid.Column
           width={7}
           style={{ textAlign: "center", marginTop: "10rem" }}
@@ -44,43 +47,19 @@ const StudentProfile = () => {
               paddingTop: "1.2rem",
             }}
           >
-            <h1>Hours</h1>
-          </Grid.Row>
-          <Divider hidden />
-          <Grid.Row
-            style={{
-              border: "1px solid white",
-              height: "5rem",
-              background: "orange",
-              color: "white",
-              textAlign: "center",
-              paddingTop: "1.2rem",
-            }}
-          >
-            <h1>Clients</h1>
-          </Grid.Row>
-          <Divider hidden />
-          <Grid.Row
-            style={{
-              border: "1px solid white",
-              height: "5rem",
-              background: "orange",
-              color: "white",
-              textAlign: "center",
-              paddingTop: "1.6rem",
-            }}
-          >
-            {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
-            {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
-            <Rating icon="star" defaultRating={0} maxRating={5} />
+            <h1>Number of Students</h1>
           </Grid.Row>
         </Grid.Column>
       </Grid>
+
+
       <Grid stackable style={{ padding: "3rem" }}>
         <Grid.Row style={{ paddingLeft: "42%" }}>
-          <h1>Previous Clients</h1>
+          <h1>Students</h1>
         </Grid.Row>
         <Divider hidden />
+
+        {/* List of Students */}
         <Grid.Row
           style={{
             border: "1px solid white",
@@ -90,17 +69,17 @@ const StudentProfile = () => {
             textAlign: "center",
           }}
         >
-          {/*Im only including two information bits here. */}
-          {/*There is no reason to add the name of the stylist since this is their profile page. */}
+
+          {/* Student Name */}
           <Grid.Column
-            width={4}
+            width={3}
             style={{
               color: "white",
               margin: "2rem",
             }}
           >
             <Grid.Row>
-              <h2>Client Name</h2>
+              <h2>Student Name</h2>
             </Grid.Row>
             <Divider hidden />
             <Grid.Row
@@ -110,15 +89,17 @@ const StudentProfile = () => {
               }}
             ></Grid.Row>
           </Grid.Column>
+
+          {/* Teacher */}
           <Grid.Column
-            width={5}
+            width={3}
             style={{
               color: "white",
               margin: "2rem",
             }}
           >
             <Grid.Row>
-              <h2>First Added</h2>
+              <h2>Teacher</h2>
             </Grid.Row>
             <Divider hidden />
             <Grid.Row
@@ -128,15 +109,17 @@ const StudentProfile = () => {
               }}
             ></Grid.Row>
           </Grid.Column>
+
+          {/* Year */}
           <Grid.Column
-            width={5}
+            width={3}
             style={{
               color: "white",
               margin: "2rem",
             }}
           >
             <Grid.Row>
-              <h2>Most Recent Appointment</h2>
+              <h2>Year</h2>
             </Grid.Row>
             <Divider hidden />
             <Grid.Row
@@ -146,10 +129,31 @@ const StudentProfile = () => {
               }}
             ></Grid.Row>
           </Grid.Column>
+        
+          {/* Semester */}
+          <Grid.Column
+            width="3"
+            style={{
+              color: "white",
+              margin: "2rem",
+            }}
+          >
+            <Grid.Row>
+              <h2>Semester</h2>
+            </Grid.Row>
+            <Divider hidden />
+            <Grid.Row
+              style={{
+                backgroundColor: "#d1d1d1",
+                height: "80%",
+              }}
+            ></Grid.Row>
+          </Grid.Column>
+          
         </Grid.Row>
       </Grid>
     </>
   );
 };
 
-export default StudentProfile;
+export default TeacherProfile;
