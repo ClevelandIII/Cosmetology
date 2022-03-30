@@ -28,7 +28,7 @@ const Layout = ({ children, user }) => {
       <HeadTag />
       <Navbar />
       <ClientProfile />
-      {/* <StudentProfile /> */}
+    
       
     </>
   );
