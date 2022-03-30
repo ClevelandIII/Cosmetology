@@ -1,12 +1,13 @@
 import { createRef } from "react";
 import MenuExampleStackable from "./NormNavbar";
-import NormNavbar from "./NormNavbar";
+// import NormNavbar from "./NormNavbar";
 import SignupLoginNav from "./SignupLoginNav";
 import isActive from "./SignupLoginNav";
 import HeadTag from "./HeadTag";
 import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
 // import SearchComponent from "./SearchComponent";
 // import SideMenu from "./SideMenu";
+import StudentList from "../../studentList"
 
 const Layout = ({ children, user }) => {
   // Router.onRouteChangeStart = () => nprogress.start();

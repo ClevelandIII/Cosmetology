@@ -36,8 +36,8 @@ const ClientSchema =  new Schema({
   currentStylist:{type: String},
   latestVisit:{type: Date},
 
-  pastStylist:{ type: schema.Types.ObjectId, ref:"Stylist"},
-  pastVisit:{type: schema.Types.ObjectId, ref:"Visit"},
+  pastStylist:{ type: Schema.Types.ObjectId, ref:"Stylist"},
+  pastVisit:{type: Schema.Types.ObjectId, ref:"Visit"},
   
   dateCreated:{
     type: Date,

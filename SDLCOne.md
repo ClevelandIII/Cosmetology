@@ -47,3 +47,10 @@ Reid Gill: working on student list added to todo list
 
 Daniel Nijdl: Started client list, started auth controller, got pages to work for now (you have to import them into layout and use them), messed with some styles, and almost finished teacherProfile (copy of studentProfile with some changes)
 
+3-30-22
+Jason Enciso: working on signup and login styles started Client list
+
+Reid Gill: finished Visit and Client model working on student list
+
+Daniel Nijdl: Created userProfile and createStylist (attempted to get to work with postman but I’m getting errors). Changed userRoute to post on /sighup, got navbar to bring you to correct pages, and you can now type in a page url and it will work.
+
