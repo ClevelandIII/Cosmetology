@@ -27,7 +27,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 
   if (!token) {
-    isProtectedRoute && redirectUser(ctx, "login");
+    isProtectedRoute && redirectUser(ctx, "/login");
   } else {
     try {
       const res = await axios.get(`${baseURL}/api/v1/auth`, {
