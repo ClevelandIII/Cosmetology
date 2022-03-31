@@ -6,6 +6,7 @@ import Login from "../../login";
 import Signup from "../../signup";
 import StudentProfile from "../../StudentProfile";
 import ClientProfile from "../../clientProfile";
+import HairMenu from "../common/HairMenu";
 // import nprogress from "nprogress";
 // import Router from "next/router";
 import { createRef } from "react";
@@ -28,6 +29,7 @@ const Layout = ({ children, user }) => {
       <HeadTag />
       <Navbar />
       <ClientProfile />
+      <HairMenu />
       {/* <StudentProfile /> */}
       
     </>
