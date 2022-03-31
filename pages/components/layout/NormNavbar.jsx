@@ -11,19 +11,22 @@ import {
 
 //whole lotta semantic and a whole lotta random stuff from me
 
-//This is the sidebar itself. Currently it only fits to the navbar, but i will eventually make it fit to the page (I mean, unless everyone likes it)
+//This is the sidebar itself. Currently it only fits to the navbar, but i will eventually make it fit to the page
+//(I mean, unless everyone likes it)
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
 const VerticalSidebar = ({ animation, visible }) => (
   <Sidebar
-    as={Menu}
-    animation={animation}
-    direction="left"
-    icon="labeled"
-    inverted
-    vertical
-    visible={visible}
-    width="thin"
-    style={{ backgroundColor: "#6ea1ff" }}
+  as={Menu}
+  animation={animation}
+  direction="left"
+  icon="labeled"
+  inverted
+  vertical
+  visible={visible}
+  width="thin"
+  style={{
+    backgroundColor: "#6ea1ff",
+  }}
   >
     <Menu.Item as="a" href="/">
       <Icon name="home" />

@@ -1,13 +1,15 @@
 import { createRef } from "react";
 import MenuExampleStackable from "./NormNavbar";
-// import NormNavbar from "./NormNavbar";
+import NormNavbar from "./NormNavbar";
 import SignupLoginNav from "./SignupLoginNav";
 import isActive from "./SignupLoginNav";
 import HeadTag from "./HeadTag";
 import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
 // import SearchComponent from "./SearchComponent";
 // import SideMenu from "./SideMenu";
-import StudentList from "../../studentList"
+import StudentList from "../../studentList";
+import studentList from "../../studentList";
+import PageNotFound from "../../PageNotFound";
 
 const Layout = ({ children, user }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -17,6 +19,7 @@ const Layout = ({ children, user }) => {
   //createRef refreshes on render()
   //useRef refreshes on router.reload()
   const contextRef = createRef();
+  const routes = ["/"];
 
   return (
     <>
