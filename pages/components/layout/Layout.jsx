@@ -1,3 +1,14 @@
+// import { Container, Grid, Ref, Sticky, Visibility } from "semantic-ui-react";
+// import HeadTag from "./HeadTag";
+import isActive from "./Navbar"
+import Navbar from "./Navbar";
+import Login from "../../login";
+import Signup from "../../signup";
+import StudentProfile from "../../StudentProfile";
+import ClientProfile from "../../clientProfile";
+import HairMenu from "../common/HairMenu";
+// import nprogress from "nprogress";
+// import Router from "next/router";
 import { createRef } from "react";
 import MenuExampleStackable from "./NormNavbar";
 import NormNavbar from "./NormNavbar";
@@ -24,6 +35,11 @@ const Layout = ({ children, user }) => {
   return (
     <>
       <HeadTag />
+      <Navbar />
+      <ClientProfile />
+      <HairMenu />
+      {/* <StudentProfile /> */}
+      
       {user ? (
         <>
           <NormNavbar />
