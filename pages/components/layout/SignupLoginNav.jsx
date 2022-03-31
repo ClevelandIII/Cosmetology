@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { Menu, Container, Icon, Image, Button } from "semantic-ui-react";
 
-const Navbar = () => {
+const SignupLoginNav = () => {
   const router = useRouter();
 
   const isActive = (route) => router.pathname === route;
@@ -62,14 +62,13 @@ const Navbar = () => {
         <Menu.Item position="left">
           <Button
             href="/login"
-            
             active={isActive("/login")}
             style={{ fontSize: "1.3rem", width: "12rem" }}
             className="menuItem"
             inverted
             color={isActive("/login") ? "blue" : "grey"}
           >
-            <Icon name="sign in" size="large"/>
+            <Icon name="sign in" size="large" />
             Log in
           </Button>
           <Button
@@ -88,7 +87,7 @@ const Navbar = () => {
             Sign Up
           </Button>
         </Menu.Item>
-        <Menu.Item  style={{ fontSize: "1.75rem" }}>
+        <Menu.Item style={{ fontSize: "1.75rem" }}>
           <p className="welcomeItem">
             Welcome student/teacher, please make an account or sign in to begin!
           </p>
@@ -99,4 +98,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default SignupLoginNav;
