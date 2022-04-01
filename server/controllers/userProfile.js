@@ -20,7 +20,7 @@ const createUser = async (req, res) => {
     password,
     hours,
     teacher,
-  } = req.body.stylist;
+  } = req.body;
 
   if (!isEmail(email)) return res.status(401).send()("Invalid Email");
   if (password.length < 6)

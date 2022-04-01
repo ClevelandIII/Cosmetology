@@ -8,7 +8,7 @@ import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
 // import SearchComponent from "./SearchComponent";
 // import SideMenu from "./SideMenu";
 
-const Layout = ({ children, user }) => {
+const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
   // Router.onRouteChangeComplete = () => nprogress.done();
   // Router.onRouteChangeError = () => nprogress.done();
@@ -20,7 +20,7 @@ const Layout = ({ children, user }) => {
   return (
     <>
       <HeadTag />
-      {user ? (
+      {stylist ? (
         <>
           <NormNavbar />
 
