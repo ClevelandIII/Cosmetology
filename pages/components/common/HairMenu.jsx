@@ -108,15 +108,16 @@ class App extends React.Component {
         />
      
         {this.state.showForm ? this.showForm() : null}
-        <button
+        <Button
           onClick={() => {
             this.setState({showForm:false})
             
           }}
           style={{ marginLeft: "200px",height: "80px", width: "1200px"}}
-        >
-          close
-        </button>
+          content="Close"
+          color="navy blue"
+        />
+         
       </>
     )
         
