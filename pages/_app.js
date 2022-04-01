@@ -9,7 +9,7 @@ import axios from "axios";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout user={pageProps.user}>
+    <Layout stylist={pageProps.stylist}>
       <Component {...pageProps} />
     </Layout>
   );
@@ -36,10 +36,10 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
         },
       });
 
-      const { user } = res.data;
+      const { stylist } = res.data;
 
-      if (user) !isProtectedRoute && redirectUser(ctx, "/");
-      pageProps.user = user;
+      if (stylist) !isProtectedRoute && redirectUser(ctx, "/");
+      pageProps.stylist = stylist;
     } catch (error) {
       destroyCookie(ctx, "token");
       redirectUser(ctx, "/login");

@@ -6,7 +6,7 @@ import React from "react";
 const studentList = () => {
   return (
     <>
-      <Grid columns="four" divided>
+      <Grid columns="four" divided className="StudentGrid">
         <Grid.Row style={{
             borderBottom: "2px solid navy",
             // height: "35rem",

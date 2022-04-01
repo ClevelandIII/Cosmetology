@@ -8,8 +8,6 @@ import StudentProfile from "../../StudentProfile";
 import ClientProfile from "../../clientProfile";
 import HairMenu from "../common/HairMenu";
 // import nprogress from "nprogress";
-// import Router from "next/router";
-import { createRef } from "react";
 import MenuExampleStackable from "./NormNavbar";
 import NormNavbar from "./NormNavbar";
 import SignupLoginNav from "./SignupLoginNav";
@@ -21,6 +19,9 @@ import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
 import StudentList from "../../studentList";
 import studentList from "../../studentList";
 import PageNotFound from "../../PageNotFound";
+import { createRef } from "react";
+
+
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -30,26 +31,26 @@ const Layout = ({ children, stylist }) => {
   //createRef refreshes on render()
   //useRef refreshes on router.reload()
   const contextRef = createRef();
-  const routes = ["/"];
 
   return (
     <>
       {stylist ? (
         <>
+          {/* <HeadTag /> */}
           <NormNavbar />
 
-          <div>
-            <Ref innerRef={contextRef}>
-              <Grid.Column>
+          {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
+            <Ref  innerRef={contextRef}>
+              <Grid.Column >
                 <Visibility context={contextRef}>{children}</Visibility>
               </Grid.Column>
             </Ref>
-          </div>
+          {/* </div> */}
         </>
       ) : (
         <>
           <SignupLoginNav />
-          <Container text style={{ paddingTop: "1rem" }}>
+          <Container centered text style={{ paddingTop: "1rem", margin: "0 auto", textAlight: "center" }}>
             {children}
           </Container>
         </>
