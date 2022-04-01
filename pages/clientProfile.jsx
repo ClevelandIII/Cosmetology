@@ -80,7 +80,7 @@ const stateOptions = [
   { key: "Wyoming", value: "Wyoming", text: "Wyoming" },
 ];
 const ClientProfile = () => {
-  const [user, setUser] = useState(false);
+  
 
   return (
     <>
@@ -178,163 +178,16 @@ const ClientProfile = () => {
         <Button type="submit">Submit</Button>
       </Form>
       
-      <Form
-        style={{
-          backgroundColor: "orange",
-          marginTop: "100px",
-          padding: "50px",
-        }}
-      >
-        <Form.Group unstackable widths={3}>
-          <Form.Input
-            label="Hair Condition"
-            placeholder="Hair Condition"
-            style={{ width: "435px", height: "96px" }}
-          />
-          <Form.Input
-            label="Hair Classification"
-            placeholder="Hair Classification"
-            style={{ width: "435px", height: "96px" }}
-          />
-          <Form.Input
-            label="Scalp Condition"
-            placeholder="Scalp Condition"
-            style={{ width: "435px", height: "96px" }}
-          />
-        </Form.Group>
-
-        <Form.Group unstackable widths={3}>
-          <Form.Input
-            label="Hair Texture"
-            placeholder="Hair Texture"
-            style={{ width: "435px", height: "96px" }}
-          />
-          <Form.Input
-            label="Growth Patterns"
-            placeholder="Growth Patterns"
-            style={{ width: "435px", height: "96px" }}
-          />
-          <Form.Input
-            label="Hair Density"
-            placeholder="Hair Density"
-            style={{ width: "435px", height: "96px" }}
-          />
-        </Form.Group>
-
-        <Form.Group unstackable widths={3}>
-          <Form.Input
-            label="Hair Porosity"
-            placeholder="Hair Porosity"
-            style={{ width: "435px", height: "96px" }}
-          />
-
-          <Form.Input
-            label="Hair Elasticity"
-            placeholder="Hair Elasticity"
-            style={{ width: "435px", height: "96px" }}
-          />
-          <Form.Input
-            label="Hair Length"
-            placeholder="Hair Length"
-            style={{ width: "435px", height: "96px" }}
-          />
-        </Form.Group>
-      </Form>
+    
 
       
     </>
   );
 };
 
-// const hairMenu = ({
-//   user:{HairCondition, HairClassification, ScalpCondition, HairTexture,},
-//   handleChange,
-//   showSocialLinks,
-//   setShowSocialLinks
-  
-   
 
-// }) => {
-//   return <>
-//   <Button
-//     content="Add Social Links"
-//     color="blue"
-//     icon="at"
-//     type="button"
-//     onClick={() => setShowSocialLinks(!showSocialLinks)}
-//     />
-//    <Form
-//         style={{
-//           backgroundColor: "orange",
-//           marginTop: "100px",
-//           padding: "50px",
-//         }}
-//       >
-//         <Form.Group unstackable widths={3}>
-//           <Form.Input
-//             label="Hair Condition"
-//             value={HairCondition}
-//             onChange={handleChange}
-//             placeholder="Hair Condition"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//           <Form.Input
-//             label="Hair Classification"
-//             value={HairClassification}
-//             onChange={handleChange}
-//             placeholder="Hair Classification"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//           <Form.Input
-//             label="Scalp Condition"
-//             value={ScalpCondition}
-//             onChange={handleChange}
-//             placeholder="Scalp Condition"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//         </Form.Group>
 
-//         <Form.Group unstackable widths={3}>
-//           <Form.Input
-//             label="Hair Texture"
-//             value={HairTexture}
-//             onChange={handleChange}
-//             placeholder="Hair Texture"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//           <Form.Input
-//             label="Growth Patterns"
-//             placeholder="Growth Patterns"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//           <Form.Input
-//             label="Hair Density"
-//             placeholder="Hair Density"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//         </Form.Group>
 
-//         <Form.Group unstackable widths={3}>
-//           <Form.Input
-//             label="Hair Porosity"
-//             placeholder="Hair Porosity"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-
-//           <Form.Input
-//             label="Hair Elasticity"
-//             placeholder="Hair Elasticity"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//           <Form.Input
-//             label="Hair Length"
-//             placeholder="Hair Length"
-//             style={{ width: "435px", height: "96px" }}
-//           />
-//         </Form.Group>
-//       </Form>
-//   </>
-// }
 
 
 export default ClientProfile;

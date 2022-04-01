@@ -1,12 +1,11 @@
 import React from "react";
 import { Form, Segment, Divider, Button, Message } from "semantic-ui-react";
 
-
 const Login = () => {
   return (
     <>
       {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" /> */}
-      <Divider hidden/>
+      <Divider hidden />
       {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
       <Divider />
       <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
@@ -30,7 +29,7 @@ const Login = () => {
             name="password"
           ></Form.Input>
           <Divider hidden />
-          <Button color="orange" content="Login" icon="signup" type="submit" />/
+          <Button color="orange" content="Login" icon="signup" type="submit" />
         </Segment>
       </Form>
     </>

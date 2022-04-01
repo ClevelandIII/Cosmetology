@@ -22,10 +22,14 @@ const TeacherSchema = new Schema({
   },
   profilePicURL: { type: String },
 
+  resetToken: { type: String },
+    expireToken: { type: String },
+
   teacherContent: { type: String },
 
-  firstPeriod: { type: Array },
-  secondPeriod: { type: Array },
+  stylist: { type: Schema.Types.ObjectId, ref: "Stylist" },
+  firstPeriod: [{stylist: { type: Schema.Types.ObjectId, ref: "Stylist" } }],
+  secondPeriod: [{stylist: { type: Schema.Types.ObjectId, ref: "Stylist" } }],
 });
 
 module.exports = mongoose.model("Teacher", TeacherSchema);
