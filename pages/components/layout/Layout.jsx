@@ -20,8 +20,7 @@ import StudentList from "../../studentList";
 import studentList from "../../studentList";
 import PageNotFound from "../../PageNotFound";
 import { createRef } from "react";
-
-
+import TeacherProfile from "../../teacherProfile";
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -40,18 +39,19 @@ const Layout = ({ children, stylist }) => {
           <NormNavbar />
 
           {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
-            <Ref  innerRef={contextRef}>
-              <Grid.Column >
-                <Visibility context={contextRef}>{children}</Visibility>
-              </Grid.Column>
-            </Ref>
+          <Ref innerRef={contextRef}>
+            <Grid.Column>
+              <Visibility context={contextRef}>{children}</Visibility>
+            </Grid.Column>
+          </Ref>
           {/* </div> */}
         </>
       ) : (
         <>
           <SignupLoginNav />
-          <Container centered text style={{ paddingTop: "1rem", margin: "0 auto", textAlight: "center" }}>
-            {children}
+          <Container>
+            {/*Something in Container makes the styling weird. For example, try StudentProfile in Container vs outside container*/}
+            {/* {children} */}
           </Container>
         </>
       )}

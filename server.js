@@ -2,7 +2,10 @@
 const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
-const fileUpload = require("express-fileupload")
+const fileUpload = require("express-fileupload");
+// const http = require("http");
+// const bodyParser = require("body-parser");
+// const route = require("./server/routes");
 
 require("dotenv").config();
 cloudinary.config({
@@ -13,6 +16,13 @@ cloudinary.config({
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(route);
+
+// app.use((req, res, next) => {
+//   res.send("<h1> Page not found </h1>");
+// });
 
 //* NEXT APP SETUP */
 const next = require("next");
@@ -34,7 +44,7 @@ app.use(fileUpload({ useTempFiles: true }));
 const userRoute = require("./server/routes/userRoute");
 
 // app.use("/api/v1/profile", profileRoutes);
-app.use("/api/v1/user", userRoute)
+app.use("/api/v1/user", userRoute);
 
 //*SOCKETS */
 
@@ -46,4 +56,4 @@ nextApp.prepare().then(() => {
     if (err) console.log(err);
     else console.log(`Server listening @ port ${PORT}`);
   });
-})
+});

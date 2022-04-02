@@ -36,8 +36,12 @@
 
 - Abdi: Client Profile Page, hair menu
 
-3/20/2022
+3/30/2022
 
 - Cleveland: Random things from Trello that ended up alreaty being done, 404 page
 
 - Abdi: Client Profile Page completion
+
+4/1/2022
+- Cleveland: 404 alt idea, teacher profile additions, student profile additions, bug fixing
+- Abdi: 

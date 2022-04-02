@@ -1,10 +1,32 @@
 import React, { useState } from "react";
-import { Grid, Card, Icon, Image, Divider } from "semantic-ui-react";
+import { Grid, Card, Icon, Image, Divider, Dropdown } from "semantic-ui-react";
 
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
 // class they teach/session
 const TeacherProfile = () => {
   const [user, setUser] = useState(false);
+  const Options = [
+    {
+      key: "Number of Visits",
+      text: "Number of Visits",
+      value: "Number of Visits",
+    },
+    {
+      key: "Date Created",
+      text: "Date Created",
+      value: "Date Created",
+    },
+    {
+      key: "Most Recently Created",
+      text: "Most Recently Created",
+      value: "Most Recently Created",
+    },
+    {
+      key: "Name",
+      text: "Name",
+      value: "Name",
+    },
+  ];
   return (
     <>
       <Grid stackable style={{ margin: "3rem" }}>
@@ -32,7 +54,6 @@ const TeacherProfile = () => {
           </Grid.Row>
         </Grid.Column>
 
-
         <Grid.Column
           width={7}
           style={{ textAlign: "center", marginTop: "10rem" }}
@@ -52,10 +73,17 @@ const TeacherProfile = () => {
         </Grid.Column>
       </Grid>
 
-
       <Grid stackable style={{ padding: "3rem" }}>
         <Grid.Row style={{ paddingLeft: "42%" }}>
-          <h1>Students</h1>
+          <div style={{ textAlign: "center" }}>
+            <h1>Students</h1>
+            <Dropdown
+              placeholder="Sort By..."
+              fluid
+              selection
+              options={Options}
+            />
+          </div>
         </Grid.Row>
         <Divider hidden />
 
@@ -69,13 +97,12 @@ const TeacherProfile = () => {
             textAlign: "center",
           }}
         >
-
           {/* Student Name */}
           <Grid.Column
             width={3}
             style={{
               color: "white",
-              margin: "2rem",
+              marginLeft: "5rem",
             }}
           >
             <Grid.Row>
@@ -90,16 +117,16 @@ const TeacherProfile = () => {
             ></Grid.Row>
           </Grid.Column>
 
-          {/* Teacher */}
+          {/* Period */}
           <Grid.Column
             width={3}
             style={{
               color: "white",
-              margin: "2rem",
+              marginLeft: "5rem",
             }}
           >
             <Grid.Row>
-              <h2>Teacher</h2>
+              <h2>Period</h2>
             </Grid.Row>
             <Divider hidden />
             <Grid.Row
@@ -115,7 +142,7 @@ const TeacherProfile = () => {
             width={3}
             style={{
               color: "white",
-              margin: "2rem",
+              marginLeft: "5rem",
             }}
           >
             <Grid.Row>
@@ -129,13 +156,13 @@ const TeacherProfile = () => {
               }}
             ></Grid.Row>
           </Grid.Column>
-        
+
           {/* Semester */}
           <Grid.Column
-            width="3"
+            width={3}
             style={{
               color: "white",
-              margin: "2rem",
+              marginLeft: "5rem",
             }}
           >
             <Grid.Row>
@@ -149,7 +176,6 @@ const TeacherProfile = () => {
               }}
             ></Grid.Row>
           </Grid.Column>
-          
         </Grid.Row>
       </Grid>
     </>
