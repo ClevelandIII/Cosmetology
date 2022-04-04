@@ -50,3 +50,22 @@
   justify-content: center;
   position: relative;
 }
+
+.background-video {
+  position: absolute;
+  width: 150%;
+  left: 50%;
+  top: 50%;
+  height: 150%;
+  object-fit: cover;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+}
+
+.noScroll{
+  overflow-y: hidden !important;
+}
+
+.loginForm{
+  background: #ffffff8c !important;
+}
