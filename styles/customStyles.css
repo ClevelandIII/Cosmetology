@@ -47,6 +47,16 @@
 
 .StudentGrid{
   margin: 0 auto !important;
-  justify-content: center;
-  position: relative;
+  justify-content: center !important;
+  position: relative !important;
+  left: 53%;
+  /* background: #6ea1ff; */
+  background: #FFB81C;
+}
+
+.studentRow:hover{
+  background:#6ea1ff
+}
+.studentColumn:hover{
+  color: #6ea1ff;
 }

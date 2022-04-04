@@ -48,10 +48,10 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          <SignupLoginNav />
-          <Container>
-            {/*Something in Container makes the styling weird. For example, try StudentProfile in Container vs outside container*/}
-            {/* {children} */}
+        <NormNavbar />
+          {/* <SignupLoginNav /> */}
+          <Container text style={{ paddingTop: "1rem" }}>
+            {children}
           </Container>
         </>
       )}
