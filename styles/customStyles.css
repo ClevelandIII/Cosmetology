@@ -49,9 +49,22 @@
   margin: 0 auto !important;
   justify-content: center !important;
   position: relative !important;
-  left: 53%;
+  /* left: 53%; */
   /* background: #6ea1ff; */
   background: #FFB81C;
+}
+
+.studentListPic{
+  position: absolute !important;
+  right: 70%;
+  bottom: -1%;
+  width: 45%;
+}
+.studentListName{
+  position: relative !important;
+  left: 35%;
+  overflow: scroll hidden;
+  white-space:nowrap;
 }
 
 .background-video {
@@ -88,4 +101,10 @@
   max-width: 500px !important;
   margin: 0 auto !important;
   margin-top: 12rem !important;
+}
+.yearSemesterCenter{
+  text-align: center;
+  max-width: min-content;
+  white-space:nowrap;
+  width: 100%;
 }

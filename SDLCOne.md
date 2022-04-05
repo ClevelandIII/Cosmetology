@@ -67,3 +67,10 @@ Jason Enciso: CIW
 Reid Gill: working on student list
 
 Daniel Nijdl: working on video background
+
+4-5-22
+Jason Enciso: login style and CIW
+
+Reid Gill: working on student list (this will probably the base of the other lists)
+
+Daniel Nijdl: edited navbar, re-added background, fixed sidebar, worked on login functionality  
