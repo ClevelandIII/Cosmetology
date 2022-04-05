@@ -102,8 +102,8 @@ function NormNavbar() {
   const [hamDog, setHamDog] = useState(false);
 
   return (
-    <div>
-      <Sidebar.Pushable
+    <div style={{backgroundColor: "white"}}>
+      {/* <Sidebar.Pushable
         as={Segment}
         style={{
           overflow: "hidden",
@@ -112,7 +112,7 @@ function NormNavbar() {
           borderRadius: "0",
           marginTop: "1rem",
         }}
-      >
+      > */}
         <VerticalSidebar
           animation={animation}
           direction={direction}
@@ -167,7 +167,7 @@ function NormNavbar() {
             </Menu.Item>
           </Menu>
         </Sidebar.Pusher>
-      </Sidebar.Pushable>
+      {/* </Sidebar.Pushable> */}
     </div>
   );
 }

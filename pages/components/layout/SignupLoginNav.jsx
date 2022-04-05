@@ -8,41 +8,64 @@ import {
   Button,
   Sidebar,
   Segment,
-  Input,
+  // Input,
   Message,
 } from "semantic-ui-react";
+
+import { useState } from "react";
 
 const SignupLoginNav = () => {
   const router = useRouter();
   const isActive = (route) => router.pathname === route;
+  const [visible, setVisible] = useState(false);
+
   //thanks peck
   const signupRoute = router.pathname === "/signup";
 
   return (
-    <div>
-      <Menu
-        stackable
-        secondary
-        style={{
-          overflow: "hidden",
-          backgroundColor: "white",
-          boxShadow: "0px 0.5px 2px 1px gray",
-        }}
-      >
-        <Menu.Item>
-          <Image
-            alt="logo"
-            src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-            size="small"
-          />
+<Menu
+      fluid
+      borderless
+      pointing
+      secondary
+      // className="nav-bar navBar"
+      size="large"
+      style={{backgroundColor: "white"}}
+    >
+      <Container>
+        <Menu.Item style={{ cursor: "pointer" }}>
+          <Link href="/">
+            <Image
+              size="small"
+              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+            />
+          </Link>
         </Menu.Item>
-
-        <Menu.Item name="testimonials" style={{ width: "50rem" }}>
-          <h3>
-            {signupRoute
-              ? "Welcome user! Please create an account to log in."
-              : "Welcome back user! Please enter your email and password to continue."}
-          </h3>
+        <Menu.Item className="navButtons">
+          <Button
+            href="/login"
+            active={isActive("/login")}
+            style={{ fontSize: "1.3rem", width: "12rem", margin:"0 auto"}}
+            // inverted
+            color={isActive("/login") ? "orange" : "grey"}
+          >
+            <Icon name="sign in" size="large" />
+            Log in
+          </Button>
+          <Button
+            href="/signup"
+            active={isActive("/signup")}
+            style={{
+              fontSize: "1.3rem",
+              marginLeft: "0.5em",
+              width: "12rem",
+            }}
+            // inverted
+            color={isActive("/signup") ? "orange" : "grey"}
+          >
+            <Icon name="signup" size="large" />
+            Sign Up
+          </Button>
         </Menu.Item>
         <Menu.Item position="right">
           <Message
@@ -53,7 +76,7 @@ const SignupLoginNav = () => {
               padding: "0.5rem",
               textAlign: "center",
             }}
-            header={signupRoute ? "Alreaty a user?" : "Not a user?"}
+            header={signupRoute ? "Already a user?" : "Not a user?"}
             content={
               <Button
                 style={{ backgroundColor: "white", padding: "0.5rem" }}
@@ -66,9 +89,10 @@ const SignupLoginNav = () => {
             }
           />
         </Menu.Item>
-      </Menu>
-    </div>
+      </Container>
+    </Menu>
   );
+
 };
 
 //I didnt want to delete everything from the old navbar, so i included it here if you needed it

@@ -49,6 +49,7 @@ const Login = () => {
   useEffect(() => {
     document.title = "Welcome Back";
     const email = Cookies.get("email");
+
     if (email) setStylist((prev) => ({ ...prev, email: email }));
   }, []);
 
@@ -60,6 +61,7 @@ const Login = () => {
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
+        className="loginComponent"
       >
         <Message
           error

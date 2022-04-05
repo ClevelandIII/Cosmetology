@@ -79,3 +79,13 @@
 .studentColumn:hover{
   color: #6ea1ff;
 }
+
+/* .navButtons{
+  left: 29rem !important;
+} */
+
+.loginComponent{
+  max-width: 500px !important;
+  margin: 0 auto !important;
+  margin-top: 12rem !important;
+}

@@ -19,7 +19,7 @@ import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
 import StudentList from "../../studentList";
 import studentList from "../../studentList";
 import PageNotFound from "../../PageNotFound";
-import { createRef } from "react";
+import { createRef, useEffect } from "react";
 import TeacherProfile from "../../teacherProfile";
 
 const Layout = ({ children, stylist }) => {
@@ -30,6 +30,8 @@ const Layout = ({ children, stylist }) => {
   //createRef refreshes on render()
   //useRef refreshes on router.reload()
   const contextRef = createRef();
+
+  useEffect( () => { document.querySelector("body").classList.add("noScroll") } );
 
   return (
     <>
@@ -48,10 +50,28 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          <SignupLoginNav />
-          <Container text style={{ paddingTop: "1rem" }}>
-            {children}
-          </Container>
+           <SignupLoginNav />
+          {/* <Container> */}
+          {/*Something in Container makes the styling weird. For example, try StudentProfile in Container vs outside container*/}
+          <div style={{ width: "50vw", margin: "0 auto" }}>{children}</div>
+            <iframe
+              src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
+              autoPlay
+              loop
+              muted
+              className="background-video"
+              // style={{
+              //   position: "absolute",
+              //   width: "150%",
+              //   left: "50%",
+              //   top: "50%",
+              //   height: "100%",
+              //   objectFit: "cover",
+              //   transform: "translate(-50%,-50%)",
+              //   zIndex: "-1",
+              // }}
+            ></iframe>
+          {/* </Container> */}
         </>
       )}
     </>
