@@ -10,7 +10,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -54,13 +54,8 @@ const Login = () => {
 
   return (
     <>
-      {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" /> */}
+
       <Divider hidden />
-      {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />; */}
       <Form
         loading={formLoading}
         error={errorMsg !== null}

@@ -45,3 +45,7 @@
 4/1/2022
 - Cleveland: 404 alt idea, teacher profile additions, student profile additions, bug fixing
 - Abdi: 
+
+4/4/2022
+- Cleveland: Added favicon, added navbar consistancy and more functionality
+- Abdi: 

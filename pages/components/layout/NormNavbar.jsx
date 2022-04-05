@@ -16,32 +16,63 @@ import {
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
 const VerticalSidebar = ({ animation, visible }) => (
   <Sidebar
-  as={Menu}
-  animation={animation}
-  direction="left"
-  icon="labeled"
-  inverted
-  vertical
-  visible={visible}
-  width="thin"
-  style={{
-    backgroundColor: "#6ea1ff",
-  }}
+    as={Menu}
+    animation={animation}
+    direction="left"
+    icon="labeled"
+    vertical
+    visible={visible}
+    width="thin"
+    style={{
+      backgroundColor: "white",
+    }}
   >
-    <Menu.Item as="a" href="/">
-      <Icon name="home" />
+    <Menu.Item
+      as="a"
+      href="/"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon
+        name="home"
+        color="black"
+        style={{
+          color: "black",
+        }}
+      />
       Home
     </Menu.Item>
-    <Menu.Item as="a" href="/profile">
-      <Icon name="user circle" />
+    <Menu.Item
+      as="a"
+      href="/profile"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon name="user circle" color="black" />
       Profile
     </Menu.Item>
-    <Menu.Item as="a" href="/clientProfile">
-      <Icon name="add user" />
+    <Menu.Item
+      as="a"
+      href="/clientProfile"
+      style={{
+        backgroundColor: "white",
+        color: "black",
+      }}
+    >
+      <Icon name="add user" color="black" />
       New Visit
     </Menu.Item>
-    <Menu.Item as="a" href="/StudentList">
-      <Icon name="list ul" />
+    <Menu.Item
+      as="a"
+      href="/StudentList"
+      style={{
+        backgroundColor: "white",
+        color: "black",
+      }}
+    >
+      <Icon name="list ul" color="black" />
       Client/Student List
     </Menu.Item>
   </Sidebar>
@@ -74,7 +105,13 @@ function NormNavbar() {
     <div>
       <Sidebar.Pushable
         as={Segment}
-        style={{ overflow: "hidden", backgroundColor: "#6ea1ff" }}
+        style={{
+          overflow: "hidden",
+          backgroundColor: "white",
+          boxShadow: "0px 0.5px 2px 1px gray",
+          borderRadius: "0",
+          marginTop: "1rem",
+        }}
       >
         <VerticalSidebar
           animation={animation}
@@ -124,7 +161,9 @@ function NormNavbar() {
               <Input icon="search" placeholder="Search..." />
             </Menu.Item>
             <Menu.Item name="sign-in" position="right">
-              <Button color="red">Sign Out</Button>
+              <Button style={{ backgroundColor: "red", color: "white" }}>
+                Sign Out
+              </Button>
             </Menu.Item>
           </Menu>
         </Sidebar.Pusher>

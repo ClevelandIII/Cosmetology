@@ -1,47 +1,96 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Menu, Container, Icon, Image, Button } from "semantic-ui-react";
+import {
+  Menu,
+  Container,
+  Icon,
+  Image,
+  Button,
+  Sidebar,
+  Segment,
+  Input,
+  Message,
+} from "semantic-ui-react";
 
 const SignupLoginNav = () => {
   const router = useRouter();
+  const isActive = (route) => router.pathname === route;
+  //thanks peck
+  const signupRoute = router.pathname === "/signup";
 
+  return (
+    <div>
+      <Menu
+        stackable
+        secondary
+        style={{
+          overflow: "hidden",
+          backgroundColor: "white",
+          boxShadow: "0px 0.5px 2px 1px gray",
+        }}
+      >
+        <Menu.Item>
+          <Image
+            alt="logo"
+            src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+            size="small"
+          />
+        </Menu.Item>
+
+        <Menu.Item name="testimonials" style={{ width: "50rem" }}>
+          <h3>
+            {signupRoute
+              ? "Welcome user! Please create an account to log in."
+              : "Welcome back user! Please enter your email and password to continue."}
+          </h3>
+        </Menu.Item>
+        <Menu.Item position="right">
+          <Message
+            style={{
+              backgroundColor: "red",
+              borderRadius: "1px solid black",
+              color: "white",
+              padding: "0.5rem",
+              textAlign: "center",
+            }}
+            header={signupRoute ? "Alreaty a user?" : "Not a user?"}
+            content={
+              <Button
+                style={{ backgroundColor: "white", padding: "0.5rem" }}
+                href={signupRoute ? "/login" : "/signup"}
+                active={isActive("/login")}
+                className="menuItem"
+              >
+                {signupRoute ? " Log in here" : " Get started here"}
+              </Button>
+            }
+          />
+        </Menu.Item>
+      </Menu>
+    </div>
+  );
+};
+
+//I didnt want to delete everything from the old navbar, so i included it here if you needed it
+{
+  /*import { useRouter } from "next/router";
+import Link from "next/link";
+import {
+  Menu,
+  Container,
+  Icon,
+  Image,
+  Button,
+  Sidebar,
+  Segment,
+  Input,
+} from "semantic-ui-react";
+
+const Temp = () => {
+  const router = useRouter();
   const isActive = (route) => router.pathname === route;
 
   return (
-    // <Menu fluid borderless pointing secondary className="nav-bar navBar" >
-    //   {/* <Menu.Menu text position="left">
-    //   <Menu.Item position="left" header>
-    //     <Icon name="bars" size="large" />
-    //   </Menu.Item>
-    //   </Menu.Menu> */}
-    //   <Container text>
-    //     <Link href="/">
-    //       <Menu.Item header position="left">
-    //         <Image
-    //           size="small"
-    //           src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-    //           // src="https://i.postimg.cc/s2jpD6Mq/NewLogo.png"
-    //           // src="https://i.postimg.cc/GmSw3N2S/NewLogo.png"
-    //         />
-    //       </Menu.Item>
-    //     </Link>
-    //     <Link href="/login">
-    //       <Menu.Item header active={isActive("/login")} position="left" style={{fontSize:"1.25rem"}} className="menuItem">
-    //         <Icon name="sign in" size="big" />
-    //         Login
-    //       </Menu.Item>
-    //     </Link>
-    //     <Link href="/signup">
-    //       <Menu.Item header active={isActive("/signup")} position="left" style={{fontSize:"1.25rem"}} className="menuItem">
-    //         <Icon name="signup" size="big" />
-    //         Sign Up
-    //       </Menu.Item>
-    //     </Link>
-    //     <Menu.Item header style={{fontSize: "1.75rem"}} className="welcomeItem">
-
-    //       Welcome student/teacher, please make an account or sign in to begin!
-    //     </Menu.Item>
-    //   </Container>
     <Menu
       fluid
       borderless
@@ -94,8 +143,11 @@ const SignupLoginNav = () => {
         </Menu.Item>
       </Container>
     </Menu>
-    // </Menu>
   );
 };
+
+export default Temp;
+*/
+}
 
 export default SignupLoginNav;

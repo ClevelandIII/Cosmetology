@@ -48,8 +48,7 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-        <NormNavbar />
-          {/* <SignupLoginNav /> */}
+          <SignupLoginNav />
           <Container text style={{ paddingTop: "1rem" }}>
             {children}
           </Container>
