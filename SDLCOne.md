@@ -74,3 +74,10 @@ Jason Enciso: login style and CIW
 Reid Gill: working on student list (this will probably the base of the other lists)
 
 Daniel Nijdl: edited navbar, re-added background, fixed sidebar, worked on login functionality  
+
+4-6-22
+Jason Enciso: CIW
+
+Reid Gill: working on student list finished desktop needs ipad
+
+Daniel Nijdl: centered the page, signup page almost complete

@@ -45,9 +45,8 @@
 
 .StudentGrid {
   margin: 0 auto !important;
-  justify-content: center !important;
-  position: relative !important;
-  width: 100% !important;
+  position: absolute !important;
+  /* width: 100vw !important; */
   /* left: 53%; */
   /* background: #6ea1ff; */
   background: #ffb81c;
@@ -55,9 +54,9 @@
 
 .studentListPic {
   position: absolute !important;
-  right: 70%;
-  bottom: -1%;
-  width: 45%;
+  right: 72.3%;
+  bottom: -50%;
+  width: 28%;
 }
 .studentListName {
   position: relative !important;
@@ -91,6 +90,9 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
+.studentColumn{
+  left: 12%;
+}
 
 /* .navButtons{
   left: 29rem !important;
@@ -108,3 +110,4 @@
   white-space: nowrap;
   width: 100%;
 }
+
