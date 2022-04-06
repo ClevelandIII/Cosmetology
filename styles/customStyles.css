@@ -55,9 +55,9 @@
 
 .studentListPic {
   position: absolute !important;
-  right: 70%;
-  bottom: -1%;
-  width: 30%;
+  right: 72.3%;
+  bottom: -50%;
+  width: 28%;
 }
 .studentListName {
   position: relative !important;
@@ -91,6 +91,9 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
+.studentColumn{
+  left: 12%;
+}
 
 /* .navButtons{
   left: 29rem !important;
@@ -107,3 +110,4 @@
   white-space: nowrap;
   width: 100%;
 }
+
