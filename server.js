@@ -35,6 +35,7 @@ const userRoute = require("./server/routes/userRoute");
 
 // app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/user", userRoute)
+
 //*SOCKETS */
 
 connectDB();

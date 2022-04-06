@@ -37,8 +37,16 @@
 
 .clientList{
   background: #FFB81C !important;
+  justify-content: center;
 }
+
 
 .cListHeader{
   background: #F4F4F4 !important;
+}
+
+.StudentGrid{
+  margin: 0 auto !important;
+  justify-content: center;
+  position: relative;
 }

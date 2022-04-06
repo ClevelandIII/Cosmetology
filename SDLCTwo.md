@@ -35,3 +35,9 @@
 - Cleveland: (Please Read) Set Navbar files to two separate ones for work conservation. Mine is the NormNavbar one, and Daniels is the SignupLoginNav one. Mine has a sidebar instead of the button navbar design because it works better with more pages, the other navbar can have the buttons since there isnt much to display. Anyways : Added Homepage Navbar, Added Sidebar, Added Search (intentially doesnt work for now)
 
 - Abdi: Client Profile Page, hair menu
+
+3/20/2022
+
+- Cleveland: Random things from Trello that ended up alreaty being done, 404 page
+
+- Abdi: Client Profile Page completion

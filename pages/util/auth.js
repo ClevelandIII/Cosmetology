@@ -4,7 +4,7 @@ import Router from "next/router";
 export const baseURL = `http://localhost:${process.env.PORT || 3001}`;
 
 export const logoutUser = (email) => {
-  cookie.set("userEmail", email);
+  cookie.set("stylistEmail", email);
   cookie.remove("token");
   Router.push("/login");
   Router.reload();
