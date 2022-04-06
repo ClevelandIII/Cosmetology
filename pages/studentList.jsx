@@ -197,7 +197,7 @@ const studentList = () => {
         </Grid.Row>
         
         
-      </Grid>
+      </Grid >
     </>
 
     // <>
