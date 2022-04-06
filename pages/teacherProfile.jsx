@@ -73,111 +73,37 @@ const TeacherProfile = () => {
         </Grid.Column>
       </Grid>
 
-      <Grid stackable style={{ padding: "3rem" }}>
-        <Grid.Row style={{ paddingLeft: "42%" }}>
-          <div style={{ textAlign: "center" }}>
-            <h1>Students</h1>
-            <Dropdown
-              placeholder="Sort By..."
-              fluid
-              selection
-              options={Options}
-            />
-          </div>
-        </Grid.Row>
-        <Divider hidden />
+      <Grid columns={4} divided style={{backgroundColor: "orange", width: "80vw", margin: "0 auto"}}>
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='https://freesvg.org/img/abstract-user-flat-4.png' style={{width: "50%"}}/>
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
 
-        {/* List of Students */}
-        <Grid.Row
-          style={{
-            border: "1px solid white",
-            height: "35rem",
-            background: "orange",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          {/* Student Name */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              marginLeft: "5rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Student Name</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-
-          {/* Period */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              marginLeft: "5rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Period</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-
-          {/* Year */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              marginLeft: "5rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Year</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-
-          {/* Semester */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              marginLeft: "5rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Semester</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
     </>
   );
 };

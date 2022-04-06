@@ -47,6 +47,7 @@
   margin: 0 auto !important;
   justify-content: center !important;
   position: relative !important;
+  width: 100% !important;
   /* left: 53%; */
   /* background: #6ea1ff; */
   background: #ffb81c;
@@ -96,7 +97,8 @@
 } */
 
 .loginComponent {
-  max-width: 500px !important;
+  min-width: 50vw !important;
+  max-width: 50vw !important;
   margin: 0 auto !important;
   margin-top: 12rem !important;
 }

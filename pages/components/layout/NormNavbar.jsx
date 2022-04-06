@@ -108,7 +108,7 @@ function NormNavbar() {
   const [hamDog, setHamDog] = useState(false);
 
   return (
-    <div style={{ backgroundColor: "white" }}>
+    <div style={{ backgroundColor: "white", width: "100%" }}>
       <VerticalSidebar
         animation={animation}
         direction={direction}

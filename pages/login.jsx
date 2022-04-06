@@ -51,6 +51,7 @@ const Login = () => {
     const email = Cookies.get("email");
 
     if (email) setStylist((prev) => ({ ...prev, email: email }));
+    console.log("test log");
   }, []);
 
   return (
@@ -61,6 +62,7 @@ const Login = () => {
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
+        style={{margin: "0 auto"}}
         className="loginComponent"
       >
         <Message
