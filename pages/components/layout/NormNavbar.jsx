@@ -10,9 +10,6 @@ import {
 } from "semantic-ui-react";
 
 //whole lotta semantic and a whole lotta random stuff from me
-
-//This is the sidebar itself. Currently it only fits to the navbar, but i will eventually make it fit to the page
-//(I mean, unless everyone likes it)
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
 const VerticalSidebar = ({ animation, visible }) => (
   <Sidebar
@@ -25,6 +22,7 @@ const VerticalSidebar = ({ animation, visible }) => (
     width="thin"
     style={{
       backgroundColor: "white",
+      boxShadow: "0px 0.5px 2px 1px gray",
     }}
   >
     <Menu.Item
@@ -45,7 +43,7 @@ const VerticalSidebar = ({ animation, visible }) => (
     </Menu.Item>
     <Menu.Item
       as="a"
-      href="/profile"
+      href="/studentProfile"
       style={{
         color: "black",
       }}
@@ -57,7 +55,6 @@ const VerticalSidebar = ({ animation, visible }) => (
       as="a"
       href="/clientProfile"
       style={{
-        backgroundColor: "white",
         color: "black",
       }}
     >
@@ -66,14 +63,23 @@ const VerticalSidebar = ({ animation, visible }) => (
     </Menu.Item>
     <Menu.Item
       as="a"
-      href="/StudentList"
+      href="/studentList"
       style={{
-        backgroundColor: "white",
         color: "black",
       }}
     >
       <Icon name="list ul" color="black" />
       Client/Student List
+    </Menu.Item>
+    <Menu.Item
+      as="a"
+      href="/login"
+      style={{
+        color: "red",
+      }}
+    >
+      <Icon name="sign-out" color="red" />
+      Sign Out
     </Menu.Item>
   </Sidebar>
 );
@@ -102,71 +108,71 @@ function NormNavbar() {
   const [hamDog, setHamDog] = useState(false);
 
   return (
-    <div style={{backgroundColor: "white"}}>
-      {/* <Sidebar.Pushable
-        as={Segment}
-        style={{
-          overflow: "hidden",
-          backgroundColor: "white",
-          boxShadow: "0px 0.5px 2px 1px gray",
-          borderRadius: "0",
-          marginTop: "1rem",
-        }}
-      > */}
-        <VerticalSidebar
-          animation={animation}
-          direction={direction}
-          visible={visible}
-        />
+    <div style={{ backgroundColor: "white" }}>
+      <VerticalSidebar
+        animation={animation}
+        direction={direction}
+        visible={visible}
+      />
 
-        <Sidebar.Pusher>
-          <Menu stackable secondary>
-            <Menu.Item name="features">
-              {hamDog ? (
-                <Icon
-                  name="bars"
-                  rotated="clockwise"
-                  onClick={() => {
-                    setHamDog(!hamDog);
-                    dispatch({ type: "CHANGE_ANIMATION", animation: "push" });
-                  }}
-                  size="big"
-                />
-              ) : (
-                <Icon
-                  name="bars"
-                  onClick={() => {
-                    setHamDog(!hamDog);
-                    dispatch({ type: "CHANGE_ANIMATION", animation: "push" });
-                  }}
-                  size="big"
-                />
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              <Image
-                alt="logo"
-                src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-                size="small"
+      <Sidebar.Pusher style={{ boxShadow: "0px 0.5px 2px 1px gray" }}>
+        <Menu stackable secondary>
+          <Menu.Item name="features">
+            {hamDog ? (
+              <Icon
+                name="bars"
+                rotated="clockwise"
+                onClick={() => {
+                  setHamDog(!hamDog);
+                  dispatch({
+                    type: "CHANGE_ANIMATION",
+                    animation: "push",
+                  });
+                }}
+                size="big"
               />
-            </Menu.Item>
+            ) : (
+              <Icon
+                name="bars"
+                onClick={() => {
+                  setHamDog(!hamDog);
+                  dispatch({
+                    type: "CHANGE_ANIMATION",
+                    animation: "push",
+                  });
+                }}
+                size="big"
+              />
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            <Image
+              alt="logo"
+              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+              size="small"
+            />
+          </Menu.Item>
 
-            <Menu.Item name="testimonials" style={{ width: "12rem" }}>
-              <h3>Welcome User</h3>
-            </Menu.Item>
-            <Menu.Item
-              name="testimonials"
-              style={{ width: "35rem", marginLeft: "31rem" }}
+          <Menu.Item name="testimonials" style={{ width: "12rem" }}>
+            <h3>Welcome User</h3>
+          </Menu.Item>
+          <Menu.Item
+            name="testimonials"
+            style={{ width: "35rem", marginLeft: "31rem" }}
+          >
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+          <Menu.Item name="sign-in" position="right">
+            <Button
+              style={{ backgroundColor: "red", color: "white" }}
+              as="a"
+              href="/login"
             >
-              <Input icon="search" placeholder="Search..." />
-            </Menu.Item>
-            <Menu.Item name="sign-in" position="right">
-              <Button style={{ backgroundColor: "red", color: "white" }}>
-                Sign Out
-              </Button>
-            </Menu.Item>
-          </Menu>
-        </Sidebar.Pusher>
+              Sign Out
+            </Button>
+          </Menu.Item>
+        </Menu>
+      </Sidebar.Pusher>
       {/* </Sidebar.Pushable> */}
     </div>
   );

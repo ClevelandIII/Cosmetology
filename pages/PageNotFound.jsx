@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, Grid, Icon, Image, Statistic, Message } from "semantic-ui-react";
 
-//Very basic but better than normal 404 page. Not yet implemented
+//Very basic but better than normal 404 page.
+//Once all the routes are set up we shouldnt need this, but if anyone wants to add to it just ask
 const PageNotFound = () => (
   <>
     <div

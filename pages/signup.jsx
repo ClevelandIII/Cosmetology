@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
 
 const Signup = () => {
@@ -69,4 +69,3 @@ const Signup = () => {
 };
 
 export default Signup;
-

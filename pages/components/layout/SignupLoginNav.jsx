@@ -11,7 +11,6 @@ import {
   // Input,
   Message,
 } from "semantic-ui-react";
-
 import { useState } from "react";
 
 const SignupLoginNav = () => {
@@ -23,25 +22,25 @@ const SignupLoginNav = () => {
   const signupRoute = router.pathname === "/signup";
 
   return (
-<Menu
+    <Menu
       fluid
       borderless
       pointing
       secondary
       // className="nav-bar navBar"
       size="large"
-      style={{backgroundColor: "white"}}
+      style={{ backgroundColor: "white" }}
     >
-      <Container>
-        <Menu.Item style={{ cursor: "pointer" }}>
-          <Link href="/">
-            <Image
-              size="small"
-              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-            />
-          </Link>
-        </Menu.Item>
-        <Menu.Item className="navButtons">
+      <Menu.Item style={{ cursor: "pointer" }}>
+        <Link href="/">
+          <Image
+            size="small"
+            src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+          />
+        </Link>
+      </Menu.Item>
+      {/*Please ask before editing other's work, three signup/login buttons are a bit excessive*/}
+      {/*<Menu.Item className="navButtons">
           <Button
             href="/login"
             active={isActive("/login")}
@@ -66,33 +65,31 @@ const SignupLoginNav = () => {
             <Icon name="signup" size="large" />
             Sign Up
           </Button>
-        </Menu.Item>
-        <Menu.Item position="right">
-          <Message
-            style={{
-              backgroundColor: "red",
-              borderRadius: "1px solid black",
-              color: "white",
-              padding: "0.5rem",
-              textAlign: "center",
-            }}
-            header={signupRoute ? "Already a user?" : "Not a user?"}
-            content={
-              <Button
-                style={{ backgroundColor: "white", padding: "0.5rem" }}
-                href={signupRoute ? "/login" : "/signup"}
-                active={isActive("/login")}
-                className="menuItem"
-              >
-                {signupRoute ? " Log in here" : " Get started here"}
-              </Button>
-            }
-          />
-        </Menu.Item>
-      </Container>
+        </Menu.Item>*/}
+      <Menu.Item position="right">
+        <Message
+          style={{
+            backgroundColor: "red",
+            borderRadius: "1px solid black",
+            color: "white",
+            padding: "0.5rem",
+            textAlign: "center",
+          }}
+          header={signupRoute ? "Already a user?" : "Not a user?"}
+          content={
+            <Button
+              style={{ backgroundColor: "white", padding: "0.5rem" }}
+              href={signupRoute ? "/login" : "/signup"}
+              active={isActive("/login")}
+              className="menuItem"
+            >
+              {signupRoute ? " Log in here" : " Get started here"}
+            </Button>
+          }
+        />
+      </Menu.Item>
     </Menu>
   );
-
 };
 
 //I didnt want to delete everything from the old navbar, so i included it here if you needed it

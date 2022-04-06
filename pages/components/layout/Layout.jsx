@@ -31,7 +31,9 @@ const Layout = ({ children, stylist }) => {
   //useRef refreshes on router.reload()
   const contextRef = createRef();
 
-  useEffect( () => { document.querySelector("body").classList.add("noScroll") } );
+  useEffect(() => {
+    document.querySelector("body").classList.add("noScroll");
+  });
 
   return (
     <>
@@ -50,28 +52,53 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-           <SignupLoginNav />
-          {/* <Container> */}
-          {/*Something in Container makes the styling weird. For example, try StudentProfile in Container vs outside container*/}
+          {/*For the sake of testing we commented the styling so the other pages wouldnt have off-styling with the div formatting*/}
+          <NormNavbar />
+          <Ref innerRef={contextRef}>
+            <Grid.Column>
+              <Visibility context={contextRef}>{children}</Visibility>
+              <iframe
+                src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
+                autoPlay
+                loop
+                muted
+                className="background-video"
+                // style={{
+                //   position: "absolute",
+                //   width: "150%",
+                //   left: "50%",
+                //   top: "50%",
+                //   height: "100%",
+                //   objectFit: "cover",
+                //   transform: "translate(-50%,-50%)",
+                //   zIndex: "-1",
+                // }}
+              ></iframe>
+            </Grid.Column>
+          </Ref>
+
+          {/*Stuff Commented*/}
+          {/*{<NormNavbar />
+           <Container>
           <div style={{ width: "50vw", margin: "0 auto" }}>{children}</div>
-            <iframe
-              src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
-              autoPlay
-              loop
-              muted
-              className="background-video"
-              // style={{
-              //   position: "absolute",
-              //   width: "150%",
-              //   left: "50%",
-              //   top: "50%",
-              //   height: "100%",
-              //   objectFit: "cover",
-              //   transform: "translate(-50%,-50%)",
-              //   zIndex: "-1",
-              // }}
-            ></iframe>
-          {/* </Container> */}
+          <iframe
+            src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
+            autoPlay
+            loop
+            muted
+            className="background-video"
+            // style={{
+            //   position: "absolute",
+            //   width: "150%",
+            //   left: "50%",
+            //   top: "50%",
+            //   height: "100%",
+            //   objectFit: "cover",
+            //   transform: "translate(-50%,-50%)",
+            //   zIndex: "-1",
+            // }}
+          ></iframe>
+          </Container> */}
         </>
       )}
     </>

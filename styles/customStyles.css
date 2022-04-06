@@ -14,57 +14,55 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(red, green, blue, rgba(255, 0, 0, 0))
+  background: rgba(255, 2, 2, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: orange; 
+  background: orange;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #cc8b00; 
+  background: #cc8b00;
   border-radius: 10px;
 }
 
-
 /* Welcome User Paragraph */
-.welcomeItem{
+.welcomeItem {
   color: white !important;
 }
 
-.clientList{
-  background: #FFB81C !important;
+.clientList {
+  background: #ffb81c !important;
   justify-content: center;
 }
 
-
-.cListHeader{
-  background: #F4F4F4 !important;
+.cListHeader {
+  background: #f4f4f4 !important;
 }
 
-.StudentGrid{
+.StudentGrid {
   margin: 0 auto !important;
   justify-content: center !important;
   position: relative !important;
   /* left: 53%; */
   /* background: #6ea1ff; */
-  background: #FFB81C;
+  background: #ffb81c;
 }
 
-.studentListPic{
+.studentListPic {
   position: absolute !important;
   right: 70%;
   bottom: -1%;
   width: 45%;
 }
-.studentListName{
+.studentListName {
   position: relative !important;
   left: 35%;
-  overflow: scroll hidden;
-  white-space:nowrap;
+  /* overflow: scroll hidden; */
+  white-space: nowrap;
 }
 
 .background-video {
@@ -74,22 +72,22 @@
   top: 50%;
   height: 150%;
   object-fit: cover;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: -1;
 }
 
-.noScroll{
+/* .noScroll{
   overflow-y: hidden !important;
-}
+} */
 
-.loginForm{
+.loginForm {
   background: #ffffff8c !important;
 }
 
-.studentRow:hover{
-  background:#6ea1ff
+.studentRow:hover {
+  background: #6ea1ff;
 }
-.studentColumn:hover{
+.studentColumn:hover {
   color: #6ea1ff;
 }
 
@@ -97,14 +95,14 @@
   left: 29rem !important;
 } */
 
-.loginComponent{
+.loginComponent {
   max-width: 500px !important;
   margin: 0 auto !important;
   margin-top: 12rem !important;
 }
-.yearSemesterCenter{
+.yearSemesterCenter {
   text-align: center;
   max-width: min-content;
-  white-space:nowrap;
+  white-space: nowrap;
   width: 100%;
 }
