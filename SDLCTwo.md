@@ -56,4 +56,5 @@
 
 - Cleveland: Added more functionality to sidebar, changed signuplogin navbar (see explaination in code or discord), attempted transparent scrollbar track
 
+//Didnt push yet
 - Abdi: Styling and controls for client
