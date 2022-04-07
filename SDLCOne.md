@@ -81,3 +81,10 @@ Jason Enciso: CIW
 Reid Gill: working on student list finished desktop needs ipad
 
 Daniel Nijdl: centered the page, signup page almost complete
+
+4-7-22
+Jason Enciso: CIW
+
+Reid Gill: CIW
+
+Daniel Nijdl: working on being able to login and signup 
