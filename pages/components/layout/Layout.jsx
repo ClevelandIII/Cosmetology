@@ -1,9 +1,7 @@
 import NormNavbar from "./NormNavbar";
-import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
-import { createRef, useEffect } from "react";
+import { Grid, Ref, Visibility } from "semantic-ui-react";
+import { useEffect } from "react";
 import React from "react";
-import { Redirect } from "react-router-dom";
-import { useRouter } from "next/router";
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -22,7 +20,7 @@ const Layout = ({ children, stylist }) => {
       {stylist ? (
         <>
           {/* <HeadTag /> */}
-          <NormNavbar />
+          {/* <NormNavbar /> */}
 
           {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
           <Ref innerRef={contextRef}>

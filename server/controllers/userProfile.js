@@ -3,7 +3,7 @@ const StylistModel = require("../model/StylistModel");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const isEmail = require("validator/lib/isEmail");
+// const isEmail = require("validator/lib/isEmail");
 
 
 // const TeacherModel = require("../model/TeacherModel");
