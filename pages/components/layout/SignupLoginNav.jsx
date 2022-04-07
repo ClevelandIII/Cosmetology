@@ -1,47 +1,117 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { Menu, Container, Icon, Image, Button } from "semantic-ui-react";
+import {
+  Menu,
+  Container,
+  Icon,
+  Image,
+  Button,
+  Sidebar,
+  Segment,
+  // Input,
+  Message,
+} from "semantic-ui-react";
+import { useState } from "react";
 
 const SignupLoginNav = () => {
   const router = useRouter();
+  const isActive = (route) => router.pathname === route;
+  const [visible, setVisible] = useState(false);
 
+  //thanks peck
+  const signupRoute = router.pathname === "/signup";
+
+  return (
+    <Menu
+      fluid
+      borderless
+      pointing
+      secondary
+      // className="nav-bar navBar"
+      size="large"
+      style={{ backgroundColor: "white" }}
+    >
+      <Menu.Item style={{ cursor: "pointer" }}>
+        <Link href="/">
+          <Image
+            size="small"
+            src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+          />
+        </Link>
+      </Menu.Item>
+      {/*Please ask before editing other's work, three signup/login buttons are a bit excessive*/}
+      {/*<Menu.Item className="navButtons">
+          <Button
+            href="/login"
+            active={isActive("/login")}
+            style={{ fontSize: "1.3rem", width: "12rem", margin:"0 auto"}}
+            // inverted
+            color={isActive("/login") ? "orange" : "grey"}
+          >
+            <Icon name="sign in" size="large" />
+            Log in
+          </Button>
+          <Button
+            href="/signup"
+            active={isActive("/signup")}
+            style={{
+              fontSize: "1.3rem",
+              marginLeft: "0.5em",
+              width: "12rem",
+            }}
+            // inverted
+            color={isActive("/signup") ? "orange" : "grey"}
+          >
+            <Icon name="signup" size="large" />
+            Sign Up
+          </Button>
+        </Menu.Item>*/}
+      <Menu.Item position="right">
+        <Message
+          style={{
+            backgroundColor: "red",
+            borderRadius: "1px solid black",
+            color: "white",
+            padding: "0.5rem",
+            textAlign: "center",
+          }}
+          header={signupRoute ? "Already a user?" : "Not a user?"}
+          content={
+            <Button
+              style={{ backgroundColor: "white", padding: "0.5rem" }}
+              href={signupRoute ? "/login" : "/signup"}
+              active={isActive("/login")}
+              className="menuItem"
+            >
+              {signupRoute ? " Log in here" : " Get started here"}
+            </Button>
+          }
+        />
+      </Menu.Item>
+    </Menu>
+  );
+};
+
+//I didnt want to delete everything from the old navbar, so i included it here if you needed it
+{
+  /*import { useRouter } from "next/router";
+import Link from "next/link";
+import {
+  Menu,
+  Container,
+  Icon,
+  Image,
+  Button,
+  Sidebar,
+  Segment,
+  Input,
+} from "semantic-ui-react";
+
+const Temp = () => {
+  const router = useRouter();
   const isActive = (route) => router.pathname === route;
 
   return (
-    // <Menu fluid borderless pointing secondary className="nav-bar navBar" >
-    //   {/* <Menu.Menu text position="left">
-    //   <Menu.Item position="left" header>
-    //     <Icon name="bars" size="large" />
-    //   </Menu.Item>
-    //   </Menu.Menu> */}
-    //   <Container text>
-    //     <Link href="/">
-    //       <Menu.Item header position="left">
-    //         <Image
-    //           size="small"
-    //           src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-    //           // src="https://i.postimg.cc/s2jpD6Mq/NewLogo.png"
-    //           // src="https://i.postimg.cc/GmSw3N2S/NewLogo.png"
-    //         />
-    //       </Menu.Item>
-    //     </Link>
-    //     <Link href="/login">
-    //       <Menu.Item header active={isActive("/login")} position="left" style={{fontSize:"1.25rem"}} className="menuItem">
-    //         <Icon name="sign in" size="big" />
-    //         Login
-    //       </Menu.Item>
-    //     </Link>
-    //     <Link href="/signup">
-    //       <Menu.Item header active={isActive("/signup")} position="left" style={{fontSize:"1.25rem"}} className="menuItem">
-    //         <Icon name="signup" size="big" />
-    //         Sign Up
-    //       </Menu.Item>
-    //     </Link>
-    //     <Menu.Item header style={{fontSize: "1.75rem"}} className="welcomeItem">
-
-    //       Welcome student/teacher, please make an account or sign in to begin!
-    //     </Menu.Item>
-    //   </Container>
     <Menu
       fluid
       borderless
@@ -94,8 +164,11 @@ const SignupLoginNav = () => {
         </Menu.Item>
       </Container>
     </Menu>
-    // </Menu>
   );
 };
+
+export default Temp;
+*/
+}
 
 export default SignupLoginNav;

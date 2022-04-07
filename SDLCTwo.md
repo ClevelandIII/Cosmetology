@@ -36,8 +36,25 @@
 
 - Abdi: Client Profile Page, hair menu
 
-3/20/2022
+3/30/2022
 
 - Cleveland: Random things from Trello that ended up alreaty being done, 404 page
 
 - Abdi: Client Profile Page completion
+
+4/1/2022
+
+- Cleveland: 404 alt idea, teacher profile additions, student profile additions, bug fixing
+- Abdi:
+
+4/4/2022
+
+- Cleveland: Added favicon, added navbar consistancy and more functionality
+- Abdi:
+
+4/5/2022
+
+- Cleveland: Added more functionality to sidebar, changed signuplogin navbar (see explaination in code or discord), attempted transparent scrollbar track
+
+//Didnt push yet
+- Abdi: Styling and controls for client

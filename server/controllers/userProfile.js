@@ -89,6 +89,7 @@ const postLoginUser = async (req, res) => {
     )
   } catch (error){
     console.log(error);
+    console.log("Error test!!!!!");
     return res.status(500).send("Server Error")
   }
 }

@@ -5,20 +5,19 @@
 // import Router from "next/router";
 
 
-// import NormNavbar from "./NormNavbar";
-import SignupLoginNav from "./SignupLoginNav";
-import StudentProfile from "../../studentProfile"
+import SignupLoginNav from "../layout/SignupLoginNav";
+// import StudentProfile from "../../studentProfile"
+import NormNavbar from "../layout/NormNavbar"
 // import ClientProfile from "../../clientProfile";
 
-import { Grid, Container, Ref, Visibility } from "semantic-ui-react";
+import { Grid, Ref, Visibility } from "semantic-ui-react";
 // import SearchComponent from "./SearchComponent";
 // import SideMenu from "./SideMenu";
-import StudentList from "../../studentList";
-import studentList from "../../studentList";
-import PageNotFound from "../../PageNotFound";
-import { createRef } from "react";
-
-
+// import StudentList from "../../studentList";
+// import studentList from "../../studentList";
+// import PageNotFound from "../../PageNotFound";
+import { createRef, useEffect } from "react";
+// import TeacherProfile from "../../teacherProfile";
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -29,29 +28,48 @@ const Layout = ({ children, stylist }) => {
   //useRef refreshes on router.reload()
   const contextRef = createRef();
 
+  useEffect( () => { document.querySelector("body").classList.add("noScroll") } );
+
   return (
     <>
       {stylist ? (
         <>
           {/* <HeadTag /> */}
-          <NormNavbar />
+          {/* <NormNavbar /> */}
 
           {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
-            <Ref  innerRef={contextRef}>
-              <Grid.Column >
-                <Visibility context={contextRef}>{children}</Visibility>
-              </Grid.Column>
-            </Ref>
+          <Ref innerRef={contextRef}>
+            <Grid.Column>
+              <Visibility context={contextRef}>{children}</Visibility>
+            </Grid.Column>
+          </Ref>
           {/* </div> */}
         </>
       ) : (
         <>
-          <SignupLoginNav />
-          <Container centered text style={{ paddingTop: "1rem", margin: "0 auto", textAlight: "center" }}>
-            {children}
-            
-          </Container>
-          <StudentProfile />
+           {/* <SignupLoginNav /> */}
+           <NormNavbar />
+          {/* <Container> */}
+          {/*Something in Container makes the styling weird. For example, try StudentProfile in Container vs outside container*/}
+          <div style={{  margin: "0 auto" }}>{children}</div>
+            {/* <iframe
+              src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
+              autoPlay
+              loop
+              muted
+              className="background-video"
+              // style={{
+              //   position: "absolute",
+              //   width: "150%",
+              //   left: "50%",
+              //   top: "50%",
+              //   height: "100%",
+              //   objectFit: "cover",
+              //   transform: "translate(-50%,-50%)",
+              //   zIndex: "-1",
+              // }}
+            ></iframe> */}
+          {/* </Container> */}
         </>
       )}
     </>

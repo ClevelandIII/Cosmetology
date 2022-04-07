@@ -14,39 +14,101 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: rgba(red, green, blue, rgba(255, 0, 0, 0))
+  background: rgba(255, 2, 2, 0);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: orange; 
+  background: orange;
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #cc8b00; 
+  background: #cc8b00;
   border-radius: 10px;
 }
 
-
 /* Welcome User Paragraph */
-.welcomeItem{
+.welcomeItem {
   color: white !important;
 }
 
-.clientList{
-  background: #FFB81C !important;
+.clientList {
+  background: #ffb81c !important;
   justify-content: center;
 }
 
-
-.cListHeader{
-  background: #F4F4F4 !important;
+.cListHeader {
+  background: #f4f4f4 !important;
 }
 
-.StudentGrid{
+.StudentGrid {
   margin: 0 auto !important;
-  justify-content: center;
-  position: relative;
+  position: absolute !important;
+  /* width: 100vw !important; */
+  /* left: 53%; */
+  /* background: #6ea1ff; */
+  background: #ffb81c;
 }
+
+.studentListPic {
+  position: absolute !important;
+  right: 72.3%;
+  bottom: -50%;
+  width: 28%;
+}
+.studentListName {
+  position: relative !important;
+  left: 35%;
+  /* overflow: scroll hidden; */
+  white-space: nowrap;
+}
+
+
+.background-video {
+  position: absolute;
+  width: 150%;
+  left: 50%;
+  top: 50%;
+  height: 150%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+/* .noScroll{
+  overflow-y: hidden !important;
+} */
+
+.loginForm {
+  background: #ffffff8c !important;
+}
+
+.studentRow:hover {
+  background: #6ea1ff;
+}
+.studentColumn:hover {
+  color: #6ea1ff;
+}
+.studentColumn{
+  left: 12%;
+}
+
+/* .navButtons{
+  left: 29rem !important;
+} */
+
+.loginComponent {
+  min-width: 50vw !important;
+  max-width: 50vw !important;
+  margin: 0 auto !important;
+  margin-top: 12rem !important;
+}
+.yearSemesterCenter {
+  text-align: center;
+  max-width: min-content;
+  white-space: nowrap;
+  width: 100%;
+}
+

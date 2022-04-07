@@ -54,3 +54,30 @@ Reid Gill: finished Visit and Client model working on student list
 
 Daniel Nijdl: Created userProfile and createStylist (attempted to get to work with postman but I’m getting errors). Changed userRoute to post on /sighup, got navbar to bring you to correct pages, and you can now type in a page url and it will work.
 
+4-1-22
+Jason Enciso: 
+
+Reid Gill: working on student list
+
+Daniel Nijdl: Finished Signup and Login in postman, trying to get to work on website but getting error. Modified login.jsx to try to get to work with postLoginUser
+
+4-4-22
+Jason Enciso: CIW
+
+Reid Gill: working on student list
+
+Daniel Nijdl: working on video background
+
+4-5-22
+Jason Enciso: login style and CIW
+
+Reid Gill: working on student list (this will probably the base of the other lists)
+
+Daniel Nijdl: edited navbar, re-added background, fixed sidebar, worked on login functionality  
+
+4-6-22
+Jason Enciso: CIW
+
+Reid Gill: working on student list finished desktop needs ipad
+
+Daniel Nijdl: centered the page, signup page almost complete

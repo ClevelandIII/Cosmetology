@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { Button, Checkbox, Form, Dropdown } from "semantic-ui-react";
+import HairMenu from "../pages/components/common/HairMenu"
 
 const stateOptions = [
   { key: "Alabama", value: "Alabama", text: "Alabama" },
@@ -168,19 +169,18 @@ const ClientProfile = () => {
             size="big"
             label="Email"
             placeholder="Email"
-            style={{ width: "435px", height: "126px" }}
+            style={{ width: "435px", height: "126px",}}
           />
         </Form.Group>
 
         <Form.Field>
-          <Checkbox label="I agree to the Terms and Conditions" />
+          <Checkbox label="I agree to the Terms and Conditions" style={{ marginTop: "20px", marginLeft: "50px",}}/>
         </Form.Field>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" style={{  marginLeft: "50px", height: "50px", width: "100px"}}>Submit</Button>
       </Form>
       
-    
 
-      
+      <HairMenu />
     </>
   );
 };

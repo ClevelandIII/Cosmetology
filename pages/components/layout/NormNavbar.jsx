@@ -10,39 +10,76 @@ import {
 } from "semantic-ui-react";
 
 //whole lotta semantic and a whole lotta random stuff from me
-
-//This is the sidebar itself. Currently it only fits to the navbar, but i will eventually make it fit to the page
-//(I mean, unless everyone likes it)
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
 const VerticalSidebar = ({ animation, visible }) => (
   <Sidebar
-  as={Menu}
-  animation={animation}
-  direction="left"
-  icon="labeled"
-  inverted
-  vertical
-  visible={visible}
-  width="thin"
-  style={{
-    backgroundColor: "#6ea1ff",
-  }}
+    as={Menu}
+    animation={animation}
+    direction="left"
+    icon="labeled"
+    vertical
+    visible={visible}
+    width="thin"
+    style={{
+      backgroundColor: "white",
+      boxShadow: "0px 0.5px 2px 1px gray",
+    }}
   >
-    <Menu.Item as="a" href="/">
-      <Icon name="home" />
+    <Menu.Item
+      as="a"
+      href="/"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon
+        name="home"
+        color="black"
+        style={{
+          color: "black",
+        }}
+      />
       Home
     </Menu.Item>
-    <Menu.Item as="a" href="/profile">
-      <Icon name="user circle" />
+    <Menu.Item
+      as="a"
+      href="/studentProfile"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon name="user circle" color="black" />
       Profile
     </Menu.Item>
-    <Menu.Item as="a" href="/clientProfile">
-      <Icon name="add user" />
+    <Menu.Item
+      as="a"
+      href="/clientProfile"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon name="add user" color="black" />
       New Visit
     </Menu.Item>
-    <Menu.Item as="a" href="/StudentList">
-      <Icon name="list ul" />
+    <Menu.Item
+      as="a"
+      href="/studentList"
+      style={{
+        color: "black",
+      }}
+    >
+      <Icon name="list ul" color="black" />
       Client/Student List
+    </Menu.Item>
+    <Menu.Item
+      as="a"
+      href="/login"
+      style={{
+        color: "red",
+      }}
+    >
+      <Icon name="sign-out" color="red" />
+      Sign Out
     </Menu.Item>
   </Sidebar>
 );
@@ -71,64 +108,72 @@ function NormNavbar() {
   const [hamDog, setHamDog] = useState(false);
 
   return (
-    <div>
-      <Sidebar.Pushable
-        as={Segment}
-        style={{ overflow: "hidden", backgroundColor: "#6ea1ff" }}
-      >
-        <VerticalSidebar
-          animation={animation}
-          direction={direction}
-          visible={visible}
-        />
+    <div style={{ backgroundColor: "white", width: "100%" }}>
+      <VerticalSidebar
+        animation={animation}
+        direction={direction}
+        visible={visible}
+      />
 
-        <Sidebar.Pusher>
-          <Menu stackable secondary>
-            <Menu.Item name="features">
-              {hamDog ? (
-                <Icon
-                  name="bars"
-                  rotated="clockwise"
-                  onClick={() => {
-                    setHamDog(!hamDog);
-                    dispatch({ type: "CHANGE_ANIMATION", animation: "push" });
-                  }}
-                  size="big"
-                />
-              ) : (
-                <Icon
-                  name="bars"
-                  onClick={() => {
-                    setHamDog(!hamDog);
-                    dispatch({ type: "CHANGE_ANIMATION", animation: "push" });
-                  }}
-                  size="big"
-                />
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              <Image
-                alt="logo"
-                src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-                size="small"
+      <Sidebar.Pusher style={{ boxShadow: "0px 0.5px 2px 1px gray" }}>
+        <Menu stackable secondary>
+          <Menu.Item name="features">
+            {hamDog ? (
+              <Icon
+                name="bars"
+                rotated="clockwise"
+                onClick={() => {
+                  setHamDog(!hamDog);
+                  dispatch({
+                    type: "CHANGE_ANIMATION",
+                    animation: "push",
+                  });
+                }}
+                size="big"
               />
-            </Menu.Item>
+            ) : (
+              <Icon
+                name="bars"
+                onClick={() => {
+                  setHamDog(!hamDog);
+                  dispatch({
+                    type: "CHANGE_ANIMATION",
+                    animation: "push",
+                  });
+                }}
+                size="big"
+              />
+            )}
+          </Menu.Item>
+          <Menu.Item>
+            <Image
+              alt="logo"
+              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+              size="small"
+            />
+          </Menu.Item>
 
-            <Menu.Item name="testimonials" style={{ width: "12rem" }}>
-              <h3>Welcome User</h3>
-            </Menu.Item>
-            <Menu.Item
-              name="testimonials"
-              style={{ width: "35rem", marginLeft: "31rem" }}
+          <Menu.Item name="testimonials" style={{ width: "12rem" }}>
+            <h3>Welcome User</h3>
+          </Menu.Item>
+          <Menu.Item
+            name="testimonials"
+            style={{ width: "35rem", marginLeft: "31rem" }}
+          >
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+          <Menu.Item name="sign-in" position="right">
+            <Button
+              style={{ backgroundColor: "red", color: "white" }}
+              as="a"
+              href="/login"
             >
-              <Input icon="search" placeholder="Search..." />
-            </Menu.Item>
-            <Menu.Item name="sign-in" position="right">
-              <Button color="red">Sign Out</Button>
-            </Menu.Item>
-          </Menu>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+              Sign Out
+            </Button>
+          </Menu.Item>
+        </Menu>
+      </Sidebar.Pusher>
+      {/* </Sidebar.Pushable> */}
     </div>
   );
 }

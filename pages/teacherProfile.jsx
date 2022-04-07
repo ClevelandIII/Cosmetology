@@ -1,10 +1,32 @@
 import React, { useState } from "react";
-import { Grid, Card, Icon, Image, Divider } from "semantic-ui-react";
+import { Grid, Card, Icon, Image, Divider, Dropdown } from "semantic-ui-react";
 
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
 // class they teach/session
 const TeacherProfile = () => {
   const [user, setUser] = useState(false);
+  const Options = [
+    {
+      key: "Number of Visits",
+      text: "Number of Visits",
+      value: "Number of Visits",
+    },
+    {
+      key: "Date Created",
+      text: "Date Created",
+      value: "Date Created",
+    },
+    {
+      key: "Most Recently Created",
+      text: "Most Recently Created",
+      value: "Most Recently Created",
+    },
+    {
+      key: "Name",
+      text: "Name",
+      value: "Name",
+    },
+  ];
   return (
     <>
       <Grid stackable style={{ margin: "3rem" }}>
@@ -32,7 +54,6 @@ const TeacherProfile = () => {
           </Grid.Row>
         </Grid.Column>
 
-
         <Grid.Column
           width={7}
           style={{ textAlign: "center", marginTop: "10rem" }}
@@ -52,106 +73,37 @@ const TeacherProfile = () => {
         </Grid.Column>
       </Grid>
 
+      <Grid columns={4} divided style={{backgroundColor: "orange", width: "80vw", margin: "0 auto"}}>
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='https://freesvg.org/img/abstract-user-flat-4.png' style={{width: "50%"}}/>
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
 
-      <Grid stackable style={{ padding: "3rem" }}>
-        <Grid.Row style={{ paddingLeft: "42%" }}>
-          <h1>Students</h1>
-        </Grid.Row>
-        <Divider hidden />
-
-        {/* List of Students */}
-        <Grid.Row
-          style={{
-            border: "1px solid white",
-            height: "35rem",
-            background: "orange",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-
-          {/* Student Name */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Student Name</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-
-          {/* Teacher */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Teacher</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-
-          {/* Year */}
-          <Grid.Column
-            width={3}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Year</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-        
-          {/* Semester */}
-          <Grid.Column
-            width="3"
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Semester</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
-          </Grid.Column>
-          
-        </Grid.Row>
-      </Grid>
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
     </>
   );
 };

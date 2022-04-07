@@ -1,16 +1,16 @@
-import Cookies from "js-cookie";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Segment, Divider, Button, Message } from "semantic-ui-react";
+import catchErrors from "./util/catchErrors";
 import axios from "axios";
 import { setToken } from "./util/auth";
-import catchErrors from "./util/catchErrors";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [stylist, setStylist] = useState({
     email: "",
     password: "",
   });
-
+  
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -48,23 +48,22 @@ const Login = () => {
   }, [stylist]);
   useEffect(() => {
     document.title = "Welcome Back";
-    const stylistEmail = Cookies.get("stylistEmail");
-    if (stylistEmail) setStylist((prev) => ({ ...prev, email: stylistEmail }));
+    const email = Cookies.get("email");
+
+    if (email) setStylist((prev) => ({ ...prev, email: email }));
+    console.log("test log");
   }, []);
 
   return (
     <>
-      {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" /> */}
+
       <Divider hidden />
-      {/* <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />;
-      <Divider />
-      <img src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png" />; */}
       <Form
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
+        style={{margin: "0 auto"}}
+        className="loginComponent"
       >
         <Message
           error
