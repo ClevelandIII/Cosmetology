@@ -172,7 +172,7 @@ const Signup = () => {
             value={password}
             onChange={handleChange}
             icon={{
-              name: showPassword ?"eye slash" : "eye",
+              name: showPassword ? "eye slash" : "eye",
               circular: true,
               link: true,
               onClick: () => setShowPassword(!showPassword),

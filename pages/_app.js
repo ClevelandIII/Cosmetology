@@ -45,6 +45,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
       redirectUser(ctx, "/login");
     }
   }
+
   return { pageProps };
 };
 

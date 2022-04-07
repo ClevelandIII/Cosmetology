@@ -129,8 +129,6 @@ const StudentProfile = () => {
               textAlign: "center",
             }}
           >
-            {/*Im only including two information bits here. */}
-            {/*There is no reason to add the name of the stylist since this is their profile page. */}
             <Grid.Column
               width={4}
               style={{

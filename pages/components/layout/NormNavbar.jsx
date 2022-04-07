@@ -8,6 +8,7 @@ import {
   Sidebar,
   Input,
 } from "semantic-ui-react";
+import Link from "next/link";
 
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
@@ -25,62 +26,67 @@ const VerticalSidebar = ({ animation, visible }) => (
       boxShadow: "0px 0.5px 2px 1px gray",
     }}
   >
-    <Menu.Item
-      as="a"
-      href="/"
-      style={{
-        color: "black",
-      }}
-    >
-      <Icon
-        name="home"
-        color="black"
+    <Link href="/Home">
+      <Menu.Item
+        style={{
+          color: "black",
+          cursor: "pointer",
+        }}
+      >
+        <Icon
+          name="home"
+          color="black"
+          style={{
+            color: "black",
+          }}
+        />
+        Home
+      </Menu.Item>
+    </Link>
+
+    <Link href="/StudentProfile">
+      <Menu.Item
         style={{
           color: "black",
         }}
-      />
-      Home
-    </Menu.Item>
-    <Menu.Item
-      as="a"
-      href="/studentProfile"
-      style={{
-        color: "black",
-      }}
-    >
-      <Icon name="user circle" color="black" />
-      Profile
-    </Menu.Item>
-    <Menu.Item
-      as="a"
-      href="/clientProfile"
-      style={{
-        color: "black",
-      }}
-    >
-      <Icon name="add user" color="black" />
-      New Visit
-    </Menu.Item>
-    <Menu.Item
-      as="a"
-      href="/studentList"
-      style={{
-        color: "black",
-      }}
-    >
-      <Icon name="list ul" color="black" />
-      Client/Student List
-    </Menu.Item>
-    <Menu.Item
-      as="a"
-      href="/login"
-      style={{
-        color: "red",
-      }}
-    >
-      <Icon name="sign-out" color="red" />
-      Sign Out
-    </Menu.Item>
+      >
+        <Icon name="user circle" color="black" />
+        Profile
+      </Menu.Item>
+    </Link>
+
+    <Link href="/clientProfile">
+      <Menu.Item
+        style={{
+          color: "black",
+        }}
+      >
+        <Icon name="add user" color="black" />
+        New Visit
+      </Menu.Item>
+    </Link>
+
+    <Link href="/studentList">
+      <Menu.Item
+        style={{
+          color: "black",
+        }}
+      >
+        <Icon name="list ul" color="black" />
+        Client/Student List
+      </Menu.Item>
+    </Link>
+
+    <Link href="/login">
+      <Menu.Item
+        style={{
+          color: "red",
+        }}
+      >
+        <Icon name="sign-out" color="red" />
+        Sign Out
+      </Menu.Item>
+    </Link>
   </Sidebar>
 );
 
@@ -106,6 +112,7 @@ function NormNavbar() {
 
   const { animation, direction, visible } = state;
   const [hamDog, setHamDog] = useState(false);
+  const segmentRef = React.useRef();
 
   return (
     <div style={{ backgroundColor: "white", width: "100%" }}>
@@ -113,9 +120,13 @@ function NormNavbar() {
         animation={animation}
         direction={direction}
         visible={visible}
+        target={segmentRef}
       />
 
-      <Sidebar.Pusher style={{ boxShadow: "0px 0.5px 2px 1px gray" }}>
+      <Sidebar.Pusher
+        style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
+        innerRef={segmentRef}
+      >
         <Menu stackable secondary>
           <Menu.Item name="features">
             {hamDog ? (
@@ -145,12 +156,13 @@ function NormNavbar() {
               />
             )}
           </Menu.Item>
-          <Menu.Item>
-            <Image
-              alt="logo"
-              src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
-              size="small"
-            />
+          <Menu.Item style={{ cursor: "pointer" }}>
+            <Link href="/">
+              <Image
+                size="small"
+                src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+              />
+            </Link>
           </Menu.Item>
 
           <Menu.Item name="testimonials" style={{ width: "12rem" }}>
