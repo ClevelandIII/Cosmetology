@@ -2,6 +2,7 @@ import NormNavbar from "./NormNavbar";
 import { Grid, Ref, Visibility } from "semantic-ui-react";
 import { useEffect } from "react";
 import React from "react";
+import SignupLoginNav from "./SignupLoginNav"
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -20,7 +21,7 @@ const Layout = ({ children, stylist }) => {
       {stylist ? (
         <>
           {/* <HeadTag /> */}
-          {/* <NormNavbar /> */}
+          <NormNavbar />
 
           {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
           <Ref innerRef={contextRef}>
@@ -32,8 +33,8 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          {/* <SignupLoginNav /> */}
-          <NormNavbar />
+          <SignupLoginNav />
+          {/* <NormNavbar /> */}
           {/* <Container> */}
           {/*Div's good now*/}
           <div style={{ margin: "0 auto" }}>{children}</div>

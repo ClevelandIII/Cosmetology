@@ -102,7 +102,7 @@
 .loginComponent {
   min-width: 50vw !important;
   max-width: 50vw !important;
-  margin: 0 auto !important;
+  /* margin: 0 auto !important; */
   margin-top: 12rem !important;
 }
 .yearSemesterCenter {

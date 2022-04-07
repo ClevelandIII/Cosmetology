@@ -3,7 +3,7 @@ const StylistModel = require("../model/StylistModel");
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-// const isEmail = require("validator/lib/isEmail");
+const isEmail = require("validator/lib/isEmail");
 
 
 // const TeacherModel = require("../model/TeacherModel");
@@ -20,7 +20,7 @@ const createUser = async (req, res) => {
     password,
     hours,
     teacher,
-  } = req.body;
+  } = req.body.stylist;
 
   if (!isEmail(email)) return res.status(401).send()("Invalid Email");
   if (password.length < 6)
@@ -40,6 +40,7 @@ const createUser = async (req, res) => {
       hours,
       teacher,
     });
+
 
     stylist.password = await bcrypt.hash(password, 10);
     stylist = await stylist.save();
@@ -62,7 +63,7 @@ const createUser = async (req, res) => {
 };
 
 const postLoginUser = async (req, res) => {
-  const {email, password} = req.body;
+  const {email, password} = req.body.stylist;
 
   if(!isEmail(email)) return res.status(401).send("Invalid Email")
   if (password.legnth < 6) return res.status(401).send("Password must be at least 6 characters long")

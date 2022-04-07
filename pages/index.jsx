@@ -6,7 +6,8 @@ import { baseURL } from "./util/auth";
 
 const index = ({ stylist }) => {
   useEffect(() => {
-    document.title = `Welcome, ${stylist.firstname.split(" ")[0]}`;
+    // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
+    document.title = "Welcome Stylist"
   }, []);
 
   return <div>index page</div>;

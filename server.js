@@ -42,9 +42,11 @@ app.use(fileUpload({ useTempFiles: true }));
 //* ROUTERS */
 // const profileRoutes = require("./server/routes/profileRoute");
 const userRoute = require("./server/routes/userRoute");
+const uploadRoute = require("./server/routes/uploadPicRoute")
 
 // app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/uploads", uploadRoute)
 
 //*SOCKETS */
 

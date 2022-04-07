@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { Form, Segment, Divider, Button, Message } from "semantic-ui-react";
+import {
+  Form,
+  Segment,
+  Divider,
+  Button,
+  Message,
+  Header,
+  Image,
+  Grid,
+} from "semantic-ui-react";
 import catchErrors from "./util/catchErrors";
 import axios from "axios";
 import { setToken } from "./util/auth";
@@ -10,7 +19,7 @@ const Login = () => {
     email: "",
     password: "",
   });
-  
+
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -51,20 +60,25 @@ const Login = () => {
     const email = Cookies.get("email");
 
     if (email) setStylist((prev) => ({ ...prev, email: email }));
-    console.log("test log");
   }, []);
 
   return (
     <>
 
+
       <Divider hidden />
+
       <Form
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
-        style={{margin: "0 auto"}}
+        style={{ margin: "0 auto" }}
         className="loginComponent"
+        textAlign="center"
       >
+              <Header as="h2" color="orange" textAlign="center" style={{textDecoration: "underline", textDecorationColor: "	#B8B8B8"}} >
+        Log-in to your account
+      </Header>
         <Message
           error
           header="Oops!"
@@ -110,6 +124,7 @@ const Login = () => {
           />
         </Segment>
       </Form>
+
     </>
   );
 };

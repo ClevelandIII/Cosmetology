@@ -149,6 +149,7 @@ const Signup = () => {
             placeholder="Doe"
             name="lastName"
             value={lastName}
+            onChange={handleChange}
             icon="user"
             iconPosition="left"
           />
@@ -159,6 +160,7 @@ const Signup = () => {
             placeholder="johndoe@example.com"
             name="email"
             value={email}
+            onChange={handleChange}
             icon="envelope"
             iconPosition="left"
             type="email"
@@ -184,7 +186,7 @@ const Signup = () => {
             required
             label="Class"
             placeholder="Cosmetology I"
-            name="class"
+            name="className"
             value={className}
             onChange={handleChange}
             icon="book"

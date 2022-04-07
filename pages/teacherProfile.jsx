@@ -75,8 +75,9 @@ const TeacherProfile = () => {
 
       <Grid columns={4} divided style={{backgroundColor: "orange", width: "80vw", margin: "0 auto"}}>
     <Grid.Row>
-      <Grid.Column>
-        <Image src='https://freesvg.org/img/abstract-user-flat-4.png' style={{width: "50%"}}/>
+      <Grid.Column floated width={4}>
+       <Image src='https://freesvg.org/img/abstract-user-flat-4.png' style={{width: "30%"}}/>
+       test
       </Grid.Column>
       <Grid.Column>
         <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
