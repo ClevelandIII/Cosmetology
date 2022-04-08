@@ -36,6 +36,8 @@ const nextApp = next({ dev });
 const handler = nextApp.getRequestHandler();
 
 //* MIDDLEWARES */
+const { authMiddleware } = require("./server/middleware/auth");
+
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 

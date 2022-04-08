@@ -5,6 +5,9 @@ import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
 import { baseURL } from "./util/auth";
 
 const index = ({ stylist }) => {
+  useEffect(() => {
+    document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
+  })
   // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   document.title = "Welcome Stylist";
   const Options = [
