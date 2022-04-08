@@ -34,6 +34,7 @@ const Layout = ({ children, stylist }) => {
       ) : (
         <>
           <NormNavbar />
+          {/* <SignupLoginNav/> */}
           {/* <NormNavbar /> */}
           {/* <Container> */}
           {/*Div's good now*/}

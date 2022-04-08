@@ -88,3 +88,10 @@ Jason Enciso: CIW
 Reid Gill: CIW
 
 Daniel Nijdl: working on being able to login and signup 
+
+4-7-22
+Jason Enciso: helping Daniel
+
+Reid Gill: working on studentList ipad
+
+Daniel Nijdl: fixed error, style login page, worked on auth middlewarex

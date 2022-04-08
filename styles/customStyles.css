@@ -112,10 +112,14 @@
   width: 100%;
 }
 
-/* @media screen and (min-height: 800px) { */
-  /* .StudentGrid{ */
-   /* left: 50rem; */
+@media screen and (min-height: 800px) {
+  /* .noScroll{ */
+    /* width: 100rem; */
   /* } */
-/* }/ */
+  /* .StudentGrid{ */
+  /* left: 50rem; */
+  /* } */
+  
+}
 
 
