@@ -9,9 +9,12 @@ import {
 
 import React from "react";
 
+
 const studentList = () => {
   return (
+    
     <>
+    <body>
       <Grid className="StudentGrid" columns="equal" centered divided='vertically'  relaxed='very'>
 
         <Grid.Row >
@@ -198,7 +201,8 @@ const studentList = () => {
         
         
       </Grid >
-    </>
+      </body>
+    </> 
     
 
   );
