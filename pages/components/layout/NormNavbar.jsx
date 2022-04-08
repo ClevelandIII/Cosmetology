@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Icon,
@@ -26,7 +26,7 @@ const VerticalSidebar = ({ animation, visible }) => (
       boxShadow: "0px 0.5px 2px 1px gray",
     }}
   >
-    <Link href="/Home">
+    <Link href="/index">
       <Menu.Item
         style={{
           color: "black",
@@ -166,7 +166,10 @@ function NormNavbar() {
           </Menu.Item>
 
           <Menu.Item name="testimonials" style={{ width: "12rem" }}>
-            <h3>Welcome User</h3>
+            <h3>
+              {/* `Welcome, ${stylist.firstName.split(" ")[0]}` */}
+              {"Welcome Stylist"}
+            </h3>
           </Menu.Item>
           <Menu.Item
             name="testimonials"

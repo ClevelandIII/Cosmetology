@@ -33,7 +33,7 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          <SignupLoginNav />
+          <NormNavbar />
           {/* <NormNavbar /> */}
           {/* <Container> */}
           {/*Div's good now*/}
