@@ -63,3 +63,9 @@
 - Cleveland: Added several things to trello, made navbar links smoother, working on homepage
 
 - Abdi: Styling
+
+4/7/2022
+
+- Cleveland: 
+
+- Abdi: CIW

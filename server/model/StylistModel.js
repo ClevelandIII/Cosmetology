@@ -29,17 +29,17 @@ const StylistSchema = new Schema(
 
     teacherCode: {
       type: Number,
-      required: true,
+      // required: true,
     },
 
     className: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     session: {
       type: Number,
-      required: true,
+      // required: true,
     },
 
     teacher: { type: String },
