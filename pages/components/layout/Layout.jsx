@@ -1,6 +1,6 @@
 import NormNavbar from "./NormNavbar";
 import { Grid, Ref, Visibility } from "semantic-ui-react";
-import { useEffect } from "react";
+import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav"
 
@@ -12,9 +12,11 @@ const Layout = ({ children, stylist }) => {
   //createRef refreshes on render()
   //useRef refreshes on router.reload()
 
-  useEffect(() => {
-    document.querySelector("body").classList.add("noScroll");
-  });
+  const contextRef = createRef()
+
+  // useEffect(() => {
+  //   document.querySelector("body").classList.add("noScroll");
+  // });
 
   return (
     <>

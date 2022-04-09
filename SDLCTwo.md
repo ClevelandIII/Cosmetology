@@ -66,6 +66,6 @@
 
 4/7/2022
 
-- Cleveland: 
+- Cleveland: Added some to index, made a few users, CIW
 
-- Abdi: CIW
+- Abdi: Bug fix login, CIW

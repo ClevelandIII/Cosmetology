@@ -37,10 +37,13 @@
 .clientList {
   background: #ffb81c !important;
   justify-content: center;
+  margin: 0 auto;
+  position: absolute
 }
 
 .cListHeader {
-  background: #f4f4f4 !important;
+  background: white !important;
+ 
 }
 
 .StudentGrid {
@@ -57,7 +60,10 @@
   right: 72.3%;
   bottom: -50%;
   width: 28%;
+  border: black solid 2px;
+  border-radius: 50px;
 }
+
 .studentListName {
   position: relative !important;
   left: 35%;
@@ -68,10 +74,10 @@
 
 .background-video {
   position: absolute;
-  width: 150%;
+  width: 100%;
   left: 50%;
   top: 50%;
-  height: 150%;
+  height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -1;
@@ -111,4 +117,11 @@
   white-space: nowrap;
   width: 100%;
 }
+
+/* @media screen and (min-height: 800px) { */
+  /* .StudentGrid{ */
+   /* left: 50rem; */
+  /* } */
+/* }/ */
+
 
