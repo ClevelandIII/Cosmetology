@@ -8,6 +8,7 @@ const index = ({ stylist }) => {
   // useEffect(() => {
   //   document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   // });
+  // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   document.title = "Welcome Stylist";
   const Options = [
     {
