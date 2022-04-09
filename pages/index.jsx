@@ -5,10 +5,9 @@ import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
 import { baseURL } from "./util/auth";
 
 const index = ({ stylist }) => {
-  useEffect(() => {
-    document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
-  })
-  // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
+  // useEffect(() => {
+  //   document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
+  // });
   document.title = "Welcome Stylist";
   const Options = [
     {
@@ -33,21 +32,24 @@ const index = ({ stylist }) => {
     },
   ];
 
+  //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
     <div style={{ padding: "2rem", textAlign: "center" }} stylist={stylist}>
-      <Grid>
-        <Grid.Row style={{ marginLeft: "32%" }}>
-          {`Welcome ${stylist}.`} To get started, add a new visitor, or update a
-          visitor from the list below.
+      <Grid style={{ textAlign: "center" }}>
+        <Grid.Row style={{ width: "100%" }} className="mini">
+          <p>
+            {`Welcome ${stylist}.`} To get started, add a new visitor, or update
+            a visitor from the list below.
+          </p>
         </Grid.Row>
         <Divider hidden />
-        <Grid.Row style={{ marginLeft: "44.5%" }}>
+        <Grid.Row className="mini2">
           <Button>Add New Visitor</Button>
         </Grid.Row>
       </Grid>
       <Divider hidden />
       <Grid stackable style={{ padding: "3rem" }}>
-        <Grid.Row style={{ paddingLeft: "42%" }}>
+        <Grid.Row className="mini3">
           <div style={{ textAlign: "center" }}>
             <h1>Previous Clients</h1>
             <Dropdown
@@ -66,6 +68,7 @@ const index = ({ stylist }) => {
             background: "orange",
             color: "white",
             textAlign: "center",
+            justifyContent: "space-between",
           }}
         >
           <Grid.Column
@@ -87,7 +90,7 @@ const index = ({ stylist }) => {
             ></Grid.Row>
           </Grid.Column>
           <Grid.Column
-            width={5}
+            width={4}
             style={{
               color: "white",
               margin: "2rem",
@@ -105,14 +108,14 @@ const index = ({ stylist }) => {
             ></Grid.Row>
           </Grid.Column>
           <Grid.Column
-            width={5}
+            width={4}
             style={{
               color: "white",
               margin: "2rem",
             }}
           >
             <Grid.Row>
-              <h2>Most Recent Appointment</h2>
+              <h2>Latest Visit</h2>
             </Grid.Row>
             <Divider hidden />
             <Grid.Row

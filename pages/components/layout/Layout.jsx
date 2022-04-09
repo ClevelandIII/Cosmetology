@@ -35,8 +35,8 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          <SignupLoginNav />
-          {/* <NormNavbar /> */}
+          {/* <SignupLoginNav /> */}
+          <NormNavbar />
           {/* <Container> */}
           {/*Div's good now*/}
           <div style={{ margin: "0 auto" }}>{children}</div>

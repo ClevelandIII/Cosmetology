@@ -37,19 +37,21 @@ const StudentProfile = () => {
     <>
       <div>
         <Grid stackable style={{ margin: "3rem" }}>
-          <Grid.Column width={8}>
-            <Grid.Row style={{ margin: "3.8rem" }}>
+          <Grid.Column width={8} className="roz">
+            <Grid.Row
+              style={{ margin: "3.8rem", textAlign: "center" }}
+              className="roz3"
+            >
               <Image
                 src="https://freesvg.org/img/abstract-user-flat-4.png"
                 avatar
-                size="large"
+                size="medium"
                 bordered
                 centered
                 circular
               />
             </Grid.Row>
-            <Divider hidden />
-            <Grid.Row style={{ marginLeft: "9.2rem", textAlign: "center" }}>
+            <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
               <Card>
                 <Card.Content>
                   <Card.Header>Name Of the Stylist</Card.Header>
@@ -64,6 +66,7 @@ const StudentProfile = () => {
           <Grid.Column
             width={7}
             style={{ textAlign: "center", marginTop: "10rem" }}
+            className="roz2"
           >
             <Grid.Row
               style={{
@@ -108,7 +111,7 @@ const StudentProfile = () => {
           </Grid.Column>
         </Grid>
         <Grid stackable style={{ padding: "3rem" }}>
-          <Grid.Row style={{ paddingLeft: "42%" }}>
+          <Grid.Row style={{ paddingLeft: "42%" }} className="roz4">
             <div style={{ textAlign: "center" }}>
               <h1>Previous Clients</h1>
               <Dropdown
@@ -119,7 +122,6 @@ const StudentProfile = () => {
               />
             </div>
           </Grid.Row>
-          <Divider hidden />
           <Grid.Row
             style={{
               border: "1px solid white",
@@ -127,6 +129,7 @@ const StudentProfile = () => {
               background: "orange",
               color: "white",
               textAlign: "center",
+              justifyContent: "space-between",
             }}
           >
             <Grid.Column
@@ -148,7 +151,7 @@ const StudentProfile = () => {
               ></Grid.Row>
             </Grid.Column>
             <Grid.Column
-              width={5}
+              width={4}
               style={{
                 color: "white",
                 margin: "2rem",
@@ -166,14 +169,14 @@ const StudentProfile = () => {
               ></Grid.Row>
             </Grid.Column>
             <Grid.Column
-              width={5}
+              width={4}
               style={{
                 color: "white",
                 margin: "2rem",
               }}
             >
               <Grid.Row>
-                <h2>Most Recent Appointment</h2>
+                <h2>Latest Visit</h2>
               </Grid.Row>
               <Divider hidden />
               <Grid.Row

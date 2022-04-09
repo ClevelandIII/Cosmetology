@@ -65,7 +65,6 @@
   white-space: nowrap;
 }
 
-
 .background-video {
   position: absolute;
   width: 100%;
@@ -91,8 +90,12 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
-.studentColumn{
+.studentColumn {
   left: 12%;
+}
+
+a.item :hover {
+  background-color: transparent;
 }
 
 /* .navButtons{
@@ -112,10 +115,43 @@
   width: 100%;
 }
 
-/* @media screen and (min-height: 800px) { */
-  /* .StudentGrid{ */
-   /* left: 50rem; */
-  /* } */
-/* }/ */
+/*All mini css is for index styling and ipad styling*/
 
+.mini {
+  margin-left: 30%;
+}
+.mini2 {
+  margin-left: 44.5%;
+}
+.mini3 {
+  padding-left: 42% !important;
+}
 
+@media (max-width: 821px) {
+  .mini {
+    margin-left: 15%;
+  }
+  .mini2 {
+    margin-left: 43%;
+  }
+  .mini3 {
+    padding-left: 38% !important;
+  }
+  div.eight.wide.column.roz {
+    margin-right: 50%;
+    width: 100% !important;
+    text-align: center;
+  }
+  div.seven.wide.column.roz2 {
+    width: 100% !important;
+    text-align: center;
+  }
+  div.row.roz3 {
+    margin-left: 50% !important;
+  }
+  div.row.roz4 {
+    padding-left: 38% !important;
+  }
+}
+
+/*End of mini css*/
