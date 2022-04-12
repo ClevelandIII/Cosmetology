@@ -89,9 +89,18 @@ Reid Gill: CIW
 
 Daniel Nijdl: working on being able to login and signup 
 
-4-7-22
+4-8-22
 Jason Enciso: helping Daniel
 
 Reid Gill: working on studentList ipad
 
-Daniel Nijdl: fixed error, style login page, worked on auth middlewarex
+Daniel Nijdl: fixed error, style login page, worked on auth middlewares
+
+4/12/22
+Jason Enciso: CIW
+
+Reid Gill:  working on studentList sizing styles
+
+Daniel Nijdl: fixing login functionally
+
+Joshua Ruvalcaba: CIW

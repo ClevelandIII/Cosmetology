@@ -57,7 +57,7 @@
 
 .studentListPic {
   position: absolute !important;
-  right: 72.3%;
+  right: 74%;
   bottom: -50%;
   width: 28%;
   border: black solid 2px;
@@ -121,15 +121,22 @@ a.item :hover {
   width: 100%;
 }
 
+@media screen and (width: 800px) {
+
+}
+
 /*All mini css is for index styling and ipad styling*/
 @media screen and (min-height: 800px) {
-  /* .noScroll{ */
-    /* width: 100rem; */
-  /* } */
-  /* .StudentGrid{ */
-  /* left: 50rem; */
-  /* } */
-  
+  .studentListPic{
+    position: absolute !important;
+    bottom: -4%;
+    width: 35%;
+    right: 76%;
+  }
+  .studentListName{
+    position: relative !important;
+    right: 200% !important;
+  }
 }
 
 .mini {
