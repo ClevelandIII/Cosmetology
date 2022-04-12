@@ -37,10 +37,13 @@
 .clientList {
   background: #ffb81c !important;
   justify-content: center;
+  margin: 0 auto;
+  position: absolute
 }
 
 .cListHeader {
-  background: #f4f4f4 !important;
+  background: white !important;
+ 
 }
 
 .StudentGrid {
@@ -57,7 +60,10 @@
   right: 72.3%;
   bottom: -50%;
   width: 28%;
+  border: black solid 2px;
+  border-radius: 50px;
 }
+
 .studentListName {
   position: relative !important;
   left: 35%;
@@ -65,13 +71,12 @@
   white-space: nowrap;
 }
 
-
 .background-video {
   position: absolute;
-  width: 150%;
+  width: 100%;
   left: 50%;
   top: 50%;
-  height: 150%;
+  height: 100%;
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -1;
@@ -91,8 +96,12 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
-.studentColumn{
+.studentColumn {
   left: 12%;
+}
+
+a.item :hover {
+  background-color: transparent;
 }
 
 /* .navButtons{
@@ -112,6 +121,7 @@
   width: 100%;
 }
 
+/*All mini css is for index styling and ipad styling*/
 @media screen and (min-height: 800px) {
   /* .noScroll{ */
     /* width: 100rem; */
@@ -122,4 +132,41 @@
   
 }
 
+.mini {
+  margin-left: 30%;
+}
+.mini2 {
+  margin-left: 44.5%;
+}
+.mini3 {
+  padding-left: 42% !important;
+}
 
+@media (max-width: 821px) {
+  .mini {
+    margin-left: 15%;
+  }
+  .mini2 {
+    margin-left: 43%;
+  }
+  .mini3 {
+    padding-left: 38% !important;
+  }
+  div.eight.wide.column.roz {
+    margin-right: 50%;
+    width: 100% !important;
+    text-align: center;
+  }
+  div.seven.wide.column.roz2 {
+    width: 100% !important;
+    text-align: center;
+  }
+  div.row.roz3 {
+    margin-left: 50% !important;
+  }
+  div.row.roz4 {
+    padding-left: 38% !important;
+  }
+}
+
+/*End of mini css*/

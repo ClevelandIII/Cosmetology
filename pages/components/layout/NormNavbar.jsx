@@ -93,6 +93,8 @@ const VerticalSidebar = ({ animation, visible }) => (
 //Dispatch from semantic. Controls the animations of the sidebar
 function exampleReducer(state, action) {
   switch (action.type) {
+    case "UNSHIFT":
+      return { ...state, visible: false };
     case "CHANGE_ANIMATION":
       return { ...state, animation: action.animation, visible: !state.visible };
     case "CHANGE_DIRECTION":
@@ -115,7 +117,7 @@ function NormNavbar() {
   const segmentRef = React.useRef();
 
   return (
-    <div style={{ backgroundColor: "white", width: "100%" }}>
+    <div style={{ backgroundColor: "white" }}>
       <VerticalSidebar
         animation={animation}
         direction={direction}
@@ -161,34 +163,61 @@ function NormNavbar() {
               <Image
                 size="small"
                 src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+                onClick={() => {
+                  setHamDog(false);
+                  dispatch({
+                    type: "UNSHIFT",
+                  });
+                }}
               />
             </Link>
           </Menu.Item>
-
           <Menu.Item name="testimonials" style={{ width: "12rem" }}>
-            <h3>
+            <h3
+              onClick={() => {
+                setHamDog(false);
+                dispatch({
+                  type: "UNSHIFT",
+                });
+              }}
+            >
               {/* `Welcome, ${stylist.firstName.split(" ")[0]}` */}
               {"Welcome Stylist"}
             </h3>
           </Menu.Item>
           <Menu.Item
             name="testimonials"
-            style={{ width: "35rem", marginLeft: "31rem" }}
+            style={{ width: "30%" }}
+            position="right"
           >
-            <Input icon="search" placeholder="Search..." />
+            <Input
+              icon="search"
+              placeholder="Search..."
+              onClick={() => {
+                setHamDog(false);
+                dispatch({
+                  type: "UNSHIFT",
+                });
+              }}
+            />
           </Menu.Item>
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}
               as="a"
               href="/login"
+              onClick={() => {
+                setHamDog(false);
+                dispatch({
+                  type: "UNSHIFT",
+                });
+              }}
             >
               Sign Out
             </Button>
           </Menu.Item>
         </Menu>
       </Sidebar.Pusher>
-      {/* </Sidebar.Pushable> */}
     </div>
   );
 }
