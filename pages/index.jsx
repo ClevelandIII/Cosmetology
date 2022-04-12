@@ -1,14 +1,18 @@
-import axios from "axios";
+import axios from "axios"
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
-import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
 import { baseURL } from "./util/auth";
+import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
 
 const index = ({ stylist }) => {
   // useEffect(() => {
   //   document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   // });
   // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
+  // useEffect(() => {
+  //   document.title = `Welcome, ${stylist.firstName}`
+  // }, [])
+  
   document.title = "Welcome Stylist";
   const Options = [
     {

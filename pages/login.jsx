@@ -41,8 +41,11 @@ const Login = () => {
     try {
       const res = await axios.post("/api/v1/user/login", { stylist });
       setToken(res.data);
+      console.log("User Logged In");
     } catch (error) {
       console.log(error);
+      console.log("User Login Error");
+
       const errorMsg = catchErrors(error);
       setErrorMsg(errorMsg);
     }
@@ -55,12 +58,15 @@ const Login = () => {
   useEffect(() => {
     setSubmitDisabled(!(email && password));
   }, [stylist]);
+  
   useEffect(() => {
     document.title = "Welcome Back";
     const email = Cookies.get("email");
 
     if (email) setStylist((prev) => ({ ...prev, email: email }));
   }, []);
+
+
 
   return (
     <>

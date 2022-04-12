@@ -44,7 +44,7 @@ const VerticalSidebar = ({ animation, visible }) => (
       </Menu.Item>
     </Link>
 
-    <Link href="/StudentProfile">
+    <Link href="/studentProfile">
       <Menu.Item
         style={{
           color: "black",

@@ -35,10 +35,9 @@ const Layout = ({ children, stylist }) => {
         </>
       ) : (
         <>
-          {/* <SignupLoginNav /> */}
-          <NormNavbar />
+          <SignupLoginNav />
+          {/* <NormNavbar /> */}
           {/* <SignupLoginNav/> */}
-          {/* <Container> */}
           {/*Div's good now*/}
           <div style={{ margin: "0 auto" }}>{children}</div>
           {/* <iframe
@@ -58,7 +57,6 @@ const Layout = ({ children, stylist }) => {
               //   zIndex: "-1",
               // }}
             ></iframe> */}
-          {/* </Container> */}
         </>
       )}
     </>
