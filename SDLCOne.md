@@ -110,6 +110,6 @@ Jason Enciso: CIW
 
 Reid Gill: studentList styles finished 
 
-Daniel Nijdl: login and signup functionally
+Daniel Nijdl: Got both login and signup to work, home page now welcomes stylist and changes navbar from signup login to normnavbar
 
 Joshua Ruvalcaba: CIW
