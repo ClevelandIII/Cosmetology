@@ -9,11 +9,11 @@ const index = ({ stylist }) => {
   //   document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   // });
   // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
-  // useEffect(() => {
-  //   document.title = `Welcome, ${stylist.firstName}`
-  // }, [])
+  useEffect(() => {
+    document.title = `Welcome, ${stylist.firstName}`
+  }, [])
   
-  document.title = "Welcome Stylist";
+  // document.title = "Welcome Stylist";
   const Options = [
     {
       key: "Number of Visits",
@@ -39,11 +39,11 @@ const index = ({ stylist }) => {
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }} stylist={stylist}>
+    <div style={{ padding: "2rem", textAlign: "center" }} stylist={stylist.firstName}>
       <Grid style={{ textAlign: "center" }}>
         <Grid.Row style={{ width: "100%" }} className="mini">
           <p>
-            {`Welcome ${stylist}.`} To get started, add a new visitor, or update
+            {`Welcome ${stylist.firstName}.`} To get started, add a new visitor, or update
             a visitor from the list below.
           </p>
         </Grid.Row>
