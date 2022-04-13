@@ -55,21 +55,16 @@
   background: #ffb81c;
 }
 
-.studentListPic {
-  position: absolute !important;
-  right: 74%;
-  bottom: -50%;
-  width: 28%;
-  border: black solid 2px;
-  border-radius: 50px;
-}
+/* .studentListPic { */
+  /* color: transparent; */
+/* } */
 
-.studentListName {
-  position: relative !important;
-  left: 35%;
+/* .studentListName { */
+  /* position: relative !important; */
+  /* left: 35%; */
   /* overflow: scroll hidden; */
-  white-space: nowrap;
-}
+  /* white-space: nowrap; */
+/* } */
 
 .background-video {
   position: absolute;
@@ -120,9 +115,39 @@ a.item :hover {
   white-space: nowrap;
   width: 100%;
 }
+/*width sizing */
 
-@media screen and (width: 800px) {
+/* @media screen and (min-width: 900px) { */
+  .studentListPic {
+    position: absolute !important;
+    right: 81.8%;
+    bottom: -10%;
+    width: 28%;
+    border: rgb(0, 0, 0) solid 2px;
+    border-radius: 50px;
+  }
+  .studentListName {
+    position: relative !important;
+    left: 8%;
+    /* overflow: scroll hidden; */
+    /* white-space: nowrap; */
+  }
 
+  @media screen and (min-width: 900px) {
+    .studentListPic {
+      position: absolute !important;
+      right: 80%;
+      bottom: -41%;
+      width: 28%;
+      border: black solid 2px;
+      border-radius: 50px;
+    }
+  .studentListName {
+    position: relative !important;
+    left: 40%;
+    /* overflow: scroll hidden; */
+    white-space: nowrap;
+  }
 }
 
 /*All mini css is for index styling and ipad styling*/
@@ -135,7 +160,8 @@ a.item :hover {
   }
   .studentListName{
     position: relative !important;
-    right: 200% !important;
+    left: 25% !important;
+    /* white-space: nowrap; */
   }
 }
 

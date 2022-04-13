@@ -75,3 +75,9 @@
 - Cleveland: iPad styling for navbar, student profile and index page. Started client Profile (mini page to bring up all client information)
 
 - Abdi: Client list styling
+
+4/12/2022
+
+- Cleveland:  CIW
+
+- Abdi: CIW 

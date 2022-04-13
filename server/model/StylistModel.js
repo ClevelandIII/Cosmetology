@@ -3,6 +3,8 @@ const Schema = mongoose.Schema;
 
 const StylistSchema = new Schema(
   {
+    
+
     firstName: {
       type: String,
       required: true,
@@ -42,10 +44,10 @@ const StylistSchema = new Schema(
       type: Number,
       // required: true,
     },
-    accountType: {
-      type: String,
-      required: true
-    },
+    // accountType: {
+    //   type: String,
+    //   required: true
+    // },
 
     teacher: { type: String },
 
@@ -54,7 +56,10 @@ const StylistSchema = new Schema(
     resetToken: { type: String },
     expireToken: { type: String },
   },
+
   { timestamps: true }
+
+
 );
 
 module.exports = mongoose.model("Stylist", StylistSchema);
