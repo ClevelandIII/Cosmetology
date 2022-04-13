@@ -69,12 +69,9 @@
 - Cleveland: Added some to index, made a few users, CIW
 
 - Abdi: Bug fix login, CIW
-<<<<<<< HEAD
 
 4/8/2022
 
 - Cleveland: iPad styling for navbar, student profile and index page. Started client Profile (mini page to bring up all client information)
 
 - Abdi: Client list styling
-=======
->>>>>>> 53db5544e876906f5632bda56c83fcf3de562cba
