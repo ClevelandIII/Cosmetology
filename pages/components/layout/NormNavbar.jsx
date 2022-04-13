@@ -9,6 +9,7 @@ import {
   Input,
 } from "semantic-ui-react";
 import Link from "next/link";
+import { logoutUser } from "../../util/auth";
 
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
@@ -77,7 +78,7 @@ const VerticalSidebar = ({ animation, visible }) => (
       </Menu.Item>
     </Link>
 
-    <Link href="/login">
+    <Link href="/login"  onClick={() => logoutUser(email)}>
       <Menu.Item
         style={{
           color: "red",

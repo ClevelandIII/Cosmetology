@@ -20,7 +20,7 @@ const createUser = async (req, res) => {
     password,
     hours,
     teacher,
-  } = req.body.stylist;
+  } = req.body;
 
   if (!isEmail(email)) return res.status(401).send()("Invalid Email");
   if (password.length < 6)
@@ -40,6 +40,8 @@ const createUser = async (req, res) => {
       hours,
       teacher,
     });
+
+
 
 
     stylist.password = await bcrypt.hash(password, 10);
@@ -63,7 +65,8 @@ const createUser = async (req, res) => {
 };
 
 const postLoginUser = async (req, res) => {
-  const {email, password} = req.body.stylist;
+  const {email, password} = req.body;
+  console.log(email, password);
 
   if(!isEmail(email)) return res.status(401).send("Invalid Email")
   if (password.legnth < 6) return res.status(401).send("Password must be at least 6 characters long")

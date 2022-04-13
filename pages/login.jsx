@@ -6,8 +6,6 @@ import {
   Button,
   Message,
   Header,
-  Image,
-  Grid,
 } from "semantic-ui-react";
 import catchErrors from "./util/catchErrors";
 import axios from "axios";
@@ -20,6 +18,7 @@ const Login = () => {
     password: "",
   });
 
+  
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -39,7 +38,7 @@ const Login = () => {
     setFormLoading(true);
 
     try {
-      const res = await axios.post("/api/v1/user/login", { stylist });
+      const res = await axios.post("/api/v1/user/login", { email, password });
       setToken(res.data);
       console.log("User Logged In");
     } catch (error) {
@@ -61,9 +60,9 @@ const Login = () => {
   
   useEffect(() => {
     document.title = "Welcome Back";
-    const email = Cookies.get("email");
+    const email = Cookies.get("stylistEmail");
 
-    if (email) setStylist((prev) => ({ ...prev, email: email }));
+    if (email) setStylist((prev) => ({ ...prev, email: stylistEmail }));
   }, []);
 
 
