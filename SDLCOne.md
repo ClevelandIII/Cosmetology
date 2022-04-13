@@ -104,3 +104,12 @@ Reid Gill:  working on studentList sizing styles
 Daniel Nijdl: fixing login functionally
 
 Joshua Ruvalcaba: CIW
+
+4/12/22
+Jason Enciso: CIW
+
+Reid Gill: studentList styles finished 
+
+Daniel Nijdl: login and signup functionally
+
+Joshua Ruvalcaba: CIW
