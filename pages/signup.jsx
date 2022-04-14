@@ -6,7 +6,7 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
-const Signup = () => { 
+const Signup = () => {
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
@@ -15,6 +15,8 @@ const Signup = () => {
     className: "",
     teacherCode: "",
     session: "",
+    teacher: "",
+    accountType: "",
   });
 
   const {
@@ -25,6 +27,8 @@ const Signup = () => {
     className,
     session,
     teacherCode,
+    teacher,
+    accountType,
   } = stylist;
 
   //* Form States */
@@ -48,6 +52,12 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
+
+    if(teacherCode === "Zn&=@5Bc6F"){
+      accountType = "teacher"
+    } else{
+      accountType = "student"
+    }
 
     if (media !== null) {
       const formData = new FormData();
@@ -101,7 +111,9 @@ const Signup = () => {
         password &&
         teacherCode &&
         className &&
-        session
+        session &&
+        teacher &&
+        accountType
       )
     );
   }, [stylist]);
@@ -190,6 +202,16 @@ const Signup = () => {
             value={className}
             onChange={handleChange}
             icon="book"
+            iconPosition="left"
+          />
+          <Form.Input
+            required
+            label="Teacher"
+            placeholder="John Doe"
+            name="teacher"
+            value={teacher}
+            onChange={handleChange}
+            icon="male"
             iconPosition="left"
           />
           <Form.Input

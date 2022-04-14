@@ -20,10 +20,9 @@ const TeacherSchema = new Schema({
     required: true,
     select: false,
   },
-  // accountType: {
-  //   type: String,
-  //   required: true
-  // },
+  accountType: {
+    type: String,
+  },
   profilePicURL: { type: String },
 
   resetToken: { type: String },

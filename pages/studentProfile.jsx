@@ -9,7 +9,7 @@ import {
   Dropdown,
 } from "semantic-ui-react";
 
-const StudentProfile = () => {
+const StudentProfile = ({stylist}) => {
   const [user, setUser] = useState(false);
   const Options = [
     {
@@ -43,7 +43,7 @@ const StudentProfile = () => {
               className="roz3"
             >
               <Image
-                src="https://freesvg.org/img/abstract-user-flat-4.png"
+                src={stylist.profilePicURL}
                 avatar
                 size="medium"
                 bordered
@@ -54,9 +54,9 @@ const StudentProfile = () => {
             <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
               <Card>
                 <Card.Content>
-                  <Card.Header>Name Of the Stylist</Card.Header>
+                  <Card.Header>{stylist.firstName} {stylist.lastName}</Card.Header>
                   <Card.Meta>
-                    <span className="date">Session & Teacher</span>
+                    <span className="date">Teacher: {stylist.teacher} || Session: {stylist.session}</span>
                   </Card.Meta>
                   <Card.Description>Stylist </Card.Description>
                 </Card.Content>

@@ -12,7 +12,7 @@ const isEmail = require("validator/lib/isEmail");
 
 //! add teacher code to change student to teacher
 const createUser = async (req, res) => {
-  const { firstName, lastName, email, password, hours, teacher } = req.body
+  const { firstName, lastName, email, password, hours, teacher, className, session, teacherCode } = req.body
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.length < 6)
@@ -28,9 +28,12 @@ const createUser = async (req, res) => {
       lastName,
       email: email.toLowerCase(),
       password,
+      className,
+      teacher,
+      teacherCode,
+      session,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
-      teacher,
     });
 
     stylist.password = await bcrypt.hash(password, 10);

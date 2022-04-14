@@ -30,24 +30,23 @@ const StylistSchema = new Schema(
     //Temperarily commented to make accounts, if not removed we likely forgor
     teacherCode: {
       type: Number,
-      // required: true,
+      required: true,
     },
 
     className: {
       type: String,
-      // required: true,
+      required: true,
     },
 
     session: {
-      type: Number,
-      // required: true,
+      type: String,
+      required: true,
     },
-    // accountType: {
-    //   type: String,
-    //   required: true
-    // },
+    accountType: {
+      type: String,
+    },
 
-    teacher: { type: String },
+    teacher: { type: String, required: true },
 
     pastClients: { type: Array },
 
@@ -56,8 +55,6 @@ const StylistSchema = new Schema(
   },
 
   { timestamps: true }
-
-
 );
 
 module.exports = mongoose.model("Stylist", StylistSchema);
