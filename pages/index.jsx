@@ -2,9 +2,6 @@ import axios from "axios";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 import { baseURL } from "./util/auth";
-<<<<<<< HEAD
-import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
-=======
 import {
   Grid,
   Divider,
@@ -14,20 +11,14 @@ import {
   Menu,
   Icon,
 } from "semantic-ui-react";
->>>>>>> 6c8fada2362b50ca72537585b5052d829bcdf724
 import Link from "next/link";
 
 const index = ({ stylist }) => {
   useEffect(() => {
     document.title = `Welcome, ${stylist.firstName}`;
   }, []);
-<<<<<<< HEAD
-  const name = stylist.firstName;
-
-=======
 
   // document.title = "Welcome Stylist";
->>>>>>> 6c8fada2362b50ca72537585b5052d829bcdf724
   const Options = [
     {
       key: "Number of Visits",
@@ -60,30 +51,16 @@ const index = ({ stylist }) => {
       <Grid style={{ textAlign: "center" }}>
         <Grid.Row style={{ width: "100%" }} className="mini">
           <p>
-<<<<<<< HEAD
-            {`Welcome, ${name}. `}To get started, add a new visitor, or update a
-            visitor from the list below.
-=======
             {`Welcome ${stylist.firstName}.`} To get started, add a new visitor,
             or update a visitor from the list below.
->>>>>>> 6c8fada2362b50ca72537585b5052d829bcdf724
           </p>
         </Grid.Row>
         <Divider hidden />
         <Link href="/clientProfile">
           <Grid.Row className="mini2">
-<<<<<<< HEAD
-            <Button as="a" href="/clientProfile">
-              Add New Visitor
-            </Button>
-          </Grid.Row>
-        </Link>
-        {/* <a href="/gg">click me</a> */}
-=======
             <Button>New Visitor</Button>
           </Grid.Row>
         </Link>
->>>>>>> 6c8fada2362b50ca72537585b5052d829bcdf724
       </Grid>
       <Divider hidden />
       <Grid stackable style={{ padding: "3rem" }}>

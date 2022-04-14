@@ -12,7 +12,7 @@ const isEmail = require("validator/lib/isEmail");
 
 //! add teacher code to change student to teacher
 const createUser = async (req, res) => {
-  const { firstName, lastName, email, password, hours, teacher } = req.body.stylist
+  const { firstName, lastName, email, password, hours, teacher } = req.body
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.length < 6)
@@ -54,7 +54,7 @@ const createUser = async (req, res) => {
 };
 
 const postLoginUser = async (req, res) => {
-  const { email, password } = req.body.stylist
+  const { email, password } = req.body
   console.log(email, password);
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
