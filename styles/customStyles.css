@@ -203,3 +203,17 @@ a.item :hover {
 }
 
 /*End of mini css*/
+
+/*start of clientList/index css */
+.clientListRow{
+  background-color:#d1d1d1;
+  color: black;
+  height: 6%;
+}
+.clientListRow:hover{
+  color: #6ea1ff;
+  /* background-color: #6ea1ff; */
+}
+/* .clientListColumn:hover{
+  background-color: #6ea1ff;
+} */

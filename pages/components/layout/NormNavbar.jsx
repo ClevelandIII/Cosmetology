@@ -58,7 +58,7 @@ const VerticalSidebar = ({ animation, visible}) => (
       </Menu.Item>
     </Link>
 
-    <Link href="/clientProfile">
+    <Link href="/clientCreator">
       <Menu.Item
         style={{
           color: "black",

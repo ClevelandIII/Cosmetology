@@ -113,3 +113,12 @@ Reid Gill: studentList styles finished
 Daniel Nijdl: Got both login and signup to work, home page now welcomes stylist and changes navbar from signup login to normnavbar
 
 Joshua Ruvalcaba: CIW
+
+4/14/22
+Jason Enciso: CIW
+
+Reid Gill: change all names of clientProfile to clientCreator so that clientProfile can be use in another way, starting work on index/clientList
+
+Daniel Nijdl: Fixed login again, added session to signup page, stylist/student profile page now shows name, profilepic, teacher, and session. Started working on teacher creation
+
+Joshua Ruvalcaba: CIW
