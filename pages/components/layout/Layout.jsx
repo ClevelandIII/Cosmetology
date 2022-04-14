@@ -22,23 +22,19 @@ const Layout = ({ children, stylist }) => {
     <>
       {stylist ? (
         <>
-          {/* <HeadTag /> */}
           <NormNavbar />
 
-          {/* <div style={{ marginLeft: "1rem", marginRight: "1rem" }}> */}
-          <Ref innerRef={contextRef}>
+          {/* <Ref innerRef={contextRef}>
             <Grid.Column>
               <Visibility context={contextRef}>{children}</Visibility>
             </Grid.Column>
-          </Ref>
-          {/* </div> */}
+          </Ref> */}
+          <div style={{ margin: "0 auto" }}>{children}</div>
+
         </>
       ) : (
         <>
           <SignupLoginNav />
-          {/* <NormNavbar /> */}
-          {/* <SignupLoginNav/> */}
-          {/*Div's good now*/}
           <div style={{ margin: "0 auto" }}>{children}</div>
           {/* <iframe
               src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"

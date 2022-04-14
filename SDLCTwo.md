@@ -81,3 +81,8 @@
 - Cleveland:  CIW
 
 - Abdi: CIW 
+
+4/13/2022
+
+- Cleveland: Attempted client profile, added to the model and routing, fixed login (Bug, you cant switch to other pages while logged in)
+- Abdi: Client Profile

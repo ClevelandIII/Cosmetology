@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
 
-
 // const TeacherModel = require("../model/TeacherModel");
 
 //! make so that only west-mec email work
@@ -13,16 +12,9 @@ const isEmail = require("validator/lib/isEmail");
 
 //! add teacher code to change student to teacher
 const createUser = async (req, res) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    password,
-    hours,
-    teacher,
-  } = req.body;
+  const { firstName, lastName, email, password, hours, teacher } = req.body.stylist
 
-  if (!isEmail(email)) return res.status(401).send()("Invalid Email");
+  if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.length < 6)
     return res.status(401).send("Password must be at least 6 characters long");
 
@@ -40,9 +32,6 @@ const createUser = async (req, res) => {
       hours,
       teacher,
     });
-
-
-
 
     stylist.password = await bcrypt.hash(password, 10);
     stylist = await stylist.save();
@@ -65,36 +54,37 @@ const createUser = async (req, res) => {
 };
 
 const postLoginUser = async (req, res) => {
-  const {email, password} = req.body;
+  const { email, password } = req.body.stylist
   console.log(email, password);
 
-  if(!isEmail(email)) return res.status(401).send("Invalid Email")
-  if (password.legnth < 6) return res.status(401).send("Password must be at least 6 characters long")
+  if (!isEmail(email)) return res.status(401).send("Invalid Email");
+  if (password.legnth < 6)
+    return res.status(401).send("Password must be at least 6 characters long");
 
-  try{
+  try {
     const stylist = await StylistModel.findOne({
       email: email.toLowerCase(),
-    }).select("+password")
+    }).select("+password");
 
-    if(!stylist) return res.status(401).send("Invalid Credentials")
-    const isPassword = await bcrypt.compare(password, stylist.password)
+    if (!stylist) return res.status(401).send("Invalid Credentials");
+    const isPassword = await bcrypt.compare(password, stylist.password);
 
-    if(!isPassword) return res.status(401).send("Invalid Credentials")
+    if (!isPassword) return res.status(401).send("Invalid Credentials");
 
-    const payload = {stylistId: stylist._id}
+    const payload = { stylistId: stylist._id };
     jwt.sign(
       payload,
       process.env.JWT_SECRET,
       { expiresIn: "1d" },
       (err, token) => {
-        if (err) throw err
-        res.status(200).json(token)
+        if (err) throw err;
+        res.status(200).json(token);
       }
-    )
-  } catch (error){
+    );
+  } catch (error) {
     console.log(error);
-    return res.status(500).send("Server Error")
+    return res.status(500).send("Server Error");
   }
-}
+};
 
 module.exports = { createUser, postLoginUser };

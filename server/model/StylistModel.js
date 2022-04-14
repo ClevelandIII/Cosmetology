@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 const StylistSchema = new Schema(
   {
-    
-
     firstName: {
       type: String,
       required: true,

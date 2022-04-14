@@ -1,10 +1,7 @@
-const {clientProfile} = require("../controllers/clientProfile")
+const router = require("express").Router();
 
+const { createClient } = require("../controllers/clientProfile");
 
-const router = require('express').Router()
-
-
-router.route("/client").get(clientProfile)
-
+router.route("/clientProfile").post(createClient);
 
 module.exports = router;

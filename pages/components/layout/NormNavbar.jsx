@@ -7,13 +7,15 @@ import {
   Segment,
   Sidebar,
   Input,
+  List,
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
 
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
-const VerticalSidebar = ({ animation, visible }) => (
+
+const VerticalSidebar = ({ animation, visible}) => (
   <Sidebar
     as={Menu}
     animation={animation}
@@ -78,7 +80,7 @@ const VerticalSidebar = ({ animation, visible }) => (
       </Menu.Item>
     </Link>
 
-    <Link href="/login"  onClick={() => logoutUser(email)}>
+    <Link href="/login" onClick={() => logoutUser(email)}>
       <Menu.Item
         style={{
           color: "red",
@@ -88,6 +90,15 @@ const VerticalSidebar = ({ animation, visible }) => (
         Sign Out
       </Menu.Item>
     </Link>
+
+    <Menu.Item>
+      <List.Item onClick={() => logoutUser(email)}>
+        <Icon name="log out" size="large" color="red" />
+        <List.Content>
+          <List.Header content="Logout" />
+        </List.Content>
+      </List.Item>
+    </Menu.Item>
   </Sidebar>
 );
 
@@ -106,7 +117,11 @@ function exampleReducer(state, action) {
 }
 
 //This is the navbar. Of course, search and sign out dont currently work, but the sidebar button does.
-function NormNavbar() {
+function NormNavbar({ stylist }) {
+  // useEffect(() => {
+  //   document.title = `Welcome, ${stylist.firstName}`;
+  // }, []);
+
   const [state, dispatch] = React.useReducer(exampleReducer, {
     animation: "overlay",
     direction: "left",
@@ -182,8 +197,7 @@ function NormNavbar() {
                 });
               }}
             >
-              {/* `Welcome, ${stylist.firstName.split(" ")[0]}` */}
-              {"Welcome Stylist"}
+              {/* {`Welcome, ${name}. `} */}
             </h3>
           </Menu.Item>
           <Menu.Item

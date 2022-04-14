@@ -6,7 +6,7 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
-const Signup = () => {
+const Signup = () => { 
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",

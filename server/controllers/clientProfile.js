@@ -1,68 +1,47 @@
+const defaultProfilePicURL = require("../util/defaultPic");
 const ClientModel = require("../model/ClientModel");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
 
-const clientProfile = async () => {
-  const {
-    firstname,
-    lastname,
-    birthday,
-    appointment,
-    service,
-    medical,
-    address,
-    city,
-    state,
-    zipcode,
-    phone,
-    email,
-  } = req.body.user;
+const createClient = async (req, res) => {
+  const { firstName, lastName, email, age, appointmentDate, serviceRequest } = req.body.client
 
-  if (!isEmail(email)) return res.status(401).send("Invalid");
+  if (!isEmail(email)) return res.status(401).send("Invalid Email");
+  if (age.length > 3)
+    return res.status(401).send("Realistic Age");
 
   try {
-    let user;
-    user = await ClientModel.findOne({ email: email.toLowerCase() });
-    if (user) return res.status(401).send("Email already used");
+    let client;
+    client = await ClientModel.findOne({ email: email.toLowerCase() });
+    if (client) return res.status(401).send("Email Already in Use");
 
-    user = new ClientModel({
-      firstname,
-      lastname,
-      birthday,
-      appointment,
-      service,
-      medical,
-      address,
-      city,
-      state,
-      zipcode,
-      phone,
+    client = new ClientModel({
+      firstName,
+      lastName,
       email: email.toLowerCase(),
-      username: username.toLowerCase(),
-
-      profilePicURL: req.body.profilePicURL || defaultProfilePic,
+      age,
+      appointmentDate,
+      serviceRequest,
     });
 
-    user = await user.save();
+    client = await client.save();
 
-    
-
-
-
-    const payload = { userID: user._id };
-
-    jwt.sign(
-      payload,
-      process.env.JWT_SECRET,
-      { expiresIn: "2d" },
-      (err, token) => {
-        if (err) throw err;
-        res.status(200).json(token);
-      }
-    );
-  } catch (err) {
-    console.log(err);
-
-    return res.status(500).send("Server error");
+    // const payload = { stylistId: stylist._id };
+    // jwt.sign(
+    //   payload,
+    //   process.env.JWT_SECRET,
+    //   { expiresIn: "1d" },
+    //   (err, token) => {
+    //     if (err) throw err;
+    //     console.log(err);
+    //     res.status(200).json(token);
+    //   }
+    // );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error");
   }
 };
-module.exports = clientProfile;
+
+module.exports = {createClient}
