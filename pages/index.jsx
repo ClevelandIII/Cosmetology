@@ -58,7 +58,6 @@ const index = ({ stylist }) => {
         <Divider hidden />
         <Link href="/clientCreator">
           <Grid.Row className="mini2">
-            ""
             <Button>New Visitor</Button>
           </Grid.Row>
         </Link>

@@ -42,6 +42,7 @@ const ClientCreator = () => {
       const res = await axios.post("/api/v1/clientCreator", {
         client,
       });
+      setToken(res.data);
     } catch (error) {
       const errorMsg = catchErrors(error);
       setErrorMsg(errorMsg);
