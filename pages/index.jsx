@@ -56,8 +56,9 @@ const index = ({ stylist }) => {
           </p>
         </Grid.Row>
         <Divider hidden />
-        <Link href="/clientProfile">
+        <Link href="/clientCreator">
           <Grid.Row className="mini2">
+            ""
             <Button>New Visitor</Button>
           </Grid.Row>
         </Link>
@@ -85,8 +86,11 @@ const index = ({ stylist }) => {
             textAlign: "center",
             justifyContent: "space-between",
           }}
-        >
-          <Grid.Column
+          >
+            
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~Client Name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+
+          <Grid.Column className="clientListColumn"
             width={4}
             style={{
               color: "white",
@@ -97,32 +101,64 @@ const index = ({ stylist }) => {
               <h2>Client Name</h2>
             </Grid.Row>
             <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
+            <Grid.Row className="clientListRow">William gill</Grid.Row>
+            <Grid.Row className="clientListRow">Daniel Nijdl</Grid.Row>
+            <Grid.Row className="clientListRow">Cleveland Williams</Grid.Row>
+            <Grid.Row className="clientListRow">Jason Enciso</Grid.Row>
+            <Grid.Row className="clientListRow">Abdi Torres</Grid.Row>
+            <Grid.Row className="clientListRow">Joshua Ruvalcaba</Grid.Row>
+            <Grid.Row className="clientListRow">Rando Filler</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            <Grid.Row className="clientListRow">first Last</Grid.Row>
+            
+
+
           </Grid.Column>
-          <Grid.Column
+
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~First Added~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+
+          <Grid.Column className="clientListColumn"
             width={4}
             style={{
               color: "white",
               margin: "2rem",
             }}
-          >
+            >
             <Grid.Row>
               <h2>First Added</h2>
             </Grid.Row>
             <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
+            <Grid.Row className="clientListRow">4/13/22</Grid.Row>
+            <Grid.Row className="clientListRow">4/14/22</Grid.Row>
+            <Grid.Row className="clientListRow">4/18/22</Grid.Row>
+            <Grid.Row className="clientListRow">5/15/22</Grid.Row>
+            <Grid.Row className="clientListRow">12/13/22</Grid.Row>
+            <Grid.Row className="clientListRow">1/30/22</Grid.Row>
+            <Grid.Row className="clientListRow">4/20/22</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+
           </Grid.Column>
-          <Grid.Column
+
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~Latest Visit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+
+          <Grid.Column className="clientListColumn"
             width={4}
             style={{
               color: "white",
@@ -133,12 +169,26 @@ const index = ({ stylist }) => {
               <h2>Latest Visit</h2>
             </Grid.Row>
             <Divider hidden />
-            <Grid.Row
-              style={{
-                backgroundColor: "#d1d1d1",
-                height: "80%",
-              }}
-            ></Grid.Row>
+            <Grid.Row className="clientListRow">4/15/22</Grid.Row>
+            <Grid.Row className="clientListRow">5/15/22</Grid.Row>
+            <Grid.Row className="clientListRow">6/13/22</Grid.Row>
+            <Grid.Row className="clientListRow">7/20/22</Grid.Row>
+            <Grid.Row className="clientListRow">8/25/23</Grid.Row>
+            <Grid.Row className="clientListRow">9/15/23</Grid.Row>
+            <Grid.Row className="clientListRow">11/15/23</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
+            
+
+
           </Grid.Column>
         </Grid.Row>
       </Grid>
