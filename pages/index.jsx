@@ -1,8 +1,17 @@
-import axios from "axios"
+import axios from "axios";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 import { baseURL } from "./util/auth";
-import { Grid, Divider, Button, Dropdown } from "semantic-ui-react";
+import {
+  Grid,
+  Divider,
+  Button,
+  Dropdown,
+  Route,
+  Menu,
+  Icon,
+} from "semantic-ui-react";
+import Link from "next/link";
 
 const index = ({ stylist }) => {
   // useEffect(() => {
@@ -10,9 +19,9 @@ const index = ({ stylist }) => {
   // });
   // document.title = `Welcome, ${stylist.firstName.split(" ")[0]}`;
   useEffect(() => {
-    document.title = `Welcome, ${stylist.firstName}`
-  }, [])
-  
+    document.title = `Welcome, ${stylist.firstName}`;
+  }, []);
+
   // document.title = "Welcome Stylist";
   const Options = [
     {
@@ -39,18 +48,23 @@ const index = ({ stylist }) => {
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }} stylist={stylist.firstName}>
+    <div
+      style={{ padding: "2rem", textAlign: "center" }}
+      stylist={stylist.firstName}
+    >
       <Grid style={{ textAlign: "center" }}>
         <Grid.Row style={{ width: "100%" }} className="mini">
           <p>
-            {`Welcome ${stylist.firstName}.`} To get started, add a new visitor, or update
-            a visitor from the list below.
+            {`Welcome ${stylist.firstName}.`} To get started, add a new visitor,
+            or update a visitor from the list below.
           </p>
         </Grid.Row>
         <Divider hidden />
-        <Grid.Row className="mini2">
-          <Button>Add New Visitor</Button>
-        </Grid.Row>
+        <Link href="/clientProfile">
+          <Grid.Row className="mini2">
+            <Button>New Visitor</Button>
+          </Grid.Row>
+        </Link>
       </Grid>
       <Divider hidden />
       <Grid stackable style={{ padding: "3rem" }}>

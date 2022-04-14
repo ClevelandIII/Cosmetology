@@ -23,7 +23,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     pageProps = await Component.getInitialProps(ctx);
   }
 
-  const protectedRoutes = ["/", "/studentProfile"];
+  const protectedRoutes = ["/", "/studentProfile", "/clientProfile"];
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 
   if (!token) {

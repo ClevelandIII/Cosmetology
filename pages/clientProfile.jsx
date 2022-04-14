@@ -87,12 +87,13 @@ const ClientProfile = () => {
     <>
       <Form>
         <h3>Please Fill out the required fields</h3>
-
+        <h1>Client Consultation Form</h1>
         <Form.Group unstackable widths={3}>
           <Form.Input
             label="First name"
             placeholder="First name"
             style={{ width: "435px", height: "126px" }}
+            validation="required"
           />
           <Form.Input
             label="Last name"
@@ -109,7 +110,7 @@ const ClientProfile = () => {
         <Form.Group unstackable widths={3}>
           <Form.Input
             label="Appointment Date"
-            placeholder="Appointment Date"
+            placeholder="mm/dd/yyyy"
             style={{ width: "435px", height: "126px" }}
           />
           <Form.Input
