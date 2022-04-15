@@ -14,26 +14,28 @@ const ClientSchema = new Schema({
     type: Number,
     required: true,
   },
-  email: {
-    type: String,
-    required: true,
-  },
+
   appointmentDate: {
-    type: Number,
+    type: Date,
     required: true,
   },
   serviceRequest: {
     type: String,
-    required: true
   },
-  medicalAndAllergies: { type: Array },
+  medicalIssues: { type: String },
+
+  email: {
+    type: String,
+    required: true,
+  },
   address: { type: String },
   city: { type: String },
   state: { type: String },
+  
   Zip: { type: Number },
   Phone: { type: Number },
 
-  hairColor: {type: String},
+  hairColor: { type: String },
   hairCondition: {
     type: String,
     enum: [
