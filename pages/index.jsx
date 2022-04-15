@@ -85,11 +85,11 @@ const index = ({ stylist }) => {
             textAlign: "center",
             justifyContent: "space-between",
           }}
-          >
-            
+        >
           {/* ~~~~~~~~~~~~~~~~~~~~~~~Client Name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
 
-          <Grid.Column className="clientListColumn"
+          <Grid.Column
+            className="clientListColumn"
             width={4}
             style={{
               color: "white",
@@ -117,20 +117,18 @@ const index = ({ stylist }) => {
             <Grid.Row className="clientListRow">first Last</Grid.Row>
             <Grid.Row className="clientListRow">first Last</Grid.Row>
             <Grid.Row className="clientListRow">first Last</Grid.Row>
-            
-
-
           </Grid.Column>
 
           {/* ~~~~~~~~~~~~~~~~~~~~~~~First Added~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
 
-          <Grid.Column className="clientListColumn"
+          <Grid.Column
+            className="clientListColumn"
             width={4}
             style={{
               color: "white",
               margin: "2rem",
             }}
-            >
+          >
             <Grid.Row>
               <h2>First Added</h2>
             </Grid.Row>
@@ -152,12 +150,12 @@ const index = ({ stylist }) => {
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-
           </Grid.Column>
 
           {/* ~~~~~~~~~~~~~~~~~~~~~~~Latest Visit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
 
-          <Grid.Column className="clientListColumn"
+          <Grid.Column
+            className="clientListColumn"
             width={4}
             style={{
               color: "white",
@@ -185,9 +183,6 @@ const index = ({ stylist }) => {
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
             <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            
-
-
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -90,15 +90,6 @@ const VerticalSidebar = ({ animation, visible}) => (
         Sign Out
       </Menu.Item>
     </Link>
-
-    <Menu.Item>
-      <List.Item onClick={() => logoutUser(email)}>
-        <Icon name="log out" size="large" color="red" />
-        <List.Content>
-          <List.Header content="Logout" />
-        </List.Content>
-      </List.Item>
-    </Menu.Item>
   </Sidebar>
 );
 

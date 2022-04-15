@@ -5,11 +5,23 @@ const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
 
 const createClient = async (req, res) => {
-  const { firstName, lastName, email, age, appointmentDate, serviceRequest } = req.body.client
+  const {
+    firstName,
+    lastName,
+    email,
+    age,
+    appointmentDate,
+    serviceRequest,
+    medicalIssues,
+    address,
+    city,
+    state,
+    phoneNumber,
+    zipCode,
+  } = req.body.client;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
-  if (age.length > 3)
-    return res.status(401).send("Realistic Age");
+  if (age.length > 3) return res.status(401).send("Realistic Age");
 
   try {
     let client;
@@ -23,6 +35,12 @@ const createClient = async (req, res) => {
       age,
       appointmentDate,
       serviceRequest,
+      medicalIssues,
+      address,
+      city,
+      state,
+      phoneNumber,
+      zipCode,
     });
 
     client = await client.save();
@@ -43,5 +61,5 @@ const createClient = async (req, res) => {
     return res.status(500).send("Server Error");
   }
 };
- 
-module.exports = {createClient}
+
+module.exports = { createClient };
