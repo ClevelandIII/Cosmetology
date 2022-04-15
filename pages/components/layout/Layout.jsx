@@ -3,8 +3,9 @@ import { Grid, Ref, Visibility } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav"
+// import ClientList from "../../clientList"
 
-const Layout = ({ children, stylist }) => {
+const Layout = ({ children, client }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
   // Router.onRouteChangeComplete = () => nprogress.done();
   // Router.onRouteChangeError = () => nprogress.done();
@@ -20,7 +21,7 @@ const Layout = ({ children, stylist }) => {
 
   return (
     <>
-      {stylist ? (
+      {client ? (
         <>
           <NormNavbar />
 
@@ -35,6 +36,8 @@ const Layout = ({ children, stylist }) => {
       ) : (
         <>
           <SignupLoginNav />
+
+          
           <div style={{ margin: "0 auto" }}>{children}</div>
           {/* <iframe
               src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
@@ -55,6 +58,8 @@ const Layout = ({ children, stylist }) => {
             ></iframe> */}
         </>
       )}
+{/* 
+<ClientList /> */}
     </>
   );
 };
