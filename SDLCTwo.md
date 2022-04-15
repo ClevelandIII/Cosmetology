@@ -86,3 +86,9 @@
 
 - Cleveland: Attempted client profile, added to the model and routing, fixed login (Bug, you cant switch to other pages while logged in)
 - Abdi: Client Profile
+
+4/14/2022
+
+- Cleveland: Added to ClientModel, ClientProfile and ClientCreator. You can now create and see the client in the mongo, but it takes a really long time to stop loading on the page.
+
+- Abdi: Client Profile

@@ -38,12 +38,11 @@
   background: #ffb81c !important;
   justify-content: center;
   margin: 0 auto;
-  position: absolute
+  position: absolute;
 }
 
 .cListHeader {
   background: white !important;
- 
 }
 
 .StudentGrid {
@@ -56,14 +55,14 @@
 }
 
 /* .studentListPic { */
-  /* color: transparent; */
+/* color: transparent; */
 /* } */
 
 /* .studentListName { */
-  /* position: relative !important; */
-  /* left: 35%; */
-  /* overflow: scroll hidden; */
-  /* white-space: nowrap; */
+/* position: relative !important; */
+/* left: 35%; */
+/* overflow: scroll hidden; */
+/* white-space: nowrap; */
 /* } */
 
 .background-video {
@@ -118,30 +117,30 @@ a.item :hover {
 /*width sizing */
 
 /* @media screen and (min-width: 900px) { */
+.studentListPic {
+  position: absolute !important;
+  right: 81.8%;
+  bottom: -10%;
+  width: 28%;
+  border: rgb(0, 0, 0) solid 2px;
+  border-radius: 50px;
+}
+.studentListName {
+  position: relative !important;
+  left: 8%;
+  /* overflow: scroll hidden; */
+  /* white-space: nowrap; */
+}
+
+@media screen and (min-width: 900px) {
   .studentListPic {
     position: absolute !important;
-    right: 81.8%;
-    bottom: -10%;
+    right: 80%;
+    bottom: -41%;
     width: 28%;
-    border: rgb(0, 0, 0) solid 2px;
+    border: black solid 2px;
     border-radius: 50px;
   }
-  .studentListName {
-    position: relative !important;
-    left: 8%;
-    /* overflow: scroll hidden; */
-    /* white-space: nowrap; */
-  }
-
-  @media screen and (min-width: 900px) {
-    .studentListPic {
-      position: absolute !important;
-      right: 80%;
-      bottom: -41%;
-      width: 28%;
-      border: black solid 2px;
-      border-radius: 50px;
-    }
   .studentListName {
     position: relative !important;
     left: 40%;
@@ -152,13 +151,13 @@ a.item :hover {
 
 /*All mini css is for index styling and ipad styling*/
 @media screen and (min-height: 800px) {
-  .studentListPic{
+  .studentListPic {
     position: absolute !important;
     bottom: -4%;
     width: 35%;
     right: 76%;
   }
-  .studentListName{
+  .studentListName {
     position: relative !important;
     left: 25% !important;
     /* white-space: nowrap; */
@@ -205,12 +204,12 @@ a.item :hover {
 /*End of mini css*/
 
 /*start of clientList/index css */
-.clientListRow{
-  background-color:#d1d1d1;
+.clientListRow {
+  background-color: #d1d1d1;
   color: black;
   height: 6%;
 }
-.clientListRow:hover{
+.clientListRow:hover {
   color: #6ea1ff;
   /* background-color: #6ea1ff; */
 }
