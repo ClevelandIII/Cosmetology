@@ -143,7 +143,7 @@ function NormNavbar({ stylist }) {
 
       <Sidebar.Pusher
         style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
-        innerRef={segmentRef}
+        innerref={segmentRef}
       >
         <Menu stackable secondary>
           <Menu.Item name="features">

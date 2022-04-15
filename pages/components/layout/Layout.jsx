@@ -24,7 +24,7 @@ const Layout = ({ children, stylist }) => {
         <>
           <NormNavbar />
 
-          {/* <Ref innerRef={contextRef}>
+          {/* <Ref innerref={contextRef}>
             <Grid.Column>
               <Visibility context={contextRef}>{children}</Visibility>
             </Grid.Column>
