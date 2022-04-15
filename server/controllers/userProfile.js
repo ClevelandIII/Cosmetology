@@ -90,4 +90,15 @@ const postLoginUser = async (req, res) => {
   }
 };
 
-module.exports = { createUser, postLoginUser };
+const getAllUsers = async (req, res) => {
+  try{
+    let stylists;
+    stylists = await StylistModel.find()
+    return res.status(200).json(stylists)
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error @ getAllStylists")
+  }
+}
+
+module.exports = { createUser, postLoginUser, getAllUsers };

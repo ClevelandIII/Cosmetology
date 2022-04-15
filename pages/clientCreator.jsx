@@ -11,6 +11,8 @@ import { useState, useRef, useEffect, Component } from "react";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
+import Router from "next/router";
+
 
 const ClientCreator = () => {
   const [client, setClient] = useState({
@@ -79,6 +81,9 @@ const ClientCreator = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
+
+    Router.push("/")
+
 
     try {
       const res = await axios.post("/api/v1/client/clientCreator", {

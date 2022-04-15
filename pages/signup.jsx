@@ -77,7 +77,15 @@ const Signup = () => {
 
     try {
       const res = await axios.post("/api/v1/user/signup", {
-        stylist,
+        firstName,
+        lastName,
+        email,
+        password,
+        className,
+        session,
+        teacherCode,
+        teacher,
+        accountType,
         profilePicURL,
       });
 

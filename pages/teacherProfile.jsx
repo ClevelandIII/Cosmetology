@@ -4,7 +4,7 @@ import { Grid, Card, Icon, Image, Divider, Dropdown } from "semantic-ui-react";
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
 // class they teach/session
 const TeacherProfile = () => {
-  const [user, setUser] = useState(false);
+  // const [stylists, setStylist] = useState(false);
   const Options = [
     {
       key: "Number of Visits",

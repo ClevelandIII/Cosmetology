@@ -10,11 +10,12 @@ import {
 import React from "react";
 
 
-const studentList = () => {
+const studentList = (stylists) => {
+
   return (
     
     <>
-    
+      
       <Grid className="StudentGrid" columns="equal" centered divided='vertically'  relaxed='very'>
 
         <Grid.Row >
@@ -32,11 +33,12 @@ const studentList = () => {
           </Grid.Column>
         </Grid.Row>
 
+
         <Grid.Row className=" studentRow">
           <Grid.Column className="studentColumn">
             <Segment style={{width: "110%"}}>
               <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />{""}
-              <p className="studentListName" style={{width: "80%"}}>William Gill</p>
+              <p className="studentListName" style={{width: "80%"}}></p>
             </Segment>
           </Grid.Column>
           <Grid.Column className="studentColumn">

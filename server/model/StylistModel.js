@@ -29,7 +29,7 @@ const StylistSchema = new Schema(
 
     //Temperarily commented to make accounts, if not removed we likely forgor
     teacherCode: {
-      type: Number,
+      type: String,
       required: true,
     },
 

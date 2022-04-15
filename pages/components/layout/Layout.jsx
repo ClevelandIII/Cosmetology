@@ -5,7 +5,7 @@ import React from "react";
 import SignupLoginNav from "./SignupLoginNav"
 // import ClientList from "../../clientList"
 
-const Layout = ({ children, client }) => {
+const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
   // Router.onRouteChangeComplete = () => nprogress.done();
   // Router.onRouteChangeError = () => nprogress.done();
@@ -21,7 +21,7 @@ const Layout = ({ children, client }) => {
 
   return (
     <>
-      {client ? (
+      {stylist ? (
         <>
           <NormNavbar />
 

@@ -53,6 +53,7 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/uploads", uploadRoute)
 app.use('/api/v1/client', clientRoute)
+app.use("/api/v1/stylists", userRoute)
 
 //*SOCKETS */
 
