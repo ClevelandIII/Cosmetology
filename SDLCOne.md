@@ -122,3 +122,13 @@ Reid Gill: change all names of clientProfile to clientCreator so that clientProf
 Daniel Nijdl: Fixed login again, added session to signup page, stylist/student profile page now shows name, profilepic, teacher, and session. Started working on teacher creation
 
 Joshua Ruvalcaba: CIW
+
+4/15/22
+Jason Enciso: CIW
+
+Reid Gill:  change all names of clientProfile to clientCreator so that clientProfile can be use in another way, starting work on index/clientList
+
+Daniel Nijdl: Fixed signup again, finished getAllUsers, started experimenting with getting 
+stylists and pasting in list.
+
+Joshua Ruvalcaba: CIW

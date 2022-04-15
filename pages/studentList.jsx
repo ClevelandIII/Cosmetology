@@ -24,7 +24,7 @@ const studentList = () => {
           <Grid.Column className="column studentColumn">
             <Segment className="yearSemesterCenter">Teacher</Segment>
           </Grid.Column>
-          <Grid.Column className="column studentColumn">
+          <Grid.Column className="column">
             <Segment className="yearSemesterCenter">Year</Segment>
           </Grid.Column>
           <Grid.Column className="column">

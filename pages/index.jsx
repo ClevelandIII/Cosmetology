@@ -10,6 +10,7 @@ import {
   Route,
   Menu,
   Icon,
+  Segment,
 } from "semantic-ui-react";
 import Link from "next/link";
 
@@ -75,120 +76,121 @@ const index = ({ stylist }) => {
             />
           </div>
         </Grid.Row>
-        <Divider hidden />
-        <Grid.Row
+        <Grid.Row columns={3}
           style={{
             border: "1px solid white",
             height: "35rem",
             background: "orange",
-            color: "white",
+            color: "black",
             textAlign: "center",
-            justifyContent: "space-between",
+            overflow: "scroll",
+            justifyContent: "space-evenly",
           }}
-          >
-            
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~Client Name~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-
-          <Grid.Column className="clientListColumn"
-            width={4}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Client Name</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row className="clientListRow">William gill</Grid.Row>
-            <Grid.Row className="clientListRow">Daniel Nijdl</Grid.Row>
-            <Grid.Row className="clientListRow">Cleveland Williams</Grid.Row>
-            <Grid.Row className="clientListRow">Jason Enciso</Grid.Row>
-            <Grid.Row className="clientListRow">Abdi Torres</Grid.Row>
-            <Grid.Row className="clientListRow">Joshua Ruvalcaba</Grid.Row>
-            <Grid.Row className="clientListRow">Rando Filler</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            <Grid.Row className="clientListRow">first Last</Grid.Row>
-            
-
-
+        >
+          <>
+           <Grid.Column>
+            <Segment>Client</Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>Last Visited</Segment>
+          </Grid.Column>
+          <Grid.Column>
+            <Segment>Date Created</Segment>
+          </Grid.Column>
+          </>
+         
+         <>
+         
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+        
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
           </Grid.Column>
 
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~First Added~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-
-          <Grid.Column className="clientListColumn"
-            width={4}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-            >
-            <Grid.Row>
-              <h2>First Added</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row className="clientListRow">4/13/22</Grid.Row>
-            <Grid.Row className="clientListRow">4/14/22</Grid.Row>
-            <Grid.Row className="clientListRow">4/18/22</Grid.Row>
-            <Grid.Row className="clientListRow">5/15/22</Grid.Row>
-            <Grid.Row className="clientListRow">12/13/22</Grid.Row>
-            <Grid.Row className="clientListRow">1/30/22</Grid.Row>
-            <Grid.Row className="clientListRow">4/20/22</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
           </Grid.Column>
 
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~Latest Visit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-
-          <Grid.Column className="clientListColumn"
-            width={4}
-            style={{
-              color: "white",
-              margin: "2rem",
-            }}
-          >
-            <Grid.Row>
-              <h2>Latest Visit</h2>
-            </Grid.Row>
-            <Divider hidden />
-            <Grid.Row className="clientListRow">4/15/22</Grid.Row>
-            <Grid.Row className="clientListRow">5/15/22</Grid.Row>
-            <Grid.Row className="clientListRow">6/13/22</Grid.Row>
-            <Grid.Row className="clientListRow">7/20/22</Grid.Row>
-            <Grid.Row className="clientListRow">8/25/23</Grid.Row>
-            <Grid.Row className="clientListRow">9/15/23</Grid.Row>
-            <Grid.Row className="clientListRow">11/15/23</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            <Grid.Row className="clientListRow">1/2/34</Grid.Row>
-            
-
-
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
           </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+
+          <Grid.Column className="column clientListColumn">
+            <Segment className="yearSemesterCenter">Well Fargo</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+          <Grid.Column className="column">
+            <Segment className="yearSemesterCenter">1/2/34</Segment>
+          </Grid.Column>
+         </>
         </Grid.Row>
       </Grid>
     </div>
