@@ -18,6 +18,15 @@ const createClient = async (req, res) => {
     state,
     phoneNumber,
     zipCode,
+    hairCondition,
+    hairClassification,
+    scalpClassification,
+    hairTexture,
+    hairDensity,
+    growthPatterns,
+    hairLength,
+    hairPorosity,
+    hairElasticity,
   } = req.body.client;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
@@ -41,6 +50,15 @@ const createClient = async (req, res) => {
       state,
       phoneNumber,
       zipCode,
+      hairClassification,
+      hairCondition,
+      scalpClassification,
+      hairTexture,
+      hairDensity,
+      growthPatterns,
+      hairElasticity,
+      hairPorosity,
+      hairLength,
     });
 
     client = await client.save();

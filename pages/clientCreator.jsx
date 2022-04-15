@@ -7,11 +7,10 @@ import {
   Dropdown,
   Checkbox,
 } from "semantic-ui-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Component } from "react";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
-import HairMenu from "../pages/components/common/HairMenu";
 
 const ClientCreator = () => {
   const [client, setClient] = useState({
@@ -27,8 +26,16 @@ const ClientCreator = () => {
     state: "",
     phoneNumber: "",
     zipCode: "",
+    hairCondition: "",
+    hairClassification: "",
+    scalpCondition: "",
+    hairTexture: "",
+    growthPatterns: "",
+    hairDensity: "",
+    hairElasticity: "",
+    hairPorosity: "",
+    hairLength: "",
   });
-
   const {
     firstName,
     lastName,
@@ -42,6 +49,15 @@ const ClientCreator = () => {
     state,
     phoneNumber,
     zipCode,
+    hairClassification,
+    hairCondition,
+    scalpCondition,
+    hairDensity,
+    hairTexture,
+    growthPatterns,
+    hairElasticity,
+    hairPorosity,
+    hairLength,
   } = client;
 
   //* Form States */
@@ -55,6 +71,7 @@ const ClientCreator = () => {
   const [highlighted, setHighlighted] = useState(false);
   const [media, setMedia] = useState(null);
   const [mediaPreview, setMediaPreview] = useState(null);
+  const [hidden, setHidden] = useState(false);
 
   //* Functions */
 
@@ -102,7 +119,16 @@ const ClientCreator = () => {
         city &&
         state &&
         phoneNumber &&
-        zipCode
+        zipCode &&
+        hairClassification &&
+        hairCondition &&
+        scalpCondition &&
+        hairDensity &&
+        hairTexture &&
+        growthPatterns &&
+        hairElasticity &&
+        hairPorosity &&
+        hairLength
       )
     );
   }, [client]);
@@ -162,7 +188,6 @@ const ClientCreator = () => {
               style={{ width: "435px", height: "126px" }}
             />
           </Form.Group>
-
           {/*Appointment Date, ServiceRequest, Medical */}
           <Form.Group unstackable widths={3}>
             <Form.Input
@@ -202,14 +227,13 @@ const ClientCreator = () => {
               type="text"
             />
           </Form.Group>
-
           {/*Address, City, State*/}
           <Form.Group unstackable widths={3}>
             <Form.Input
-              required
               label="Address"
+              required
               placeholder="Address"
-              name="Address"
+              name="address"
               value={address}
               onChange={handleChange}
               icon="home"
@@ -218,22 +242,22 @@ const ClientCreator = () => {
               type="text"
             />
             <Form.Input
-              required
               label="City"
+              required
               placeholder="City"
-              name="City"
+              name="city"
               value={city}
+              onChange={handleChange}
               icon="road"
               iconPosition="left"
               style={{ width: "435px", height: "126px" }}
               type="text"
-              onChange={handleChange}
             />
             <Form.Input
-              required
               label="State"
+              required
               placeholder="State"
-              name="State"
+              name="state"
               value={state}
               onChange={handleChange}
               icon="tree"
@@ -242,7 +266,6 @@ const ClientCreator = () => {
               type="text"
             />
           </Form.Group>
-
           {/*Zip Code, Phone, Email */}
           <Form.Group unstackable widths={3}>
             <Form.Input
@@ -254,8 +277,8 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="home"
               iconPosition="left"
+              type="number"
               style={{ width: "435px", height: "126px" }}
-              type="text"
             />
 
             <Form.Input
@@ -285,13 +308,122 @@ const ClientCreator = () => {
             />
           </Form.Group>
 
-          <Form.Field>
-            <Checkbox
-              label="I agree to the Terms and Conditions"
-              style={{ marginTop: "20px", marginLeft: "50px" }}
-            />
-          </Form.Field>
+          {/*Hair Menu */}
+          <Button onClick={() => setHidden(!hidden)} type="button">
+            Show Hair Menu
+          </Button>
+          <Form.Group>
+            {hidden ? (
+              <div className="grouping">
+                {/*Hair condition, Hair classification, scalp classification */}
+                <Form.Group>
+                  <Form.Input
+                    required
+                    label="Hair Condition"
+                    placeholder="Hair Condition"
+                    name="hairCondition"
+                    value={hairCondition}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
 
+                  <Form.Input
+                    required
+                    label="Hair Classification"
+                    placeholder="Hair Classification"
+                    name="hairClassification"
+                    value={hairClassification}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+
+                  <Form.Input
+                    required
+                    label="Scalp Condition"
+                    placeholder="Scalp Condition"
+                    name="scalpCondition"
+                    value={scalpCondition}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                </Form.Group>
+
+                {/*Hair texture, growth patterns, hair density */}
+                <Form.Group>
+                  <Form.Input
+                    required
+                    label="Hair Texture"
+                    placeholder="Hair Texture"
+                    name="hairTexture"
+                    value={hairTexture}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                  <Form.Input
+                    required
+                    label="Growth Patterns"
+                    placeholder="Growth Patterns"
+                    name="growthPatterns"
+                    value={growthPatterns}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                  <Form.Input
+                    required
+                    label="Hair Density"
+                    placeholder="Hair Density"
+                    name="hairDensity"
+                    value={hairDensity}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                </Form.Group>
+
+                {/*Hair Porosity, Hair Elasticity, Hair Length */}
+                <Form.Group>
+                  <Form.Input
+                    required
+                    label="Hair Porosity"
+                    placeholder="Hair Porosity"
+                    name="hairPorosity"
+                    value={hairPorosity}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+
+                  <Form.Input
+                    required
+                    label="Hair Elasticity"
+                    placeholder="Hair Elasticity"
+                    name="hairElasticity"
+                    value={hairElasticity}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                  <Form.Input
+                    required
+                    label="Hair Length"
+                    placeholder="Hair Length"
+                    name="hairLength"
+                    value={hairLength}
+                    onChange={handleChange}
+                    style={{ width: "435px", height: "126px" }}
+                    type="text"
+                  />
+                </Form.Group>
+              </div>
+            ) : (
+              <></>
+            )}
+          </Form.Group>
           <Button color="orange" content="Signup" icon="signup" type="submit" />
         </Segment>
       </Form>
@@ -301,83 +433,3 @@ const ClientCreator = () => {
 };
 
 export default ClientCreator;
-
-<HairMenu />;
-
-const stateOptions = [
-  { key: "Alabama", value: "Alabama", text: "Alabama" },
-  { key: "Alaska", value: "Alaska", text: "Alaska" },
-  { key: "American Samoa", value: "American Samoa", text: "American Samoa" },
-  { key: "Arizona", value: "Arizona", text: "Arizona" },
-  { key: "Arkansas", value: "Arkansas", text: "Arkansas" },
-  { key: "California", value: "California", text: "California" },
-  { key: "Colorado", value: "Colorado", text: "Colorado" },
-  { key: "Connecticut", value: "Connecticut", text: "Connecticut" },
-  { key: "Delaware", value: "Delaware", text: "Delaware" },
-  {
-    key: "District of Columbia",
-    value: "District of Columbia",
-    text: "District of Columbia",
-  },
-  {
-    key: "Federated States of Micronesia",
-    value: "Federated States of Micronesia",
-    text: "Federated States of Micronesia",
-  },
-  { key: "Florida", value: "Florida", text: "Florida" },
-  { key: "Georgia", value: "Georgia", text: "Georgia" },
-  { key: "Guam", value: "Guam", text: "Guam" },
-  { key: "Hawaii", value: "Hawaii", text: "Hawaii" },
-  { key: "Idaho", value: "Idaho", text: "Idaho" },
-  { key: "Illinois", value: "Illinois", text: "Illinois" },
-  { key: "Indiana", value: "Indiana", text: "Indiana" },
-  { key: "Iowa", value: "Iowa", text: "Iowa" },
-  { key: "Kansas", value: "Kansas", text: "Kansas" },
-  { key: "Kentucky", value: "Kentucky", text: "Kentucky" },
-  { key: "Louisiana", value: "Louisiana", text: "Louisiana" },
-  { key: "Maine", value: "Maine", text: "Maine" },
-  {
-    key: "Marshall Islands",
-    value: "Marshall Islands",
-    text: "Marshall Islands",
-  },
-  { key: "Maryland", value: "Maryland", text: "Maryland" },
-  { key: "Massachusetts", value: "Massachusetts", text: "Massachusetts" },
-  { key: "Michigan", value: "Michigan", text: "Michigan" },
-  { key: "Minnesota", value: "Minnesota", text: "Minnesota" },
-  { key: "Mississippi", value: "Mississippi", text: "Mississippi" },
-  { key: "Missouri", value: "Missouri", text: "Missouri" },
-  { key: "Montana", value: "Montana", text: "Montana" },
-  { key: "Nebraska", value: "Nebraska", text: "Nebraska" },
-  { key: "Nevada", value: "Nevada", text: "Nevada" },
-  { key: "New Hampshire", value: "New Hampshire", text: "New Hampshire" },
-  { key: "New Jersey", value: "New Jersey", text: "New Jersey" },
-  { key: "New Mexico", value: "New Mexico", text: "New Mexico" },
-  { key: "New York", value: "New York", text: "New York" },
-  { key: "North Carolina", value: "North Carolina", text: "North Carolina" },
-  { key: "North Dakota", value: "North Dakota", text: "North Dakota" },
-  {
-    key: "Northern Mariana Islands",
-    value: "Northern Mariana Islands",
-    text: "Northern Mariana Islands",
-  },
-  { key: "Ohio", value: "Ohio", text: "Ohio" },
-  { key: "Oklahoma", value: "Oklahoma", text: "Oklahoma" },
-  { key: "Oregon", value: "Oregon", text: "Oregon" },
-  { key: "Palau", value: "Palau", text: "Palau" },
-  { key: "Pennsylvania", value: "Pennsylvania", text: "Pennsylvania" },
-  { key: "Puerto Rico", value: "Puerto Rico", text: "Puerto Rico" },
-  { key: "Rhode Island", value: "Rhode Island", text: "Rhode Island" },
-  { key: "South Carolina", value: "South Carolina", text: "South Carolina" },
-  { key: "South Dakota", value: "South Dakota", text: "South Dakota" },
-  { key: "Tennessee", value: "Tennessee", text: "Tennessee" },
-  { key: "Texas", value: "Texas", text: "Texas" },
-  { key: "Utah", value: "Utah", text: "Utah" },
-  { key: "Vermont", value: "Vermont", text: "Vermont" },
-  { key: "Virgin Island", value: "Virgin Island", text: "Virgin Island" },
-  { key: "Virginia", value: "Virginia", text: "Virginia" },
-  { key: "Washington", value: "Washington", text: "Washington" },
-  { key: "West Virginia", value: "West Virginia", text: "West Virginia" },
-  { key: "Wisconsin", value: "Wisconsin", text: "Wisconsin" },
-  { key: "Wyoming", value: "Wyoming", text: "Wyoming" },
-];
