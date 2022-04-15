@@ -126,7 +126,7 @@ Joshua Ruvalcaba: CIW
 4/15/22
 Jason Enciso: CIW
 
-Reid Gill: change all names of clientProfile to clientCreator so that clientProfile can be use in another way, starting work on index/clientList
+Reid Gill: Worked on index page client list
 
 Daniel Nijdl: Fixed signup again, finished getAllUsers, started experimenting with getting 
 stylists and pasting in list.
