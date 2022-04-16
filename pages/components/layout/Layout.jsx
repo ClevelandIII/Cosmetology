@@ -3,7 +3,7 @@ import { Grid, Ref, Visibility } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav"
-// import ClientList from "../../clientList"
+
 
 const Layout = ({ children, stylist }) => {
   // Router.onRouteChangeStart = () => nprogress.start();
@@ -58,8 +58,7 @@ const Layout = ({ children, stylist }) => {
             ></iframe> */}
         </>
       )}
-{/* 
-<ClientList /> */}
+
     </>
   );
 };
