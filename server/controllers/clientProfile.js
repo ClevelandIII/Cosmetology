@@ -6,6 +6,7 @@ const isEmail = require("validator/lib/isEmail");
 
 const createClient = async (req, res) => {
   const {
+    stylistName,
     firstName,
     lastName,
     email,
@@ -38,6 +39,7 @@ const createClient = async (req, res) => {
     if (client) return res.status(401).send("Email Already in Use");
 
     client = new ClientModel({
+      stylistName,
       firstName,
       lastName,
       email: email.toLowerCase(),
@@ -79,7 +81,5 @@ const createClient = async (req, res) => {
     return res.status(500).send("Server Error");
   }
 };
-
-
 
 module.exports = { createClient };

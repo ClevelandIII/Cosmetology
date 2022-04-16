@@ -58,7 +58,6 @@ const createUser = async (req, res) => {
 
 const postLoginUser = async (req, res) => {
   const { email, password } = req.body
-  console.log(email, password);
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.legnth < 6)

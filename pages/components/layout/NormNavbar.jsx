@@ -15,7 +15,20 @@ import { logoutUser } from "../../util/auth";
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
 
-const VerticalSidebar = ({ animation, visible}) => (
+//Dispatch from semantic. Controls the animations of the sidebar
+function exampleReducer(state, action) {
+  switch (action.type) {
+    case "UNSHIFT":
+      return { ...state, visible: false };
+    case "CHANGE_ANIMATION":
+      return { ...state, animation: action.animation, visible: !state.visible };
+    case "CHANGE_DIRECTION":
+      return { ...state, direction: action.direction, visible: false };
+    default:
+      throw new Error();
+  }
+}
+const VerticalSidebar = ({ animation, visible, email }) => (
   <Sidebar
     as={Menu}
     animation={animation}
@@ -80,47 +93,29 @@ const VerticalSidebar = ({ animation, visible}) => (
       </Menu.Item>
     </Link>
 
-    <Link href="/login" onClick={() => logoutUser(email)}>
-      <Menu.Item
-        style={{
-          color: "red",
-        }}
-      >
-        <Icon name="sign-out" color="red" />
-        Sign Out
-      </Menu.Item>
-    </Link>
+    <Menu.Item
+      style={{
+        color: "red",
+      }}
+      onClick={() => logoutUser(email)}
+    >
+      <Icon name="sign-out" color="red" />
+      Sign Out
+    </Menu.Item>
   </Sidebar>
 );
 
-//Dispatch from semantic. Controls the animations of the sidebar
-function exampleReducer(state, action) {
-  switch (action.type) {
-    case "UNSHIFT":
-      return { ...state, visible: false };
-    case "CHANGE_ANIMATION":
-      return { ...state, animation: action.animation, visible: !state.visible };
-    case "CHANGE_DIRECTION":
-      return { ...state, direction: action.direction, visible: false };
-    default:
-      throw new Error();
-  }
-}
-
 //This is the navbar. Of course, search and sign out dont currently work, but the sidebar button does.
-function NormNavbar({ stylist }) {
-  // useEffect(() => {
-  //   document.title = `Welcome, ${stylist.firstName}`;
-  // }, []);
-
+function NormNavbar({ stylist: { firstName, email } }) {
+  let hamDog = false;
   const [state, dispatch] = React.useReducer(exampleReducer, {
     animation: "overlay",
     direction: "left",
     visible: false,
+    email: email,
   });
 
   const { animation, direction, visible } = state;
-  const [hamDog, setHamDog] = useState(false);
   const segmentRef = React.useRef();
 
   return (
@@ -131,7 +126,6 @@ function NormNavbar({ stylist }) {
         visible={visible}
         target={segmentRef}
       />
-
       <Sidebar.Pusher
         style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
         innerref={segmentRef}
@@ -143,7 +137,7 @@ function NormNavbar({ stylist }) {
                 name="bars"
                 rotated="clockwise"
                 onClick={() => {
-                  setHamDog(!hamDog);
+                  hamDog = !hamDog;
                   dispatch({
                     type: "CHANGE_ANIMATION",
                     animation: "push",
@@ -155,7 +149,7 @@ function NormNavbar({ stylist }) {
               <Icon
                 name="bars"
                 onClick={() => {
-                  setHamDog(!hamDog);
+                  hamDog = !hamDog;
                   dispatch({
                     type: "CHANGE_ANIMATION",
                     animation: "push",
@@ -171,7 +165,7 @@ function NormNavbar({ stylist }) {
                 size="small"
                 src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
                 onClick={() => {
-                  setHamDog(false);
+                  hamDog = false;
                   dispatch({
                     type: "UNSHIFT",
                   });
@@ -182,13 +176,13 @@ function NormNavbar({ stylist }) {
           <Menu.Item name="testimonials" style={{ width: "12rem" }}>
             <h3
               onClick={() => {
-                setHamDog(false);
+                hamDog = false;
                 dispatch({
                   type: "UNSHIFT",
                 });
               }}
             >
-              {/* {`Welcome, ${name}. `} */}
+              {`Welcome, ${firstName}. `}
             </h3>
           </Menu.Item>
           <Menu.Item
@@ -200,7 +194,7 @@ function NormNavbar({ stylist }) {
               icon="search"
               placeholder="Search..."
               onClick={() => {
-                setHamDog(false);
+                hamDog = false;
                 dispatch({
                   type: "UNSHIFT",
                 });
@@ -212,12 +206,7 @@ function NormNavbar({ stylist }) {
               style={{ backgroundColor: "red", color: "white" }}
               as="a"
               href="/login"
-              onClick={() => {
-                setHamDog(false);
-                dispatch({
-                  type: "UNSHIFT",
-                });
-              }}
+              onClick={() => logoutUser(email)}
             >
               Sign Out
             </Button>

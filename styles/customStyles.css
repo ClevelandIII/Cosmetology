@@ -212,11 +212,13 @@ a.item :hover {
   overflow: scroll hidden;
 }
 
-
 .clientListRow:hover {
   /* color: #6ea1ff; */
   background-color: #6ea1ff;
 }
-.clientListColumn:hover{
+.clientListColumn:hover {
   color: #6ea1ff;
+}
+
+@media (max-width: 821px) {
 }

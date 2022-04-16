@@ -78,9 +78,9 @@
 
 4/12/2022
 
-- Cleveland:  CIW
+- Cleveland: CIW
 
-- Abdi: CIW 
+- Abdi: CIW
 
 4/13/2022
 
@@ -92,3 +92,9 @@
 - Cleveland: Added to ClientModel, ClientProfile and ClientCreator. You can now create and see the client in the mongo, but it takes a really long time to stop loading on the page.
 
 - Abdi: Client Profile
+
+4/15/2022
+
+- Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (this is so that every stylist will have a list of clients).
+
+- Abdi: Client Profile (displaying client on stylist profile).

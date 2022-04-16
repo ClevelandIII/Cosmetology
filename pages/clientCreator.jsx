@@ -13,9 +13,9 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 import Router from "next/router";
 
-
-const ClientCreator = () => {
+const ClientCreator = ({ stylist }) => {
   const [client, setClient] = useState({
+    stylistName: stylist.firstName,
     firstName: "",
     lastName: "",
     email: "",
@@ -39,6 +39,7 @@ const ClientCreator = () => {
     hairLength: "",
   });
   const {
+    stylistName,
     firstName,
     lastName,
     email,
@@ -82,8 +83,8 @@ const ClientCreator = () => {
     e.preventDefault();
     setFormLoading(true);
 
-    Router.push("/")
-
+    //Good idea but this doesnt allow you to create a client for some reason...
+    // Router.push("/");
 
     try {
       const res = await axios.post("/api/v1/client/clientCreator", {
@@ -113,6 +114,7 @@ const ClientCreator = () => {
   useEffect(() => {
     setSubmitDisabled(
       !(
+        stylistName &&
         firstName &&
         lastName &&
         email &&
@@ -141,12 +143,17 @@ const ClientCreator = () => {
   return (
     <>
       <Form
-        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem" }}
+        style={{
+          width: "90vw",
+          margin: "0 auto",
+          marginTop: "3rem",
+          textAlign: "center",
+        }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
       >
-        <h1>Fill out the form below.</h1>
+        <h1 style={{ textAlign: "center" }}>Fill out the form below.</h1>
         <Segment>
           <Message
             error
@@ -155,34 +162,38 @@ const ClientCreator = () => {
             icon="meh"
           />
           {/*FirstName, LastName, Age */}
-          <Form.Group unstackable widths={3}>
+          <Form.Group
+            unstackable
+            style={{ justifyContent: "space-between", textAlign: "left" }}
+            className="inputClient"
+          >
             <Form.Input
               required
-              label="First name"
+              label="First Name"
               placeholder="John"
               name="firstName"
               value={firstName}
               onChange={handleChange}
               icon="user"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
             <Form.Input
               required
-              label="Last name"
+              label="Last Name"
               placeholder="Doe"
               name="lastName"
               value={lastName}
               onChange={handleChange}
               icon="user"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
             <Form.Input
               required
-              label="age"
+              label="Age"
               placeholder="age"
               name="age"
               value={age}
@@ -190,25 +201,30 @@ const ClientCreator = () => {
               icon="birthday cake"
               iconPosition="left"
               type="number"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
             />
           </Form.Group>
+          <Divider hidden />
           {/*Appointment Date, ServiceRequest, Medical */}
-          <Form.Group unstackable widths={3}>
+          <Form.Group
+            unstackable
+            style={{ justifyContent: "space-between", textAlign: "left" }}
+            className="inputClient"
+          >
             <Form.Input
               required
-              label="appointment Date"
+              label="Appointment Date"
               placeholder="Today"
               name="appointmentDate"
               value={appointmentDate}
               onChange={handleChange}
               icon="time"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="date"
             />
             <Form.Input
-              label="serviceRequest"
+              label="Service Request"
               required
               placeholder="serviceRequest"
               name="serviceRequest"
@@ -216,7 +232,7 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="user"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
             <Form.Input
@@ -228,12 +244,18 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="medkit"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
           </Form.Group>
+          <Divider hidden />
           {/*Address, City, State*/}
-          <Form.Group unstackable widths={3}>
+          <Form.Group
+            unstackable
+            style={{ justifyContent: "space-between", textAlign: "left" }}
+            className="inputClient"
+
+          >
             <Form.Input
               label="Address"
               required
@@ -243,7 +265,7 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="home"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
             <Form.Input
@@ -255,7 +277,7 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="road"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
             <Form.Input
@@ -267,12 +289,18 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="tree"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
           </Form.Group>
+          <Divider hidden />
           {/*Zip Code, Phone, Email */}
-          <Form.Group unstackable widths={3}>
+          <Form.Group
+            unstackable
+            style={{ justifyContent: "space-between", textAlign: "left" }}
+            className="inputClient"
+
+          >
             <Form.Input
               required
               label="Zip Code"
@@ -283,7 +311,7 @@ const ClientCreator = () => {
               icon="home"
               iconPosition="left"
               type="number"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
             />
 
             <Form.Input
@@ -295,7 +323,7 @@ const ClientCreator = () => {
               onChange={handleChange}
               icon="phone"
               iconPosition="left"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
               type="text"
             />
 
@@ -309,118 +337,164 @@ const ClientCreator = () => {
               icon="envelope"
               iconPosition="left"
               type="email"
-              style={{ width: "435px", height: "126px" }}
+              style={{ width: "435px", height: "42px" }}
             />
           </Form.Group>
-
+          <Divider hidden />
           {/*Hair Menu */}
-          <Button onClick={() => setHidden(!hidden)} type="button">
+          <Divider hidden />
+          <Button
+            onClick={() => setHidden(!hidden)}
+            type="button"
+            color="orange"
+            style={{ textAlign: "center" }}
+          >
             Show Hair Menu
           </Button>
+          <Divider hidden />
           <Form.Group>
             {hidden ? (
-              <div className="grouping">
+              <div
+                className="grouping"
+                style={{ padding: "2rem", marginLeft: "2.5%" }}
+              >
                 {/*Hair condition, Hair classification, scalp classification */}
-                <Form.Group>
+                <Form.Group
+                  unstackable
+                  style={{
+                    textAlign: "left",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Form.Input
-                    required
                     label="Hair Condition"
                     placeholder="Hair Condition"
                     name="hairCondition"
                     value={hairCondition}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
 
                   <Form.Input
-                    required
                     label="Hair Classification"
                     placeholder="Hair Classification"
                     name="hairClassification"
                     value={hairClassification}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
 
                   <Form.Input
-                    required
                     label="Scalp Condition"
                     placeholder="Scalp Condition"
                     name="scalpCondition"
                     value={scalpCondition}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                 </Form.Group>
-
+                <Divider hidden />
                 {/*Hair texture, growth patterns, hair density */}
-                <Form.Group>
+                <Form.Group
+                  unstackable
+                  style={{
+                    textAlign: "left",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Form.Input
-                    required
                     label="Hair Texture"
                     placeholder="Hair Texture"
                     name="hairTexture"
                     value={hairTexture}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                   <Form.Input
-                    required
                     label="Growth Patterns"
                     placeholder="Growth Patterns"
                     name="growthPatterns"
                     value={growthPatterns}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                   <Form.Input
-                    required
                     label="Hair Density"
                     placeholder="Hair Density"
                     name="hairDensity"
                     value={hairDensity}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                 </Form.Group>
-
+                <Divider hidden />
                 {/*Hair Porosity, Hair Elasticity, Hair Length */}
-                <Form.Group>
+                <Form.Group
+                  unstackable
+                  style={{
+                    textAlign: "left",
+                    justifyContent: "space-between",
+                  }}
+                >
                   <Form.Input
-                    required
                     label="Hair Porosity"
                     placeholder="Hair Porosity"
                     name="hairPorosity"
                     value={hairPorosity}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
 
                   <Form.Input
-                    required
                     label="Hair Elasticity"
                     placeholder="Hair Elasticity"
                     name="hairElasticity"
                     value={hairElasticity}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                   <Form.Input
-                    required
                     label="Hair Length"
                     placeholder="Hair Length"
                     name="hairLength"
                     value={hairLength}
                     onChange={handleChange}
-                    style={{ width: "435px", height: "126px" }}
+                    style={{
+                      width: "400px",
+                      height: "38px",
+                    }}
                     type="text"
                   />
                 </Form.Group>
@@ -429,10 +503,16 @@ const ClientCreator = () => {
               <></>
             )}
           </Form.Group>
-          <Button color="orange" content="Signup" icon="signup" type="submit" />
+          <div style={{ textAlign: "left" }}>
+            <Button
+              color="orange"
+              content="Signup"
+              icon="signup"
+              type="submit"
+            />
+          </div>
         </Segment>
       </Form>
-      <Divider hidden />
     </>
   );
 };

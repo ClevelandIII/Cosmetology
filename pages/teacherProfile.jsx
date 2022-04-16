@@ -3,7 +3,8 @@ import { Grid, Card, Icon, Image, Divider, Dropdown } from "semantic-ui-react";
 
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
 // class they teach/session
-const TeacherProfile = () => {
+
+const TeacherProfile = ({ stylist }) => {
   // const [stylists, setStylist] = useState(false);
   const Options = [
     {
@@ -73,9 +74,14 @@ const TeacherProfile = () => {
         </Grid.Column>
       </Grid>
 
-      <Grid columns={4} divided style={{backgroundColor: "orange", width: "80vw", margin: "0 auto"}}>
-    <Grid.Row>
-      <Grid.Column floated width={4}>
+      <Grid
+        columns={4}
+        divided
+        style={{ backgroundColor: "orange", width: "80vw", margin: "0 auto" }}
+      >
+        <Grid.Row>
+          <p>{stylist.firstName}</p>
+          {/* <Grid.Column floated width={4}>
        <Image src='https://freesvg.org/img/abstract-user-flat-4.png' style={{width: "30%"}}/>
        test
       </Grid.Column>
@@ -87,24 +93,24 @@ const TeacherProfile = () => {
       </Grid.Column>
       <Grid.Column>
         <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      </Grid.Column>
-    </Grid.Row>
+      </Grid.Column> */}
+        </Grid.Row>
 
-    <Grid.Row>
-      <Grid.Column>
-        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      </Grid.Column>
-      <Grid.Column>
-        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      </Grid.Column>
-      <Grid.Column>
-        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      </Grid.Column>
-      <Grid.Column>
-        <Image src='https://react.semantic-ui.com/images/wireframe/media-paragraph.png' />
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
+        <Grid.Row>
+          <Grid.Column>
+            <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+          </Grid.Column>
+          <Grid.Column>
+            <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };
