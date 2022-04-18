@@ -59,14 +59,14 @@ const index = ({ stylist }) => {
         <Divider hidden />
         <Link href="/clientCreator">
           <Grid.Row className="mini2">
-            <Button>New Visitor</Button>
+            <Button style={{backgroundColor:"orange"}}>New Visitor</Button>
           </Grid.Row>
         </Link>
       </Grid>
-      <Divider hidden />
-      <Grid stackable style={{ padding: "3rem" }}>
+      {/* <Divider hidden /> */}
+      <Grid className='tableindex' stackable style={{ padding: "3rem" }}>
         <Grid.Row className="mini3">
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textAlign: "center"}}>
             <h1>Previous Clients</h1>
             <Dropdown
               placeholder="Sort By..."
@@ -76,121 +76,144 @@ const index = ({ stylist }) => {
             />
           </div>
         </Grid.Row>
-        <Grid.Row columns={3}
+        <Grid.Row
+          columns={3}
           style={{
-            border: "1px solid white",
-            height: "35rem",
+            border: "2px solid white",
+            // height: "35rem",
             background: "orange",
             color: "black",
             textAlign: "center",
-            overflow: "scroll",
+            // overflow: "scroll",
             justifyContent: "space-evenly",
           }}
         >
           <>
-           <Grid.Column>
-            <Segment>Client</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Last Visited</Segment>
-          </Grid.Column>
-          <Grid.Column>
-            <Segment>Date Created</Segment>
-          </Grid.Column>
+            <Grid.Column>
+              <Segment>Client</Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>Last Visited</Segment>
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>Date Created</Segment>
+            </Grid.Column>
           </>
-         
-         <>
-         
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-        
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row className="containeindex"
+          columns={3}
+        >
+          <>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Hugemclarge biggieweight</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
 
-          <Grid.Column className="column clientListColumn">
-            <Segment className="yearSemesterCenter">Well Fargo</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-          <Grid.Column className="column">
-            <Segment className="yearSemesterCenter">1/2/34</Segment>
-          </Grid.Column>
-         </>
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+
+            <Grid.Column className="Indexcolumn clientListColumn">
+              <Segment className="indexCenter">Well Fargo</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+            <Grid.Column className="Indexcolumn">
+              <Segment className="indexCenter">1/2/34</Segment>
+            </Grid.Column>
+          </>
         </Grid.Row>
       </Grid>
     </div>

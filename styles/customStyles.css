@@ -87,9 +87,11 @@
 .studentRow:hover {
   background: #6ea1ff;
 }
+
 .studentColumn:hover {
   color: #6ea1ff;
 }
+
 .studentColumn {
   left: 12%;
 }
@@ -108,12 +110,14 @@ a.item :hover {
   /* margin: 0 auto !important; */
   margin-top: 12rem !important;
 }
+
 .yearSemesterCenter {
   text-align: center;
   max-width: min-content;
   white-space: nowrap;
   width: 100%;
 }
+
 /*width sizing */
 
 /* @media screen and (min-width: 900px) { */
@@ -125,6 +129,7 @@ a.item :hover {
   border: rgb(0, 0, 0) solid 2px;
   border-radius: 50px;
 }
+
 .studentListName {
   position: relative !important;
   left: 8%;
@@ -141,6 +146,7 @@ a.item :hover {
     border: black solid 2px;
     border-radius: 50px;
   }
+
   .studentListName {
     position: relative !important;
     left: 40%;
@@ -161,6 +167,7 @@ a.item :hover {
     max-width: 35% !important;
     max-height: 35% !important;
   }
+
   .studentListName {
     position: relative !important;
     left: 25% !important;
@@ -171,9 +178,11 @@ a.item :hover {
 .mini {
   margin-left: 30%;
 }
+
 .mini2 {
   margin-left: 44.5%;
 }
+
 .mini3 {
   padding-left: 42% !important;
 }
@@ -182,24 +191,30 @@ a.item :hover {
   .mini {
     margin-left: 15%;
   }
+
   .mini2 {
     margin-left: 43%;
   }
+
   .mini3 {
     padding-left: 38% !important;
   }
+
   div.eight.wide.column.roz {
     margin-right: 50%;
     width: 100% !important;
     text-align: center;
   }
+
   div.seven.wide.column.roz2 {
     width: 100% !important;
     text-align: center;
   }
+
   div.row.roz3 {
     margin-left: 50% !important;
   }
+
   div.row.roz4 {
     padding-left: 38% !important;
   }
@@ -219,10 +234,54 @@ a.item :hover {
 .clientListRow:hover {
   /* color: #6ea1ff; */
   background-color: #6ea1ff;
+  justify-content: space-between;
 }
+
 .clientListColumn:hover {
   color: #6ea1ff;
 }
 
-@media (max-width: 821px) {
+
+
+@media (max-width: 821px) {}
+
+
+.Indexcolumn {
+  position: relative;
+  width: 2rem;
+  justify-content: center;
+}
+
+.containeindex {
+  border-bottom: 10px solid orange;
+  border-top: 10px solid orange;
+  height: 35rem;
+  background: orange;
+  color: black;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+}
+
+.indexCenter{
+  justify-content: center;
+}
+
+.tableindex{
+  position: relative;
+}
+
+@media screen and (min-height: 800px) {
+  .tableindex{
+    top: 50%;
+  }
+  .containeindex {
+    border-bottom: 10px solid orange;
+    height: 35rem;
+    background: orange;
+    color: black;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  
+  }
 }

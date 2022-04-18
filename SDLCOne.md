@@ -133,3 +133,11 @@ stylists and pasting in list.
 
 Joshua Ruvalcaba: CIW
 
+4/15/22
+Jason Enciso: working on tablet/ipad version of clientCreator
+
+Reid Gill: finished index/clientList and added it to the studentProfile
+
+Daniel Nijdl: making studentList show that stylists there teachers
+
+Joshua Ruvalcaba: helping Daniel 
