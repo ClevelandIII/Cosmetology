@@ -42,6 +42,10 @@ const StylistSchema = new Schema(
       type: String,
       required: true,
     },
+    studentYear: {
+      type: String,
+      required: true,
+    },
     accountType: {
       type: String,
     },

@@ -6,11 +6,27 @@ import {
   Loader,
   Segment,
 } from "semantic-ui-react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-import React from "react";
 
+const studentList = () => {
 
-const studentList = (stylists) => {
+  const [stylists, setStylists] = useState([]);
+
+  const getStylists = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      setStylists(results.data);
+      console.log(results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getStylists();
+    // console.log(stylists);
+  }, []);
 
   return (
     
@@ -33,18 +49,20 @@ const studentList = (stylists) => {
           </Grid.Column>
         </Grid.Row>
 
-
+        {stylists.map((stylist) => {
+            return (
+              <>
         <Grid.Row className=" studentRow">
           <Grid.Column className="studentColumn">
             <Segment style={{width: "110%"}}>
               <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />{""}
-              <p className="studentListName" style={{width: "80%"}}></p>
+              <p className="studentListName" style={{width: "80%"}}>{stylist.firstName} {stylist.lastName}</p>
             </Segment>
           </Grid.Column>
           <Grid.Column className="studentColumn">
             <Segment style={{width: "110%"}}>
               <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />{" "}
-              <p className="studentListName"style={{width: "80%"}}>Abdi Romero</p>
+              <p className="studentListName"style={{width: "80%"}}>{stylist.teacher}</p>
             </Segment>
           </Grid.Column>
           <Grid.Column className="studentColumn">
@@ -54,7 +72,7 @@ const studentList = (stylists) => {
             <Segment className="yearSemesterCenter">3rd Semester</Segment>
           </Grid.Column>
         </Grid.Row>
-        <Grid.Row className=" studentRow">
+        {/* <Grid.Row className=" studentRow">
           <Grid.Column className="studentColumn">
             <Segment style={{width: "110%"}}>
               <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />{""}
@@ -283,8 +301,10 @@ const studentList = (stylists) => {
           <Grid.Column>
             <Segment className="yearSemesterCenter">1st Semester</Segment>
           </Grid.Column>
-        </Grid.Row>
-        
+        </Grid.Row> */}
+        </>
+            )
+          })}
         
       </Grid >
       

@@ -16,6 +16,7 @@ const Signup = () => {
     teacherCode: "",
     session: "",
     teacher: "",
+    studentYear: "",
     accountType: "",
   });
 
@@ -28,6 +29,7 @@ const Signup = () => {
     session,
     teacherCode,
     teacher,
+    studentYear,
     accountType,
   } = stylist;
 
@@ -53,10 +55,10 @@ const Signup = () => {
     //Initial declaration of profilePicURL
     let profilePicURL;
 
-    if(teacherCode === "Zn&=@5Bc6F"){
-      accountType = "teacher"
-    } else{
-      accountType = "student"
+    if (teacherCode === "Zn&=@5Bc6F") {
+      accountType = "teacher";
+    } else {
+      accountType = "student";
     }
 
     if (media !== null) {
@@ -85,6 +87,7 @@ const Signup = () => {
         session,
         teacherCode,
         teacher,
+        studentYear,
         accountType,
         profilePicURL,
       });
@@ -121,6 +124,7 @@ const Signup = () => {
         className &&
         session &&
         teacher &&
+        studentYear &&
         accountType
       )
     );
@@ -243,6 +247,18 @@ const Signup = () => {
             icon="address book"
             iconPosition="left"
           ></Form.Input>
+
+          <Form.Input
+            required
+            label="Year"
+            placeholder="Year 1"
+            name="studentYear"
+            value={studentYear}
+            onChange={handleChange}
+            icon="calendar alternate outline"
+            iconPosition="left"
+          ></Form.Input>
+          
           <Button color="orange" content="Signup" icon="signup" type="submit" />
         </Segment>
       </Form>
