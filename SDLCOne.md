@@ -124,11 +124,12 @@ Daniel Nijdl: Fixed login again, added session to signup page, stylist/student p
 Joshua Ruvalcaba: CIW
 
 4/15/22
-Jason Enciso: CIW
+Jason Enciso: absent
 
-Reid Gill:  change all names of clientProfile to clientCreator so that clientProfile can be use in another way, starting work on index/clientList
+Reid Gill: working on index/clientList
 
 Daniel Nijdl: Fixed signup again, finished getAllUsers, started experimenting with getting 
 stylists and pasting in list.
 
 Joshua Ruvalcaba: CIW
+
