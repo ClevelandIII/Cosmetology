@@ -62,7 +62,7 @@ const Login = () => {
     document.title = "Welcome Back";
     const email = Cookies.get("stylistEmail");
 
-    if (email) setStylist((prev) => ({ ...prev, email: stylistEmail }));
+    if (email) setStylist((prev) => ({ ...prev, email }));
   }, []);
 
 
