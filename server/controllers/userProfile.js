@@ -12,7 +12,17 @@ const isEmail = require("validator/lib/isEmail");
 
 //! add teacher code to change student to teacher
 const createUser = async (req, res) => {
-  const { firstName, lastName, email, password, hours, teacher, className, session, teacherCode } = req.body
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    hours,
+    teacher,
+    className,
+    session,
+    teacherCode,
+  } = req.body;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.length < 6)
@@ -57,7 +67,7 @@ const createUser = async (req, res) => {
 };
 
 const postLoginUser = async (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.legnth < 6)
@@ -90,14 +100,14 @@ const postLoginUser = async (req, res) => {
 };
 
 const getAllUsers = async (req, res) => {
-  try{
+  try {
     let stylists;
-    stylists = await StylistModel.find()
-    return res.status(200).json(stylists)
+    stylists = await StylistModel.find();
+    return res.status(200).json(stylists);
   } catch (error) {
     console.log(error);
-    return res.status(500).send("Server Error @ getAllStylists")
+    return res.status(500).send("Server Error @ getAllStylists");
   }
-}
+};
 
 module.exports = { createUser, postLoginUser, getAllUsers };

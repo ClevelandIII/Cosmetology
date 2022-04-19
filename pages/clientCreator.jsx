@@ -15,7 +15,7 @@ import Router from "next/router";
 
 const ClientCreator = ({ stylist }) => {
   const [client, setClient] = useState({
-    stylistName: stylist.firstName,
+    stylistName: stylist.email,
     firstName: "",
     lastName: "",
     email: "",
@@ -254,7 +254,6 @@ const ClientCreator = ({ stylist }) => {
             unstackable
             style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
-
           >
             <Form.Input
               label="Address"
@@ -299,7 +298,6 @@ const ClientCreator = ({ stylist }) => {
             unstackable
             style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
-
           >
             <Form.Input
               required

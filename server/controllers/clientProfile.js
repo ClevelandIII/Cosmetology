@@ -1,9 +1,12 @@
 const defaultProfilePicURL = require("../util/defaultPic");
 const ClientModel = require("../model/ClientModel");
+const StylistModel = require("../model/StylistModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
+const axios = require("axios");
 
+let stylists = [];
 const createClient = async (req, res) => {
   const {
     stylistName,
@@ -65,21 +68,83 @@ const createClient = async (req, res) => {
 
     client = await client.save();
 
-    // const payload = { stylistId: stylist._id };
-    // jwt.sign(
-    //   payload,
-    //   process.env.JWT_SECRET,
-    //   { expiresIn: "1d" },
-    //   (err, token) => {
-    //     if (err) throw err;
-    //     console.log(err);
-    //     res.status(200).json(token);
-    //   }
-    // );
+    const getStylists = async () => {
+      try {
+        const results = await axios.get(
+          `http://localhost:3001/api/v1/stylists`
+        );
+        stylists = results.data;
+        // console.log(results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getStylists();
+
+    stylists.map((stylist) => {
+      try {
+        console.log(client.stylistName);
+        if (client.stylistName === stylist.email) {
+          console.log(stylist.pastClients);
+          console.log("break");
+          console.log(client.stylistName);
+          console.log("break");
+          console.log(stylist.firstName);
+          stylist.pastClients.push(client.stylistName);
+        }
+      } catch (error) {
+        return res.status(500).send("Server Error");
+      }
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error");
   }
 };
 
-module.exports = { createClient };
+//WIP. IF anyone wants to help, this essentially is an attemp to take the stylist name from the client and use it to update past clients.
+// what you need to do is make this run after create client
+//then, if stylistName === stylist.firstname, add the client.firstName to the stylist.pastClients array.
+
+const addClient = async (req, res) => {
+  const [stylists, setStylists] = useState([]);
+  const [clients, setClients] = useState([]);
+  const getStylists = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      setStylists(results.data);
+      console.log(results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getStylists();
+  }, []);
+
+  const getClients = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/clients`);
+      setClients(results.data);
+      console.log(results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getClients();
+  }, []);
+
+  stylists.map(stylist) &&
+    clients.map((client) => {
+      try {
+        if (client.stylistName === stylist.email) {
+          stylist.pastClients += client.firstName;
+        }
+      } catch (error) {
+        return res.status(500).send("Server Error");
+      }
+    });
+};
+
+module.exports = { createClient, addClient };

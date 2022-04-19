@@ -27,7 +27,6 @@ const StylistSchema = new Schema(
       default: 0,
     },
 
-    //Temperarily commented to make accounts, if not removed we likely forgor
     teacherCode: {
       type: String,
       required: true,

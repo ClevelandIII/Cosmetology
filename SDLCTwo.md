@@ -98,3 +98,9 @@
 - Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (this is so that every stylist will have a list of clients).
 
 - Abdi: Client Profile (displaying client on stylist profile).
+
+4/18/2022
+
+- Cleveland: With Daniel's code, made teacher profile display all students. Working on client profile so that when a client is made it updates the stylist profile and adds the client's name to the array.
+
+- Abdi: Absent

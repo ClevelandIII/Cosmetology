@@ -104,7 +104,7 @@ const StudentProfile = ({stylist}) => {
                 textAlign: "center",
                 paddingTop: "1.6rem",
               }}
-            >
+            > 
               {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
               {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
               <Rating icon="star" defaultRating={0} maxRating={5} />
