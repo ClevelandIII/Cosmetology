@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import {useState, useEffect} from "react"
 import {
   Grid,
   Card,
@@ -11,7 +13,7 @@ import {
 } from "semantic-ui-react";
 
 const StudentProfile = ({stylist}) => {
-  const [user, setUser] = useState(false);
+
   const Options = [
     {
       key: "Number of Visits",

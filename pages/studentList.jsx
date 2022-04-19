@@ -12,7 +12,12 @@ import React, { useEffect, useState } from "react";
 
 const studentList = () => {
 
+
+
+
   const [stylists, setStylists] = useState([]);
+  const [semester, setSemester] = useState([])
+  // const [classYear, setClassYear] = useState([])
 
   const getStylists = async () => {
     try {
@@ -23,13 +28,43 @@ const studentList = () => {
       console.log(error);
     }
   };
+
+  // const getClassYear = async () => {
+  //   try{
+  //     if(stylist.className === "Cosmetology I"){
+  //       setClassYear("Year 1")
+  //     } else if(stylist.className === "Cosmetology II"){
+  //       setClassYear("Year 2")
+  //     }
+  //     console.log(stylist.className);
+  //   } catch (error){
+  //     console.log(error);
+  //   }
+  // }
+
+  const getSemester = async () => {
+    try{
+      let currentDate = new Date();
+
+      let currentMonth = (currentDate.getMonth() + 1)
+      // console.log(currentMonth);
+  
+      if(currentMonth >= 8 && currentMonth <= 12){
+        setSemester("Semester 1")
+      }else if(currentMonth >= 1 && currentMonth <= 5 ){
+        setSemester("Semester 2")
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   useEffect(() => {
     getStylists();
-    // console.log(stylists);
+    getSemester()
+    // getClassYear()
   }, []);
 
   return (
-    
     <>
       
       <Grid className="StudentGrid" columns="equal" centered divided='vertically'  relaxed='very'>
@@ -66,10 +101,10 @@ const studentList = () => {
             </Segment>
           </Grid.Column>
           <Grid.Column className="studentColumn">
-            <Segment className="yearSemesterCenter" >2nd year</Segment>
+            <Segment className="yearSemesterCenter" >{stylist.studentYear}</Segment>
           </Grid.Column>
           <Grid.Column >
-            <Segment className="yearSemesterCenter">3rd Semester</Segment>
+            <Segment className="yearSemesterCenter">{semester}</Segment>
           </Grid.Column>
         </Grid.Row>
         {/* <Grid.Row className=" studentRow">

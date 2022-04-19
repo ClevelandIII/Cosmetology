@@ -21,6 +21,7 @@ const createUser = async (req, res) => {
     teacher,
     className,
     session,
+    studentYear,
     teacherCode,
   } = req.body;
 
@@ -42,6 +43,7 @@ const createUser = async (req, res) => {
       teacher,
       teacherCode,
       session,
+      studentYear,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
     });
