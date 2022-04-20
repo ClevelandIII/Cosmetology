@@ -14,12 +14,12 @@ import {
 } from "semantic-ui-react";
 import Link from "next/link";
 
-const index = ({ stylist }) => {
+const index = ({ stylist, client }) => {
   useEffect(() => {
     document.title = `Welcome, ${stylist.firstName}`;
   }, []);
+  const [clients, setClients] = useState([]);
 
-  // document.title = "Welcome Stylist";
   const Options = [
     {
       key: "Number of Visits",
@@ -43,6 +43,20 @@ const index = ({ stylist }) => {
     },
   ];
 
+  const getClients = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/client`);
+      setClients(results.data);
+      console.log(clients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getClients();
+    // console.log(stylists);
+  }, []);
+  console.log(clients);
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
     <div
@@ -59,14 +73,14 @@ const index = ({ stylist }) => {
         <Divider hidden />
         <Link href="/clientCreator">
           <Grid.Row className="mini2">
-            <Button style={{backgroundColor:"orange"}}>New Visitor</Button>
+            <Button style={{ backgroundColor: "orange" }}>New Visitor</Button>
           </Grid.Row>
         </Link>
       </Grid>
       {/* <Divider hidden /> */}
-      <Grid className='tableindex' stackable style={{ padding: "3rem" }}>
+      <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
         <Grid.Row className="mini3">
-          <div style={{ textAlign: "center"}}>
+          <div style={{ textAlign: "center" }}>
             <h1>Previous Clients</h1>
             <Dropdown
               placeholder="Sort By..."
@@ -100,119 +114,46 @@ const index = ({ stylist }) => {
             </Grid.Column>
           </>
         </Grid.Row>
-        <Grid.Row className="containeindex"
-          columns={3}
-        >
+        <Grid.Row className="containeindex" columns={3}>
           <>
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Hugemclarge biggieweight</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-
-            <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Well Fargo</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
-            <Grid.Column className="Indexcolumn">
-              <Segment className="indexCenter">1/2/34</Segment>
-            </Grid.Column>
+            {clients.map((client) => {
+              return (
+                <>
+                  <Grid.Column
+                    className="Indexcolumn clientListColumn"
+                    key={client._id}
+                    setClients={clients}
+                    style={{ textAlign: "center" }}
+                  >
+                    <Segment className="indexCenter">
+                      <p>
+                        {client.firstName} {client.lastName}
+                      </p>
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column
+                    className="Indexcolumn"
+                    key={client._id}
+                    setClients={clients}
+                    style={{ textAlign: "center" }}
+                  >
+                    <Segment className="indexCenter">
+                      <p>{client.dateCreated}</p>
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column
+                    className="Indexcolumn"
+                    key={client._id}
+                    setClients={clients}
+                    style={{ textAlign: "center" }}
+                  >
+                    <Segment className="indexCenter">
+                      <p>{client.dateCreated}</p>
+                    </Segment>
+                  </Grid.Column>
+                </>
+              );
+            })}
           </>
         </Grid.Row>
       </Grid>
