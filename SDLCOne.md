@@ -133,7 +133,7 @@ stylists and pasting in list.
 
 Joshua Ruvalcaba: CIW
 
-4/15/22
+4/18/22
 Jason Enciso: working on tablet/ipad version of clientCreator
 
 Reid Gill: finished index and added it to the studentProfile
@@ -141,3 +141,12 @@ Reid Gill: finished index and added it to the studentProfile
 Daniel Nijdl: making studentList show that stylists there teachers
 
 Joshua Ruvalcaba: helping Daniel 
+
+4/19/22
+Jason Enciso: helping 
+
+Reid Gill: trying implementing a dropbox in the the signup
+
+Daniel Nijdl: displays current semester started personalProfiles
+
+Joshua Ruvalcaba: working on tablet/ipad version of clientCreator

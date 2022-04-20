@@ -6,6 +6,11 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
+const Years = [
+  { key: '1', text: 'Year 1', value: 'Year 1' },
+  { key: '2', text: 'Year 2', value: 'Year 2' },
+]
+
 const Signup = () => {
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -257,8 +262,27 @@ const Signup = () => {
             onChange={handleChange}
             icon="calendar alternate outline"
             iconPosition="left"
-          ></Form.Input>
+            options={Years}
+           />
           
+
+          {/* <Form.Select
+            fluid
+            label=''
+            options={Years}
+            placeholder='Year'
+            required
+            // label="Year"
+            // placeholder="Year 1"
+            name="studentYear"
+            value={studentYear}
+            onChange={handleChange}
+            icon="calendar alternate outline"
+            iconPosition="left"
+            List='Year'
+          /> */}
+          
+
           <Button color="orange" content="Signup" icon="signup" type="submit" />
         </Segment>
       </Form>
