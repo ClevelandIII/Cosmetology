@@ -74,23 +74,34 @@ const createClient = async (req, res) => {
           `http://localhost:3001/api/v1/stylists`
         );
         stylists = results.data;
-        console.log(stylists);
 
-        stylists.map((stylist) => {
-          try {
-            console.log(client.stylistName);
-            // if (client.stylistName === stylist.email) {
-            //   console.log(stylist.pastClients);
-            //   console.log("break");
-            //   console.log(client.stylistName);
-            //   console.log("break");
-            //   console.log(stylist.firstName);
-            //   stylist.pastClients.push(client.stylistName);
-            // }
-          } catch (error) {
-            return res.status(500).send("Server Error");
-          }
-        });
+        let Testr = stylists.find(
+          (stylist) => client.stylistName === stylist.email
+        );
+        // console.log(`Tester`, Testr);
+
+        const stylist = await StylistModel.findById(Testr._id);
+        stylist.pastClients.push(
+          `${client.firstName} + ${client.lastName} + ${client.dateCreated}`
+        );
+        console.log(`stylist`, stylist);
+        await stylist.save();
+        console.log(`stylist2`, stylist);
+        return res.status(200).send("All Good");
+
+        // stylists.map((stylist) => {
+        //   try {
+        //     if (client.stylistName === stylist.email) {
+        //       stylist.pastClients.push(
+        //         `${client.firstName} + ${client.lastName} + ${client.dateCreated}`,
+        //       );
+        //       console.log(stylist.pastClients);
+        //       console.log(stylist);
+        //     }
+        //   } catch (error) {
+        //     return res.status(500).send("Server Error");
+        //   }
+        // });
       } catch (error) {
         console.log(error);
       }
@@ -112,50 +123,44 @@ const getAllClients = async (req, res) => {
     return res.status(500).send("Server Error @ getAllClients");
   }
 };
+// const getStylists = async () => {
+//   try {
+//     const results = await axios.get(
+//       `http://localhost:3001/api/v1/stylists`
+//     );
+//     stylists = results.data;
 
-//WIP. IF anyone wants to help, this essentially is an attemp to take the stylist name from the client and use it to update past clients.
-// what you need to do is make this run after create client
-//then, if stylistName === stylist.firstname, add the client.firstName to the stylist.pastClients array.
+//     let Testr = stylists.find(
+//       (stylist) => client.stylistName === stylist.email
+//     );
+//     // console.log(`Tester`, Testr);
 
-// const addClient = async (req, res) => {
-//   const [stylists, setStylists] = useState([]);
-//   const [clients, setClients] = useState([]);
-//   const getStylists = async () => {
-//     try {
-//       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-//       setStylists(results.data);
-//       console.log(results);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   useEffect(() => {
-//     getStylists();
-//   }, []);
+//     const stylist = await StylistModel.findById(Testr._id);
+//     stylist.pastClients.push(
+//       `${client.firstName} + ${client.lastName} + ${client.dateCreated}`
+//     );
+//     console.log(`stylist`, stylist);
+//     await stylist.save();
+//     console.log(`stylist2`, stylist);
+//     return res.status(200).send("All Good");
 
-//   const getClients = async () => {
-//     try {
-//       const results = await axios.get(`http://localhost:3001/api/v1/clients`);
-//       setClients(results.data);
-//       console.log(results);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   useEffect(() => {
-//     getClients();
-//   }, []);
-
-//   stylists.map(stylist) &&
-//     clients.map((client) => {
-//       try {
-//         if (client.stylistName === stylist.email) {
-//           stylist.pastClients += client.firstName;
-//         }
-//       } catch (error) {
-//         return res.status(500).send("Server Error");
-//       }
-//     });
+//     // stylists.map((stylist) => {
+//     //   try {
+//     //     if (client.stylistName === stylist.email) {
+//     //       stylist.pastClients.push(
+//     //         `${client.firstName} + ${client.lastName} + ${client.dateCreated}`,
+//     //       );
+//     //       console.log(stylist.pastClients);
+//     //       console.log(stylist);
+//     //     }
+//     //   } catch (error) {
+//     //     return res.status(500).send("Server Error");
+//     //   }
+//     // });
+//   } catch (error) {
+//     console.log(error);
+//   }
 // };
+// getStylists();;
 
 module.exports = { createClient, getAllClients };

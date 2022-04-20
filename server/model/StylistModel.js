@@ -27,29 +27,31 @@ const StylistSchema = new Schema(
       default: 0,
     },
 
+
+    //uncomment later
     teacherCode: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     className: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     session: {
       type: String,
-      required: true,
+      // required: true,
     },
     studentYear: {
       type: String,
-      required: true,
+      // required: true,
     },
     accountType: {
       type: String,
     },
 
-    teacher: { type: String, required: true },
+    teacher: { type: String },
 
     pastClients: { type: Array },
 
