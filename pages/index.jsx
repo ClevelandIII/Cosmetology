@@ -2,6 +2,7 @@ import axios from "axios";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 import { baseURL } from "./util/auth";
+
 import {
   Grid,
   Divider,
@@ -43,6 +44,7 @@ const index = ({ stylist, client }) => {
     },
   ];
 
+  
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -57,8 +59,11 @@ const index = ({ stylist, client }) => {
     // console.log(stylists);
   }, []);
   console.log(clients);
+
+  
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
+
     <div
       style={{ padding: "2rem", textAlign: "center" }}
       stylist={stylist.firstName}
@@ -116,16 +121,17 @@ const index = ({ stylist, client }) => {
         </Grid.Row>
         <Grid.Row className="containeindex" columns={3}>
           <>
+          
             {clients.map((client) => {
               return (
                 <>
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
-                    key={client._id}
                     setClients={clients}
                     style={{ textAlign: "center" }}
+                    
                   >
-                    <Segment className="indexCenter">
+                    <Segment className="indexCenter" >
                       <p>
                         {client.firstName} {client.lastName}
                       </p>
