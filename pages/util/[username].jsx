@@ -2,6 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { parseCookies } from "nookies";
 
 import {
   Grid,
@@ -14,9 +16,10 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-const profilePage = ({ stylist }) => {
-  const [user, setUser] = useState(false);
+const profilePage = ({ stylist, profile }) => {
+  // const [user, setUser] = useState(false);
   const router = useRouter();
+  const ownAccount = profile?.stylist?._id === stylist?._id
   const { stylistId } = router.query;
   const Options = [
     {
@@ -40,6 +43,9 @@ const profilePage = ({ stylist }) => {
       value: "Name",
     },
   ];
+
+  if (!profile) return null;
+
   return (
     <>
       <div>
@@ -283,11 +289,13 @@ profilePage.getInitialProps = async (ctx) => {
     const { stylistId } = ctx.query;
     const { token } = parseCookies(ctx);
     const res = await axios.get(
-      `http://localhost:3001/api/v1/stylists/${stylistId}`,
+      `http://localhost:3001/api/v1/profile/${stylist._id}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    const { profile } = res.data;
+    return { profile };
   } catch (error) {
     console.log(error);
   }

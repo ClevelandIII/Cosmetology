@@ -27,7 +27,6 @@ const StylistSchema = new Schema(
       default: 0,
     },
 
-
     //uncomment later
     teacherCode: {
       type: String,
@@ -50,10 +49,14 @@ const StylistSchema = new Schema(
     accountType: {
       type: String,
     },
-
+    
     teacher: { type: String },
-
+    
     pastClients: { type: Array },
+    
+    StylistId: {
+      type: String,
+    },
 
     resetToken: { type: String },
     expireToken: { type: String },

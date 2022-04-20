@@ -23,6 +23,7 @@ const Signup = () => {
     teacher: "",
     studentYear: "",
     accountType: "",
+    stylistId: "",
   });
 
   const {
@@ -36,6 +37,7 @@ const Signup = () => {
     teacher,
     studentYear,
     accountType,
+    stylistId
   } = stylist;
 
   //* Form States */
@@ -59,6 +61,11 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
+   
+    if(stylist._id){
+      stylistId = stylist._id
+    }
+
 
     if (teacherCode === "Zn&=@5Bc6F") {
       accountType = "teacher";
@@ -76,6 +83,8 @@ const Signup = () => {
       const res = await axios.post("/api/v1/uploads", formData);
       profilePicURL = res.data.src;
     }
+
+
 
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
@@ -95,6 +104,7 @@ const Signup = () => {
         studentYear,
         accountType,
         profilePicURL,
+        stylistId,
       });
 
       setToken(res.data);
@@ -130,7 +140,8 @@ const Signup = () => {
         session &&
         teacher &&
         studentYear &&
-        accountType
+        accountType &&
+        stylistId
       )
     );
   }, [stylist]);

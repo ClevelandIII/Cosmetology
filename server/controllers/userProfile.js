@@ -23,6 +23,8 @@ const createUser = async (req, res) => {
     session,
     studentYear,
     teacherCode,
+    stylistId,
+    accountType,
   } = req.body;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
@@ -44,9 +46,12 @@ const createUser = async (req, res) => {
       teacherCode,
       session,
       studentYear,
+      accountType,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
+      stylistId,
     });
+
 
     stylist.password = await bcrypt.hash(password, 10);
     stylist = await stylist.save();

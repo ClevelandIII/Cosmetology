@@ -143,10 +143,3 @@ Daniel Nijdl: making studentList show that stylists there teachers
 Joshua Ruvalcaba: helping Daniel 
 
 4/19/22
-Jason Enciso: helping 
-
-Reid Gill: trying implementing a dropbox in the the signup
-
-Daniel Nijdl: displays current semester started personalProfiles
-
-Joshua Ruvalcaba: working on tablet/ipad version of clientCreator

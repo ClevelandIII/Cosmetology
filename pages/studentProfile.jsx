@@ -51,6 +51,9 @@ const StudentProfile = ({ stylist }) => {
     // console.log(stylists);
   }, []);
 
+
+
+
   return (
     <>
       <Grid stackable style={{ margin: "3rem" }}>
