@@ -57,7 +57,7 @@ app.use("/api/v1/stylists", userRoute)
 
 //*SOCKETS */
 
-connectDB();
+connectDB(); 
 
 nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));

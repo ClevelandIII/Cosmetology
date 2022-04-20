@@ -6,7 +6,7 @@ const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
 const axios = require("axios");
 
-let stylists = [];
+// let stylists = [];
 const createClient = async (req, res) => {
   const {
     stylistName,
@@ -74,31 +74,42 @@ const createClient = async (req, res) => {
           `http://localhost:3001/api/v1/stylists`
         );
         stylists = results.data;
-        // console.log(results);
+        console.log(stylists);
+
+        stylists.map((stylist) => {
+          try {
+            console.log(client.stylistName);
+            // if (client.stylistName === stylist.email) {
+            //   console.log(stylist.pastClients);
+            //   console.log("break");
+            //   console.log(client.stylistName);
+            //   console.log("break");
+            //   console.log(stylist.firstName);
+            //   stylist.pastClients.push(client.stylistName);
+            // }
+          } catch (error) {
+            return res.status(500).send("Server Error");
+          }
+        });
       } catch (error) {
         console.log(error);
       }
     };
     getStylists();
-
-    stylists.map((stylist) => {
-      try {
-        console.log(client.stylistName);
-        if (client.stylistName === stylist.email) {
-          console.log(stylist.pastClients);
-          console.log("break");
-          console.log(client.stylistName);
-          console.log("break");
-          console.log(stylist.firstName);
-          stylist.pastClients.push(client.stylistName);
-        }
-      } catch (error) {
-        return res.status(500).send("Server Error");
-      }
-    });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Server Error");
+  }
+};
+
+const getAllClients = async (req, res) => {
+  try {
+    let clients;
+    clients = await ClientModel.find();
+    return res.status(200).json(clients);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Server Error @ getAllClients");
   }
 };
 
@@ -106,45 +117,45 @@ const createClient = async (req, res) => {
 // what you need to do is make this run after create client
 //then, if stylistName === stylist.firstname, add the client.firstName to the stylist.pastClients array.
 
-const addClient = async (req, res) => {
-  const [stylists, setStylists] = useState([]);
-  const [clients, setClients] = useState([]);
-  const getStylists = async () => {
-    try {
-      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      setStylists(results.data);
-      console.log(results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getStylists();
-  }, []);
+// const addClient = async (req, res) => {
+//   const [stylists, setStylists] = useState([]);
+//   const [clients, setClients] = useState([]);
+//   const getStylists = async () => {
+//     try {
+//       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+//       setStylists(results.data);
+//       console.log(results);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   useEffect(() => {
+//     getStylists();
+//   }, []);
 
-  const getClients = async () => {
-    try {
-      const results = await axios.get(`http://localhost:3001/api/v1/clients`);
-      setClients(results.data);
-      console.log(results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    getClients();
-  }, []);
+//   const getClients = async () => {
+//     try {
+//       const results = await axios.get(`http://localhost:3001/api/v1/clients`);
+//       setClients(results.data);
+//       console.log(results);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+//   useEffect(() => {
+//     getClients();
+//   }, []);
 
-  stylists.map(stylist) &&
-    clients.map((client) => {
-      try {
-        if (client.stylistName === stylist.email) {
-          stylist.pastClients += client.firstName;
-        }
-      } catch (error) {
-        return res.status(500).send("Server Error");
-      }
-    });
-};
+//   stylists.map(stylist) &&
+//     clients.map((client) => {
+//       try {
+//         if (client.stylistName === stylist.email) {
+//           stylist.pastClients += client.firstName;
+//         }
+//       } catch (error) {
+//         return res.status(500).send("Server Error");
+//       }
+//     });
+// };
 
-module.exports = { createClient, addClient };
+module.exports = { createClient, getAllClients };
