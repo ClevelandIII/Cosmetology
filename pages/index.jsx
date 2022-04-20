@@ -2,6 +2,7 @@ import axios from "axios";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 import { baseURL } from "./util/auth";
+
 import {
   Grid,
   Divider,
@@ -14,7 +15,26 @@ import {
 } from "semantic-ui-react";
 import Link from "next/link";
 
-const index = ({ stylist }) => {
+
+const index = ({stylist}) => {
+
+const {clients, setClients} = useState([])
+
+
+const getClients = async () => {
+  try {
+    const results = await axios.get("https://localhost:3001/api/v1/client");
+    setClients(results.data)
+    console.log(results);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+useEffect(() => {
+  getClients();
+}, []);
+
   useEffect(() => {
     document.title = `Welcome, ${stylist.firstName}`;
   }, []);
@@ -45,6 +65,7 @@ const index = ({ stylist }) => {
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
+
     <div
       style={{ padding: "2rem", textAlign: "center" }}
       stylist={stylist.firstName}
@@ -104,8 +125,11 @@ const index = ({ stylist }) => {
           columns={3}
         >
           <>
+          {clients.map((client) => {
+            return (
+          <>
             <Grid.Column className="Indexcolumn clientListColumn">
-              <Segment className="indexCenter">Hugemclarge biggieweight</Segment>
+              <Segment className="indexCenter" key={client.id}>{client.firstName}</Segment>
             </Grid.Column>
             <Grid.Column className="Indexcolumn">
               <Segment className="indexCenter">1/2/34</Segment>
@@ -113,7 +137,9 @@ const index = ({ stylist }) => {
             <Grid.Column className="Indexcolumn">
               <Segment className="indexCenter">1/2/34</Segment>
             </Grid.Column>
-
+            </>
+            )
+            })}
             <Grid.Column className="Indexcolumn clientListColumn">
               <Segment className="indexCenter">Well Fargo</Segment>
             </Grid.Column>
