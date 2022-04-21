@@ -17,24 +17,24 @@ const TeacherProfile = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
   const Options = [
     {
-      key: "Number of Visits",
-      text: "Number of Visits",
-      value: "Number of Visits",
-    },
-    {
-      key: "Date Created",
-      text: "Date Created",
-      value: "Date Created",
-    },
-    {
-      key: "Most Recently Created",
-      text: "Most Recently Created",
-      value: "Most Recently Created",
-    },
-    {
       key: "Name",
       text: "Name",
       value: "Name",
+    },
+    {
+      key: "Last Name",
+      text: "Last Name",
+      value: "Last Name",
+    },
+    {
+      key: "Hours",
+      text: "Hours",
+      value: "Hours",
+    },
+    {
+      key: "Year/Session",
+      text: "Year/Session",
+      value: "Year/Session",
     },
   ];
   const getStylists = async () => {
@@ -76,10 +76,10 @@ const TeacherProfile = ({ stylist }) => {
                 </Card.Header>
                 <Card.Meta>
                   <span className="date">
-                    Teacher: {stylist.teacher} || Session: {stylist.session}
+                    Teacher: {stylist.teacher} | Session: {stylist.session}
                   </span>
                 </Card.Meta>
-                <Card.Description>Stylist </Card.Description>
+                <Card.Description>Teacher </Card.Description>
               </Card.Content>
             </Card>
           </Grid.Row>
@@ -99,7 +99,7 @@ const TeacherProfile = ({ stylist }) => {
               paddingTop: "1.2rem",
             }}
           >
-            <h1>Total Number of Students</h1>
+            <h1>Number of Students: {stylists.length}</h1>
           </Grid.Row>
         </Grid.Column>
       </Grid>
@@ -176,7 +176,11 @@ const TeacherProfile = ({ stylist }) => {
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      <p>{stylist.pastClients}</p>
+                      <p>
+                        {stylist.pastClients.map((client) => {
+                          return <>{`${client[0]} `}</>;
+                        })}
+                      </p>
                     </Segment>
                   </Grid.Column>
                 </>

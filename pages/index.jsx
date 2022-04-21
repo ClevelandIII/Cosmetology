@@ -160,7 +160,7 @@ const index = ({ stylist, client }) => {
                             <h4>Growth Patterns: </h4>
                             {client.growthPatterns}
                             <h4>Scalp Condition: </h4>
-                            {client.scalpCondition}
+                            {client.scalpClassification}
                           </p>
                         </Segment>
                       </Popup>

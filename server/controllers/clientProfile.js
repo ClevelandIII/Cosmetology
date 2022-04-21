@@ -85,6 +85,7 @@ const createClient = async (req, res) => {
           client.firstName,
           client.lastName,
           client.dateCreated,
+          client.appointmentDate,
         ]);
         console.log(`stylist`, stylist);
         await stylist.save();

@@ -110,3 +110,9 @@
 - Cleveland: Updated index & student list to display clients and student clients , Made it so that when you create a client the client is added the stylist's pastClients. (It currently shows name, date created and last name, you can only see the client info if you make a client now, but after you make a client it signs you out.)
 
 - Abdi: client menu, index
+
+4/20/2022
+
+- Cleveland: Updated pastClients so that each is an array, and that there are three strings in the array. Made updates to studentProfile and teacherProfile.
+
+- Abdi: Added onHover to index that displays basic information, added bigger menu that displays all information about the client that isnt already available.

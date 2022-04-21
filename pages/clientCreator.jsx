@@ -30,7 +30,7 @@ const ClientCreator = ({ stylist }) => {
     zipCode: "",
     hairCondition: "",
     hairClassification: "",
-    scalpCondition: "",
+    scalpClassification: "",
     hairTexture: "",
     growthPatterns: "",
     hairDensity: "",
@@ -54,7 +54,7 @@ const ClientCreator = ({ stylist }) => {
     zipCode,
     hairClassification,
     hairCondition,
-    scalpCondition,
+    scalpClassification,
     hairDensity,
     hairTexture,
     growthPatterns,
@@ -129,7 +129,7 @@ const ClientCreator = ({ stylist }) => {
         zipCode &&
         hairClassification &&
         hairCondition &&
-        scalpCondition &&
+        scalpClassification &&
         hairDensity &&
         hairTexture &&
         growthPatterns &&
@@ -393,8 +393,8 @@ const ClientCreator = ({ stylist }) => {
                   <Form.Input
                     label="Scalp Condition"
                     placeholder="Scalp Condition"
-                    name="scalpCondition"
-                    value={scalpCondition}
+                    name="scalpClassification"
+                    value={scalpClassification}
                     onChange={handleChange}
                     style={{
                       width: "400px",

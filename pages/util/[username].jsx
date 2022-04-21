@@ -66,7 +66,7 @@ const profilePage = ({ stylist }) => {
                   </Card.Header>
                   <Card.Meta>
                     <span className="date">
-                      Teacher: {stylist.teacher} || Session: {stylist.session}
+                      Teacher: {stylist.teacher} | Session: {stylist.session}
                     </span>
                   </Card.Meta>
                   <Card.Description>Stylist </Card.Description>
