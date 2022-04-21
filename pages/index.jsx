@@ -12,6 +12,7 @@ import {
   Menu,
   Icon,
   Segment,
+  Popup,
 } from "semantic-ui-react";
 import Link from "next/link";
 
@@ -44,7 +45,6 @@ const index = ({ stylist, client }) => {
     },
   ];
 
-  
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -60,10 +60,8 @@ const index = ({ stylist, client }) => {
   }, []);
   console.log(clients);
 
-  
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
-
     <div
       style={{ padding: "2rem", textAlign: "center" }}
       stylist={stylist.firstName}
@@ -121,21 +119,52 @@ const index = ({ stylist, client }) => {
         </Grid.Row>
         <Grid.Row className="containeindex" columns={3}>
           <>
-          
             {clients.map((client) => {
               return (
                 <>
+                
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
                     setClients={clients}
                     style={{ textAlign: "center" }}
-                    
                   >
-                    <Segment className="indexCenter" >
-                      <p>
-                        {client.firstName} {client.lastName}
-                      </p>
-                    </Segment>
+                    {" "}
+                    <Link href="/hairClientInfo">
+                      <Popup
+                        trigger={
+                          <Segment className="indexCenter">
+                            <p>
+                              {client.firstName} {client.lastName}
+                            </p>
+                          </Segment>
+                        }
+                        
+                        hoverable
+                      >
+                        <Segment className="indexClientInfo">
+                          <p>
+                            <h4>Hair Condition: </h4>
+                            {client.hairCondition}
+                            <h4>Hair Classification: </h4>
+                            {client.hairClassification}
+                            <h4>Hair Density: </h4>
+                            {client.hairDensity}
+                            <h4>Hair Elasticity:</h4>
+                            {client.hairElasticity}
+                            <h4>Hair Porosity: </h4>
+                            {client.hairPorosity}
+                            <h4>Hair Length: </h4>
+                            {client.hairLength}
+                            <h4>Hair Texture: </h4>
+                            {client.hairTexture}
+                            <h4>Growth Patterns: </h4>
+                            {client.growthPatterns}
+                            <h4>Scalp Condition: </h4>
+                            {client.scalpCondition}
+                          </p>
+                        </Segment>
+                      </Popup>
+                    </Link>
                   </Grid.Column>
                   <Grid.Column
                     className="Indexcolumn"
