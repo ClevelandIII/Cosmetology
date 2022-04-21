@@ -18,7 +18,7 @@ const Signup = () => {
     teacher: "",
     studentYear: "",
     accountType: "",
-    stylistId: "",
+    // userId: "",
   });
 
   const {
@@ -32,7 +32,7 @@ const Signup = () => {
     teacher,
     studentYear,
     accountType,
-    stylistId
+    // userId
   } = stylist;
 
   const test = [
@@ -63,10 +63,7 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
-   
-    if(stylist._id){
-      stylistId = stylist._id
-    }
+
 
 
     if (teacherCode === "Zn&=@5Bc6F") {
@@ -74,6 +71,10 @@ const Signup = () => {
     } else {
       accountType = "student";
     }
+
+    // if(teacherCode){
+    //   userId = "test"
+    // }
 
     if (media !== null) {
       const formData = new FormData();
@@ -106,7 +107,7 @@ const Signup = () => {
         studentYear,
         accountType,
         profilePicURL,
-        stylistId,
+        // userId,
       });
 
       setToken(res.data);
@@ -144,8 +145,8 @@ const Signup = () => {
         session &&
         teacher &&
         studentYear &&
-        accountType &&
-        stylistId
+        accountType
+        // userId
       )
     );
   }, [stylist]);

@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const ProfileSchema = new Schema(
   {
-    stylist: { type: Schema.Types.ObjectId, ref: "Stylist" },
+    stylist: {
+      type: Schema.Types.ObjectId,
+      ref: "Stylist",
+    },
   },
   { timestamps: true }
 );

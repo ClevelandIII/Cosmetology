@@ -23,7 +23,7 @@ const createUser = async (req, res) => {
     session,
     studentYear,
     teacherCode,
-    stylistId,
+    // userId,
     accountType,
   } = req.body;
 
@@ -49,12 +49,13 @@ const createUser = async (req, res) => {
       accountType,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
-      stylistId,
+      // userId,
     });
 
 
     stylist.password = await bcrypt.hash(password, 10);
     stylist = await stylist.save();
+    // stylist.stylistId = stylist._id
 
     const payload = { stylistId: stylist._id };
     jwt.sign(

@@ -54,8 +54,9 @@ const StylistSchema = new Schema(
     
     pastClients: { type: Array },
     
-    StylistId: {
-      type: String,
+    userId: {
+        type: String,
+        default: Date.now(),
     },
 
     resetToken: { type: String },

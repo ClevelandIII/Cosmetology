@@ -55,7 +55,7 @@ app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/uploads", uploadRoute)
 app.use('/api/v1/client', clientRoute)
 app.use("/api/v1/stylists", userRoute)
-app.use("/api/v1/profile", authMiddleware, profileRoute)
+app.use("/api/v1/profile", profileRoute)
 
 //*SOCKETS */
 

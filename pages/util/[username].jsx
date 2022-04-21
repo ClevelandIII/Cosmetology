@@ -16,11 +16,10 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-const profilePage = ({ stylist, profile }) => {
-  // const [user, setUser] = useState(false);
+const profilePage = ({ stylist }) => {
   const router = useRouter();
-  const ownAccount = profile?.stylist?._id === stylist?._id
-  const { stylistId } = router.query;
+  const { userId } = router.query;
+  const ownAccount = profile?.stylist?._id === stylist?._id;
   const Options = [
     {
       key: "Number of Visits",
@@ -44,7 +43,7 @@ const profilePage = ({ stylist, profile }) => {
     },
   ];
 
-  if (!profile) return null;
+  if (!stylist) return null;
 
   return (
     <>
@@ -286,16 +285,16 @@ const profilePage = ({ stylist, profile }) => {
 
 profilePage.getInitialProps = async (ctx) => {
   try {
-    const { stylistId } = ctx.query;
+    const { userId } = ctx.query;
     const { token } = parseCookies(ctx);
     const res = await axios.get(
-      `http://localhost:3001/api/v1/profile/${stylist._id}`,
+      `http://localhost:3001/api/v1/profile/${userId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const { profile } = res.data;
-    return { profile };
+    const { stylist } = res.data;
+    return { stylist };
   } catch (error) {
     console.log(error);
   }
