@@ -81,12 +81,14 @@ const createClient = async (req, res) => {
         // console.log(`Tester`, Testr);
 
         const stylist = await StylistModel.findById(Testr._id);
-        stylist.pastClients.push(
-          `${client.firstName} + ${client.lastName} + ${client.dateCreated}`
-        );
+        stylist.pastClients.push([
+          client.firstName,
+          client.lastName,
+          client.dateCreated,
+        ]);
         console.log(`stylist`, stylist);
         await stylist.save();
-        console.log(`stylist2`, stylist);
+        // console.log(`stylist2`, stylist);
         return res.status(200).send("All Good");
 
         // stylists.map((stylist) => {

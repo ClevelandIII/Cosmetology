@@ -13,8 +13,7 @@ import axios from "axios";
 // class they teach/session
 
 const StudentProfile = ({ stylist }) => {
-  // const [stylists, setStylist] = useState();
-  const [stylists, setStylists] = useState([]);
+  const [stylists, setStylist] = useState();
   const Options = [
     {
       key: "Number of Visits",
@@ -169,43 +168,35 @@ const StudentProfile = ({ stylist }) => {
             </Grid.Column>
           </>
         </Grid.Row>
-        {/*Thanks Daniel, made the styling easy */}
+
         <Grid.Row className="test" columns={3}>
           <>
-            {stylists.map((stylist) => {
+            {stylist.pastClients.map((client) => {
+              console.log(client);
               return (
                 <>
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
-                    key={stylist._id}
-                    setStylists={stylists}
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
+                      <p>{`${client[0]} ${client[1]}`}</p>
                     </Segment>
                   </Grid.Column>
                   <Grid.Column
                     className="Indexcolumn"
-                    key={stylist._id}
-                    setStylists={stylists}
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
+                    <p>{client[1]}</p>
                     </Segment>
                   </Grid.Column>
                   <Grid.Column
                     className="Indexcolumn"
-                    key={stylist._id}
-                    setStylists={stylists}
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
+                    <p>{client[2]}</p>
                     </Segment>
                   </Grid.Column>
                 </>

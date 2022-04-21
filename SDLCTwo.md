@@ -107,6 +107,6 @@
 
 4/19/2022
 
-- Cleveland: Updated index & student list to display clients and student clients , Made it so that when you create a client the client is added yo the stylist's pastClients. (It currently shows name, date created and last name, you can only see the client info if you make a client now, but after you make a client it signs you out.)
+- Cleveland: Updated index & student list to display clients and student clients , Made it so that when you create a client the client is added the stylist's pastClients. (It currently shows name, date created and last name, you can only see the client info if you make a client now, but after you make a client it signs you out.)
 
 - Abdi: client menu, index
