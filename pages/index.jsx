@@ -12,7 +12,7 @@ import {
   Menu,
   Icon,
   Segment,
-  Popup,
+  Modal,
 } from "semantic-ui-react";
 import Link from "next/link";
 
@@ -60,6 +60,7 @@ const index = ({ stylist, client }) => {
   }, []);
   console.log(clients);
 
+  const [open, setOpen] = useState(false);
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
     <div
@@ -122,49 +123,49 @@ const index = ({ stylist, client }) => {
             {clients.map((client) => {
               return (
                 <>
-                
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
                     setClients={clients}
                     style={{ textAlign: "center" }}
                   >
                     {" "}
-                    <Link href="/hairClientInfo">
-                      <Popup
-                        trigger={
-                          <Segment className="indexCenter">
-                            <p>
-                              {client.firstName} {client.lastName}
-                            </p>
-                          </Segment>
-                        }
-                        
-                        hoverable
-                      >
-                        <Segment className="indexClientInfo">
+                    <Modal
+                      closeIcon
+                      trigger={
+                        <Segment className="indexCenter">
                           <p>
-                            <h4>Hair Condition: </h4>
-                            {client.hairCondition}
-                            <h4>Hair Classification: </h4>
-                            {client.hairClassification}
-                            <h4>Hair Density: </h4>
-                            {client.hairDensity}
-                            <h4>Hair Elasticity:</h4>
-                            {client.hairElasticity}
-                            <h4>Hair Porosity: </h4>
-                            {client.hairPorosity}
-                            <h4>Hair Length: </h4>
-                            {client.hairLength}
-                            <h4>Hair Texture: </h4>
-                            {client.hairTexture}
-                            <h4>Growth Patterns: </h4>
-                            {client.growthPatterns}
-                            <h4>Scalp Condition: </h4>
-                            {client.scalpClassification}
+                            {client.firstName} {client.lastName}
                           </p>
                         </Segment>
-                      </Popup>
-                    </Link>
+                      }
+                    >
+                      <Segment className="indexClientInfo">
+                        <p>
+                          <h2>First Name: </h2>
+                          {client.firstName}
+                          <h2>Last Name: </h2>
+                          {client.lastName}
+                          <h4>Hair Condition: </h4>
+                          {client.hairCondition}
+                          <h4>Hair Classification: </h4>
+                          {client.hairClassification}
+                          <h4>Hair Density: </h4>
+                          {client.hairDensity}
+                          <h4>Hair Elasticity:</h4>
+                          {client.hairElasticity}
+                          <h4>Hair Porosity: </h4>
+                          {client.hairPorosity}
+                          <h4>Hair Length: </h4>
+                          {client.hairLength}
+                          <h4>Hair Texture: </h4>
+                          {client.hairTexture}
+                          <h4>Growth Patterns: </h4>
+                          {client.growthPatterns}
+                          <h4>Scalp Condition: </h4>
+                          {client.scalpClassification}
+                        </p>
+                      </Segment>
+                    </Modal>
                   </Grid.Column>
                   <Grid.Column
                     className="Indexcolumn"
