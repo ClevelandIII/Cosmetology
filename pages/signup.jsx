@@ -6,6 +6,7 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
+
 const Signup = () => {
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -21,6 +22,8 @@ const Signup = () => {
     // userId: "",
   });
 
+  
+
   const {
     firstName,
     lastName,
@@ -28,11 +31,15 @@ const Signup = () => {
     password,
     className,
     session,
-    teacherCode = test.value,
+    teacherCode = "Year 1" || "Year 2",
     teacher,
     studentYear,
     accountType,
+<<<<<<< HEAD
     // userId
+=======
+    stylistId,
+>>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
   } = stylist;
 
   const test = [
@@ -63,8 +70,14 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
 
+    if (stylist._id) {
+      stylistId = stylist._id;
+    }
 
     if (teacherCode === "Zn&=@5Bc6F") {
       accountType = "teacher";
@@ -87,13 +100,11 @@ const Signup = () => {
       profilePicURL = res.data.src;
     }
 
-
-
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
       return res.status(500).send("Image Upload Failure");
     }
-
+    
     try {
       const res = await axios.post("/api/v1/user/signup", {
         firstName,
@@ -132,6 +143,8 @@ const Signup = () => {
 
   // const handleDropDown= (e,{value})=>setState({stateValue:value})
 
+  // const anotherHandleChange = (e, { value }) => this.setState({ value })
+
   //* USE EFFECTS */
   useEffect(() => {
     setSubmitDisabled(
@@ -151,6 +164,7 @@ const Signup = () => {
     );
   }, [stylist]);
 
+  // const { value } = this.state
   return (
     <>
       <Form
@@ -272,14 +286,25 @@ const Signup = () => {
           <Form.Input
             required
             label="Year"
-            
+            placeholder="Year 1"
             name="studentYear"
             value={studentYear}
             onChange={handleChange}
             icon="calendar alternate outline"
             iconPosition="left"
           >
-            <Form.Dropdown placeholder="Year 1" options={test} fluid onChange={{ }} />
+            <Form.Radio
+              label="Year 1"
+              // value="sm"
+              // checked={value === "sm"}
+              // onChange={this.handleChange}
+            />
+            <Form.Radio
+              label="Year 2"
+              // value="md"
+              // checked={value === "md"}
+              // onChange={this.handleChange}
+            />
           </Form.Input>
 
           <Button color="orange" content="Signup" icon="signup" type="submit" />
