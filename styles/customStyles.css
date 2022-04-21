@@ -267,6 +267,16 @@ a.item :hover {
   justify-content: center;
 }
 
+.indexClientInfo{
+   border-bottom: 10px solid orange;
+  border-top: 10px solid orange;
+  height: 35rem;
+  background: orange;
+  color: black;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .tableindex{
   position: relative;
 }
@@ -284,4 +294,13 @@ a.item :hover {
     overflow-x: hidden;
   
   }
+  .indexClientInfo{
+    border-bottom: 10px solid orange;
+   border-top: 10px solid orange;
+   height: 35rem;
+   background: orange;
+   color: black;
+   overflow-y: scroll;
+   overflow-x: hidden;
+ }
 }

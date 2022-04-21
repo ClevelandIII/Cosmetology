@@ -7,14 +7,14 @@ import {
   Dropdown,
   Segment,
   Rating,
+  Popup,
 } from "semantic-ui-react";
 import axios from "axios";
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
 // class they teach/session
 
 const StudentProfile = ({ stylist }) => {
-  // const [stylists, setStylist] = useState();
-  const [stylists, setStylists] = useState([]);
+  const [stylists, setStylist] = useState();
   const Options = [
     {
       key: "Number of Visits",
@@ -79,7 +79,7 @@ const StudentProfile = ({ stylist }) => {
                 </Card.Header>
                 <Card.Meta>
                   <span className="date">
-                    Teacher: {stylist.teacher} || Session: {stylist.session}
+                    Teacher: {stylist.teacher} | Session: {stylist.session}
                   </span>
                 </Card.Meta>
                 <Card.Description>Stylist </Card.Description>
@@ -102,7 +102,7 @@ const StudentProfile = ({ stylist }) => {
               paddingTop: "1.2rem",
             }}
           >
-            <h1>Hours</h1>
+            <h1>Hours: {stylist.hours}</h1>
           </Grid.Row>
           <Divider hidden />
           <Grid.Row
@@ -115,7 +115,7 @@ const StudentProfile = ({ stylist }) => {
               paddingTop: "1.2rem",
             }}
           >
-            <h1>Clients</h1>
+            <h1>Number of Clients: {stylist.pastClients.length}</h1>
           </Grid.Row>
           <Divider hidden />
           <Grid.Row
@@ -137,8 +137,8 @@ const StudentProfile = ({ stylist }) => {
       ;
       <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
         <Grid.Row className="mini3">
-          <div style={{ textAlign: "center", paddingLeft: "4%" }}>
-            <h1>All Students</h1>
+          <div style={{ textAlign: "center" }}>
+            <h1>All Clients of {stylist.firstName}</h1>
             <Dropdown
               placeholder="Sort By..."
               fluid
@@ -172,43 +172,45 @@ const StudentProfile = ({ stylist }) => {
             </Grid.Column>
           </>
         </Grid.Row>
-        {/*Thanks Daniel, made the styling easy */}
+
         <Grid.Row className="test" columns={3}>
           <>
-            {stylists.map((stylist) => {
+            {stylist.pastClients.map((client) => {
+              console.log(client);
               return (
                 <>
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
-                    key={stylist._id}
-                    setStylists={stylists}
+                    style={{ textAlign: "center" }}
+                  >
+                    <Popup
+                      trigger={
+                        <Segment className="indexCenter">
+                          <p>{`${client[0]} ${client[1]}`}</p>
+                        </Segment>
+                      }
+                      hoverable
+                      position="top center"
+                    >
+                      <h4>Add Visit </h4>
+                      <h4>Hair Style</h4>
+                      <h4>Special Treatments</h4>
+                    </Popup>
+                  </Grid.Column>
+                  <Grid.Column
+                    className="Indexcolumn"
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
+                      <p>{client[2]}</p>
                     </Segment>
                   </Grid.Column>
                   <Grid.Column
                     className="Indexcolumn"
-                    key={stylist._id}
-                    setStylists={stylists}
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
-                    </Segment>
-                  </Grid.Column>
-                  <Grid.Column
-                    className="Indexcolumn"
-                    key={stylist._id}
-                    setStylists={stylists}
-                    style={{ textAlign: "center" }}
-                  >
-                    <Segment className="indexCenter">
-                      {/*pastClients in the future will eventually be able to grab everything from client, or maybe just a few important things.*/}
-                      <p>{stylist.pastClients}</p>
+                      <p>{client[3]}</p>
                     </Segment>
                   </Grid.Column>
                 </>
