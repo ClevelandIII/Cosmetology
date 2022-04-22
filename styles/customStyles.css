@@ -76,11 +76,11 @@
   z-index: -1;
 }
 
-.noScroll{
+.noScroll {
   overflow-y: hidden !important;
 }
 
-.blackBackground{
+.blackBackground {
   background-color: black !important;
 }
 
@@ -245,10 +245,8 @@ a.item :hover {
   color: #6ea1ff;
 }
 
-
-
-@media (max-width: 821px) {}
-
+@media (max-width: 821px) {
+}
 
 .Indexcolumn {
   position: relative;
@@ -264,15 +262,14 @@ a.item :hover {
   color: black;
   overflow-y: scroll;
   overflow-x: hidden;
-
 }
 
-.indexCenter{
+.indexCenter {
   justify-content: center;
 }
 
-.indexClientInfo{
-   border-bottom: 10px solid orange;
+.indexClientInfo {
+  border-bottom: 10px solid orange;
   border-top: 10px solid orange;
   height: 35rem;
   background: orange;
@@ -281,13 +278,12 @@ a.item :hover {
   overflow-x: hidden;
 }
 
-
-.tableindex{
+.tableindex {
   position: relative;
 }
 
 @media screen and (min-height: 800px) {
-  .tableindex{
+  .tableindex {
     top: 50%;
   }
   .containeindex {
@@ -297,15 +293,14 @@ a.item :hover {
     color: black;
     overflow-y: scroll;
     overflow-x: hidden;
-  
   }
-  .indexClientInfo{
+  .indexClientInfo {
     border-bottom: 10px solid orange;
-   border-top: 10px solid orange;
-   height: 35rem;
-   background: orange;
-   color: black;
-   overflow-y: scroll;
-   overflow-x: hidden;
- }
+    border-top: 10px solid orange;
+    height: 35rem;
+    background: orange;
+    color: black;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 }

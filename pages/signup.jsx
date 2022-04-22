@@ -15,12 +15,6 @@ import { setToken } from "./util/auth";
 let cancel;
 
 const Signup = () => {
-<<<<<<< HEAD
-
-  useEffect(() => {
-    document.querySelector("body").classList.add("blackBackground");
-  });
-=======
   // state = {}
 
   // anotherHandleChange = (e, { value }) => this.setState({ value })
@@ -29,7 +23,6 @@ const Signup = () => {
 
   // const { value } = this.state
 
->>>>>>> 294dc520d36280664ad84c5e5637992f5495bb01
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
