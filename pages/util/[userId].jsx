@@ -1,9 +1,8 @@
-import axios from "axios";
-import Cookies from "js-cookie";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+import axios from "axios";
 import { parseCookies } from "nookies";
+import Cookies from "js-cookie";
 
 import {
   Grid,
@@ -19,7 +18,7 @@ import {
 const profilePage = ({ stylist }) => {
   const router = useRouter();
   const { userId } = router.query;
-  const ownAccount = profile?.stylist?._id === stylist?._id;
+  // const ownAccount = stylist?._id === stylist?._id;
   const Options = [
     {
       key: "Number of Visits",

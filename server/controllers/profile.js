@@ -1,26 +1,29 @@
-const ProfileModel = require("../model/ProfileModel");
+// const ProfileModel = require("../model/ProfileModel");
 const StylistModel = require("../model/StylistModel");
 // const bcrypt = require("bcryptjs")
 
-
 const getProfile = async (req, res) => {
-  try{
-    const {userId} = req.params
+  const { userId } = req.params;
+  try {
+    const stylist = await StylistModel.findOne({ userId });
 
-    const stylist = await StylistModel.findOne({ userId })
-    if(!stylist){
-      return res.status(404).send("No Stylist Found")
+    if (!stylist) {
+      return res.status(404).send("No Stylist Found");
     }
 
-    const profile = await ProfileModel.findOne({stylist: stylist._id}).populate("stylist")
+    const profile = await StylistModel.findOne({
+      userId: stylist.userId,
+    }).populate("userId");
 
-
-    return profile
-  } catch (error){
-    console.log(error);
-    return res.status(500).send("Error @getProfile")
+    return res.status(200).json({
+      profile,
+    });
+  } catch (error) {
+    // console.log(userId);
+    console.log(error, userId);
+    return res.status(500).send("Error @getProfile");
   }
-}
+};
 
 module.exports = {
   getProfile,

@@ -15,9 +15,7 @@ const Layout = ({ children, stylist }) => {
 
   const contextRef = createRef();
 
-  // useEffect(() => {
-  //   document.querySelector("body").classList.add("noScroll");
-  // });
+
 
   return (
     <>
@@ -39,7 +37,7 @@ const Layout = ({ children, stylist }) => {
           <SignupLoginNav />
 
           <div style={{ margin: "0 auto" }}>{children}</div>
-          {/* <iframe
+          <iframe
               src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
               autoPlay
               loop
@@ -55,7 +53,7 @@ const Layout = ({ children, stylist }) => {
               //   transform: "translate(-50%,-50%)",
               //   zIndex: "-1",
               // }}
-            ></iframe> */}
+            ></iframe>
         </>
       )}
       {/* 

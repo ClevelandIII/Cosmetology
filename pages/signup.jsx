@@ -6,8 +6,11 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
-
 const Signup = () => {
+
+  useEffect(() => {
+    document.querySelector("body").classList.add("blackBackground");
+  });
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
@@ -21,8 +24,6 @@ const Signup = () => {
     isTeacher: "",
     // userId: "",
   });
-
-  
 
   const {
     firstName,
@@ -67,12 +68,10 @@ const Signup = () => {
     //Initial declaration of profilePicURL
     let profilePicURL;
 
-    if (stylist._id) {
-      stylistId = stylist._id;
-    }
+
 
     if (teacherCode === "WestMecTeacherCode6997") {
-      isTeacher =  true;
+      isTeacher = true;
     } else {
       isTeacher = false;
     }
@@ -96,7 +95,7 @@ const Signup = () => {
       setFormLoading(false);
       return res.status(500).send("Image Upload Failure");
     }
-    
+
     try {
       const res = await axios.post("/api/v1/user/signup", {
         firstName,
@@ -133,6 +132,8 @@ const Signup = () => {
     }
   };
 
+
+
   // const handleDropDown= (e,{value})=>setState({stateValue:value})
 
   // const anotherHandleChange = (e, { value }) => this.setState({ value })
@@ -141,16 +142,18 @@ const Signup = () => {
   useEffect(() => {
     setSubmitDisabled(
       !(
-        firstName &&
-        lastName &&
-        email &&
-        password &&
-        teacherCode &&
-        className &&
-        session &&
-        teacher &&
-        studentYear &&
-        isTeacher
+        (
+          firstName &&
+          lastName &&
+          email &&
+          password &&
+          teacherCode &&
+          className &&
+          session &&
+          teacher &&
+          studentYear &&
+          isTeacher
+        )
         // userId
       )
     );
@@ -160,7 +163,7 @@ const Signup = () => {
   return (
     <>
       <Form
-        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem" }}
+        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem", overflow: "scroll" }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}

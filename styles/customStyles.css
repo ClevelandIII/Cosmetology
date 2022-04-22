@@ -67,18 +67,22 @@
 
 .background-video {
   position: absolute;
-  width: 100%;
+  width: 150%;
   left: 50%;
   top: 50%;
-  height: 100%;
+  height: 150%;
   object-fit: cover;
   transform: translate(-50%, -50%);
   z-index: -1;
 }
 
-/* .noScroll{
+.noScroll{
   overflow-y: hidden !important;
-} */
+}
+
+.blackBackground{
+  background-color: black !important;
+}
 
 .loginForm {
   background: #ffffff8c !important;

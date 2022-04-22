@@ -23,7 +23,6 @@ const createUser = async (req, res) => {
     session,
     studentYear,
     teacherCode,
-    // userId,
     isTeacher,
   } = req.body;
 

@@ -18,6 +18,10 @@ const Login = () => {
     password: "",
   });
 
+  useEffect(() => {
+    document.querySelector("body").classList.add("noScroll");
+  });
+
   
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
