@@ -18,7 +18,7 @@ const Signup = () => {
     session: "",
     teacher: "",
     studentYear: "",
-    accountType: "",
+    isTeacher: "",
     // userId: "",
   });
 
@@ -34,12 +34,8 @@ const Signup = () => {
     teacherCode = "Year 1" || "Year 2",
     teacher,
     studentYear,
-    accountType,
-<<<<<<< HEAD
+    isTeacher,
     // userId
-=======
-    stylistId,
->>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
   } = stylist;
 
   const test = [
@@ -70,19 +66,15 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
 
     if (stylist._id) {
       stylistId = stylist._id;
     }
 
-    if (teacherCode === "Zn&=@5Bc6F") {
-      accountType = "teacher";
+    if (teacherCode === "WestMecTeacherCode6997") {
+      isTeacher =  true;
     } else {
-      accountType = "student";
+      isTeacher = false;
     }
 
     // if(teacherCode){
@@ -116,7 +108,7 @@ const Signup = () => {
         teacherCode,
         teacher,
         studentYear,
-        accountType,
+        isTeacher,
         profilePicURL,
         // userId,
       });
@@ -158,7 +150,7 @@ const Signup = () => {
         session &&
         teacher &&
         studentYear &&
-        accountType
+        isTeacher
         // userId
       )
     );

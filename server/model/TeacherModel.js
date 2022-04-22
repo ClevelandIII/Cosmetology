@@ -20,7 +20,7 @@ const TeacherSchema = new Schema({
     required: true,
     select: false,
   },
-  accountType: {
+  isTeacher: {
     type: String,
   },
   profilePicURL: { type: String },

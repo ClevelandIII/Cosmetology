@@ -141,28 +141,57 @@ const index = ({ stylist, client }) => {
                     >
                       <Segment className="indexClientInfo">
                         <p>
-                          <h2>First Name: </h2>
-                          {client.firstName}
-                          <h2>Last Name: </h2>
-                          {client.lastName}
-                          <h4>Hair Condition: </h4>
-                          {client.hairCondition}
-                          <h4>Hair Classification: </h4>
-                          {client.hairClassification}
-                          <h4>Hair Density: </h4>
-                          {client.hairDensity}
-                          <h4>Hair Elasticity:</h4>
-                          {client.hairElasticity}
-                          <h4>Hair Porosity: </h4>
-                          {client.hairPorosity}
-                          <h4>Hair Length: </h4>
-                          {client.hairLength}
-                          <h4>Hair Texture: </h4>
-                          {client.hairTexture}
-                          <h4>Growth Patterns: </h4>
-                          {client.growthPatterns}
-                          <h4>Scalp Condition: </h4>
-                          {client.scalpClassification}
+                          <h1>First Name: </h1>
+                          <p style={{ fontSize: "25px" }}>{client.firstName}</p>
+                          <h1>Last Name: </h1>
+                          <p style={{ fontSize: "25px" }}> {client.lastName}</p>
+                          <h2>Appointment Date: </h2>
+                          <p style={{ fontSize: "20px" }}>
+                            {" "}
+                            {client.appointmentDate}
+                          </p>
+                          <h3>Service Request: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {" "}
+                            {client.serviceRequest}{" "}
+                          </p>
+                          <h3>Hair Condition: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairCondition}
+                          </p>
+                          <h3>Hair Classification: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {" "}
+                            {client.hairClassification}
+                          </p>
+                          <h3>Hair Density: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairDensity}
+                          </p>
+                          <h3>Hair Elasticity:</h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairElasticity}
+                          </p>
+                          <h3>Hair Porosity: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairPorosity}
+                          </p>
+                          <h3>Hair Length: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairLength}
+                          </p>
+                          <h3>Hair Texture: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.hairTexture}
+                          </p>
+                          <h3>Growth Patterns: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.growthPatterns}
+                          </p>
+                          <h3>Scalp Condition: </h3>
+                          <p style={{ fontSize: "17px" }}>
+                            {client.scalpClassification}
+                          </p>
                         </p>
                       </Segment>
                     </Modal>
