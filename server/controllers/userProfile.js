@@ -24,7 +24,7 @@ const createUser = async (req, res) => {
     studentYear,
     teacherCode,
     // userId,
-    accountType,
+    isTeacher,
   } = req.body;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
@@ -46,7 +46,7 @@ const createUser = async (req, res) => {
       teacherCode,
       session,
       studentYear,
-      accountType,
+      isTeacher,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
       // userId,

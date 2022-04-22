@@ -18,7 +18,7 @@ const Signup = () => {
     session: "",
     teacher: "",
     studentYear: "",
-    accountType: "",
+    isTeacher: "",
     // userId: "",
   });
 
@@ -34,7 +34,7 @@ const Signup = () => {
     teacherCode = "Year 1" || "Year 2",
     teacher,
     studentYear,
-    accountType,
+    isTeacher,
     // userId
   } = stylist;
 
@@ -71,10 +71,10 @@ const Signup = () => {
       stylistId = stylist._id;
     }
 
-    if (teacherCode === "Zn&=@5Bc6F") {
-      accountType = "teacher";
+    if (teacherCode === "WestMecTeacherCode6997") {
+      isTeacher =  true;
     } else {
-      accountType = "student";
+      isTeacher = false;
     }
 
     // if(teacherCode){
@@ -108,7 +108,7 @@ const Signup = () => {
         teacherCode,
         teacher,
         studentYear,
-        accountType,
+        isTeacher,
         profilePicURL,
         // userId,
       });
@@ -150,7 +150,7 @@ const Signup = () => {
         session &&
         teacher &&
         studentYear &&
-        accountType
+        isTeacher
         // userId
       )
     );

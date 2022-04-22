@@ -25,8 +25,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
 
   const protectedRoutes = [
     "/",
-    "/studentProfile",
-    "/teacherProfile",
+    "/UserProfile",
     "/clientProfile",
     "/clientCreator",
     "/studentList",

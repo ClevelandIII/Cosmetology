@@ -116,3 +116,9 @@
 - Cleveland: Updated pastClients so that each is an array, and that there are three strings in the array. Made updates to studentProfile and teacherProfile.
 
 - Abdi: Added onHover to index that displays basic information, added bigger menu that displays all information about the client that isnt already available.
+
+4/21/2022
+
+- Cleveland: Merged TeacherProfile and StudentProfile to show based on isTeacher of stylist. Added Hours to stylist. (Currently you cannot add hours to it.)
+
+- Abdi: Made isTeacher and teacherCode so that we can distinguish teachers from students in stylist. Adding a teacher list like studentList page that shows all students.
