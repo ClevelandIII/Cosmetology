@@ -15,7 +15,7 @@ import Router from "next/router";
 
 const ClientCreator = ({ stylist }) => {
   const [client, setClient] = useState({
-    stylistName: stylist.email,
+    stylistName: stylist.firstName, 
     firstName: "",
     lastName: "",
     email: "",

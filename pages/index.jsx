@@ -60,7 +60,6 @@ const index = ({ stylist, client }) => {
   }, []);
   console.log(clients);
 
-  const [open, setOpen] = useState(false);
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
     <div
