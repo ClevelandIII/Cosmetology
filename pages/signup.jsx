@@ -1,4 +1,12 @@
-import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Form,
+  Message,
+  Segment,
+  Radio,
+  Select,
+} from "semantic-ui-react";
 import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
@@ -6,8 +14,15 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
-
 const Signup = () => {
+  // state = {}
+
+  // anotherHandleChange = (e, { value }) => this.setState({ value })
+  
+  // this.anotherHandleChange = this.anotherHandleChange.bind(this);
+
+  // const { value } = this.state
+
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
@@ -21,8 +36,6 @@ const Signup = () => {
     isTeacher: "",
     // userId: "",
   });
-
-  
 
   const {
     firstName,
@@ -38,9 +51,9 @@ const Signup = () => {
     // userId
   } = stylist;
 
-  const test = [
-    { key: "1", text: "Year 1", value: "Year 1" },
-    { key: "2", text: "Year 2", value: "Year 2" },
+  const teachers = [
+    { key: "1", text: "teachers here1", value: "TeacherId1" },
+    { key: "2", text: "teachers here2", value: "TeacherId2" },
   ];
 
   // stylist.studentYear = test.value
@@ -72,7 +85,7 @@ const Signup = () => {
     }
 
     if (teacherCode === "WestMecTeacherCode6997") {
-      isTeacher =  true;
+      isTeacher = true;
     } else {
       isTeacher = false;
     }
@@ -96,7 +109,7 @@ const Signup = () => {
       setFormLoading(false);
       return res.status(500).send("Image Upload Failure");
     }
-    
+
     try {
       const res = await axios.post("/api/v1/user/signup", {
         firstName,
@@ -141,16 +154,18 @@ const Signup = () => {
   useEffect(() => {
     setSubmitDisabled(
       !(
-        firstName &&
-        lastName &&
-        email &&
-        password &&
-        teacherCode &&
-        className &&
-        session &&
-        teacher &&
-        studentYear &&
-        isTeacher
+        (
+          firstName &&
+          lastName &&
+          email &&
+          password &&
+          teacherCode &&
+          className &&
+          session &&
+          teacher &&
+          studentYear &&
+          isTeacher
+        )
         // userId
       )
     );
@@ -242,7 +257,14 @@ const Signup = () => {
             onChange={handleChange}
             icon="book"
             iconPosition="left"
-          />
+          >
+            <Form.Radio
+            label="Cosmetology 1"
+            />
+            <Form.Radio
+            label="Cosmetology 2"
+            />
+          </Form.Input>
           <Form.Input
             required
             label="Teacher"
@@ -252,10 +274,15 @@ const Signup = () => {
             onChange={handleChange}
             icon="male"
             iconPosition="left"
-          />
+          >
+            <Form.Dropdown
+            // commit this out if not working yet
+            placeholder="Teacher"
+            options={teachers}
+            />
+          </Form.Input>
           <Form.Input
             label="Teacher code"
-            required
             placeholder="secret code"
             name="teacherCode"
             value={teacherCode}
@@ -273,8 +300,18 @@ const Signup = () => {
             onChange={handleChange}
             icon="address book"
             iconPosition="left"
-          ></Form.Input>
+          >
+            <Form.Radio
+            label="Session 1"
+            />
+            <Form.Radio
+            label="Session 2"
+            />
+            
+          </Form.Input>
 
+
+            {/* the year will be removed in the end it being used as testing now */}
           <Form.Input
             required
             label="Year"
@@ -289,13 +326,13 @@ const Signup = () => {
               label="Year 1"
               // value="sm"
               // checked={value === "sm"}
-              // onChange={this.handleChange}
+              // onChange={this.anotherHandleChange}
             />
             <Form.Radio
               label="Year 2"
               // value="md"
               // checked={value === "md"}
-              // onChange={this.handleChange}
+              // onChange={this.anotherHandleChange}
             />
           </Form.Input>
 
