@@ -1,4 +1,12 @@
-import { Button, Divider, Form, Message, Segment } from "semantic-ui-react";
+import {
+  Button,
+  Divider,
+  Form,
+  Message,
+  Segment,
+  Radio,
+  Select,
+} from "semantic-ui-react";
 import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
@@ -7,10 +15,21 @@ import { setToken } from "./util/auth";
 let cancel;
 
 const Signup = () => {
+<<<<<<< HEAD
 
   useEffect(() => {
     document.querySelector("body").classList.add("blackBackground");
   });
+=======
+  // state = {}
+
+  // anotherHandleChange = (e, { value }) => this.setState({ value })
+  
+  // this.anotherHandleChange = this.anotherHandleChange.bind(this);
+
+  // const { value } = this.state
+
+>>>>>>> 294dc520d36280664ad84c5e5637992f5495bb01
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
@@ -39,9 +58,9 @@ const Signup = () => {
     // userId
   } = stylist;
 
-  const test = [
-    { key: "1", text: "Year 1", value: "Year 1" },
-    { key: "2", text: "Year 2", value: "Year 2" },
+  const teachers = [
+    { key: "1", text: "teachers here1", value: "TeacherId1" },
+    { key: "2", text: "teachers here2", value: "TeacherId2" },
   ];
 
   // stylist.studentYear = test.value
@@ -245,7 +264,14 @@ const Signup = () => {
             onChange={handleChange}
             icon="book"
             iconPosition="left"
-          />
+          >
+            <Form.Radio
+            label="Cosmetology 1"
+            />
+            <Form.Radio
+            label="Cosmetology 2"
+            />
+          </Form.Input>
           <Form.Input
             required
             label="Teacher"
@@ -255,10 +281,15 @@ const Signup = () => {
             onChange={handleChange}
             icon="male"
             iconPosition="left"
-          />
+          >
+            <Form.Dropdown
+            // commit this out if not working yet
+            placeholder="Teacher"
+            options={teachers}
+            />
+          </Form.Input>
           <Form.Input
             label="Teacher code"
-            required
             placeholder="secret code"
             name="teacherCode"
             value={teacherCode}
@@ -276,8 +307,18 @@ const Signup = () => {
             onChange={handleChange}
             icon="address book"
             iconPosition="left"
-          ></Form.Input>
+          >
+            <Form.Radio
+            label="Session 1"
+            />
+            <Form.Radio
+            label="Session 2"
+            />
+            
+          </Form.Input>
 
+
+            {/* the year will be removed in the end it being used as testing now */}
           <Form.Input
             required
             label="Year"
@@ -292,13 +333,13 @@ const Signup = () => {
               label="Year 1"
               // value="sm"
               // checked={value === "sm"}
-              // onChange={this.handleChange}
+              // onChange={this.anotherHandleChange}
             />
             <Form.Radio
               label="Year 2"
               // value="md"
               // checked={value === "md"}
-              // onChange={this.handleChange}
+              // onChange={this.anotherHandleChange}
             />
           </Form.Input>
 

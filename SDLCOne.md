@@ -152,10 +152,28 @@ Daniel Nijdl: displays current semester started personalProfiles
 Joshua Ruvalcaba: working on tablet/ipad version of clientCreator
 
 4/20/22
+Jason Enciso: ciw
+
+Reid Gill: trying implementing a dropbox in the the signup
+
+Daniel Nijdl: Currently working on personalProfile pages for clients students and adding stylistId and accountType to stylists
+
+Joshua Ruvalcaba: working on tablet/ipad version of clientCreator and help reid
+
+4/21/22
 Jason Enciso:
 
 Reid Gill: trying implementing a radio button in the the signup 
 
 Daniel Nijdl: Created getProfile and profileRoutes. Fixing bugs with getProfiles and setting up person profile links.
+
+Joshua Ruvalcaba: 
+
+4/22/22
+Jason Enciso: absent
+
+Reid Gill: trying implementing a radio and dropbox button in the the signup (if u want to make us the signup page turn all of the radio and dropbox back to textarea feel free to try and help me im stuck ) updated the trello with whats left to do
+
+Daniel Nijdl: Finished getprofile, working on profileRoutes, and attempting to get personal profile links to work.
 
 Joshua Ruvalcaba: 
