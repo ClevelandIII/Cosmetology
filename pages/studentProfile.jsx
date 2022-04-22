@@ -8,6 +8,8 @@ import {
   Segment,
   Rating,
   Popup,
+  Icon,
+  Button,
 } from "semantic-ui-react";
 import axios from "axios";
 // Very Similar to StudentProfile, only differences are studentList instead of clientList and
@@ -15,6 +17,7 @@ import axios from "axios";
 
 const StudentProfile = ({ stylist }) => {
   const [stylists, setStylist] = useState();
+  const [hidden, setHidden] = useState(false);
   const Options = [
     {
       key: "Number of Visits",
@@ -51,8 +54,17 @@ const StudentProfile = ({ stylist }) => {
     // console.log(stylists);
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
 
-
+    if (name === "media" && files.length > 0) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
+      setHighlighted(true);
+    } else {
+      setStylist((prev) => ({ ...prev, [name]: value }));
+    }
+  };
 
   return (
     <>
@@ -102,7 +114,53 @@ const StudentProfile = ({ stylist }) => {
               paddingTop: "1.2rem",
             }}
           >
-            <h1>Hours: {stylist.hours}</h1>
+            {hidden ? (
+              <div>
+                <h1>
+                  Hours:
+                  <input
+                    style={{ borderRadius: "20px", width: "30%" }}
+                    placeholder={stylist.hours}
+                    name="firstName"
+                    value=""
+                    className="hour"
+                  />
+                  <button>Submit</button>
+                </h1>
+              </div>
+            ) : (
+              <div>
+                <h1>
+                  Hours: {stylist.hours}
+                  <Icon
+                    name="plus"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      setHidden(true);
+                    }}
+                  />
+                </h1>
+              </div>
+            )}
+            {/* <Icon
+                name="plus"
+                onClick={() => {
+                  //   try {
+                  //   stylist.hours.push([
+                  //     client.firstName,
+                  //     client.lastName,
+                  //     client.dateCreated,
+                  //     client.appointmentDate,
+                  //   ]);
+                  //   console.log(`stylist`, stylist);
+                  //   await stylist.save();
+                  //   // console.log(`stylist2`, stylist);
+                  //   return res.status(200).send("All Good");
+                  // } catch (error) {
+                  //   console.log(error);
+                  // }
+                }}
+              /> */}
           </Grid.Row>
           <Divider hidden />
           <Grid.Row

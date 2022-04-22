@@ -35,11 +35,7 @@ const Signup = () => {
     teacher,
     studentYear,
     accountType,
-<<<<<<< HEAD
     // userId
-=======
-    stylistId,
->>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
   } = stylist;
 
   const test = [
@@ -70,10 +66,6 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5427c9e5adb4365e025657e591558cfb192715a5
 
     if (stylist._id) {
       stylistId = stylist._id;

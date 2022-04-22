@@ -20,13 +20,13 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: orange;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #cc8b00;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 /* Welcome User Paragraph */
