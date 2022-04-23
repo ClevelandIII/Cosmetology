@@ -142,7 +142,7 @@ const ClientCreator = ({ stylist }) => {
 
   return (
     <>
-      <Form
+      <Form 
         style={{
           width: "90vw",
           margin: "0 auto",

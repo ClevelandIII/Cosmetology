@@ -11,6 +11,7 @@ import {
   Popup,
   Icon,
   Button,
+  Form,
 } from "semantic-ui-react";
 import axios from "axios";
 // Very Similar to UserProfile, only differences are studentList instead of clientList and
@@ -20,6 +21,8 @@ const UserProfile = ({ stylist }) => {
   const [stylists, setStylist] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
+  const [formLoading, setFormLoading] = useState(false);
+
   const Options = [
     {
       key: "Number of Visits",
@@ -56,6 +59,38 @@ const UserProfile = ({ stylist }) => {
     console.log(stylists);
   }, []);
 
+  //Separates the teachers from the students
+  let count = 0
+  stylists.map((stylist) => {
+    if(stylist.isTeacher === "false"){
+      return count++
+    }else{
+      count = count
+    }
+    return console.log(count);
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    try {
+      console.log("tester");
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      stylists = results.data;
+
+      let Testr = stylists.find((stylist) => stylist.email === stylist.email);
+
+      const stylist = await StylistModel.findById(Testr._id);
+      stylist.hours.push(hours);
+      await stylist.save();
+      setHidden(false);
+    } catch (error) {
+      console.log(error);
+    }
+    setFormLoading(false);
+  };
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -64,7 +99,6 @@ const UserProfile = ({ stylist }) => {
       setMediaPreview(() => URL.createObjectURL(files[0]));
       setHighlighted(true);
     } else {
-      // setText((prev) => ({ ...prev, [name]: value }));
       setHours(value);
     }
   };
@@ -128,7 +162,7 @@ const UserProfile = ({ stylist }) => {
                   paddingTop: "1.2rem",
                 }}
               >
-                <h1>Number of Students: {stylists.length}</h1>
+                <h1>Number of Students: {count}</h1>
               </Grid.Row>
             </Grid.Column>
           </Grid>
@@ -174,46 +208,50 @@ const UserProfile = ({ stylist }) => {
             <Grid.Row className="test" columns={3}>
               <>
                 {stylists.map((stylist) => {
-                  return (
-                    <>
-                      <Grid.Column
-                        className="Indexcolumn clientListColumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>
-                            {stylist.firstName} {stylist.lastName}
-                          </p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{stylist.hours}</p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>
-                            {stylist.pastClients.map((client) => {
-                              return <>{`${client[0]} `}</>;
-                            })}
-                          </p>
-                        </Segment>
-                      </Grid.Column>
-                    </>
-                  );
+                  if (stylist.isTeacher === "false") {
+                    return (
+                      <>
+                        <Grid.Column
+                          className="Indexcolumn clientListColumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>
+                              {stylist.firstName} {stylist.lastName}
+                            </p>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{stylist.hours}</p>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>
+                              {stylist.pastClients.map((client) => {
+                                return <>{`${client[0]} `}</>;
+                              })}
+                            </p>
+                          </Segment>
+                        </Grid.Column>
+                      </>
+                    );
+                  } else {
+                    <></>;
+                  }
                 })}
               </>
             </Grid.Row>
@@ -268,13 +306,14 @@ const UserProfile = ({ stylist }) => {
                 }}
               >
                 {hidden ? (
-                  <div>
+                  <Form onSubmit={handleSubmit} loading={formLoading}>
                     <h1>
                       Hours:
                       <input
                         style={{
                           borderRadius: "20px",
                           width: "30%",
+                          height: "1rem",
                           marginLeft: "2%",
                         }}
                         placeholder={stylist.hours}
@@ -285,6 +324,7 @@ const UserProfile = ({ stylist }) => {
                         type="number"
                       />
                       <button
+                        type="submit"
                         style={{
                           color: "white",
                           backgroundColor: "orange",
@@ -292,14 +332,11 @@ const UserProfile = ({ stylist }) => {
                           marginLeft: "2%",
                           border: "1px solid black",
                         }}
-                        onClick={() => {
-                          stylist.hours.push([hours]);
-                        }}
                       >
                         Submit
                       </button>
                     </h1>
-                  </div>
+                  </Form>
                 ) : (
                   <div>
                     <h1>
@@ -314,25 +351,6 @@ const UserProfile = ({ stylist }) => {
                     </h1>
                   </div>
                 )}
-                {/* <Icon
-            name="plus"
-            onClick={() => {
-              //   try {
-              //   stylist.hours.push([
-              //     client.firstName,
-              //     client.lastName,
-              //     client.dateCreated,
-              //     client.appointmentDate,
-              //   ]);
-              //   console.log(`stylist`, stylist);
-              //   await stylist.save();
-              //   // console.log(`stylist2`, stylist);
-              //   return res.status(200).send("All Good");
-              // } catch (error) {
-              //   console.log(error);
-              // }
-            }}
-          /> */}
               </Grid.Row>
               <Divider hidden />
               <Grid.Row

@@ -55,7 +55,10 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     }
   }
 
+  
   return { pageProps };
+
+
 };
 
 export default MyApp;

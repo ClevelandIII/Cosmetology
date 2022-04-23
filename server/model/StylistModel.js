@@ -23,7 +23,7 @@ const StylistSchema = new Schema(
     profilePicURL: { type: String },
 
     hours: {
-      type: Number,
+      type: String,
       default: 0,
     },
 
@@ -49,14 +49,14 @@ const StylistSchema = new Schema(
     isTeacher: {
       type: String,
     },
-    
+
     teacher: { type: String },
-    
+
     pastClients: { type: Array },
-    
+
     userId: {
-        type: String,
-        default: Date.now(),
+      type: String,
+      default: Date.now(),
     },
 
     resetToken: { type: String },

@@ -122,3 +122,9 @@
 - Cleveland: Merged TeacherProfile and StudentProfile to show based on isTeacher of stylist. Added Hours to stylist. (Currently you cannot add hours to it.)
 
 - Abdi: Made isTeacher and teacherCode so that we can distinguish teachers from students in stylist. Adding a teacher list like studentList page that shows all students.
+
+4/22/2022
+
+- Cleveland: Made it so that teachers dont show up on studentlist, styled index and scrollbar (currently you cannot scroll in signup), working on allowing a student to add hours
+
+- Abdi: Client list additions and styling

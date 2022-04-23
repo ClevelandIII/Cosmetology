@@ -126,44 +126,5 @@ const getAllClients = async (req, res) => {
     return res.status(500).send("Server Error @ getAllClients");
   }
 };
-// const getStylists = async () => {
-//   try {
-//     const results = await axios.get(
-//       `http://localhost:3001/api/v1/stylists`
-//     );
-//     stylists = results.data;
-
-//     let Testr = stylists.find(
-//       (stylist) => client.stylistName === stylist.email
-//     );
-//     // console.log(`Tester`, Testr);
-
-//     const stylist = await StylistModel.findById(Testr._id);
-//     stylist.pastClients.push(
-//       `${client.firstName} + ${client.lastName} + ${client.dateCreated}`
-//     );
-//     console.log(`stylist`, stylist);
-//     await stylist.save();
-//     console.log(`stylist2`, stylist);
-//     return res.status(200).send("All Good");
-
-//     // stylists.map((stylist) => {
-//     //   try {
-//     //     if (client.stylistName === stylist.email) {
-//     //       stylist.pastClients.push(
-//     //         `${client.firstName} + ${client.lastName} + ${client.dateCreated}`,
-//     //       );
-//     //       console.log(stylist.pastClients);
-//     //       console.log(stylist);
-//     //     }
-//     //   } catch (error) {
-//     //     return res.status(500).send("Server Error");
-//     //   }
-//     // });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-// getStylists();;
 
 module.exports = { createClient, getAllClients };

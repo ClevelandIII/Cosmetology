@@ -3,16 +3,9 @@ import { Grid, Ref, Visibility } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav";
-// import ClientList from "../../clientList"
+import { Link, Route, Switch, useLocation } from "react-router-dom";
 
-const Layout = ({ children, stylist }) => {
-  // Router.onRouteChangeStart = () => nprogress.start();
-  // Router.onRouteChangeComplete = () => nprogress.done();
-  // Router.onRouteChangeError = () => nprogress.done();
-
-  //createRef refreshes on render()
-  //useRef refreshes on router.reload()
-
+const Layout = ({ children, stylist }, req, res) => {
   {
     stylist
       ? useEffect(() => {
@@ -22,6 +15,16 @@ const Layout = ({ children, stylist }) => {
           document.querySelector("body").classList.add("noScroll");
         });
   }
+
+  // if (req.originalUrl === "http://localhost:3001/login") {
+  //   useEffect(() => {
+  //     document.querySelector("body").classList.add("noScroll");
+  //   });
+  // } else {
+  //   useEffect(() => {
+  //     document.querySelector("body").classList.remove("noScroll");
+  //   });
+  // }
 
   const contextRef = createRef();
 

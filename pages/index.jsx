@@ -125,9 +125,8 @@ const index = ({ stylist, client }) => {
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
                     setClients={clients}
-                    style={{ textAlign: "center" }}
+                    style={{ textAlign: "center"}}
                   >
-                    {" "}
                     <Modal
                       closeIcon
                       trigger={
