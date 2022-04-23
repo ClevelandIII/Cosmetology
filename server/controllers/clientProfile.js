@@ -10,6 +10,7 @@ const axios = require("axios");
 const createClient = async (req, res) => {
   const {
     stylistName,
+    stylistPic,
     firstName,
     lastName,
     email,
@@ -43,6 +44,7 @@ const createClient = async (req, res) => {
 
     client = new ClientModel({
       stylistName,
+      stylistPic,
       firstName,
       lastName,
       email: email.toLowerCase(),

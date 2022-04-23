@@ -5,6 +5,9 @@ const ClientSchema = new Schema({
   stylistName: {
     type: String,
   },
+  stylistPic: {
+    type: String,
+  },
 
   firstName: {
     type: String,

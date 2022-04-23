@@ -16,6 +16,7 @@ import Router from "next/router";
 const ClientCreator = ({ stylist }) => {
   const [client, setClient] = useState({
     stylistName: stylist.firstName, 
+    stylistPic: stylist.profilePicURL, 
     firstName: "",
     lastName: "",
     email: "",
@@ -40,6 +41,7 @@ const ClientCreator = ({ stylist }) => {
   });
   const {
     stylistName,
+    stylistPic,
     firstName,
     lastName,
     email,
@@ -115,6 +117,7 @@ const ClientCreator = ({ stylist }) => {
     setSubmitDisabled(
       !(
         stylistName &&
+        stylistPic &&
         firstName &&
         lastName &&
         email &&
@@ -148,6 +151,7 @@ const ClientCreator = ({ stylist }) => {
           margin: "0 auto",
           marginTop: "3rem",
           textAlign: "center",
+          
         }}
         loading={formLoading}
         error={errorMsg !== null}
