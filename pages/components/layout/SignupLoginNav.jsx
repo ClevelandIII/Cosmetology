@@ -27,6 +27,7 @@ const SignupLoginNav = () => {
       borderless
       pointing
       secondary
+      
       // className="nav-bar navBar"
       size="large"
       style={{ backgroundColor: "white" }}
