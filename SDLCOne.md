@@ -177,3 +177,12 @@ Reid Gill: trying implementing a radio and dropbox button in the the signup (if 
 Daniel Nijdl: Finished getprofile, working on profileRoutes, and attempting to get personal profile links to work.
 
 Joshua Ruvalcaba: 
+
+4/25/2022
+Jason Enciso: Test Day
+
+Reid Gill: Test Day
+
+Daniel Nijdl: Test Day
+
+Joshua Ruvalcaba: Test Day

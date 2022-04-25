@@ -128,3 +128,9 @@
 - Cleveland: Made it so that teachers dont show up on studentlist, styled index and scrollbar (currently you cannot scroll in signup), working on allowing a student to add hours
 
 - Abdi: Client list additions and styling
+
+4/25/2022
+
+- Cleveland: Test Day
+
+- Abdi: Test Day
