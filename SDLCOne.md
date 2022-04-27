@@ -196,3 +196,11 @@ Daniel Nijdl: Test Day
 
 Joshua Ruvalcaba: Test Day
 
+4/27/2022
+Jason Enciso: 
+
+Reid Gill: working on radio and dropbox button in the the signup
+
+Daniel Nijdl:Almost have personal profile links working, but keeps redirecting to home page. Fixed studentList and layout not working
+
+Joshua Ruvalcaba: helping Daniel

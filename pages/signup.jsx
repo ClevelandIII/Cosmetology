@@ -6,6 +6,7 @@ import {
   Segment,
   Radio,
   Select,
+  Input,
 } from "semantic-ui-react";
 import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
@@ -21,7 +22,7 @@ const Signup = () => {
   // state = {}
 
   // anotherHandleChange = (e, { value }) => this.setState({ value })
-  
+
   // this.anotherHandleChange = this.anotherHandleChange.bind(this);
 
   // const { value } = this.state
@@ -75,8 +76,9 @@ const Signup = () => {
 
   //* Functions */
 
-
-
+  const myFunction = (studentYear) => {
+    // document.getElementById("result").value = stylist.studentYear;
+  };
 
   // Sets form loading to true while form is being submitted
   const handleSubmit = async (e) => {
@@ -85,8 +87,6 @@ const Signup = () => {
 
     //Initial declaration of profilePicURL
     let profilePicURL;
-
-
 
     if (teacherCode === "WestMecTeacherCode6997") {
       isTeacher = true;
@@ -150,8 +150,6 @@ const Signup = () => {
     }
   };
 
-
-
   // const handleDropDown= (e,{value})=>setState({stateValue:value})
 
   // const anotherHandleChange = (e, { value }) => this.setState({ value })
@@ -181,7 +179,12 @@ const Signup = () => {
   return (
     <>
       <Form
-        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem", overflow: "scroll" }}
+        style={{
+          width: "80vw",
+          margin: "0 auto",
+          marginTop: "3rem",
+          overflow: "scroll",
+        }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
@@ -264,12 +267,8 @@ const Signup = () => {
             icon="book"
             iconPosition="left"
           >
-            <Form.Radio
-            label="Cosmetology 1"
-            />
-            <Form.Radio
-            label="Cosmetology 2"
-            />
+            <Form.Radio label="Cosmetology 1" />
+            <Form.Radio label="Cosmetology 2" />
           </Form.Input>
           <Form.Input
             required
@@ -282,9 +281,9 @@ const Signup = () => {
             iconPosition="left"
           >
             <Form.Dropdown
-            // commit this out if not working yet
-            placeholder="Teacher"
-            options={teachers}
+              // commit this out if not working yet
+              placeholder="Teacher"
+              options={teachers}
             />
           </Form.Input>
           <Form.Input
@@ -307,17 +306,11 @@ const Signup = () => {
             icon="address book"
             iconPosition="left"
           >
-            <Form.Radio
-            label="Session 1"
-            />
-            <Form.Radio
-            label="Session 2"
-            />
-            
+            <Form.Radio label="Session 1" />
+            <Form.Radio label="Session 2" />
           </Form.Input>
 
-
-            {/* the year will be removed in the end it being used as testing now */}
+          {/* the year will be removed in the end it being used as testing now */}
           <Form.Input
             required
             label="Year"
@@ -328,18 +321,33 @@ const Signup = () => {
             icon="calendar alternate outline"
             iconPosition="left"
           >
-            <Form.Radio
+            <input
+              type="radio"
+              name="Year"
+              onclick={myFunction(studentYear)}
+              value="Year 1"
+            />
+            <input
+              type="radio"
+              name="Year"
+              onclick={myFunction(studentYear)}
+              value="Year 2"
+            />
+
+            {/* <Radio
               label="Year 1"
+              name="Year"
               // value="sm"
               // checked={value === "sm"}
               // onChange={this.anotherHandleChange}
             />
-            <Form.Radio
+            <Radio
               label="Year 2"
+              name="Year"
               // value="md"
               // checked={value === "md"}
               // onChange={this.anotherHandleChange}
-            />
+            /> */}
           </Form.Input>
 
           <Button color="orange" content="Signup" icon="signup" type="submit" />
