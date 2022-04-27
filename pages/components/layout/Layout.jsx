@@ -8,12 +8,18 @@ import SignupLoginNav from "./SignupLoginNav";
 const Layout = ({ children, stylist }, req, res) => {
   {
     stylist
-      ? useEffect(() => {
-          document.querySelector("body").classList.remove("noScroll");
-        })
-      : useEffect(() => {
-          document.querySelector("body").classList.add("noScroll");
-        });
+      // ? useEffect(() => {
+      //     document.querySelector("body").classList.remove("noScroll");
+      //   })
+      // : useEffect(() => {
+      //     document.querySelector("body").classList.add("noScroll");
+      //   });
+      ?   useEffect(() => {
+        document.querySelector("body").classList.add("otherOrangeBackground");
+      })
+      :   useEffect(() => {
+        document.querySelector("body").classList.add("orangeBackground");
+      });
   }
 
   // if (req.originalUrl === "http://localhost:3001/login") {
@@ -50,7 +56,7 @@ const Layout = ({ children, stylist }, req, res) => {
           <div style={{ margin: "0 auto" }} className="signupLogin">
             {children}
           </div>
-          <iframe
+          {/* <iframe
             src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
             autoPlay
             loop
@@ -66,7 +72,7 @@ const Layout = ({ children, stylist }, req, res) => {
             //   transform: "translate(-50%,-50%)",
             //   zIndex: "-1",
             // }}
-          ></iframe>
+          ></iframe> */}
         </>
       )}
       {/* 

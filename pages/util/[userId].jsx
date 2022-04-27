@@ -15,7 +15,7 @@ import {
   Segment,
 } from "semantic-ui-react";
 
-const profilePage = ({ stylist }) => {
+const profilePage = ({ stylist, profile }) => {
   const router = useRouter();
   const { userId } = router.query;
   // const ownAccount = stylist?._id === stylist?._id;
@@ -292,8 +292,8 @@ profilePage.getInitialProps = async (ctx) => {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    const { stylist } = res.data;
-    return { stylist };
+    const { profile } = res.data;
+    return { profile };
   } catch (error) {
     console.log(error);
   }

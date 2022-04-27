@@ -14,7 +14,10 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
+
+
 const Signup = () => {
+
   // state = {}
 
   // anotherHandleChange = (e, { value }) => this.setState({ value })
@@ -71,6 +74,9 @@ const Signup = () => {
   const [mediaPreview, setMediaPreview] = useState(null);
 
   //* Functions */
+
+
+
 
   // Sets form loading to true while form is being submitted
   const handleSubmit = async (e) => {

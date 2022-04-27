@@ -254,6 +254,19 @@ a.item :hover {
   justify-content: center;
 }
 
+.orangeBackground{
+  background: url("https://i.postimg.cc/0NDfCYjj/orange-kid.jpg");
+  background-size: 300%;
+  background-position: center;
+  background-blend-mode: soft-light;
+}
+
+.otherOrangeBackground{
+  background:rgba(253, 224, 158, 0.13);
+  background-size: cover;
+  backdrop-filter: blur(20px) !important;
+}
+
 .containeindex {
   border-bottom: 10px solid orange;
   border-top: 10px solid orange;
