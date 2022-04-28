@@ -56,7 +56,8 @@ const Layout = ({ children, stylist }, req, res) => {
             loop
             muted
             className="background-video"
-            // style={{
+
+                        // style={{
             //   position: "absolute",
             //   width: "150%",
             //   left: "50%",
@@ -67,6 +68,7 @@ const Layout = ({ children, stylist }, req, res) => {
             //   zIndex: "-1",
             // }}
           ></iframe>
+         
         </>
       )}
       {/* 

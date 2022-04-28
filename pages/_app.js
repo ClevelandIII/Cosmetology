@@ -32,6 +32,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     "/clientList",
     "/[userId]",
     "/profilePage"
+  
   ];
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 

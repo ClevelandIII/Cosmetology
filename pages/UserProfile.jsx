@@ -119,7 +119,7 @@ const UserProfile = ({ stylist }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textAlign: "center" }}
+                style={{ margin: "3.8rem", textalign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -131,7 +131,7 @@ const UserProfile = ({ stylist }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -149,7 +149,7 @@ const UserProfile = ({ stylist }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textAlign: "center", marginTop: "10rem" }}
+              style={{ textalign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -158,7 +158,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -169,7 +169,7 @@ const UserProfile = ({ stylist }) => {
 
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textAlign: "center", paddingLeft: "4%" }}>
+              <div style={{ textalign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
                 <Dropdown
                   placeholder="Sort By..."
@@ -186,7 +186,7 @@ const UserProfile = ({ stylist }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textAlign: "center",
+                textalign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -215,7 +215,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn clientListColumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textAlign: "center" }}
+                          style={{ textalign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>
@@ -227,7 +227,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textAlign: "center" }}
+                          style={{ textalign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>{stylist.hours}</p>
@@ -237,7 +237,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textAlign: "center" }}
+                          style={{ textalign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>
@@ -262,7 +262,7 @@ const UserProfile = ({ stylist }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textAlign: "center" }}
+                style={{ margin: "3.8rem", textalign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -274,7 +274,7 @@ const UserProfile = ({ stylist }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -292,7 +292,7 @@ const UserProfile = ({ stylist }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textAlign: "center", marginTop: "10rem" }}
+              style={{ textalign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -301,7 +301,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -359,7 +359,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -372,7 +372,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.6rem",
                 }}
               >
@@ -385,7 +385,7 @@ const UserProfile = ({ stylist }) => {
           ;
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textAlign: "center" }}>
+              <div style={{ textalign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
                 <Dropdown
                   placeholder="Sort By..."
@@ -402,7 +402,7 @@ const UserProfile = ({ stylist }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textAlign: "center",
+                textalign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -429,7 +429,7 @@ const UserProfile = ({ stylist }) => {
                     <>
                       <Grid.Column
                         className="Indexcolumn clientListColumn"
-                        style={{ textAlign: "center" }}
+                        style={{ textalign: "center" }}
                       >
                         <Popup
                           trigger={
@@ -447,7 +447,7 @@ const UserProfile = ({ stylist }) => {
                       </Grid.Column>
                       <Grid.Column
                         className="Indexcolumn"
-                        style={{ textAlign: "center" }}
+                        style={{ textalign: "center" }}
                       >
                         <Segment className="indexCenter">
                           <p>{client[2]}</p>
@@ -455,7 +455,7 @@ const UserProfile = ({ stylist }) => {
                       </Grid.Column>
                       <Grid.Column
                         className="Indexcolumn"
-                        style={{ textAlign: "center" }}
+                        style={{ textalign: "center" }}
                       >
                         <Segment className="indexCenter">
                           <p>{client[3]}</p>

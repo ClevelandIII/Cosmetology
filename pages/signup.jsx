@@ -174,13 +174,35 @@ const Signup = () => {
   // const { value } = this.state
   return (
     <>
+    <iframe
+            src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
+            autoPlay
+            loop
+            muted
+            className="background-video"
+            // style={{
+            //   position: "absolute",
+            //   width: "150%",
+            //   left: "50%",
+            //   top: "50%",
+            //   height: "100%",
+            //   objectFit: "cover",
+            //   transform: "translate(-50%,-50%)",
+            //   zIndex: "-1",
+            // }}
+          ></iframe>
+
+
+
+          
       <Form
-        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem", overflow: "scroll" }}
+        style={{ width: "80vw", margin: "0 auto", marginTop: "3rem" }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
       >
-        <Segment>
+        
+        <Segment >
           {/* This is where you drag and drop/upload your profile picture */}
           <DragNDrop
             inputRef={inputRef}
@@ -322,18 +344,7 @@ const Signup = () => {
             icon="calendar alternate outline"
             iconPosition="left"
           >
-            <Form.Radio
-              label="Year 1"
-              // value="sm"
-              // checked={value === "sm"}
-              // onChange={this.anotherHandleChange}
-            />
-            <Form.Radio
-              label="Year 2"
-              // value="md"
-              // checked={value === "md"}
-              // onChange={this.anotherHandleChange}
-            />
+           
           </Form.Input>
 
           <Button color="orange" content="Signup" icon="signup" type="submit" />

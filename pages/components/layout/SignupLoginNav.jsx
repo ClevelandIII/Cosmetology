@@ -74,7 +74,7 @@ const SignupLoginNav = () => {
             borderRadius: "1px solid black",
             color: "white",
             padding: "0.5rem",
-            textAlign: "center",
+            textalign: "center",
           }}
           header={signupRoute ? "Already a user?" : "Not a user?"}
           content={

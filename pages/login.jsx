@@ -11,7 +11,7 @@ import catchErrors from "./util/catchErrors";
 import axios from "axios";
 import { setToken } from "./util/auth";
 import Cookies from "js-cookie";
-
+ 
 const Login = () => {
   const [stylist, setStylist] = useState({
     email: "",
@@ -24,6 +24,7 @@ const Login = () => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
+ 
 
   //* Handlers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -66,6 +67,12 @@ const Login = () => {
   }, []);
 
 
+  const divStyle={
+   
+    overflowY: "hidden"
+    
+ 
+  };
 
   return (
     <>
