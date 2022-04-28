@@ -9,6 +9,9 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import Link from "next/link";
+
+
 const studentList = () => {
   const [stylists, setStylists] = useState([]);
   const [semester, setSemester] = useState([]);
@@ -83,41 +86,51 @@ const studentList = () => {
           </Grid.Column>
         </Grid.Row>
 
-      {stylists.map(stylist => {
-            if (stylist.isTeacher === "false") {
-              return (
-                <>
-          <Grid.Row className=" studentRow">
-            <Grid.Column className="studentColumn">
-              <Segment style={{width: "110%"}}>
-                <Image className="studentListPic" src={stylist.profilePicURL}/>
-                <p className="studentListName" style={{width: "80%"}}>{stylist.firstName} {stylist.lastName}</p>
-              </Segment>
-            </Grid.Column>
-            <Grid.Column className="studentColumn">
-              <Segment style={{width: "110%"}}>
-                <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" />{" "}
-                <p className="studentListName"style={{width: "80%"}}>{stylist.teacher}</p>
-              </Segment>
-            </Grid.Column>
-            <Grid.Column className="studentColumn">
-              <Segment className="yearSemesterCenter" >{stylist.studentYear}</Segment>
-            </Grid.Column>
-            <Grid.Column >
-              <Segment className="yearSemesterCenter">{semester}</Segment>
-            </Grid.Column>
-          </Grid.Row>
-  
-          </>)
-            }
-      })}
-        
-      </Grid >
-        
-      </>)
-    
-        
-
-}
+        {stylists.map((stylist) => {
+          if (stylist.isTeacher === "false") {
+            return (
+              <>
+                <Grid.Row className=" studentRow">
+                  <Grid.Column className="studentColumn">
+                    <Segment style={{ width: "110%" }}>
+                      <Image
+                        className="studentListPic"
+                        src={stylist.profilePicURL}
+                      />
+                      <Link href={`/${stylist.userId}`}>
+                        <p className="studentListName" style={{ width: "80%" }}>
+                          {stylist.firstName} {stylist.lastName}
+                        </p>
+                      </Link>
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column className="studentColumn">
+                    <Segment style={{ width: "110%" }}>
+                      <Image
+                        className="studentListPic"
+                        src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+                      />{" "}
+                      <p className="studentListName" style={{ width: "80%" }}>
+                        {stylist.teacher}
+                      </p>
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column className="studentColumn">
+                    <Segment className="yearSemesterCenter">
+                      {stylist.studentYear}
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment className="yearSemesterCenter">{semester}</Segment>
+                  </Grid.Column>
+                </Grid.Row>
+              </>
+            );
+          }
+        })}
+      </Grid>
+    </>
+  );
+};
 
 export default studentList;

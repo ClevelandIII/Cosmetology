@@ -107,6 +107,7 @@ const Signup = () => {
       studentYear = "Year 2";
     }
 
+
     if (media !== null) {
       const formData = new FormData();
       formData.append("image", media, {

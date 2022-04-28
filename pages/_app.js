@@ -34,7 +34,6 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     "/profilePage",
   ];
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
-
   if (!token) {
     isProtectedRoute && redirectUser(ctx, "/login");
   } else {

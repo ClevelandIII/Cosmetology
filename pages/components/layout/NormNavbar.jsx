@@ -28,7 +28,13 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
-const VerticalSidebar = ({ animation, visible, email }) => (
+const VerticalSidebar = ({
+  animation,
+  visible,
+  email,
+  // userId
+  // stylist: {userId}
+}) => (
   <Sidebar
     as={Menu}
     animation={animation}
@@ -59,8 +65,7 @@ const VerticalSidebar = ({ animation, visible, email }) => (
         Home
       </Menu.Item>
     </Link>
-
-    <Link href="/UserProfile">
+    <Link href={`/UserProfile`}>
       <Menu.Item
         style={{
           color: "black",
