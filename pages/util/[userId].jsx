@@ -50,7 +50,7 @@ const profilePage = ({ stylist, profile }) => {
         <Grid stackable style={{ margin: "3rem" }}>
           <Grid.Column width={8} className="roz">
             <Grid.Row
-              style={{ margin: "3.8rem", textAlign: "center" }}
+              style={{ margin: "3.8rem", textalign: "center" }}
               className="roz3"
             >
               <Image
@@ -62,7 +62,7 @@ const profilePage = ({ stylist, profile }) => {
                 circular
               />
             </Grid.Row>
-            <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
+            <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
               <Card>
                 <Card.Content>
                   <Card.Header>
@@ -80,7 +80,7 @@ const profilePage = ({ stylist, profile }) => {
           </Grid.Column>
           <Grid.Column
             width={7}
-            style={{ textAlign: "center", marginTop: "10rem" }}
+            style={{ textalign: "center", marginTop: "10rem" }}
             className="roz2"
           >
             <Grid.Row
@@ -89,7 +89,7 @@ const profilePage = ({ stylist, profile }) => {
                 height: "5rem",
                 background: "orange",
                 color: "white",
-                textAlign: "center",
+                textalign: "center",
                 paddingTop: "1.2rem",
               }}
             >
@@ -102,7 +102,7 @@ const profilePage = ({ stylist, profile }) => {
                 height: "5rem",
                 background: "orange",
                 color: "white",
-                textAlign: "center",
+                textalign: "center",
                 paddingTop: "1.2rem",
               }}
             >
@@ -115,7 +115,7 @@ const profilePage = ({ stylist, profile }) => {
                 height: "5rem",
                 background: "orange",
                 color: "white",
-                textAlign: "center",
+                textalign: "center",
                 paddingTop: "1.6rem",
               }}
             >
@@ -127,7 +127,7 @@ const profilePage = ({ stylist, profile }) => {
         </Grid>
         <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
           <Grid.Row className="mini3">
-            <div style={{ textAlign: "center" }}>
+            <div style={{ textalign: "center" }}>
               <h1>Previous Clients</h1>
               <Dropdown
                 placeholder="Sort By..."
@@ -144,7 +144,7 @@ const profilePage = ({ stylist, profile }) => {
               // height: "35rem",
               background: "orange",
               color: "black",
-              textAlign: "center",
+              textalign: "center",
               // overflow: "scroll",
               justifyContent: "space-evenly",
             }}

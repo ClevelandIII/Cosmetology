@@ -8,7 +8,6 @@ const ClientSchema = new Schema({
   stylistPic: {
     type: String,
   },
-
   firstName: {
     type: String,
     required: true,

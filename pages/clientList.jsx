@@ -11,8 +11,8 @@ import {
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-const clientList = ({}) => {
+const defaultProfilePicURL = require("../server/util/defaultPic");
+const clientList = ({stylist}) => {
   const [clients, setClients] = useState([]);
 
   const getClients = async () => {
@@ -31,26 +31,6 @@ const clientList = ({}) => {
   console.log(clients);
 
 
-  const [stylists, setStylists] = useState([]);
- 
-  // const [classYear, setClassYear] = useState([])
-
-  const getStylists = async () => {
-    try {
-      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      setStylists(results.data);
-      console.log(results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-
- 
-  useEffect(() => {
-    getStylists();
-    // getClassYear()
-  }, []);
 
   return (
     <>
@@ -79,18 +59,23 @@ const clientList = ({}) => {
   <Grid.Column className="studentColumn">
     <Segment style={{width: "110%"}}>
     
-      <Image className="studentListPic" src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"/>{""}
+      <Image className="studentListPic" src={defaultProfilePicURL}/>{""}
      
       <p className="studentListName" style={{width: "80%"}}>{client.firstName} {client.lastName}</p>
     </Segment>
   </Grid.Column>
+  
   <Grid.Column className="studentColumn">
+
     <Segment style={{width: "110%"}}>
     
-      <Image className="studentListPic" src={client.stylistPic} />{" "}
-      
+  
+      <Image className="studentListPic" src={client.stylistPic || defaultProfilePicURL} />{" "}
+     
       <p className="studentListName"style={{width: "80%"}}>{client.stylistName}</p>
+      
     </Segment>
+    
   </Grid.Column>
   <Grid.Column className="studentColumn">
     <Segment className="yearSemesterCenter" >{client.dateCreated}</Segment>

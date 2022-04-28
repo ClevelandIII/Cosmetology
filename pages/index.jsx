@@ -63,10 +63,10 @@ const index = ({ stylist, client }) => {
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
   return (
     <div
-      style={{ padding: "2rem", textAlign: "center" }}
+      style={{ padding: "2rem", textalign: "center" }}
       stylist={stylist.firstName}
     >
-      <Grid style={{ textAlign: "center" }}>
+      <Grid style={{ textalign: "center" }}>
         <Grid.Row style={{ width: "100%" }} className="mini">
           <p>
             {`Welcome ${stylist.firstName}.`} To get started, add a new visitor,
@@ -83,7 +83,7 @@ const index = ({ stylist, client }) => {
       {/* <Divider hidden /> */}
       <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
         <Grid.Row className="mini3">
-          <div style={{ textAlign: "center" }}>
+          <div style={{ textalign: "center" }}>
             <h1>Previous Clients</h1>
             <Dropdown
               placeholder="Sort By..."
@@ -100,7 +100,7 @@ const index = ({ stylist, client }) => {
             // height: "35rem",
             background: "orange",
             color: "black",
-            textAlign: "center",
+            textalign: "center",
             // overflow: "scroll",
             justifyContent: "space-evenly",
           }}
@@ -125,7 +125,7 @@ const index = ({ stylist, client }) => {
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
                     setClients={clients}
-                    style={{ textAlign: "center"}}
+                    style={{ textalign: "center"}}
                   >
                     <Modal
                       closeIcon
@@ -198,7 +198,7 @@ const index = ({ stylist, client }) => {
                     className="Indexcolumn"
                     key={client._id}
                     setClients={clients}
-                    style={{ textAlign: "center" }}
+                    style={{ textalign: "center" }}
                   >
                     <Segment className="indexCenter">
                       <p>{client.dateCreated}</p>
@@ -208,7 +208,7 @@ const index = ({ stylist, client }) => {
                     className="Indexcolumn"
                     key={client._id}
                     setClients={clients}
-                    style={{ textAlign: "center" }}
+                    style={{ textalign: "center" }}
                   >
                     <Segment className="indexCenter">
                       <p>{client.dateCreated}</p>

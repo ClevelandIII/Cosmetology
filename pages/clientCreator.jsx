@@ -11,6 +11,7 @@ import { useState, useRef, useEffect, Component } from "react";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
+
 import Router from "next/router";
 
 const ClientCreator = ({ stylist }) => {
@@ -84,6 +85,23 @@ const ClientCreator = ({ stylist }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
+    let profilePicURL;
+
+    if (media !== null) {
+      const formData = new FormData();
+      formData.append("image", media, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      const res = await axios.post("/api/v1/uploads", formData);
+      profilePicURL = res.data.src;
+    }
+
+    if (media !== null && !profilePicURL) {
+      setFormLoading(false);
+      return res.status(500).send("Image Upload Failure");
+    }
 
     //Good idea but this doesnt allow you to create a client for some reason...
     // Router.push("/");
@@ -150,14 +168,14 @@ const ClientCreator = ({ stylist }) => {
           width: "90vw",
           margin: "0 auto",
           marginTop: "3rem",
-          textAlign: "center",
+          textalign: "center",
           
         }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
       >
-        <h1 style={{ textAlign: "center" }}>Fill out the form below.</h1>
+        <h1 style={{ textalign: "center" }}>Fill out the form below.</h1>
         <Segment>
           <Message
             error
@@ -212,7 +230,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Appointment Date, ServiceRequest, Medical */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textAlign: "left" }}
+            style={{ justifyContent: "space-between", textalign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -256,7 +274,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Address, City, State*/}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textAlign: "left" }}
+            style={{ justifyContent: "space-between", textalign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -300,7 +318,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Zip Code, Phone, Email */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textAlign: "left" }}
+            style={{ justifyContent: "space-between", textalign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -349,7 +367,7 @@ const ClientCreator = ({ stylist }) => {
             onClick={() => setHidden(!hidden)}
             type="button"
             color="orange"
-            style={{ textAlign: "center" }}
+            style={{ textalign: "center" }}
           >
             Show Hair Menu
           </Button>
@@ -364,7 +382,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textAlign: "left",
+                    textalign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -412,7 +430,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textAlign: "left",
+                    textalign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -458,7 +476,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textAlign: "left",
+                    textalign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -505,7 +523,7 @@ const ClientCreator = ({ stylist }) => {
               <></>
             )}
           </Form.Group>
-          <div style={{ textAlign: "left" }}>
+          <div style={{ textalign: "left" }}>
             <Button
               color="orange"
               content="Signup"

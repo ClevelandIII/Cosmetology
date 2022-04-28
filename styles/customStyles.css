@@ -75,10 +75,9 @@
   transform: translate(-50%, -50%);
   z-index: -1;
 }
-
-.noScroll {
+/* .noScroll {
   overflow-y: hidden !important;
-}
+} */
 
 .blackBackground {
   background-color: black !important;
