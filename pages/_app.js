@@ -31,8 +31,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     "/studentList",
     "/clientList",
     "/[userId]",
-    "/profilePage"
-  
+    "/profilePage",
   ];
   const isProtectedRoute = protectedRoutes.includes(ctx.pathname);
 
@@ -56,10 +55,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     }
   }
 
-  
   return { pageProps };
-
-
 };
 
 export default MyApp;

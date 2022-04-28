@@ -55,14 +55,14 @@ Reid Gill: finished Visit and Client model working on student list
 Daniel Nijdl: Created userProfile and createStylist (attempted to get to work with postman but I’m getting errors). Changed userRoute to post on /sighup, got navbar to bring you to correct pages, and you can now type in a page url and it will work.
 
 4-1-22
-Jason Enciso: 
+Jason Enciso: CIW
 
 Reid Gill: working on student list
 
 Daniel Nijdl: Finished Signup and Login in postman, trying to get to work on website but getting error. Modified login.jsx to try to get to work with postLoginUser
 
 4-4-22
-Jason Enciso: CIW
+Jason Enciso: General styles
 
 Reid Gill: working on student list
 
@@ -97,7 +97,7 @@ Reid Gill: working on studentList ipad
 Daniel Nijdl: fixed error, style login page, worked on auth middlewares
 
 4/12/22
-Jason Enciso: CIW
+Jason Enciso: StudentList styles
 
 Reid Gill:  working on studentList sizing styles
 
@@ -106,7 +106,7 @@ Daniel Nijdl: fixing login functionally
 Joshua Ruvalcaba: CIW
 
 4/13/22
-Jason Enciso: CIW
+Jason Enciso: Client page styles
 
 Reid Gill: studentList styles finished 
 
@@ -115,7 +115,7 @@ Daniel Nijdl: Got both login and signup to work, home page now welcomes stylist 
 Joshua Ruvalcaba: CIW
 
 4/14/22
-Jason Enciso: CIW
+Jason Enciso: ClientProfile styles and tried fixing login
 
 Reid Gill: change all names of clientProfile to clientCreator so that clientProfile can be use in another way, starting work on index/clientList
 
@@ -143,7 +143,7 @@ Daniel Nijdl: making studentList show that stylists there teachers
 Joshua Ruvalcaba: helping Daniel 
 
 4/19/22
-Jason Enciso: helping 
+Jason Enciso: helping reid with dropbox
 
 Reid Gill: trying implementing a dropbox in the the signup
 
@@ -152,7 +152,7 @@ Daniel Nijdl: displays current semester started personalProfiles
 Joshua Ruvalcaba: working on tablet/ipad version of clientCreator
 
 4/20/22
-Jason Enciso: ciw
+Jason Enciso: Regex for emails and styles
 
 Reid Gill: trying implementing a dropbox in the the signup
 
@@ -161,7 +161,7 @@ Daniel Nijdl: Currently working on personalProfile pages for clients students an
 Joshua Ruvalcaba: working on tablet/ipad version of clientCreator and help reid
 
 4/21/22
-Jason Enciso:
+Jason Enciso: edited styles for client and login
 
 Reid Gill: trying implementing a radio button in the the signup 
 
@@ -186,3 +186,21 @@ Reid Gill: Test Day
 Daniel Nijdl: Test Day
 
 Joshua Ruvalcaba: Test Day
+
+4/26/2022
+Jason Enciso: Test Day
+
+Reid Gill: Test Day
+
+Daniel Nijdl: Test Day
+
+Joshua Ruvalcaba: Test Day
+
+4/27/2022
+Jason Enciso: 
+
+Reid Gill: working on radio and dropbox button in the the signup
+
+Daniel Nijdl:Almost have personal profile links working, but keeps redirecting to home page. Fixed studentList and layout not working
+
+Joshua Ruvalcaba: helping Daniel
