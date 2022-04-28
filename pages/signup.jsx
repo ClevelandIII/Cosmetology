@@ -15,18 +15,8 @@ import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 let cancel;
 
-
-
 const Signup = () => {
-
-  // state = {}
-
-  // anotherHandleChange = (e, { value }) => this.setState({ value })
-
-  // this.anotherHandleChange = this.anotherHandleChange.bind(this);
-
-  // const { value } = this.state
-
+  const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
     firstName: "",
     lastName: "",
@@ -48,17 +38,12 @@ const Signup = () => {
     password,
     className,
     session,
-    teacherCode = "Year 1" || "Year 2",
+    teacherCode,
     teacher,
     studentYear,
     isTeacher,
     // userId
   } = stylist;
-
-  const teachers = [
-    { key: "1", text: "teachers here1", value: "TeacherId1" },
-    { key: "2", text: "teachers here2", value: "TeacherId2" },
-  ];
 
   // stylist.studentYear = test.value
 
@@ -66,19 +51,28 @@ const Signup = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [submitDisabled, setSubmitDisabled] = useState(true);
-
   const [showPassword, setShowPassword] = useState(false);
-
   const inputRef = useRef(null);
   const [highlighted, setHighlighted] = useState(false);
   const [media, setMedia] = useState(null);
   const [mediaPreview, setMediaPreview] = useState(null);
 
+  //Usestates for radio buttons
+  //room for classname
+  const [room1, setRoom1] = useState(false);
+  const [room2, setRoom2] = useState(false);
+  //session for session
+  const [session1, setSession1] = useState(false);
+  const [session2, setSession2] = useState(false);
+  //year for year
+  const [year1, setYear1] = useState(false);
+  const [year2, setYear2] = useState(false);
+
   //* Functions */
 
-  const myFunction = (studentYear) => {
-    // document.getElementById("result").value = stylist.studentYear;
-  };
+  // const myFunction = (studentYear) => {
+  //   // document.getElementById("result").value = stylist.studentYear;
+  // };
 
   // Sets form loading to true while form is being submitted
   const handleSubmit = async (e) => {
@@ -94,9 +88,24 @@ const Signup = () => {
       isTeacher = false;
     }
 
-    // if(teacherCode){
-    //   userId = "test"
-    // }
+    //Radio Button Checks
+    if (room1 === true) {
+      className = "Cosmetology 1";
+    } else if (room2 === true) {
+      className = "Cosmetology 2";
+    }
+
+    if (session1 === true) {
+      session = "Session 1";
+    } else if (session2 === true) {
+      session = "Session 2";
+    }
+
+    if (year1 === true) {
+      studentYear = "Year 1";
+    } else if (year2 === true) {
+      studentYear = "Year 2";
+    }
 
     if (media !== null) {
       const formData = new FormData();
@@ -175,7 +184,24 @@ const Signup = () => {
     );
   }, [stylist]);
 
-  // const { value } = this.state
+  const getStylists = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      setStylists(results.data);
+      console.log(results);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getStylists();
+  }, []);
+
+  // const teachers = [
+  //   { key: "1", text: "teachers here1", value: "TeacherId1", onClick: () => {} },
+  //   { key: "2", text: "teachers here2", value: "TeacherId2" },
+  // ];
+
   return (
     <>
       <Form
@@ -267,8 +293,20 @@ const Signup = () => {
             icon="book"
             iconPosition="left"
           >
-            <Form.Radio label="Cosmetology 1" />
-            <Form.Radio label="Cosmetology 2" />
+            <Form.Radio
+              label="Cosmetology 1"
+              checked={room1}
+              onClick={() => {
+                setRoom1(true), setRoom2(false);
+              }}
+            />
+            <Form.Radio
+              label="Cosmetology 2"
+              checked={room2}
+              onClick={() => {
+                setRoom2(true), setRoom1(false);
+              }}
+            />
           </Form.Input>
           <Form.Input
             required
@@ -280,11 +318,30 @@ const Signup = () => {
             icon="male"
             iconPosition="left"
           >
-            <Form.Dropdown
+            {/*Currently shows teachers, but you cannot select/unselect one yet. */}
+            {stylists.map((iteration) => {
+              if (iteration.isTeacher === "true") {
+                return (
+                  <>
+                    <Form.Radio
+                      label={iteration.firstName}
+                      // checked={room1}
+                      // onClick={() => {
+                      //   setRoom1(true), setRoom2(false);
+                      // }}
+                    />
+                  </>
+                );
+              } else {
+                return <></>;
+              }
+            })}
+
+            {/* <Form.Dropdown
               // commit this out if not working yet
               placeholder="Teacher"
               options={teachers}
-            />
+            /> */}
           </Form.Input>
           <Form.Input
             label="Teacher code"
@@ -306,8 +363,20 @@ const Signup = () => {
             icon="address book"
             iconPosition="left"
           >
-            <Form.Radio label="Session 1" />
-            <Form.Radio label="Session 2" />
+            <Form.Radio
+              label="Session 1"
+              checked={session1}
+              onClick={() => {
+                setSession1(true), setSession2(false);
+              }}
+            />
+            <Form.Radio
+              label="Session 2"
+              checked={session2}
+              onClick={() => {
+                setSession2(true), setSession1(false);
+              }}
+            />
           </Form.Input>
 
           {/* the year will be removed in the end it being used as testing now */}
@@ -321,7 +390,7 @@ const Signup = () => {
             icon="calendar alternate outline"
             iconPosition="left"
           >
-            <input
+            {/* <input
               type="radio"
               name="Year"
               onclick={myFunction(studentYear)}
@@ -332,22 +401,21 @@ const Signup = () => {
               name="Year"
               onclick={myFunction(studentYear)}
               value="Year 2"
-            />
-
-            {/* <Radio
-              label="Year 1"
-              name="Year"
-              // value="sm"
-              // checked={value === "sm"}
-              // onChange={this.anotherHandleChange}
-            />
-            <Radio
-              label="Year 2"
-              name="Year"
-              // value="md"
-              // checked={value === "md"}
-              // onChange={this.anotherHandleChange}
             /> */}
+            <Form.Radio
+              label="Year 1"
+              checked={year1}
+              onClick={() => {
+                setYear1(true), setYear2(false);
+              }}
+            />
+            <Form.Radio
+              label="Year 2"
+              checked={year2}
+              onClick={() => {
+                setYear2(true), setYear1(false);
+              }}
+            />
           </Form.Input>
 
           <Button color="orange" content="Signup" icon="signup" type="submit" />

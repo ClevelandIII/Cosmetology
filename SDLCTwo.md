@@ -140,3 +140,9 @@
 - Cleveland: Test Day
 
 - Abdi: Test Day
+
+4/27/2022
+
+- Cleveland: Fixed the signup buttons so that they now work, updated teacher select but doesnt currently work, updated hours, controller grabs hours but does not yet work, working on hours
+
+- Abdi: ClientList additions, signup bugfixing, searchbar

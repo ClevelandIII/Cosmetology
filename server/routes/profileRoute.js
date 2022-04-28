@@ -5,3 +5,4 @@ const router = require("express").Router();
 router.route("/:userId").get(getProfile);
 
 module.exports = router;
+ 

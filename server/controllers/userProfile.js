@@ -1,6 +1,6 @@
 const defaultProfilePicURL = require("../util/defaultPic");
 const StylistModel = require("../model/StylistModel");
-
+const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
@@ -50,7 +50,6 @@ const createUser = async (req, res) => {
       hours,
       // userId,
     });
-
 
     stylist.password = await bcrypt.hash(password, 10);
     stylist = await stylist.save();
@@ -117,8 +116,28 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-// const addHours = async (req, res) => {
+const addHours = async (req, res) => {
+  const {hour, user} = req.body
+  console.log(`hours: ${hour}`);
+  console.log(`userID: ${user}`)
+  try {
+    const getStylists = async () => {
+      try {
+        let stylist = await StylistModel.findOne({userId: user});
 
-// }
+        stylist.hours.push([hour]);
+        console.log(`stylist`, stylist);
+        await stylist.save();
+        // console.log(`stylist2`, stylist);
+        return res.status(200).send("All Good");
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getStylists();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-module.exports = { createUser, postLoginUser, getAllUsers };
+module.exports = { createUser, postLoginUser, getAllUsers, addHours };

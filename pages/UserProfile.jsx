@@ -22,7 +22,7 @@ const UserProfile = ({ stylist }) => {
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
-
+  let user = stylist.userId;
   const Options = [
     {
       key: "Number of Visits",
@@ -60,12 +60,12 @@ const UserProfile = ({ stylist }) => {
   }, []);
 
   //Separates the teachers from the students
-  let count = 0
+  let count = 0;
   stylists.map((stylist) => {
-    if(stylist.isTeacher === "false"){
-      return count++
-    }else{
-      count = count
+    if (stylist.isTeacher === "false") {
+      return count++;
+    } else {
+      count = count;
     }
     return console.log(count);
   });
@@ -73,17 +73,24 @@ const UserProfile = ({ stylist }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
+    let hour = hours
 
     try {
-      console.log("tester");
-      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      stylists = results.data;
+      const res = await axios.patch("/api/v1/user/UserProfile", {
+        hour,
+        user
+      });
+      setToken(res.data);
 
-      let Testr = stylists.find((stylist) => stylist.email === stylist.email);
+      // console.log("tester");
+      // const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      // stylists = results.data;
 
-      const stylist = await StylistModel.findById(Testr._id);
-      stylist.hours.push(hours);
-      await stylist.save();
+      // let Testr = stylists.find((stylist) => stylist.email === stylist.email);
+
+      // const stylist = await StylistModel.findById(Testr._id);
+      // stylist.hours.push(hours);
+      // await stylist.save();
       setHidden(false);
     } catch (error) {
       console.log(error);

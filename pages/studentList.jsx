@@ -90,7 +90,7 @@ const studentList = () => {
           <Grid.Row className=" studentRow">
             <Grid.Column className="studentColumn">
               <Segment style={{width: "110%"}}>
-                <Image className="studentListPic" src={stylist.profilePicURL}/>{""}
+                <Image className="studentListPic" src={stylist.profilePicURL}/>
                 <p className="studentListName" style={{width: "80%"}}>{stylist.firstName} {stylist.lastName}</p>
               </Segment>
             </Grid.Column>
