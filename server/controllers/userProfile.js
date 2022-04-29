@@ -118,17 +118,17 @@ const getAllUsers = async (req, res) => {
 
 const addHours = async (req, res) => {
   const {hour, user} = req.body
-  console.log(`hours: ${hour}`);
-  console.log(`userID: ${user}`)
+  // console.log(`hours: ${hour}`);
+  // console.log(`userID: ${user}`)
   try {
     const getStylists = async () => {
       try {
-        let stylist = await StylistModel.findOne({userId: user});
-
-        stylist.hours.push([hour]);
-        console.log(`stylist`, stylist);
+        const stylist = await StylistModel.findOne({userId: user});
+ 
+        // console.log(`stylist`, stylist);
+        stylist.hours = (+stylist.hours + +hour) + ""
+        // console.log(`stylist`, stylist);
         await stylist.save();
-        // console.log(`stylist2`, stylist);
         return res.status(200).send("All Good");
       } catch (error) {
         console.log(error);
