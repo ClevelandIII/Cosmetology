@@ -177,7 +177,10 @@ const ClientCreator = ({ stylist }) => {
         onSubmit={handleSubmit}
       >
         <h1 style={{ textAlign: "center" }}>Fill out the form below.</h1>
-        <Segment>
+        <Segment 
+        style={{overflow:"auto"}} 
+        className="clientCreatorHandheld"
+        >
           <Message
             error
             content={errorMsg}
@@ -187,7 +190,7 @@ const ClientCreator = ({ stylist }) => {
           {/*FirstName, LastName, Age */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textAlign: "left" }}
+            style={{ justifyContent: "space-between", textAlign: "left",}}
             className="inputClient"
           >
             <Form.Input
@@ -227,7 +230,7 @@ const ClientCreator = ({ stylist }) => {
               style={{ width: "435px", height: "42px" }}
             />
           </Form.Group>
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider" />
           {/*Appointment Date, ServiceRequest, Medical */}
           <Form.Group
             unstackable
@@ -271,7 +274,7 @@ const ClientCreator = ({ stylist }) => {
               type="text"
             />
           </Form.Group>
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider"/>
           {/*Address, City, State*/}
           <Form.Group
             unstackable
@@ -315,7 +318,7 @@ const ClientCreator = ({ stylist }) => {
               type="text"
             />
           </Form.Group>
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider"/>
           {/*Zip Code, Phone, Email */}
           <Form.Group
             unstackable
@@ -361,9 +364,9 @@ const ClientCreator = ({ stylist }) => {
               style={{ width: "435px", height: "42px" }}
             />
           </Form.Group>
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider"/>
           {/*Hair Menu */}
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider"/>
           <Button
             onClick={() => setHidden(!hidden)}
             type="button"
@@ -372,7 +375,7 @@ const ClientCreator = ({ stylist }) => {
           >
             Show Hair Menu
           </Button>
-          <Divider hidden />
+          <Divider hidden className="clientCreatorDivider"/>
           <Form.Group>
             {hidden ? (
               <div
@@ -426,7 +429,7 @@ const ClientCreator = ({ stylist }) => {
                     type="text"
                   />
                 </Form.Group>
-                <Divider hidden />
+                <Divider hidden className="clientCreatorDivider"/>
                 {/*Hair texture, growth patterns, hair density */}
                 <Form.Group
                   unstackable
@@ -472,7 +475,7 @@ const ClientCreator = ({ stylist }) => {
                     type="text"
                   />
                 </Form.Group>
-                <Divider hidden />
+                <Divider hidden className="clientCreatorDivider"/>
                 {/*Hair Porosity, Hair Elasticity, Hair Length */}
                 <Form.Group
                   unstackable
