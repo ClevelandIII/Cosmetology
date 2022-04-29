@@ -58,12 +58,8 @@ app.use("/api/v1/client", clientRoute);
 app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
-<<<<<<< HEAD
-app.use("/api/v1/search", searchRoutes);
-=======
 app.use("/api/v1/List", userRoute);
-// app.use("/api/v1/search", searchRoutes);
->>>>>>> cbedbd54de9106a9783032780142fa39dcf3ede5
+app.use("/api/v1/search", searchRoutes);
 
 //*SOCKETS */
 
