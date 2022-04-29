@@ -15,6 +15,8 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+
+
 MyApp.getInitialProps = async ({ ctx, Component }) => {
   const { token } = parseCookies(ctx);
   let pageProps = {};

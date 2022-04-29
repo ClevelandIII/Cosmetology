@@ -7,6 +7,7 @@ import SignupLoginNav from "./SignupLoginNav";
 
 const Layout = ({ children, stylist }, req, res) => {
   {
+    
     stylist
       // ? useEffect(() => {
       //     document.querySelector("body").classList.remove("noScroll");
@@ -21,6 +22,8 @@ const Layout = ({ children, stylist }, req, res) => {
         document.querySelector("body").classList.add("orangeBackground");
       });
   }
+
+  
 
   // if (req.originalUrl === "http://localhost:3001/login") {
   //   useEffect(() => {

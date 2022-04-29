@@ -141,6 +141,7 @@ a.item :hover {
   /* white-space: nowrap; */
 }
 
+
 @media screen and (min-width: 900px) {
   .studentListPic {
     position: absolute !important;
