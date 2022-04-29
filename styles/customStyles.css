@@ -136,6 +136,7 @@ a.item :hover {
 .studentListName {
   position: relative !important;
   left: 8%;
+  cursor: pointer !important;
   /* overflow: scroll hidden; */
   /* white-space: nowrap; */
 }
