@@ -7,6 +7,7 @@ import SignupLoginNav from "./SignupLoginNav";
 
 const Layout = ({ children, stylist }, req, res) => {
   {
+    
     stylist
       // ? useEffect(() => {
       //     document.querySelector("body").classList.remove("noScroll");
@@ -21,6 +22,8 @@ const Layout = ({ children, stylist }, req, res) => {
         document.querySelector("body").classList.add("orangeBackground");
       });
   }
+
+  
 
   // if (req.originalUrl === "http://localhost:3001/login") {
   //   useEffect(() => {
@@ -56,24 +59,7 @@ const Layout = ({ children, stylist }, req, res) => {
           <div style={{ margin: "0 auto" }} className="signupLogin">
             {children}
           </div>
-          {/* <iframe
-            src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
-            autoPlay
-            loop
-            muted
-            className="background-video"
 
-                        // style={{
-            //   position: "absolute",
-            //   width: "150%",
-            //   left: "50%",
-            //   top: "50%",
-            //   height: "100%",
-            //   objectFit: "cover",
-            //   transform: "translate(-50%,-50%)",
-            //   zIndex: "-1",
-            // }}
-          ></iframe> */}
         </>
       )}
     </>
