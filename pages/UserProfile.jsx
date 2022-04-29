@@ -22,6 +22,14 @@ const UserProfile = ({ stylist }) => {
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
+  const [option, setOption] = useState("");
+
+  //This variable updates hours on the page so that the user doesnt have to reset to see their new hours.
+  const [actualHours, setActualHours] = useState("");
+  useEffect(() => {
+    setActualHours(stylist.hours);
+  }, []);
+
   let user = stylist.userId;
   const Options = [
     {
@@ -73,29 +81,21 @@ const UserProfile = ({ stylist }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
-    let hour = hours
+    let hour = hours;
 
     try {
       const res = await axios.patch("/api/v1/user/UserProfile", {
         hour,
-        user
+        user,
       });
       setToken(res.data);
-
-      // console.log("tester");
-      // const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      // stylists = results.data;
-
-      // let Testr = stylists.find((stylist) => stylist.email === stylist.email);
-
-      // const stylist = await StylistModel.findById(Testr._id);
-      // stylist.hours.push(hours);
-      // await stylist.save();
-      setHidden(false);
     } catch (error) {
       console.log(error);
     }
+    setHours("");
     setFormLoading(false);
+    setHidden(false);
+    setActualHours(stylist.hours);
   };
 
   const handleChange = (e) => {
@@ -126,7 +126,7 @@ const UserProfile = ({ stylist }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textalign: "center" }}
+                style={{ margin: "3.8rem", textAlign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -138,7 +138,7 @@ const UserProfile = ({ stylist }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -146,7 +146,7 @@ const UserProfile = ({ stylist }) => {
                     </Card.Header>
                     <Card.Meta>
                       <span className="date">
-                        Teacher: {stylist.teacher} | Session: {stylist.session}
+                        Teacher: {stylist.teacher} | {stylist.session}
                       </span>
                     </Card.Meta>
                     <Card.Description>Teacher </Card.Description>
@@ -156,7 +156,7 @@ const UserProfile = ({ stylist }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textalign: "center", marginTop: "10rem" }}
+              style={{ textAlign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -165,7 +165,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -176,7 +176,7 @@ const UserProfile = ({ stylist }) => {
 
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textalign: "center", paddingLeft: "4%" }}>
+              <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
                 <Dropdown
                   placeholder="Sort By..."
@@ -193,7 +193,7 @@ const UserProfile = ({ stylist }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textalign: "center",
+                textAlign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -222,7 +222,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn clientListColumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textalign: "center" }}
+                          style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>
@@ -234,7 +234,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textalign: "center" }}
+                          style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>{stylist.hours}</p>
@@ -244,7 +244,7 @@ const UserProfile = ({ stylist }) => {
                           className="Indexcolumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textalign: "center" }}
+                          style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>
@@ -269,7 +269,7 @@ const UserProfile = ({ stylist }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textalign: "center" }}
+                style={{ margin: "3.8rem", textAlign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -281,7 +281,7 @@ const UserProfile = ({ stylist }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -299,7 +299,7 @@ const UserProfile = ({ stylist }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textalign: "center", marginTop: "10rem" }}
+              style={{ textAlign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -308,7 +308,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -347,7 +347,7 @@ const UserProfile = ({ stylist }) => {
                 ) : (
                   <div>
                     <h1>
-                      Hours: {stylist.hours}
+                      Hours: {actualHours}
                       <Icon
                         name="plus"
                         style={{ cursor: "pointer" }}
@@ -366,7 +366,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -379,7 +379,7 @@ const UserProfile = ({ stylist }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.6rem",
                 }}
               >
@@ -392,13 +392,16 @@ const UserProfile = ({ stylist }) => {
           ;
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textalign: "center" }}>
+              <div style={{ textAlign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
                 <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
+                  // onClick={() => {
+                  //   console.log("1");
+                  // }}
                 />
               </div>
             </Grid.Row>
@@ -409,7 +412,7 @@ const UserProfile = ({ stylist }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textalign: "center",
+                textAlign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -436,7 +439,7 @@ const UserProfile = ({ stylist }) => {
                     <>
                       <Grid.Column
                         className="Indexcolumn clientListColumn"
-                        style={{ textalign: "center" }}
+                        style={{ textAlign: "center" }}
                       >
                         <Popup
                           trigger={
@@ -454,7 +457,7 @@ const UserProfile = ({ stylist }) => {
                       </Grid.Column>
                       <Grid.Column
                         className="Indexcolumn"
-                        style={{ textalign: "center" }}
+                        style={{ textAlign: "center" }}
                       >
                         <Segment className="indexCenter">
                           <p>{client[2]}</p>
@@ -462,7 +465,7 @@ const UserProfile = ({ stylist }) => {
                       </Grid.Column>
                       <Grid.Column
                         className="Indexcolumn"
-                        style={{ textalign: "center" }}
+                        style={{ textAlign: "center" }}
                       >
                         <Segment className="indexCenter">
                           <p>{client[3]}</p>

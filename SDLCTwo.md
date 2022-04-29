@@ -145,4 +145,10 @@
 
 - Cleveland: Fixed the signup buttons so that they now work, updated teacher select but doesnt currently work, updated hours, controller grabs hours but does not yet work, working on hours
 
-- Abdi: ClientList additions, signup bugfixing, searchbar
+- Abdi: ClientList additions, signup bugfixing, searchbar 
+
+4/28/2022
+
+(To whoever changed all the textAlign to textalign, please keep it as textAlign, because even though the error shows up, witout textAlign none of the css for it works.)
+
+- Cleveland: 

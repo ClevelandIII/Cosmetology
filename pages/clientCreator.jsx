@@ -16,8 +16,10 @@ import Router from "next/router";
 
 const ClientCreator = ({ stylist }) => {
   const [client, setClient] = useState({
-    stylistName: stylist.firstName, 
-    stylistPic: stylist.profilePicURL, 
+    //Dont change stylist.email to stylist.firstName.
+    //Despite the naming (my bad), it is better to match based on email because email is unique, wereas name is not.
+    stylistName: stylist.email,
+    stylistPic: stylist.profilePicURL,
     firstName: "",
     lastName: "",
     email: "",
@@ -163,19 +165,18 @@ const ClientCreator = ({ stylist }) => {
 
   return (
     <>
-      <Form 
+      <Form
         style={{
           width: "90vw",
           margin: "0 auto",
           marginTop: "3rem",
-          textalign: "center",
-          
+          textAlign: "center",
         }}
         loading={formLoading}
         error={errorMsg !== null}
         onSubmit={handleSubmit}
       >
-        <h1 style={{ textalign: "center" }}>Fill out the form below.</h1>
+        <h1 style={{ textAlign: "center" }}>Fill out the form below.</h1>
         <Segment>
           <Message
             error
@@ -230,7 +231,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Appointment Date, ServiceRequest, Medical */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textalign: "left" }}
+            style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -274,7 +275,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Address, City, State*/}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textalign: "left" }}
+            style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -318,7 +319,7 @@ const ClientCreator = ({ stylist }) => {
           {/*Zip Code, Phone, Email */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textalign: "left" }}
+            style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -367,7 +368,7 @@ const ClientCreator = ({ stylist }) => {
             onClick={() => setHidden(!hidden)}
             type="button"
             color="orange"
-            style={{ textalign: "center" }}
+            style={{ textAlign: "center" }}
           >
             Show Hair Menu
           </Button>
@@ -382,7 +383,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textalign: "left",
+                    textAlign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -430,7 +431,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textalign: "left",
+                    textAlign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -476,7 +477,7 @@ const ClientCreator = ({ stylist }) => {
                 <Form.Group
                   unstackable
                   style={{
-                    textalign: "left",
+                    textAlign: "left",
                     justifyContent: "space-between",
                   }}
                 >
@@ -523,7 +524,7 @@ const ClientCreator = ({ stylist }) => {
               <></>
             )}
           </Form.Group>
-          <div style={{ textalign: "left" }}>
+          <div style={{ textAlign: "left" }}>
             <Button
               color="orange"
               content="Signup"

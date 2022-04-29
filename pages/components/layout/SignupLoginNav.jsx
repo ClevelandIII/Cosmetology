@@ -67,14 +67,14 @@ const SignupLoginNav = () => {
             Sign Up
           </Button>
         </Menu.Item>*/}
-      <Menu.Item position="right">
+      <Menu.Item position="right" style={{textAlign: "center"}}>
         <Message
           style={{
             backgroundColor: "red",
             borderRadius: "1px solid black",
             color: "white",
             padding: "0.5rem",
-            textalign: "center",
+            textAlign: "center",
           }}
           header={signupRoute ? "Already a user?" : "Not a user?"}
           content={

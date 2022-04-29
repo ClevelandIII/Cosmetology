@@ -76,11 +76,12 @@ const createClient = async (req, res) => {
           `http://localhost:3001/api/v1/stylists`
         );
         stylists = results.data;
+console.log(stylists);
 
         let Testr = stylists.find(
           (stylist) => client.stylistName === stylist.email
         );
-        // console.log(`Tester`, Testr);
+        console.log(`Tester`, Testr);
 
         const stylist = await StylistModel.findById(Testr._id);
         stylist.pastClients.push([
@@ -88,7 +89,7 @@ const createClient = async (req, res) => {
           client.lastName,
           client.dateCreated,
           client.appointmentDate,
-        ]);
+        ]); 
         console.log(`stylist`, stylist);
         await stylist.save();
         // console.log(`stylist2`, stylist);
