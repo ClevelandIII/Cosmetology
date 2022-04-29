@@ -217,8 +217,8 @@ Joshua Ruvalcaba: helping people
 4/29/2022
 Jason Enciso: 
 
-Reid Gill: working on ipad/table style of clientCreator
+Reid Gill: working on a button to return to the top of the page
 
-Daniel Nijdl: 
+Daniel Nijdl: (not noted)
 
 Joshua Ruvalcaba: helping people

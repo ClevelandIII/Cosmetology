@@ -215,6 +215,9 @@ const List = ({ stylist }) => {
                 </>
               );
             })}
+            <div class="Back2Top">
+              <a href="#">🡹</a>
+            </div>
           </Grid>
         </>
       )}

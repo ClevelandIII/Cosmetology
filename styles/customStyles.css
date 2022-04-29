@@ -330,3 +330,16 @@ a.item :hover {
   }
 
 }
+
+.Back2Top{
+  position: sticky;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	/* right:4rem; */
+	background-color:rgb(134, 205, 255);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
