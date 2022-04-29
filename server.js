@@ -48,7 +48,7 @@ const uploadRoute = require("./server/routes/uploadPicRoute");
 const authRoute = require("./server/routes/authRoutes");
 const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
-// const searchRoutes = require("./server/routes/searchRoutes");
+const searchRoutes = require("./server/routes/searchRoutes");
 
 // app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/user", userRoute);
@@ -58,8 +58,12 @@ app.use("/api/v1/client", clientRoute);
 app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
+<<<<<<< HEAD
+app.use("/api/v1/search", searchRoutes);
+=======
 app.use("/api/v1/List", userRoute);
 // app.use("/api/v1/search", searchRoutes);
+>>>>>>> cbedbd54de9106a9783032780142fa39dcf3ede5
 
 //*SOCKETS */
 
