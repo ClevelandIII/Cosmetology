@@ -87,14 +87,14 @@ const VerticalSidebar = ({
       </Menu.Item>
     </Link>
 
-    <Link href="/studentList">
+    <Link href="/List">
       <Menu.Item
         style={{
           color: "black",
         }}
       >
         <Icon name="list ul" color="black" />
-        Client/Student List
+        List
       </Menu.Item>
     </Link>
 

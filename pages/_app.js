@@ -28,8 +28,7 @@ MyApp.getInitialProps = async ({ ctx, Component }) => {
     "/UserProfile",
     "/clientProfile",
     "/clientCreator",
-    "/studentList",
-    "/clientList",
+    "/List",
     "/[userId]",
     "/profilePage",
   ];

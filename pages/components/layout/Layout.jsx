@@ -76,8 +76,6 @@ const Layout = ({ children, stylist }, req, res) => {
           ></iframe> */}
         </>
       )}
-      {/* 
-<ClientList /> */}
     </>
   );
 };
