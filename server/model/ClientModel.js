@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const today1 = new Date();
+const yyyy = today1.getFullYear();
+let mm = today1.getMonth() + 1; // Months start at 0!
+let dd = today1.getDate();
+if (dd < 10) dd = "0" + dd;
+if (mm < 10) mm = "0" + mm;
+const todayMain = mm + "/" + dd + "/" + yyyy;
+
 const ClientSchema = new Schema({
   stylistName: {
     type: String,
@@ -92,7 +100,7 @@ const ClientSchema = new Schema({
 
   dateCreated: {
     type: Date,
-    default: new Date(),
+    default: todayMain,
   },
 });
 
