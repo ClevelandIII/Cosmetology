@@ -319,3 +319,15 @@ a.item :hover {
     overflow-x: hidden;
   }
 }
+
+@media screen and (min-height: 800px) {
+  .clientCreatorHandheld{
+    overflow: auto;
+    
+  
+  }
+  .clientCreatorDivider{
+    display: none;
+  }
+
+}
