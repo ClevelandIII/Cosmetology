@@ -103,7 +103,7 @@ const List = ({ stylist }) => {
                       <Grid.Column className="studentColumn">
                         <Segment style={{ width: "110%" }}>
                           <Image
-                            className="studentListPic"
+                            className="avatar"
                             src={stylist.profilePicURL}
                           />
                           <Link href={`http://localhost:3001/${stylist.userId}`}>
@@ -174,14 +174,13 @@ const List = ({ stylist }) => {
             {clients.map((client) => {
               return (
                 <>
-                  <Grid.Row className=" studentRow">
+                  <Grid.Row className="studentRow">
                     <Grid.Column className="studentColumn">
                       <Segment style={{ width: "110%" }}>
                         <Image
-                          className="studentListPic"
+                          className="avatar"
                           src={defaultProfilePicURL}
                         />
-                        {""}
 
                         <p className="studentListName" style={{ width: "80%" }}>
                           {client.firstName} {client.lastName}
@@ -192,7 +191,7 @@ const List = ({ stylist }) => {
                     <Grid.Column className="studentColumn">
                       <Segment style={{ width: "110%" }}>
                         <Image
-                          className="studentListPic"
+                          className="avatar"
                           src={client.stylistPic || defaultProfilePicURL}
                         />{" "}
                         <p className="studentListName" style={{ width: "80%" }}>

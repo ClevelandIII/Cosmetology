@@ -75,9 +75,6 @@
   transform: translate(-50%, -50%);
   z-index: -1;
 }
-/* .noScroll {
-  overflow-y: hidden !important;
-} */
 
 .blackBackground {
   background-color: black !important;
@@ -124,14 +121,6 @@ a.item :hover {
 /*width sizing */
 
 /* @media screen and (min-width: 900px) { */
-.studentListPic {
-  position: absolute !important;
-  right: 81.8%;
-  bottom: -10%;
-  width: 28%;
-  border: rgb(0, 0, 0) solid 2px;
-  border-radius: 50px;
-}
 
 .studentListName {
   position: relative !important;
@@ -141,8 +130,7 @@ a.item :hover {
   /* white-space: nowrap; */
 }
 
-
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 800px) {
   .studentListPic {
     position: absolute !important;
     right: 80%;
@@ -255,15 +243,15 @@ a.item :hover {
   justify-content: center;
 }
 
-.orangeBackground{
+.orangeBackground {
   background: url("https://i.postimg.cc/0NDfCYjj/orange-kid.jpg");
   background-size: 300%;
   background-position: center;
   background-blend-mode: soft-light;
 }
 
-.otherOrangeBackground{
-  background:rgba(253, 224, 158, 0.13);
+.otherOrangeBackground {
+  background: rgba(253, 224, 158, 0.13);
   background-size: cover;
   backdrop-filter: blur(20px) !important;
 }
@@ -273,25 +261,31 @@ a.item :hover {
   border-top: 10px solid orange;
   background: orange;
   color: black;
-  
+
   /*Commented out due to spacing out client boxes waay to much*/
   /* height: 35rem; */
-  /* overflow-y: scroll;
-  overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 .indexCenter {
   justify-content: center;
 }
 
-.indexClientInfo {
-  border-bottom: 10px solid orange;
-  border-top: 10px solid orange;
-  height: 35rem;
-  background: orange;
-  color: black;
-  overflow-y: scroll;
+div.ui.page.modals.dimmer.transition.visible.active {
+  /* display: block !important; */
+  height: 100vw;
   overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.086);
+}
+
+.indexClientInfo {
+  /* border-bottom: 10px solid orange;
+  border-top: 10px solid orange; */
+  /* height: 45rem; */
+  height: 100rem;
+  /* background: orange;
+  color: black;*/
+  /* overflow-x: hidden; */
 }
 
 .tableindex {
@@ -301,7 +295,7 @@ a.item :hover {
 @media screen and (min-height: 800px) {
   .tableindex {
     top: 50%;
-  } 
+  }
   .containeindex {
     border-bottom: 10px solid orange;
     height: 35rem;
@@ -322,26 +316,54 @@ a.item :hover {
 }
 
 @media screen and (min-height: 800px) {
-  .clientCreatorHandheld{
+  .clientCreatorHandheld {
     overflow: auto;
-    
-  
   }
-  .clientCreatorDivider{
+  .clientCreatorDivider {
     display: none;
   }
-
 }
 
-.Back2Top{
+.Back2Top {
   position: sticky;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	/* right:4rem; */
-	background-color:rgb(134, 205, 255);
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  /* right:4rem; */
+  background-color: rgb(134, 205, 255);
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  box-shadow: 2px 2px 3px #999;
+  /*Bro i swear this additional z-index being this large is important*/
+  /*No but i just put this here for homescreen so that The user can see the modal when they click on a client at the bottom of the page.*/
+  z-index: 100000000000000000000000000000000000000000;
+}
+
+/*Styling for imgs. Please dont touch, work in progress*/
+.studentListPic {
+  position: absolute !important;
+  right: 81.8%;
+  bottom: -30%;
+  width: 6rem !important;
+  height: 6rem !important;
+  border: rgb(0, 0, 0) solid 2px;
+  border-radius: 50px;
+}
+
+/*Stack Overflow, mostly*/
+.avatar {
+  position: absolute !important;
+  right: 81.8%;
+  bottom: -35%;
+  /* make a square container */
+  width: 6rem !important;
+  height: 6rem !important;
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+  /* center the image vertically and horizontally */
+  background-position: top center;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+  border: rgb(0, 0, 0) solid 2px;
 }

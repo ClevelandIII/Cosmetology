@@ -155,3 +155,9 @@
 - Cleveland: Finally finished hours (thanks Peck), made teacher addition on signup work (currently you can have multiple teachers), made clientList and studentList into one page dependant on if you are a student or teacher, made date in profile and name in client list look better
 
 - Abdi: searchbar additions
+
+4/29/2022
+
+- Cleveland: Client Modal additions, added Reid's button to the Modal, wip on images being set circles.
+
+- Abdi: Searchbar

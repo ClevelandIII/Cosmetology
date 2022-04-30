@@ -8,8 +8,8 @@ import {
   Divider,
   Button,
   Dropdown,
-  Route,
-  Menu,
+  Image,
+  Header,
   Icon,
   Segment,
   Modal,
@@ -21,7 +21,10 @@ const index = ({ stylist, client }) => {
     document.title = `Welcome, ${stylist.firstName}`;
   }, []);
   const [clients, setClients] = useState([]);
-  const [option, setOption] = useState('')
+  const [option, setOption] = useState("");
+
+  //usestate for modal closage
+  const [open, setOpen] = useState(false);
 
   const Options = [
     {
@@ -126,10 +129,13 @@ const index = ({ stylist, client }) => {
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
                     setClients={clients}
-                    style={{ textAlign: "center"}}
+                    style={{ textAlign: "center" }}
                   >
                     <Modal
-                      closeIcon
+                      centered={false}
+                      onClose={() => setOpen(false)}
+                      onOpen={() => setOpen(true)}
+                      open={open}
                       trigger={
                         <Segment className="indexCenter">
                           <p>
@@ -138,63 +144,74 @@ const index = ({ stylist, client }) => {
                         </Segment>
                       }
                     >
-                      <Segment className="indexClientInfo">
+                      <Modal.Content className="indexClientInfo" scrolling>
                         <p>
-                          <h1>First Name: </h1>
-                          <p style={{ fontSize: "25px" }}>{client.firstName}</p>
-                          <h1>Last Name: </h1>
-                          <p style={{ fontSize: "25px" }}> {client.lastName}</p>
-                          <h2>Appointment Date: </h2>
-                          <p style={{ fontSize: "20px" }}>
-                            {" "}
+                          <h3>First Name: {client.firstName}</h3>
+                          {/* <p style={{ fontSize: "25px" }}>{client.firstName}</p> */}
+                          <h3>Last Name: {client.lastName}</h3>
+                          {/* <p style={{ fontSize: "25px" }}> {client.lastName}</p> */}
+                          <h3>
+                            Appointment Date:{" "}
+                            {client.appointmentDate.split("T")[0]}
+                          </h3>
+                          {/* <p style={{ fontSize: "20px" }}>
                             {client.appointmentDate}
-                          </p>
-                          <h3>Service Request: </h3>
-                          <p style={{ fontSize: "17px" }}>
-                            {" "}
-                            {client.serviceRequest}{" "}
-                          </p>
-                          <h3>Hair Condition: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Service Request: {client.serviceRequest}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
+                            {client.serviceRequest}
+                          </p> */}
+                          <h3>Hair Condition: {client.hairCondition}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairCondition}
-                          </p>
-                          <h3>Hair Classification: </h3>
-                          <p style={{ fontSize: "17px" }}>
-                            {" "}
+                          </p> */}
+                          <h3>
+                            Hair Classification: {client.hairClassification}
+                          </h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairClassification}
-                          </p>
-                          <h3>Hair Density: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Hair Density: {client.hairDensity}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairDensity}
-                          </p>
-                          <h3>Hair Elasticity:</h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Hair Elasticity: {client.hairElasticity}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairElasticity}
-                          </p>
-                          <h3>Hair Porosity: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Hair Porosity: {client.hairPorosity}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairPorosity}
-                          </p>
-                          <h3>Hair Length: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Hair Length: {client.hairLength}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairLength}
-                          </p>
-                          <h3>Hair Texture: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Hair Texture: {client.hairTexture}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.hairTexture}
-                          </p>
-                          <h3>Growth Patterns: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Growth Patterns: {client.growthPatterns}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.growthPatterns}
-                          </p>
-                          <h3>Scalp Condition: </h3>
-                          <p style={{ fontSize: "17px" }}>
+                          </p> */}
+                          <h3>Scalp Condition: {client.scalpClassification}</h3>
+                          {/* <p style={{ fontSize: "17px" }}>
                             {client.scalpClassification}
-                          </p>
+                          </p> */}
                         </p>
-                      </Segment>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button
+                          content="Procced"
+                          labelPosition="right"
+                          onClick={() => setOpen(false)}
+                          warning
+                        />
+                      </Modal.Actions>
                     </Modal>
                   </Grid.Column>
+
                   <Grid.Column
                     className="Indexcolumn"
                     key={client._id}
@@ -202,9 +219,10 @@ const index = ({ stylist, client }) => {
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      <p>{client.dateCreated}</p>
+                      <p>{client.appointmentDate.split("T")[0]}</p>
                     </Segment>
                   </Grid.Column>
+
                   <Grid.Column
                     className="Indexcolumn"
                     key={client._id}
@@ -212,7 +230,7 @@ const index = ({ stylist, client }) => {
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      <p>{client.dateCreated}</p>
+                      <p>{client.dateCreated.split("T")[0]}</p>
                     </Segment>
                   </Grid.Column>
                 </>
@@ -221,6 +239,13 @@ const index = ({ stylist, client }) => {
           </>
         </Grid.Row>
       </Grid>
+      {open ? (
+        <div class="Back2Top">
+          <a href="#">🡹</a>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
