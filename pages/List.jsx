@@ -18,6 +18,7 @@ const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
   const [semester, setSemester] = useState([]);
   const [clients, setClients] = useState([]);
+  const [stylistEmail, setStylistEmail] = useState("");
 
   const getStylists = async () => {
     try {
@@ -105,7 +106,7 @@ const List = ({ stylist }) => {
                             className="studentListPic"
                             src={stylist.profilePicURL}
                           />
-                          <Link href={`/${stylist.userId}`}>
+                          <Link href={`http://localhost:3001/${stylist.userId}`}>
                             <p
                               className="studentListName"
                               style={{ width: "80%" }}
@@ -195,7 +196,8 @@ const List = ({ stylist }) => {
                           src={client.stylistPic || defaultProfilePicURL}
                         />{" "}
                         <p className="studentListName" style={{ width: "80%" }}>
-                          {client.stylistName}
+                          {/* {stylistEmail[0]} */}
+                          {client.stylistName.split("@")[0]}
                         </p>
                       </Segment>
                     </Grid.Column>
@@ -213,6 +215,9 @@ const List = ({ stylist }) => {
                 </>
               );
             })}
+            <div class="Back2Top">
+              <a href="#">🡹</a>
+            </div>
           </Grid>
         </>
       )}

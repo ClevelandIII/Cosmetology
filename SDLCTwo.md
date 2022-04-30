@@ -150,5 +150,8 @@
 4/28/2022
 
 (To whoever changed all the textAlign to textalign, please keep it as textAlign, because even though the error shows up, witout textAlign none of the css for it works.)
+(Also, keep stylistName params in Client creater as stylist.email instead of stylist.Name. More explained at clientCreator)
 
-- Cleveland: 
+- Cleveland: Finally finished hours (thanks Peck), made teacher addition on signup work (currently you can have multiple teachers), made clientList and studentList into one page dependant on if you are a student or teacher, made date in profile and name in client list look better
+
+- Abdi: searchbar additions

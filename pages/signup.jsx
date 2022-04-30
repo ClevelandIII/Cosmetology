@@ -209,7 +209,7 @@ const Signup = () => {
 
   return (
     <>
-      <iframe
+      {/* <iframe
         src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
         autoPlay
         loop
@@ -225,7 +225,7 @@ const Signup = () => {
         //   transform: "translate(-50%,-50%)",
         //   zIndex: "-1",
         // }}
-      ></iframe>
+      ></iframe> */}
 
       <Form
         style={{

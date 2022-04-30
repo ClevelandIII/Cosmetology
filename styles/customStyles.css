@@ -136,9 +136,11 @@ a.item :hover {
 .studentListName {
   position: relative !important;
   left: 8%;
+  cursor: pointer !important;
   /* overflow: scroll hidden; */
   /* white-space: nowrap; */
 }
+
 
 @media screen and (min-width: 900px) {
   .studentListPic {
@@ -317,4 +319,29 @@ a.item :hover {
     overflow-y: scroll;
     overflow-x: hidden;
   }
+}
+
+@media screen and (min-height: 800px) {
+  .clientCreatorHandheld{
+    overflow: auto;
+    
+  
+  }
+  .clientCreatorDivider{
+    display: none;
+  }
+
+}
+
+.Back2Top{
+  position: sticky;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	/* right:4rem; */
+	background-color:rgb(134, 205, 255);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
 }

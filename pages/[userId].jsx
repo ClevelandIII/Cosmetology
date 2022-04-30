@@ -129,7 +129,7 @@ const profilePage = ({ stylist, profile }) => {
                 className="roz3"
               >
                 <Image
-                  src={stylist.profilePicURL}
+                  src={profile.profilePicURL}
                   avatar
                   size="medium"
                   bordered
@@ -141,11 +141,11 @@ const profilePage = ({ stylist, profile }) => {
                 <Card>
                   <Card.Content>
                     <Card.Header>
-                      {stylist.firstName} {stylist.lastName}
+                      {profile.firstName} {profile.lastName}
                     </Card.Header>
                     <Card.Meta>
                       <span className="date">
-                        Teacher: {stylist.teacher} | Session: {stylist.session}
+                        Teacher: {profile.teacher} | Session: {profile.session}
                       </span>
                     </Card.Meta>
                     <Card.Description>Teacher </Card.Description>

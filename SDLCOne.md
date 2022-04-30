@@ -204,3 +204,21 @@ Reid Gill: working on radio and dropbox button in the the signup
 Daniel Nijdl:Almost have personal profile links working, but keeps redirecting to home page. Fixed studentList and layout not working
 
 Joshua Ruvalcaba: helping Daniel
+
+4/28/2022
+Jason Enciso: 
+
+Reid Gill: working on ipad/table style of clientCreator
+
+Daniel Nijdl:Almost have personal profile links working, but keeps redirecting to home page. Fixed studentList and layout not working
+
+Joshua Ruvalcaba: helping people
+
+4/29/2022
+Jason Enciso: 
+
+Reid Gill: working on a button to return to the top of the page
+
+Daniel Nijdl: (not noted)
+
+Joshua Ruvalcaba: helping people

@@ -1,4 +1,4 @@
-const ClientModel = require("../model/ClientModel");
+const StylistModel = require("../model/StylistModel");
 
 const searchUsers = async (req, res) => {
   let { searchText } = req.params;
@@ -7,7 +7,7 @@ const searchUsers = async (req, res) => {
   if (!searchText) return res.status(401).send("no searchText given");
 
   try {
-    const results = await ClientModel.find({
+    const results = await StylistModel.find({
       name: { $regex: searchText, $options: "i" },
     });
 

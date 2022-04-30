@@ -22,6 +22,10 @@ const UserProfile = ({ stylist }) => {
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
+  const [initalDate, setInitalDate] = useState("");
+  const [lastDate, setLastDate] = useState("")
+
+  //In the future, option will allow for the sort buttons to work
   const [option, setOption] = useState("");
 
   //This variable updates hours on the page so that the user doesnt have to reset to see their new hours.
@@ -289,7 +293,7 @@ const UserProfile = ({ stylist }) => {
                     </Card.Header>
                     <Card.Meta>
                       <span className="date">
-                        Teacher: {stylist.teacher} | Session: {stylist.session}
+                        Teacher: {stylist.teacher} | {stylist.session}
                       </span>
                     </Card.Meta>
                     <Card.Description>Stylist</Card.Description>
@@ -435,6 +439,12 @@ const UserProfile = ({ stylist }) => {
               <>
                 {stylist.pastClients.map((client) => {
                   console.log(client);
+                  useEffect(() => {
+                    setInitalDate(client[2].split("T"));
+                  }, []);
+                  useEffect(() => {
+                    setLastDate(client[3].split("T"));
+                  }, []);
                   return (
                     <>
                       <Grid.Column
@@ -460,7 +470,7 @@ const UserProfile = ({ stylist }) => {
                         style={{ textAlign: "center" }}
                       >
                         <Segment className="indexCenter">
-                          <p>{client[2]}</p>
+                          <p>{initalDate[0]}</p>
                         </Segment>
                       </Grid.Column>
                       <Grid.Column
@@ -468,7 +478,7 @@ const UserProfile = ({ stylist }) => {
                         style={{ textAlign: "center" }}
                       >
                         <Segment className="indexCenter">
-                          <p>{client[3]}</p>
+                          <p>{lastDate[0]}</p>
                         </Segment>
                       </Grid.Column>
                     </>
