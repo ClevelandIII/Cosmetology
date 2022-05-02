@@ -219,6 +219,15 @@ Jason Enciso:
 
 Reid Gill: working on a button to return to the top of the page
 
-Daniel Nijdl: (not noted)
+Daniel Nijdl: Worked on personal profiles
 
-Joshua Ruvalcaba: helping people
+Joshua Ruvalcaba: helping people, Helped fix broken studentList
+
+5/1/2022
+Jason Enciso: 
+
+Reid Gill: finished to the top button, added a white background to transparent pics, made a whats_left_todo.txt (it acts ike what the trello was)
+
+Daniel Nijdl: made it so only west-mec.org can be used to sign up,
+
+Joshua Ruvalcaba: absent

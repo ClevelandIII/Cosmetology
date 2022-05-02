@@ -240,11 +240,15 @@ const index = ({ stylist, client }) => {
         </Grid.Row>
       </Grid>
       {open ? (
-        <div class="Back2Top">
-          <a href="#">🡹</a>
+        <div class="Back2Top" style={{left:"51rem"}}>
+          <a href="#" className="Back2TopText" >🡹</a>
         </div>
       ) : (
-        <></>
+        <>
+        <div class="Back2Top" style={{left:"103rem"}}>
+          <a href="#" className="Back2TopText">🡹</a>
+        </div>
+        </>
       )}
     </div>
   );

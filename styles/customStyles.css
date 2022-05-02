@@ -329,15 +329,26 @@ div.ui.page.modals.dimmer.transition.visible.active {
   width: 60px;
   height: 60px;
   bottom: 40px;
+  /* left:  103rem; */
+  
   /* right:4rem; */
   background-color: rgb(134, 205, 255);
   color: #fff;
   border-radius: 50px;
   text-align: center;
   box-shadow: 2px 2px 3px #999;
+
   /*Bro i swear this additional z-index being this large is important*/
   /*No but i just put this here for homescreen so that The user can see the modal when they click on a client at the bottom of the page.*/
-  z-index: 100000000000000000000000000000000000000000;
+  z-index: 100000000000000000000000000000000000000000 ;
+
+}
+
+.Back2TopText{
+  font-size: 60px;
+  position: relative;
+  top: 18px;
+  /* right: 10px; */
 }
 
 /*Styling for imgs. Please dont touch, work in progress*/
@@ -366,6 +377,7 @@ div.ui.page.modals.dimmer.transition.visible.active {
   /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
+  background-color: #fff !important;
 }
 
 /* Fixes problem with profile avatars being to small and messing up rest of page */

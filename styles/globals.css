@@ -6,6 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   position: absolute !important;
   width: 100vw !important;
+  scroll-behavior: smooth;
   /* width: 110rem !important; */
   scroll-behavior: smooth !important;
 }

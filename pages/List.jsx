@@ -180,6 +180,7 @@ const List = ({ stylist }) => {
                         <Image
                           className="avatar"
                           src={defaultProfilePicURL}
+                          style={{backgroundColor:"white"}}
                         />
 
                         <p className="studentListName" style={{ width: "80%" }}>
@@ -214,8 +215,8 @@ const List = ({ stylist }) => {
                 </>
               );
             })}
-            <div class="Back2Top">
-              <a href="#">🡹</a>
+            <div class="Back2Top" style={{left:"103rem"}}>
+              <a href="#" className="Back2TopText" style={{right:"10px"}}>🠉</a>
             </div>
           </Grid>
         </>
