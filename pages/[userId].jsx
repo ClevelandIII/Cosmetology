@@ -130,7 +130,8 @@ const profilePage = ({ stylist, profile }) => {
               >
                 <Image
                   src={profile.profilePicURL}
-                  avatar
+                  // avatar
+                  className="profileAvatar"
                   size="medium"
                   bordered
                   centered
@@ -273,7 +274,7 @@ const profilePage = ({ stylist, profile }) => {
               >
                 <Image
                   src={profile.profilePicURL}
-                  avatar
+                  className="profileAvatar"
                   size="medium"
                   bordered
                   centered

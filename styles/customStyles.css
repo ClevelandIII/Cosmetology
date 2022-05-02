@@ -367,3 +367,12 @@ div.ui.page.modals.dimmer.transition.visible.active {
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
 }
+
+/* Fixes problem with profile avatars being to small and messing up rest of page */
+.profileAvatar{
+  width: 10rem !important;
+  height: 10rem !important;
+  
+    background-color: rgb(255, 179, 0) !important;
+  
+}

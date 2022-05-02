@@ -135,7 +135,8 @@ const UserProfile = ({ stylist }) => {
               >
                 <Image
                   src={stylist.profilePicURL}
-                  avatar
+                  // avatar
+                  className="profileAvatar"
                   size="medium"
                   bordered
                   centered
@@ -278,7 +279,7 @@ const UserProfile = ({ stylist }) => {
               >
                 <Image
                   src={stylist.profilePicURL}
-                  avatar
+                  className="profileAvatar"
                   size="medium"
                   bordered
                   centered
