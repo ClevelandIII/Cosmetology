@@ -4,7 +4,7 @@ this is in no order
 
 • implement the search bar
 
-• implement the "sort by..." and add one to the list
+• implement the "sort by..." and add one to the "list" page
 
 • password recovery
 
@@ -17,4 +17,6 @@ this is in no order
 • For clients, if there is already a client that visits again, we have to make a popup that can add another visit.
 (The popup should look somewhat similar to the one you get when you click on a client in your profile)
 
-• decide if the ratings feature needs to be implemented.
+•when logged in as a student clicking a teacher it should show their profile 
+
+•when logged in as a teacher remove the client create button maybe change the message

@@ -231,3 +231,12 @@ Reid Gill: finished to the top button, added a white background to transparent p
 Daniel Nijdl: made it so only west-mec.org can be used to sign up,
 
 Joshua Ruvalcaba: absent
+
+5/3/22
+Jason Enciso:  
+
+Reid Gill: removed the ratings stars, made the dates on the list only show the m/d/y, started with the "Show more" buttons on the list page 
+
+Daniel Nijdl: Made it so teachers can click on name of student on their profile page and started working on password reset
+
+Joshua Ruvalcaba: absent

@@ -8,6 +8,7 @@ import {
   Menu,
   Table,
   Segment,
+  Button,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -145,6 +146,13 @@ const List = ({ stylist }) => {
                 );
               }
             })}
+            <div class="showMore">
+              <Button style={{backgroundColor:"white", color:"orange"}}>🡣 Show More 🡣</Button>
+            </div>
+            <div class="Back2Top" style={{left:"103rem"}}>
+              <a href="#" className="Back2TopText" style={{right:"10px"}}>🠉</a>
+            </div>
+            
           </Grid>
         </>
       ) : (
@@ -203,18 +211,21 @@ const List = ({ stylist }) => {
                     </Grid.Column>
                     <Grid.Column className="studentColumn">
                       <Segment className="yearSemesterCenter">
-                        {client.dateCreated}
+                        {client.dateCreated.split("T")[0]}
                       </Segment>
                     </Grid.Column>
                     <Grid.Column style={{ paddingLeft: "80px" }}>
                       <Segment className="yearSemesterCenter">
-                        {client.dateCreated}
+                        {client.dateCreated.split("T")[0]}
                       </Segment>
                     </Grid.Column>
                   </Grid.Row>
                 </>
               );
             })}
+            <div class="showMore">
+              <Button style={{backgroundColor:"white", color:"orange"}}>🡣 Show More 🡣</Button>
+            </div>
             <div class="Back2Top" style={{left:"103rem"}}>
               <a href="#" className="Back2TopText" style={{right:"10px"}}>🠉</a>
             </div>

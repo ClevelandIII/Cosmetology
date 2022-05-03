@@ -403,7 +403,7 @@ const UserProfile = ({ stylist }) => {
                 <h1>Number of Clients: {stylist.pastClients.length}</h1>
               </Grid.Row>
               <Divider hidden />
-              <Grid.Row
+              {/* <Grid.Row
                 style={{
                   border: "1px solid white",
                   height: "5rem",
@@ -412,11 +412,11 @@ const UserProfile = ({ stylist }) => {
                   textAlign: "center",
                   paddingTop: "1.6rem",
                 }}
-              >
+              > */}
                 {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
-                {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
-                <Rating icon="star" defaultRating={0} maxRating={5} />
-              </Grid.Row>
+                {/* If we want to instead record a visitors ranking we can, otherwise this might not work... */}
+                {/* <Rating icon="star" defaultRating={0} maxRating={5} /> */}
+              {/* </Grid.Row> */}
             </Grid.Column>
           </Grid>
           ;
