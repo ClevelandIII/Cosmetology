@@ -48,7 +48,7 @@ const uploadRoute = require("./server/routes/uploadPicRoute");
 const authRoute = require("./server/routes/authRoutes");
 const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
-const searchRoutes = require("./server/routes/searchRoutes");
+// const searchRoutes = require("./server/routes/searchRoutes");
 
 // app.use("/api/v1/profile", profileRoutes);
 app.use("/api/v1/user", userRoute);
