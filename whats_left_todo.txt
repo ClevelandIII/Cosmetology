@@ -8,12 +8,13 @@ this is in no order
 
 • password recovery
 
-• make it so the list on the teacher profile only shows there students
+• make it so that students can see their teachers if the name of teacher === teacher name
 
 • add a "click to load more" for all lists
 
 • when logged in as a teacher and when clicking on a student it should go to there profile page
 
-• 
+• For clients, if there is already a client that visits again, we have to make a popup that can add another visit.
+(The popup should look somewhat similar to the one you get when you click on a client in your profile)
 
-• 
+• decide if the ratings feature needs to be implemented.

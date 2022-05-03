@@ -98,6 +98,10 @@ const ClientSchema = new Schema({
   // hairElasticity: { type: String, enum: ["Good", "Average", "Poor", "Mix"] },
   // hairLength: { type: String, enum: ["Short", "Medium", "Long"] },
 
+  visits: {
+    type: Array,
+  },
+
   dateCreated: {
     type: Date,
     default: todayMain,

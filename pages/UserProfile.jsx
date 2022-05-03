@@ -23,12 +23,24 @@ const UserProfile = ({ stylist }) => {
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
   const [initalDate, setInitalDate] = useState("");
-  const [lastDate, setLastDate] = useState("")
+  const [lastDate, setLastDate] = useState("");
+  const [teachName, setTeachName] = useState("");
+  const [clients, setClients] = useState([]);
+
+  //All three for visits
+  const [addVisits, setAddVisits] = useState("");
+  const [hairStyle, setHairStyle] = useState("");
+  const [specialTreatment, setSpecialTreatment] = useState("");
+
+  useEffect(() => {
+    setTeachName(stylist.firstName);
+  }, []);
 
   //In the future, option will allow for the sort buttons to work
   const [option, setOption] = useState("");
 
   //This variable updates hours on the page so that the user doesnt have to reset to see their new hours.
+  //Thats what i would say... If it actually worked! For now the user will have to reset to see the hours.
   const [actualHours, setActualHours] = useState("");
   useEffect(() => {
     setActualHours(stylist.hours);
@@ -74,7 +86,7 @@ const UserProfile = ({ stylist }) => {
   //Separates the teachers from the students
   let count = 0;
   stylists.map((stylist) => {
-    if (stylist.isTeacher === "false") {
+    if (stylist.isTeacher === "false" && stylist.teacher === teachName) {
       return count++;
     } else {
       count = count;
@@ -122,6 +134,20 @@ const UserProfile = ({ stylist }) => {
     // setIsTeacher(false);
     decide = false;
   }
+
+  const getClients = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/client`);
+      setClients(results.data);
+      console.log(clients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getClients();
+    // console.log(stylists);
+  }, []);
 
   return (
     <>
@@ -220,7 +246,10 @@ const UserProfile = ({ stylist }) => {
             <Grid.Row className="test" columns={3}>
               <>
                 {stylists.map((stylist) => {
-                  if (stylist.isTeacher === "false") {
+                  if (
+                    stylist.isTeacher === "false" &&
+                    stylist.teacher === teachName
+                  ) {
                     return (
                       <>
                         <Grid.Column
@@ -252,11 +281,7 @@ const UserProfile = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                            <p>
-                              {stylist.pastClients.map((client) => {
-                                return <>{`${client[0]} `}</>;
-                              })}
-                            </p>
+                            <p>{stylist.pastClients.length}</p>
                           </Segment>
                         </Grid.Column>
                       </>
@@ -438,52 +463,69 @@ const UserProfile = ({ stylist }) => {
 
             <Grid.Row className="test" columns={3}>
               <>
-                {stylist.pastClients.map((client) => {
-                  console.log(client);
-                  useEffect(() => {
-                    setInitalDate(client[2].split("T"));
-                  }, []);
-                  useEffect(() => {
-                    setLastDate(client[3].split("T"));
-                  }, []);
-                  return (
-                    <>
-                      <Grid.Column
-                        className="Indexcolumn clientListColumn"
-                        style={{ textAlign: "center" }}
-                      >
-                        <Popup
-                          trigger={
-                            <Segment className="indexCenter">
-                              <p>{`${client[0]} ${client[1]}`}</p>
-                            </Segment>
-                          }
-                          hoverable
-                          position="top center"
+                {clients.map((client) => {
+                  if (client.stylistName === stylist.email) {
+                    return (
+                      <>
+                        <Grid.Column
+                          className="Indexcolumn clientListColumn"
+                          style={{ textAlign: "center" }}
                         >
-                          <h4>Add Visit </h4>
-                          <h4>Hair Style</h4>
-                          <h4>Special Treatments</h4>
-                        </Popup>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{initalDate[0]}</p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{lastDate[0]}</p>
-                        </Segment>
-                      </Grid.Column>
-                    </>
-                  );
+                          <Popup
+                            trigger={
+                              <Segment className="indexCenter">
+                                <p>{`${client.firstName} ${client.lastName}`}</p>
+                              </Segment>
+                            }
+                            hoverable
+                            pinned
+                            on="click"
+                            position="top center"
+                          >
+                            <Form>
+                                <Form.Input
+                                  required
+                                  label="Add Visit"
+                                  placeholder="Today"
+                                  name="appointmentDate"
+                                  value={addVisits}
+                                  onChange={handleChange}
+                                  icon="time"
+                                  iconPosition="left"
+                                  style={{ width: "300px", height: "42px" }}
+                                  type="date"
+                                />
+                              <h4>
+                                Hair Style <input></input>
+                              </h4>
+                              <h4>
+                                Special Treatments <input></input>
+                              </h4>
+                              <button>Submit</button>
+                            </Form>
+                          </Popup>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.appointmentDate.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.dateCreated.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+                      </>
+                    );
+                  } else {
+                    <></>;
+                  }
                 })}
               </>
             </Grid.Row>

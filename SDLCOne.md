@@ -227,7 +227,7 @@ Joshua Ruvalcaba: helping people, Helped fix broken studentList
 Jason Enciso: 
 
 Reid Gill: finished to the top button, added a white background to transparent pics, made a whats_left_todo.txt (it acts ike what the trello was)
-
+ 
 Daniel Nijdl: made it so only west-mec.org can be used to sign up,
 
 Joshua Ruvalcaba: absent

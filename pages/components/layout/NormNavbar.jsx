@@ -29,96 +29,97 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
-const VerticalSidebar = ({
-  animation,
-  visible,
-  email,
-  // userId
-  // stylist: {userId}
-}) => (
-  <Sidebar
-    as={Menu}
-    animation={animation}
-    direction="left"
-    icon="labeled"
-    vertical
-    visible={visible}
-    width="thin"
-    style={{
-      backgroundColor: "white",
-      boxShadow: "0px 0.5px 2px 1px gray",
-    }}
-  >
-    <Link href="/index">
-      <Menu.Item
-        style={{
-          color: "black",
-          cursor: "pointer",
-        }}
-      >
-        <Icon
-          name="home"
-          color="black"
+
+//This is the navbar. Of course, search and sign out dont currently work, but the sidebar button does.
+function NormNavbar({ stylist }) {
+  const VerticalSidebar = ({ animation, visible }) => (
+    <Sidebar
+      as={Menu}
+      animation={animation}
+      direction="left"
+      icon="labeled"
+      vertical
+      visible={visible}
+      width="thin"
+      style={{
+        backgroundColor: "white",
+        boxShadow: "0px 0.5px 2px 1px gray",
+      }}
+    >
+      <Link href="/index">
+        <Menu.Item
+          style={{
+            color: "black",
+            cursor: "pointer",
+          }}
+        >
+          <Icon
+            name="home"
+            color="black"
+            style={{
+              color: "black",
+            }}
+          />
+          Home
+        </Menu.Item>
+      </Link>
+      <Link href={`/UserProfile`}>
+        <Menu.Item
           style={{
             color: "black",
           }}
-        />
-        Home
-      </Menu.Item>
-    </Link>
-    <Link href={`/UserProfile`}>
+        >
+          <Icon name="user circle" color="black" />
+          Profile
+        </Menu.Item>
+      </Link>
+
+      {stylist.isTeacher === "true" ? (
+        <></>
+      ) : (
+        <>
+          <Link href="/clientCreator">
+            <Menu.Item
+              style={{
+                color: "black",
+              }}
+            >
+              <Icon name="add user" color="black" />
+              New Visit
+            </Menu.Item>
+          </Link>
+        </>
+      )}
+
+      <Link href="/List">
+        <Menu.Item
+          style={{
+            color: "black",
+          }}
+        >
+          <Icon name="list ul" color="black" />
+          List
+        </Menu.Item>
+      </Link>
+
       <Menu.Item
         style={{
-          color: "black",
+          color: "red",
         }}
+        onClick={() => logoutUser(stylist.email)}
       >
-        <Icon name="user circle" color="black" />
-        Profile
+        <Icon name="sign-out" color="red" />
+        Sign Out
       </Menu.Item>
-    </Link>
+    </Sidebar>
+  );
 
-    <Link href="/clientCreator">
-      <Menu.Item
-        style={{
-          color: "black",
-        }}
-      >
-        <Icon name="add user" color="black" />
-        New Visit
-      </Menu.Item>
-    </Link>
-
-    <Link href="/List">
-      <Menu.Item
-        style={{
-          color: "black",
-        }}
-      >
-        <Icon name="list ul" color="black" />
-        List
-      </Menu.Item>
-    </Link>
-
-    <Menu.Item
-      style={{
-        color: "red",
-      }}
-      onClick={() => logoutUser(email)}
-    >
-      <Icon name="sign-out" color="red" />
-      Sign Out
-    </Menu.Item>
-  </Sidebar>
-);
-
-//This is the navbar. Of course, search and sign out dont currently work, but the sidebar button does.
-function NormNavbar({ stylist: { firstName, email } }) {
   let hamDog = false;
   const [state, dispatch] = React.useReducer(exampleReducer, {
     animation: "overlay",
     direction: "left",
     visible: false,
-    email: email,
+    email: stylist.email,
   });
 
   const { animation, direction, visible } = state;
@@ -188,7 +189,7 @@ function NormNavbar({ stylist: { firstName, email } }) {
                 });
               }}
             >
-              {`Welcome, ${firstName}. `}
+              {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
           <Menu.Item
@@ -203,7 +204,7 @@ function NormNavbar({ stylist: { firstName, email } }) {
               style={{ backgroundColor: "red", color: "white" }}
               as="a"
               href="/login"
-              onClick={() => logoutUser(email)}
+              onClick={() => logoutUser(stylist.email)}
             >
               Sign Out
             </Button>

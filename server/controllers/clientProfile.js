@@ -32,6 +32,7 @@ const createClient = async (req, res) => {
     hairLength,
     hairPorosity,
     hairElasticity,
+    visits,
   } = req.body.client;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
@@ -66,6 +67,7 @@ const createClient = async (req, res) => {
       hairElasticity,
       hairPorosity,
       hairLength,
+      visits,
     });
 
     client = await client.save();

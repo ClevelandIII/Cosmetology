@@ -161,3 +161,7 @@
 - Cleveland: Client Modal additions, added Reid's button to the Modal, wip on images being set circles.
 
 - Abdi: Searchbar
+
+5/2/2022
+
+- Cleveland: Finished pics, added visited to clients, (currently unused, but will add to it tommorow), made it so that teachers cannot add clients, and made it so that teachers only see their students on their profile page.
