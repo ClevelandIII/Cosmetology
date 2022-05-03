@@ -75,6 +75,17 @@ const index = ({ stylist, client }) => {
   console.log(clients);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
+
+//( ͡° ͜ʖ ͡°)
+  let decide = "";
+  if (stylist.isTeacher === "true") {
+    // setIsTeacher(true);
+    decide = true;
+  } else if (stylist.isTeacher === "false") {
+    // setIsTeacher(false);
+    decide = false;
+  }
+
   return (
     <div
       style={{ padding: "2rem", textAlign: "center" }}
@@ -214,7 +225,7 @@ const index = ({ stylist, client }) => {
                       </Modal.Content>
                       <Modal.Actions>
                         <Button
-                          content="Procced"
+                          content="Proceed"
                           labelPosition="right"
                           onClick={() => setOpen(false)}
                           warning
@@ -262,7 +273,10 @@ const index = ({ stylist, client }) => {
         </>
       )}
     </div>
+      
   );
+
 };
+
 
 export default index;

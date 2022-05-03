@@ -91,6 +91,9 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
+studentColumnNoColor{
+  left: 12% !important;
+}
 
 .studentColumn {
   left: 12%;
