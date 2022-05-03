@@ -106,7 +106,7 @@ const List = ({ stylist }) => {
                             className="avatar"
                             src={stylist.profilePicURL}
                           />
-                          <Link href={`http://localhost:3001/${stylist.userId}`}>
+                          <Link href={`/${stylist.userId}`}>
                             <p
                               className="studentListName"
                               style={{ width: "80%" }}

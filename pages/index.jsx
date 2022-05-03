@@ -22,32 +22,39 @@ const index = ({ stylist, client }) => {
   }, []);
   const [clients, setClients] = useState([]);
   const [option, setOption] = useState("");
+  const [sortType, setSortType] = useState('clients');
 
   //usestate for modal closage
   const [open, setOpen] = useState(false);
 
   const Options = [
     {
+      id: 1,
       key: "Number of Visits",
       text: "Number of Visits",
       value: "Number of Visits",
     },
     {
+      id: 2,
       key: "Date Created",
       text: "Date Created",
       value: "Date Created",
     },
     {
+      id: 3,
       key: "Most Recently Created",
       text: "Most Recently Created",
       value: "Most Recently Created",
     },
     {
+      id: 4,
       key: "Name",
       text: "Name",
       value: "Name",
     },
   ];
+
+
 
   const getClients = async () => {
     try {
@@ -58,6 +65,9 @@ const index = ({ stylist, client }) => {
       console.log(error);
     }
   };
+
+
+
   useEffect(() => {
     getClients();
     // console.log(stylists);
@@ -94,6 +104,7 @@ const index = ({ stylist, client }) => {
               fluid
               selection
               options={Options}
+              onChange={(e) => setSortType(e.target.value)}
             />
           </div>
         </Grid.Row>

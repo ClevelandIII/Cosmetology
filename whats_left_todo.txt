@@ -8,11 +8,11 @@ this is in no order
 
 • password recovery
 
-• make it so that students can see their teachers if the name of teacher === teacher name
+• m̶a̶k̶e̶ ̶i̶t̶ ̶s̶o̶ ̶t̶h̶a̶t̶ ̶s̶t̶u̶d̶e̶n̶t̶s̶ ̶c̶a̶n̶ ̶s̶e̶e̶ ̶t̶h̶e̶i̶r̶ ̶t̶e̶a̶c̶h̶e̶r̶s̶ ̶i̶f̶ ̶t̶h̶e̶ ̶n̶a̶m̶e̶ ̶o̶f̶ ̶t̶e̶a̶c̶h̶e̶r̶ ̶=̶=̶=̶ ̶t̶e̶a̶c̶h̶e̶r̶ ̶n̶a̶m̶e̶
 
 • add a "click to load more" for all lists
 
-• when logged in as a teacher and when clicking on a student it should go to there profile page
+• w̶h̶e̶n̶ ̶l̶o̶g̶g̶e̶d̶ ̶i̶n̶ ̶a̶s̶ ̶a̶ ̶t̶e̶a̶c̶h̶e̶r̶ ̶a̶n̶d̶ ̶w̶h̶e̶n̶ ̶c̶l̶i̶c̶k̶i̶n̶g̶ ̶o̶n̶ ̶a̶ ̶s̶t̶u̶d̶e̶n̶t̶ ̶i̶t̶ ̶s̶h̶o̶u̶l̶d̶ ̶g̶o̶ ̶t̶o̶ ̶t̶h̶e̶r̶e̶ ̶p̶r̶o̶f̶i̶l̶e̶ ̶p̶a̶g̶e
 
 • For clients, if there is already a client that visits again, we have to make a popup that can add another visit.
 (The popup should look somewhat similar to the one you get when you click on a client in your profile)

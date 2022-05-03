@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+
 
 import {
   Grid,
@@ -258,10 +260,12 @@ const UserProfile = ({ stylist }) => {
                           setStylists={stylists}
                           style={{ textAlign: "center" }}
                         >
-                          <Segment className="indexCenter">
+                          <Segment className="indexCenter listLink">
+                          <Link className="listLink" href={`/${stylist.userId}`}>
                             <p>
                               {stylist.firstName} {stylist.lastName}
                             </p>
+                            </Link>
                           </Segment>
                         </Grid.Column>
                         <Grid.Column
