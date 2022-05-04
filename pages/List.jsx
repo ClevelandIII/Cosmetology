@@ -73,6 +73,21 @@ const List = ({ stylist }) => {
     decide = false;
   }
 
+  const $ = (function () {
+    $(".nextContent").slice(0, 2).show();
+    $("#loadMore").on('click', function (e) {
+        e.preventDefault();
+        $(".nextContent:hidden").slice(0, 2).slideDown();
+        if ($(".nextContent:hidden").length == 0) {
+            $("#load").fadeOut('slow');
+            $('#loadMore').replaceWith("<p class='p'>No More</p>");
+        }
+        $('html,body').animate({
+            scrollTop: $(this).offset().top
+        }, 1500);
+    });
+});
+
   const Options = [
     {
       key: "Number of Visits",
@@ -248,8 +263,8 @@ const List = ({ stylist }) => {
               </Grid.Row>
               <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
-                  <Button style={{ backgroundColor: "orange", color: "white" }}>
-                    🡣 Show More 🡣
+                  <Button id="loadMore" style={{ backgroundColor: "orange", color: "white" }}>
+                    🡣 Show All 🡣
                   </Button>
                 </div>
               </Grid.Column>
@@ -391,8 +406,8 @@ const List = ({ stylist }) => {
               </Grid.Row>
               <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
-                  <Button style={{ backgroundColor: "orange", color: "white" }}>
-                    🡣 Show More 🡣
+                  <Button id="loadMore" style={{ backgroundColor: "orange", color: "white" }}>
+                    🡣 Show All 🡣
                   </Button>
                 </div>
               </Grid.Column>

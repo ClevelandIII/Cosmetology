@@ -4,7 +4,7 @@ this is in no order
 I will also say, I would add names if you are doing something. That way there is no overlap, though at this point tiny overlap
 wouldnt be too bad.
 
-• implement the search bar
+• implement the search bar - Abdi
 
 • implement the "sort by..." feature
 

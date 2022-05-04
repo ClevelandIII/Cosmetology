@@ -240,3 +240,13 @@ Reid Gill: removed the ratings stars, made the dates on the list only show the m
 Daniel Nijdl: Made it so teachers can click on name of student on their profile page and started working on password reset
 
 Joshua Ruvalcaba: absent
+
+5/4/22
+Jason Enciso:  
+
+Reid Gill: working with the "Show more" button
+
+Daniel Nijdl: Made it so when you click profile button on sidebar, it leads you to your personal profile, moved everything from userprofile to [userId], and fixed list
+
+
+Joshua Ruvalcaba: helping people
