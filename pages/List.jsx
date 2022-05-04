@@ -1,8 +1,8 @@
 import {
   Grid,
   Image,
-  Divider,
-  Container,
+  Dropdown,
+  Modal,
   Loader,
   Card,
   Menu,
@@ -15,11 +15,14 @@ import axios from "axios";
 import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
 
+//Cleaned up list to be more consistant with every other list
+
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
   const [semester, setSemester] = useState([]);
   const [clients, setClients] = useState([]);
   const [stylistEmail, setStylistEmail] = useState("");
+  const [open, setOpen] = useState(false);
 
   const getStylists = async () => {
     try {
@@ -70,166 +73,334 @@ const List = ({ stylist }) => {
     decide = false;
   }
 
+  const Options = [
+    {
+      key: "Number of Visits",
+      text: "Number of Visits",
+      value: "Number of Visits",
+    },
+    {
+      key: "First Visit",
+      text: "First Visit",
+      value: "First Visit",
+    },
+    {
+      key: "Most Recently Created",
+      text: "Most Recently Created",
+      value: "Most Recently Created",
+    },
+    {
+      key: "Name",
+      text: "Name",
+      value: "Name",
+    },
+  ];
+  const Students = [
+    {
+      key: "Teacher",
+      text: "Teacher",
+      value: "Teacher",
+    },
+    {
+      key: "Semester",
+      text: "Semester",
+      value: "Semester",
+    },
+    {
+      key: "Year",
+      text: "Year",
+      value: "Year",
+    },
+    {
+      key: "Name",
+      text: "Name",
+      value: "Name",
+    },
+  ];
+
   return (
     <>
       {decide ? (
         <>
-          <Grid
-            className="StudentGrid"
-            columns="equal"
-            centered
-            divided="vertically"
-            relaxed="very"
-          >
-            <Grid.Row>
-              <Grid.Column className="column studentColumn">
-                <Segment className="yearSemesterCenter">Student</Segment>
-              </Grid.Column>
-              <Grid.Column className="column studentColumn">
-                <Segment className="yearSemesterCenter">Teacher</Segment>
-              </Grid.Column>
-              <Grid.Column className="column" style={{ left: "12%" }}>
-                <Segment className="yearSemesterCenter">Year</Segment>
-              </Grid.Column>
-              <Grid.Column className="column">
-                <Segment className="yearSemesterCenter">Semester</Segment>
-              </Grid.Column>
-            </Grid.Row>
+          <div>
+            <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
+              <Grid.Row className="mini3">
+                <div style={{ textAlign: "center" }}>
+                  <h1>List of All Students</h1>
+                  <Dropdown
+                    placeholder="Sort By..."
+                    fluid
+                    selection
+                    options={Students}
+                    onChange={(e) => setSortType(e.target.value)}
+                  />
+                </div>
+              </Grid.Row>
+              <Grid.Row
+                columns={4}
+                style={{
+                  border: "2px solid white",
+                  // height: "35rem",
+                  background: "orange",
+                  color: "black",
+                  textAlign: "center",
+                  // overflow: "scroll",
+                  justifyContent: "space-evenly",
+                }}
+              >
+                <>
+                  <Grid.Column>
+                    <Segment>Student</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>Teacher</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>Semester</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>Year</Segment>
+                  </Grid.Column>
+                </>
+              </Grid.Row>
 
-            {stylists.map((stylist) => {
-              if (stylist.isTeacher === "false") {
-                return (
-                  <>
-                    <Grid.Row className=" studentRow">
-                      <Grid.Column className="studentColumn">
-                        <Segment style={{ width: "110%" }}>
-                          <Image
-                            className="avatar"
-                            src={stylist.profilePicURL}
-                          />
+              <Grid.Row className="containeindex" columns={4}>
+                <>
+                  {stylists.map((stylist) => {
+                    if (stylist.isTeacher === "false") {
+                      return (
+                        <>
                           <Link href={`/${stylist.userId}`}>
-                            <p
-                              className="studentListName"
-                              style={{ width: "80%" }}
+                            <Grid.Column
+                              className="Indexcolumn clientListColumn"
+                              setStylists={stylists}
+                              style={{
+                                textAlign: "center",
+                              }}
                             >
-                              {stylist.firstName} {stylist.lastName}
-                            </p>
+                              <img
+                                className="listAvatar"
+                                src={stylist.profilePicURL}
+                              />
+                              <Segment
+                                style={{
+                                  width: "70%",
+                                  marginTop: "0",
+                                  marginBottom: "1rem",
+                                }}
+                                floated="right"
+                              >
+                                {stylist.firstName.length > 15 ||
+                                stylist.lastName.length > 15 ? (
+                                  <>
+                                    <p>{stylist.firstName}</p>
+                                  </>
+                                ) : (
+                                  <>
+                                    <p>
+                                      {stylist.firstName} {stylist.lastName}
+                                    </p>
+                                  </>
+                                )}
+                              </Segment>
+                            </Grid.Column>
                           </Link>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column className="studentColumn">
-                        <Segment style={{ width: "110%" }}>
-                          <Image
-                            className="studentListPic"
-                            src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
-                          />{" "}
-                          <p
-                            className="studentListName"
-                            style={{ width: "80%" }}
+
+                          {/* Will eventually also show teacher */}
+                          <Grid.Column
+                            className="Indexcolumn"
+                            setStylist={stylists}
+                            style={{ textAlign: "center" }}
                           >
-                            {stylist.teacher}
-                          </p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column className="studentColumn">
-                        <Segment className="yearSemesterCenter">
-                          {stylist.studentYear}
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column>
-                        <Segment className="yearSemesterCenter">
-                          {semester}
-                        </Segment>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </>
-                );
-              }
-            })}
-            <div class="showMore">
-              <Button style={{backgroundColor:"white", color:"orange"}}>🡣 Show More 🡣</Button>
+                            <Segment className="indexCenter">
+                              <p>{stylist.teacher}</p>
+                            </Segment>
+                          </Grid.Column>
+
+                          <Grid.Column
+                            className="Indexcolumn"
+                            setStylist={stylists}
+                            style={{ textAlign: "center" }}
+                          >
+                            <Segment className="indexCenter">
+                              <p>{stylist.session}</p>
+                            </Segment>
+                          </Grid.Column>
+
+                          <Grid.Column
+                            className="Indexcolumn"
+                            setStylist={stylists}
+                            style={{ textAlign: "center" }}
+                          >
+                            <Segment className="indexCenter">
+                              <p>{stylist.studentYear}</p>
+                            </Segment>
+                          </Grid.Column>
+                        </>
+                      );
+                    } else {
+                      <></>;
+                    }
+                  })}
+                </>
+              </Grid.Row>
+              <Grid.Column style={{ textAlign: "center" }} width={16}>
+                <div class="showMore">
+                  <Button style={{ backgroundColor: "orange", color: "white" }}>
+                    🡣 Show More 🡣
+                  </Button>
+                </div>
+              </Grid.Column>
+            </Grid>
+            <div class="Back2Top" style={{ left: "103rem" }}>
+              <a href="#" className="Back2TopText">
+                🠉
+              </a>
             </div>
-            <div class="Back2Top" style={{left:"103rem"}}>
-              <a href="#" className="Back2TopText" style={{right:"10px"}}>🠉</a>
-            </div>
-            
-          </Grid>
+          </div>
         </>
       ) : (
         <>
-          <Grid
-            className="StudentGrid"
-            columns="equal"
-            centered
-            divided="vertically"
-            relaxed="very"
-          >
-            <Grid.Row>
-              <Grid.Column className="column studentColumn">
-                <Segment className="yearSemesterCenter">Name</Segment>
-              </Grid.Column>
-              <Grid.Column className="column studentColumn">
-                <Segment className="yearSemesterCenter">Stylist</Segment>
-              </Grid.Column>
-              <Grid.Column className="column" style={{ left: "12%" }}>
-                <Segment className="yearSemesterCenter">Date Created</Segment>
-              </Grid.Column>
-              <Grid.Column className="column">
-                <Segment className="yearSemesterCenter">Date Updated</Segment>
-              </Grid.Column>
-            </Grid.Row>
-
-            {clients.map((client) => {
-              return (
+          <div>
+            <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
+              <Grid.Row className="mini3">
+                <div style={{ textAlign: "center" }}>
+                  <h1>List of All Clients</h1>
+                  <Dropdown
+                    placeholder="Sort By..."
+                    fluid
+                    selection
+                    options={Options}
+                    onChange={(e) => setSortType(e.target.value)}
+                  />
+                </div>
+              </Grid.Row>
+              <Grid.Row
+                columns={4}
+                style={{
+                  border: "2px solid white",
+                  // height: "35rem",
+                  background: "orange",
+                  color: "black",
+                  textAlign: "center",
+                  // overflow: "scroll",
+                  justifyContent: "space-evenly",
+                }}
+              >
                 <>
-                  <Grid.Row className="studentRow">
-                    <Grid.Column className="studentColumn">
-                      <Segment style={{ width: "110%" }}>
-                        <Image
-                          className="avatar"
-                          src={defaultProfilePicURL}
-                          style={{backgroundColor:"white"}}
-                        />
-
-                        <p className="studentListName" style={{ width: "80%" }}>
-                          {client.firstName} {client.lastName}
-                        </p>
-                      </Segment>
-                    </Grid.Column>
-
-                    <Grid.Column className="studentColumn">
-                      <Segment style={{ width: "110%" }}>
-                        <Image
-                          className="avatar"
-                          src={client.stylistPic || defaultProfilePicURL}
-                        />{" "}
-                        <p className="studentListName" style={{ width: "80%" }}>
-                          {/* {stylistEmail[0]} */}
-                          {client.stylistName.split("@")[0]}
-                        </p>
-                      </Segment>
-                    </Grid.Column>
-                    <Grid.Column className="studentColumn">
-                      <Segment className="yearSemesterCenter">
-                        {client.dateCreated.split("T")[0]}
-                      </Segment>
-                    </Grid.Column>
-                    <Grid.Column style={{ paddingLeft: "80px" }}>
-                      <Segment className="yearSemesterCenter">
-                        {client.dateCreated.split("T")[0]}
-                      </Segment>
-                    </Grid.Column>
-                  </Grid.Row>
+                  <Grid.Column>
+                    <Segment>Client Name</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>Stylist</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>First Visited</Segment>
+                  </Grid.Column>
+                  <Grid.Column>
+                    <Segment>Last Visited</Segment>
+                  </Grid.Column>
                 </>
-              );
-            })}
-            <div class="showMore">
-              <Button style={{backgroundColor:"white", color:"orange"}}>🡣 Show More 🡣</Button>
+              </Grid.Row>
+
+              <Grid.Row className="containeindex" columns={4}>
+                <>
+                  {clients.map((client) => {
+                    return (
+                      <>
+                        <Grid.Column
+                          className="Indexcolumn clientListColumn"
+                          setClients={clients}
+                          style={{
+                            textAlign: "center",
+                          }}
+                        >
+                          <img
+                            className="listAvatar"
+                            src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+                          />
+                          <Segment
+                            style={{
+                              width: "70%",
+                              marginTop: "0",
+                              marginBottom: "1rem",
+                            }}
+                            floated="right"
+                          >
+                            {client.firstName.length > 15 ||
+                            client.lastName.length > 15 ? (
+                              <>
+                                <p>{client.firstName}</p>
+                              </>
+                            ) : (
+                              <>
+                                <p>
+                                  {client.firstName} {client.lastName}
+                                </p>
+                              </>
+                            )}
+                          </Segment>
+                        </Grid.Column>
+
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={client._id}
+                          setClients={clients}
+                          style={{ textAlign: "center" }}
+                        >
+                          <img className="listAvatar" src={client.stylistPic} />
+                          <Segment
+                            style={{
+                              width: "70%",
+                              marginTop: "0",
+                              marginBottom: "1rem",
+                            }}
+                            floated="right"
+                          >
+                            <p>{client.stylistName.split("@")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={client._id}
+                          setClients={clients}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.dateCreated.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={client._id}
+                          setClients={clients}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.appointmentDate.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+                      </>
+                    );
+                  })}
+                </>
+              </Grid.Row>
+              <Grid.Column style={{ textAlign: "center" }} width={16}>
+                <div class="showMore">
+                  <Button style={{ backgroundColor: "orange", color: "white" }}>
+                    🡣 Show More 🡣
+                  </Button>
+                </div>
+              </Grid.Column>
+            </Grid>
+            <div class="Back2Top" style={{ left: "103rem" }}>
+              <a href="#" className="Back2TopText">
+                🠉
+              </a>
             </div>
-            <div class="Back2Top" style={{left:"103rem"}}>
-              <a href="#" className="Back2TopText" style={{right:"10px"}}>🠉</a>
-            </div>
-          </Grid>
+          </div>
         </>
       )}
     </>

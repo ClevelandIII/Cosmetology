@@ -36,9 +36,9 @@ const index = ({ stylist, client }) => {
     },
     {
       id: 2,
-      key: "Date Created",
-      text: "Date Created",
-      value: "Date Created",
+      key: "First Visit",
+      text: "First Visit",
+      value: "First Visit",
     },
     {
       id: 3,
@@ -136,13 +136,15 @@ const index = ({ stylist, client }) => {
               <Segment>Client</Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>Last Visited</Segment>
+              <Segment>First Visit</Segment>
             </Grid.Column>
             <Grid.Column>
-              <Segment>Date Created</Segment>
+              <Segment>Last Visited</Segment>
             </Grid.Column>
+
           </>
         </Grid.Row>
+
         <Grid.Row className="containeindex" columns={3}>
           <>
             {clients.map((client) => {
@@ -158,7 +160,7 @@ const index = ({ stylist, client }) => {
                       onClose={() => setOpen(false)}
                       onOpen={() => setOpen(true)}
                       open={open}
-                      trigger={
+                      trigger={ 
                         <Segment className="indexCenter">
                           <p>
                             {client.firstName} {client.lastName}
@@ -241,7 +243,7 @@ const index = ({ stylist, client }) => {
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      <p>{client.appointmentDate.split("T")[0]}</p>
+                      <p>{client.dateCreated.split("T")[0]}</p>
                     </Segment>
                   </Grid.Column>
 
@@ -252,7 +254,7 @@ const index = ({ stylist, client }) => {
                     style={{ textAlign: "center" }}
                   >
                     <Segment className="indexCenter">
-                      <p>{client.dateCreated.split("T")[0]}</p>
+                      <p>{client.appointmentDate.split("T")[0]}</p>
                     </Segment>
                   </Grid.Column>
                 </>

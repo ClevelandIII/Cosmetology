@@ -91,7 +91,7 @@
 .studentColumn:hover {
   color: #6ea1ff;
 }
-studentColumnNoColor{
+studentColumnNoColor {
   left: 12% !important;
 }
 
@@ -133,7 +133,7 @@ a.item :hover {
   /* white-space: nowrap; */
 }
 
-.listLink{
+.listLink {
   cursor: pointer !important;
 }
 
@@ -277,6 +277,9 @@ a.item :hover {
 .indexCenter {
   justify-content: center;
 }
+/* .indexCenter {
+  justify-content: center;
+} */
 
 div.ui.page.modals.dimmer.transition.visible.active {
   /* display: block !important; */
@@ -366,6 +369,15 @@ div.ui.page.modals.dimmer.transition.visible.active {
   height: 6rem !important;
   border: rgb(0, 0, 0) solid 2px;
   border-radius: 50px;
+}
+
+/*For Main List*/
+.listAvatar {
+  width: 4rem !important;
+  height: 4rem !important;
+  border: rgb(0, 0, 0) solid 2px;
+  border-radius: 50px;
+  background-color: white;
 }
 
 /*Stack Overflow, mostly*/

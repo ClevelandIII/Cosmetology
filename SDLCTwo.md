@@ -164,6 +164,12 @@
 
 5/2/2022
 
-- Cleveland: Finished pics, added visited to clients, (currently unused, but will add to it tommorow), made it so that teachers cannot add clients, and made it so that teachers only see their students on their profile page.
+- Cleveland: Finished pics, added visited to clients, (currently unused, but will add to it later), made it so that teachers cannot add clients, and made it so that teachers only see their students on their profile page.
 
 - Abdi: searchbar
+
+5/3/2022
+
+- Cleveland: Restyled all lists on the website to be consistant with each other. Will eventually add teacher pic to student list.Added sort by to list.
+
+- Abdi: Password Recovery, search

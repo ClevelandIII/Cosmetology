@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-
 import {
   Grid,
   Card,
@@ -56,9 +55,9 @@ const UserProfile = ({ stylist }) => {
       value: "Number of Visits",
     },
     {
-      key: "Date Created",
-      text: "Date Created",
-      value: "Date Created",
+      key: "First Visit",
+      text: "First Visit",
+      value: "First Visit",
     },
     {
       key: "Most Recently Created",
@@ -245,7 +244,7 @@ const UserProfile = ({ stylist }) => {
               </>
             </Grid.Row>
             {/*Thanks Daniel, made the styling easy */}
-            <Grid.Row className="test" columns={3}>
+            <Grid.Row className="containeindex" columns={3}>
               <>
                 {stylists.map((stylist) => {
                   if (
@@ -261,10 +260,13 @@ const UserProfile = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter listLink">
-                          <Link className="listLink" href={`/${stylist.userId}`}>
-                            <p>
-                              {stylist.firstName} {stylist.lastName}
-                            </p>
+                            <Link
+                              className="listLink"
+                              href={`/${stylist.userId}`}
+                            >
+                              <p>
+                                {stylist.firstName} {stylist.lastName}
+                              </p>
                             </Link>
                           </Segment>
                         </Grid.Column>
@@ -417,13 +419,13 @@ const UserProfile = ({ stylist }) => {
                   paddingTop: "1.6rem",
                 }}
               > */}
-                {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
-                {/* If we want to instead record a visitors ranking we can, otherwise this might not work... */}
-                {/* <Rating icon="star" defaultRating={0} maxRating={5} /> */}
+              {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
+              {/* If we want to instead record a visitors ranking we can, otherwise this might not work... */}
+              {/* <Rating icon="star" defaultRating={0} maxRating={5} /> */}
               {/* </Grid.Row> */}
             </Grid.Column>
           </Grid>
-          ;
+          {/* */}
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
@@ -457,15 +459,15 @@ const UserProfile = ({ stylist }) => {
                   <Segment>Client</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>Last Visited</Segment>
+                  <Segment>First Visit</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>Date Created</Segment>
+                  <Segment>Last Visited</Segment>
                 </Grid.Column>
               </>
             </Grid.Row>
 
-            <Grid.Row className="test" columns={3}>
+            <Grid.Row className="containeindex" columns={3}>
               <>
                 {clients.map((client) => {
                   if (client.stylistName === stylist.email) {
@@ -487,18 +489,18 @@ const UserProfile = ({ stylist }) => {
                             position="top center"
                           >
                             <Form>
-                                <Form.Input
-                                  required
-                                  label="Add Visit"
-                                  placeholder="Today"
-                                  name="appointmentDate"
-                                  value={addVisits}
-                                  onChange={handleChange}
-                                  icon="time"
-                                  iconPosition="left"
-                                  style={{ width: "300px", height: "42px" }}
-                                  type="date"
-                                />
+                              <Form.Input
+                                required
+                                label="Add Visit"
+                                placeholder="Today"
+                                name="appointmentDate"
+                                value={addVisits}
+                                onChange={handleChange}
+                                icon="time"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="date"
+                              />
                               <h4>
                                 Hair Style <input></input>
                               </h4>
@@ -514,7 +516,7 @@ const UserProfile = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                            <p>{client.appointmentDate.split("T")[0]}</p>
+                            <p>{client.dateCreated.split("T")[0]}</p>
                           </Segment>
                         </Grid.Column>
                         <Grid.Column
@@ -522,7 +524,7 @@ const UserProfile = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                            <p>{client.dateCreated.split("T")[0]}</p>
+                            <p>{client.appointmentDate.split("T")[0]}</p>
                           </Segment>
                         </Grid.Column>
                       </>

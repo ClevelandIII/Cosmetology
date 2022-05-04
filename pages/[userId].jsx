@@ -29,9 +29,9 @@ const profilePage = ({ stylist, profile }) => {
       value: "Number of Visits",
     },
     {
-      key: "Date Created",
-      text: "Date Created",
-      value: "Date Created",
+      key: "First Visit",
+      text: "First Visit",
+      value: "First Visit",
     },
     {
       key: "Most Recently Created",
@@ -72,12 +72,12 @@ const profilePage = ({ stylist, profile }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
-    let hour = hours
+    let hour = hours;
 
     try {
       const res = await axios.patch("/api/v1/user/UserProfile", {
         hour,
-        user
+        user,
       });
       setToken(res.data);
 
@@ -420,10 +420,10 @@ const profilePage = ({ stylist, profile }) => {
                   <Segment>Client</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>Last Visited</Segment>
+                  <Segment>First Visit</Segment>
                 </Grid.Column>
                 <Grid.Column>
-                  <Segment>Date Created</Segment>
+                  <Segment>Last Visited</Segment>
                 </Grid.Column>
               </>
             </Grid.Row>
@@ -457,7 +457,7 @@ const profilePage = ({ stylist, profile }) => {
                         style={{ textalign: "center" }}
                       >
                         <Segment className="indexCenter">
-                          <p>{client[2]}</p>
+                          <p>{client[3]}</p>
                         </Segment>
                       </Grid.Column>
                       <Grid.Column
@@ -465,7 +465,7 @@ const profilePage = ({ stylist, profile }) => {
                         style={{ textalign: "center" }}
                       >
                         <Segment className="indexCenter">
-                          <p>{client[3]}</p>
+                          <p>{client[2]}</p>
                         </Segment>
                       </Grid.Column>
                     </>
@@ -746,7 +746,7 @@ const profilePage = ({ stylist, profile }) => {
 profilePage.getInitialProps = async (ctx) => {
   try {
     const { userId } = ctx.query;
-    console.log(userId)
+    console.log(userId);
     const { token } = parseCookies(ctx);
     const res = await axios.get(
       `http://localhost:3001/api/v1/profile/${userId}`,

@@ -35,8 +35,10 @@ const createClient = async (req, res) => {
     visits,
   } = req.body.client;
 
-  if (!isEmail(email)) return res.status(401).send("Invalid Email");
+  if (firstName.length > 20) return res.status(401).send("Firstname Too Long");
+  if (lastName.length > 20) return res.status(401).send("Lastname Too Long");
   if (age.length > 3) return res.status(401).send("Realistic Age");
+  if (!isEmail(email)) return res.status(401).send("Invalid Email");
 
   try {
     let client;
@@ -78,7 +80,7 @@ const createClient = async (req, res) => {
           `http://localhost:3001/api/v1/stylists`
         );
         stylists = results.data;
-console.log(stylists);
+        console.log(stylists);
 
         let Testr = stylists.find(
           (stylist) => client.stylistName === stylist.email
@@ -91,7 +93,7 @@ console.log(stylists);
           client.lastName,
           client.dateCreated,
           client.appointmentDate,
-        ]); 
+        ]);
         console.log(`stylist`, stylist);
         await stylist.save();
         // console.log(`stylist2`, stylist);
