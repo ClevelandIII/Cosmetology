@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+// const Joi = require("joi")
 
 const StylistSchema = new Schema(
   {
@@ -66,4 +67,17 @@ const StylistSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Stylist", StylistSchema);
+// const User = mongoose.model("Stylist", StylistSchema);
+
+// const validate = (stylist) => {
+//     const schema = Joi.object({
+//         name: Joi.string().required(),
+//         email: Joi.string().email().required(),
+//         password: Joi.string().required(),
+//     });
+//     return schema.validate();
+// };
+
+// module.exports = { User, validate };
+
+module.exports = mongoose.model("Stylist", StylistSchema)
