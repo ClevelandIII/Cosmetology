@@ -3,16 +3,14 @@ import { List, Image, Search, Item } from "semantic-ui-react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Router from "next/router";
-import { baseURL } from "../../util/auth";
+import { baseURL } from "../../../server/util/baseURL";
 let cancel;
 
 const SearchComponent = () => {
-  
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [stylists, setStylists] = useState([]);
- 
-  
+  const [results, setResults] = useState([]);
+
   //*handlers */
 
   const handleChange = async (e) => {
@@ -34,15 +32,15 @@ const SearchComponent = () => {
         });
 
         if (res.data.length === 0) {
-          setStylists([]);
+          setResults([]);
           return setLoading(false);
         }
-        setStylists(res.data);
+        setResults(res.data);
       } catch (error) {
         console.log("Error Searching", error);
       }
     } else {
-      setStylists([]);
+      setResults([]);
     }
     setLoading(false);
   };
@@ -50,30 +48,25 @@ const SearchComponent = () => {
   return (
     <Search
       onBlur={() => {
-        stylists.length > 0 && setStylists([]);
+        results.length > 0 && setResults([]);
         loading && setLoading(false);
         setText("");
       }}
       loading={loading}
       value={text}
       resultRenderer={ResultRenderer}
-      stylists={stylists || null}
+      results={results || null}
       onSearchChange={handleChange}
       placeholder="Find other users"
       minCharacters={1}
-      onStylistSelect={(e, data) => Router.push(`/${data.stylist.firstName}`)}
+      onResultSelect={(e, data) => Router.push(`/${data.result.email}`)}
     />
   );
 };
 
-const ResultRenderer = () => {
+const ResultRenderer = ({ _id, profilePicURL, firstName }) => {
   return (
-    <>
-    {stylists.map((stylist) => {
-      if (stylist.isTeacher === "false") {
-        return (
-          <>
-    <List key={stylist._id}>
+    <List key={_id}>
       <List.Item>
         <Image
           style={{
@@ -81,58 +74,14 @@ const ResultRenderer = () => {
             height: "1.5rem",
             width: "1.5rem",
           }}
-          src={stylist.profilePicURL}
+          src={profilePicURL}
           alt="ProfilePic"
           avatar
         />
-        <Item.Content header={stylist.firstName} as="a" />
+        <Item.Content header={firstName} as="a" />
       </List.Item>
     </List>
-    </>
-    );
-  }
-})}
-</>
   );
 };
 
 export default SearchComponent;
-
-
-
-
-// export default class App extends Component {
-//   data = [
-//     {
-//       key: "john",
-//       value: "John Doe",
-//     },
-//     {
-//       key: "jane",
-//       value: "Jane Doe",
-//     },
-//     {
-//       key: "mary",
-//       value: "Mary Phillips",
-//     },
-//     {
-//       key: "robert",
-//       value: "Robert",
-//     },
-//     {
-//       key: "karius",
-//       value: "Karius",
-//     },
-//   ];
-
-//   render() {
-//     return (
-//       <ReactSearchBox
-//         placeholder="Placeholder"
-//         value="Doe"
-//         data={this.data}
-//         callback={(record) => console.log(record)}
-//       />
-//     );
-//   }
-// }
