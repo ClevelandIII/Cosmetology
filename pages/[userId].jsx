@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { parseCookies } from "nookies";
 import Cookies from "js-cookie";
+import Link from "next/link";
 
 import {
   Grid,
   Card,
-  Icon,
   Image,
   Divider,
-  Rating,
   Dropdown,
   Segment,
+  Rating,
+  Popup,
+  Icon,
+  Button,
+  Form,
 } from "semantic-ui-react";
+import axios from "axios";
 
 const profilePage = ({ stylist, profile }) => {
   const router = useRouter();
@@ -21,6 +25,30 @@ const profilePage = ({ stylist, profile }) => {
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
+  const [initalDate, setInitalDate] = useState("");
+  const [lastDate, setLastDate] = useState("");
+  const [teachName, setTeachName] = useState("");
+  const [clients, setClients] = useState([]);
+
+  //All three for visits
+  const [addVisits, setAddVisits] = useState("");
+  const [hairStyle, setHairStyle] = useState("");
+  const [specialTreatment, setSpecialTreatment] = useState("");
+
+  useEffect(() => {
+    setTeachName(stylist.firstName);
+  }, []);
+
+  //In the future, option will allow for the sort buttons to work
+  const [option, setOption] = useState("");
+
+  //This variable updates hours on the page so that the user doesnt have to reset to see their new hours.
+  //Thats what i would say... If it actually worked! For now the user will have to reset to see the hours.
+  const [actualHours, setActualHours] = useState("");
+  useEffect(() => {
+    setActualHours(stylist.hours);
+  }, []);
+
   let user = stylist.userId;
   const Options = [
     {
@@ -61,7 +89,7 @@ const profilePage = ({ stylist, profile }) => {
   //Separates the teachers from the students
   let count = 0;
   stylists.map((stylist) => {
-    if (stylist.isTeacher === "false") {
+    if (stylist.isTeacher === "false" && stylist.teacher === teachName) {
       return count++;
     } else {
       count = count;
@@ -80,21 +108,13 @@ const profilePage = ({ stylist, profile }) => {
         user,
       });
       setToken(res.data);
-
-      // console.log("tester");
-      // const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      // stylists = results.data;
-
-      // let Testr = stylists.find((stylist) => stylist.email === stylist.email);
-
-      // const stylist = await StylistModel.findById(Testr._id);
-      // stylist.hours.push(hours);
-      // await stylist.save();
-      setHidden(false);
     } catch (error) {
       console.log(error);
     }
+    setHours("");
     setFormLoading(false);
+    setHidden(false);
+    setActualHours(stylist.hours);
   };
 
   const handleChange = (e) => {
@@ -117,6 +137,20 @@ const profilePage = ({ stylist, profile }) => {
     // setIsTeacher(false);
     decide = false;
   }
+
+  const getClients = async () => {
+    try {
+      const results = await axios.get(`http://localhost:3001/api/v1/client`);
+      setClients(results.data);
+      console.log(clients);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getClients();
+    // console.log(stylists);
+  }, []);
 
   return (
     <>
@@ -212,49 +246,53 @@ const profilePage = ({ stylist, profile }) => {
               </>
             </Grid.Row>
             {/*Thanks Daniel, made the styling easy */}
-            <Grid.Row className="test" columns={3}>
+            <Grid.Row className="containeindex" columns={3}>
               <>
                 {stylists.map((stylist) => {
-                  if (stylist.isTeacher === "false") {
+                  if (
+                    stylist.isTeacher === "false" &&
+                    stylist.teacher === teachName
+                  ) {
                     return (
                       <>
-                        <Grid.Column
-                          className="Indexcolumn clientListColumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textalign: "center" }}
-                        >
-                          <Segment className="indexCenter">
+                      <Grid.Column
+                        className="Indexcolumn clientListColumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter listLink">
+                          <Link
+                            className="listLink"
+                            href={`/${stylist.userId}`}
+                          >
                             <p>
                               {stylist.firstName} {stylist.lastName}
                             </p>
-                          </Segment>
-                        </Grid.Column>
-                        <Grid.Column
-                          className="Indexcolumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textalign: "center" }}
-                        >
-                          <Segment className="indexCenter">
-                            <p>{stylist.hours}</p>
-                          </Segment>
-                        </Grid.Column>
-                        <Grid.Column
-                          className="Indexcolumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textalign: "center" }}
-                        >
-                          <Segment className="indexCenter">
-                            <p>
-                              {stylist.pastClients.map((client) => {
-                                return <>{`${client[0]} `}</>;
-                              })}
-                            </p>
-                          </Segment>
-                        </Grid.Column>
-                      </>
+                          </Link>
+                        </Segment>
+                      </Grid.Column>
+                      <Grid.Column
+                        className="Indexcolumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter">
+                          <p>{stylist.hours}</p>
+                        </Segment>
+                      </Grid.Column>
+                      <Grid.Column
+                        className="Indexcolumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter">
+                          <p>{stylist.pastClients.length}</p>
+                        </Segment>
+                      </Grid.Column>
+                    </>
                     );
                   } else {
                     <></>;
@@ -347,7 +385,7 @@ const profilePage = ({ stylist, profile }) => {
                 ) : (
                   <div>
                     <h1>
-                      Hours: {stylist.hours}
+                      Hours: {actualHours}
                       <Icon
                         name="plus"
                         style={{ cursor: "pointer" }}
@@ -369,11 +407,11 @@ const profilePage = ({ stylist, profile }) => {
                   textalign: "center",
                   paddingTop: "1.2rem",
                 }}
-              >
+                >
                 <h1>Number of Clients: {stylist.pastClients.length}</h1>
               </Grid.Row>
               <Divider hidden />
-              <Grid.Row
+              {/* <Grid.Row
                 style={{
                   border: "1px solid white",
                   height: "5rem",
@@ -382,23 +420,30 @@ const profilePage = ({ stylist, profile }) => {
                   textalign: "center",
                   paddingTop: "1.6rem",
                 }}
-              >
-                {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
-                {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
-                <Rating icon="star" defaultRating={0} maxRating={5} />
-              </Grid.Row>
+              > */}
+              {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
+              {/* If we want to instead record a visitors ranking we can, otherwise this might not work... */}
+              {/* <Rating icon="star" defaultRating={0} maxRating={5} /> */}
+              {/* </Grid.Row> */}
             </Grid.Column>
           </Grid>
-          ;
+
+
+
+
+
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textalign: "center" }}>
+              <div style={{ textAlign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
                 <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
+                  // onClick={() => {
+                  //   console.log("1");
+                  // }}
                 />
               </div>
             </Grid.Row>
@@ -409,7 +454,7 @@ const profilePage = ({ stylist, profile }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textalign: "center",
+                textAlign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -428,48 +473,71 @@ const profilePage = ({ stylist, profile }) => {
               </>
             </Grid.Row>
 
-            <Grid.Row className="test" columns={3}>
+            <Grid.Row className="containeindex" columns={3}>
               <>
-                {stylist.pastClients.map((client) => {
-                  console.log(client);
-                  return (
-                    <>
-                      <Grid.Column
-                        className="Indexcolumn clientListColumn"
-                        style={{ textalign: "center" }}
-                      >
-                        <Popup
-                          trigger={
-                            <Segment className="indexCenter">
-                              <p>{`${client[0]} ${client[1]}`}</p>
-                            </Segment>
-                          }
-                          hoverable
-                          position="top center"
+                {clients.map((client) => {
+                  if (client.stylistName === stylist.email) {
+                    return (
+                      <>
+                        <Grid.Column
+                          className="Indexcolumn clientListColumn"
+                          style={{ textAlign: "center" }}
                         >
-                          <h4>Add Visit </h4>
-                          <h4>Hair Style</h4>
-                          <h4>Special Treatments</h4>
-                        </Popup>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        style={{ textalign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{client[3]}</p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        style={{ textalign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{client[2]}</p>
-                        </Segment>
-                      </Grid.Column>
-                    </>
-                  );
+                          <Popup
+                            trigger={
+                              <Segment className="indexCenter">
+                                <p>{`${client.firstName} ${client.lastName}`}</p>
+                              </Segment>
+                            }
+                            hoverable
+                            pinned
+                            on="click"
+                            position="top center"
+                          >
+                            <Form>
+                              <Form.Input
+                                required
+                                label="Add Visit"
+                                placeholder="Today"
+                                name="appointmentDate"
+                                value={addVisits}
+                                onChange={handleChange}
+                                icon="time"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="date"
+                              />
+                              <h4>
+                                Hair Style <input></input>
+                              </h4>
+                              <h4>
+                                Special Treatments <input></input>
+                              </h4>
+                              <button>Submit</button>
+                            </Form>
+                          </Popup>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.dateCreated.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{client.appointmentDate.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+                      </>
+                    );
+                  } else {
+                    <></>;
+                  }
                 })}
               </>
             </Grid.Row>
@@ -478,269 +546,6 @@ const profilePage = ({ stylist, profile }) => {
       )}
     </>
   );
-  // // const { userId } = router.query;
-  // // const ownAccount = stylist?._id === stylist?._id;
-  // const Options = [
-  //   {
-  //     key: "Number of Visits",
-  //     text: "Number of Visits",
-  //     value: "Number of Visits",
-  //   },
-  //   {
-  //     key: "Date Created",
-  //     text: "Date Created",
-  //     value: "Date Created",
-  //   },
-  //   {
-  //     key: "Most Recently Created",
-  //     text: "Most Recently Created",
-  //     value: "Most Recently Created",
-  //   },
-  //   {
-  //     key: "Name",
-  //     text: "Name",
-  //     value: "Name",
-  //   },
-  // ];
-
-  // if (!stylist) return null;
-
-  // return (
-  //   <>
-  //     <div>
-  //       <Grid stackable style={{ margin: "3rem" }}>
-  //         <Grid.Column width={8} className="roz">
-  //           <Grid.Row
-  //             style={{ margin: "3.8rem", textalign: "center" }}
-  //             className="roz3"
-  //           >
-  //             <Image
-  //               src={profile.profilePicURL}
-  //               avatar
-  //               size="medium"
-  //               bordered
-  //               centered
-  //               circular
-  //             />
-  //           </Grid.Row>
-  //           <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
-  //             <Card>
-  //               <Card.Content>
-  //                 <Card.Header>
-  //                   {profile.firstName} {profile.lastName}
-  //                 </Card.Header>
-  //                 <Card.Meta>
-  //                   <span className="date">
-  //                     Teacher: {profile.teacher} | Session: {profile.session}
-  //                   </span>
-  //                 </Card.Meta>
-  //                 <Card.Description>Stylist </Card.Description>
-  //               </Card.Content>
-  //             </Card>
-  //           </Grid.Row>
-  //         </Grid.Column>
-  //         <Grid.Column
-  //           width={7}
-  //           style={{ textalign: "center", marginTop: "10rem" }}
-  //           className="roz2"
-  //         >
-  //           <Grid.Row
-  //             style={{
-  //               border: "1px solid white",
-  //               height: "5rem",
-  //               background: "orange",
-  //               color: "white",
-  //               textalign: "center",
-  //               paddingTop: "1.2rem",
-  //             }}
-  //           >
-  //             <h1>Hours</h1>
-  //           </Grid.Row>
-  //           <Divider hidden />
-  //           <Grid.Row
-  //             style={{
-  //               border: "1px solid white",
-  //               height: "5rem",
-  //               background: "orange",
-  //               color: "white",
-  //               textalign: "center",
-  //               paddingTop: "1.2rem",
-  //             }}
-  //           >
-  //             <h1>Clients</h1>
-  //           </Grid.Row>
-  //           <Divider hidden />
-  //           <Grid.Row
-  //             style={{
-  //               border: "1px solid white",
-  //               height: "5rem",
-  //               background: "orange",
-  //               color: "white",
-  //               textalign: "center",
-  //               paddingTop: "1.6rem",
-  //             }}
-  //           >
-  //             {/*This rating from semantic react allows the user to rank, but it dosent list an overall ranking. */}
-  //             {/*If we want to instead record a visitors ranking we can, otherwise this might not work...*/}
-  //             <Rating icon="star" defaultRating={0} maxRating={5} />
-  //           </Grid.Row>
-  //         </Grid.Column>
-  //       </Grid>
-  //       <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
-  //         <Grid.Row className="mini3">
-  //           <div style={{ textalign: "center" }}>
-  //             <h1>Previous Clients</h1>
-  //             <Dropdown
-  //               placeholder="Sort By..."
-  //               fluid
-  //               selection
-  //               options={Options}
-  //             />
-  //           </div>
-  //         </Grid.Row>
-  //         <Grid.Row
-  //           columns={3}
-  //           style={{
-  //             border: "2px solid white",
-  //             // height: "35rem",
-  //             background: "orange",
-  //             color: "black",
-  //             textalign: "center",
-  //             // overflow: "scroll",
-  //             justifyContent: "space-evenly",
-  //           }}
-  //         >
-  //           <>
-  //             <Grid.Column>
-  //               <Segment>Client</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column>
-  //               <Segment>Last Visited</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column>
-  //               <Segment>Date Created</Segment>
-  //             </Grid.Column>
-  //           </>
-  //         </Grid.Row>
-  //         <Grid.Row className="test" columns={3}>
-  //           <>
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">
-  //                 Hugemclarge biggieweight
-  //               </Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-
-  //             <Grid.Column className="Indexcolumn clientListColumn">
-  //               <Segment className="indexCenter">Well Fargo</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //             <Grid.Column className="Indexcolumn">
-  //               <Segment className="indexCenter">1/2/34</Segment>
-  //             </Grid.Column>
-  //           </>
-  //         </Grid.Row>
-  //       </Grid>
-  //     </div>
-  //   </>
-  // );
 };
 
 profilePage.getInitialProps = async (ctx) => {

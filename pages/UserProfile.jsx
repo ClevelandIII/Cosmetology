@@ -426,6 +426,10 @@ const UserProfile = ({ stylist }) => {
             </Grid.Column>
           </Grid>
           {/* */}
+
+
+
+          
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
@@ -487,6 +491,7 @@ const UserProfile = ({ stylist }) => {
                             pinned
                             on="click"
                             position="top center"
+                            
                           >
                             <Form>
                               <Form.Input
