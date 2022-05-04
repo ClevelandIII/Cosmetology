@@ -193,11 +193,13 @@ const List = ({ stylist }) => {
                                 {stylist.firstName.length > 15 ||
                                 stylist.lastName.length > 15 ? (
                                   <>
-                                    <p>{stylist.firstName}</p>
+                                    <p className="listLink">
+                                      {stylist.firstName}
+                                    </p>
                                   </>
                                 ) : (
                                   <>
-                                    <p>
+                                    <p className="listLink">
                                       {stylist.firstName} {stylist.lastName}
                                     </p>
                                   </>

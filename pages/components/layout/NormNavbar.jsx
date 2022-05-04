@@ -63,7 +63,7 @@ function NormNavbar({ stylist }) {
           Home
         </Menu.Item>
       </Link>
-      <Link href={`/UserProfile`}>
+      <Link href={`/${stylist.userId}`}>
         <Menu.Item
           style={{
             color: "black",
