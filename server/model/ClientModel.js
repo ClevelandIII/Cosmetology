@@ -59,7 +59,7 @@ const ClientSchema = new Schema({
   hairElasticity: { type: String },
   hairPorosity: { type: String },
   hairLength: { type: String },
-
+ 
   //Will be made later for specification, currently unused
   // hairColor: { type: String },
   // hairCondition: {
