@@ -248,5 +248,13 @@ Reid Gill: working with the "Show more" button
 
 Daniel Nijdl: Made it so when you click profile button on sidebar, it leads you to your personal profile, moved everything from userprofile to [userId], and fixed list
 
+Joshua Ruvalcaba: helping people
+
+5/5/22
+Jason Enciso:  
+
+Reid Gill: working with the "Show more" button
+
+Daniel: Working on clickable teacher links on student List
 
 Joshua Ruvalcaba: helping people

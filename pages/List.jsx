@@ -15,7 +15,7 @@ import axios from "axios";
 import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
 
-//Cleaned up list to be more consistant with every other list
+//Cleaned up list to be more consistent with every other list
 
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
@@ -91,22 +91,22 @@ const List = ({ stylist }) => {
     decide = false;
   }
 
+  // const loadMore = document.querySelector("#loadMore");
+  // let currentItems = 2;
+  // loadMore.addEventListener("click", (e) => {
+  //   const elementList = [...document.querySelectorAll(".list .list-element")];
+  //   for (let i = currentItems; i < currentItems + 2; i++) {
+  //     if (elementList[i]) {
+  //       elementList[i].style.display = "block";
+  //     }
+  //   }
+  //   currentItems += 2;
 
-
-  const $ = (function () {
-    $(".nextContent").slice(0, 2).show();
-    $("#loadMore").on('click', function (e) {
-        e.preventDefault();
-        $(".nextContent:hidden").slice(0, 2).slideDown();
-        if ($(".nextContent:hidden").length == 0) {
-            $("#load").fadeOut('slow');
-            $('#loadMore').replaceWith("<p class='p'>No More</p>");
-        }
-        $('html,body').animate({
-            scrollTop: $(this).offset().top
-        }, 1500);
-    });
-});
+  //   // Load more button will be hidden after list fully loaded
+  //   if (currentItems >= elementList.length) {
+  //     event.target.style.display = "none";
+  //   }
+  // });
 
   const Options = [
     {
@@ -157,7 +157,7 @@ const List = ({ stylist }) => {
     <>
       {decide ? (
         <>
-          <div>
+          <div class="list">
             <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
               <Grid.Row className="mini3">
                 <div style={{ textAlign: "center" }}>
@@ -285,7 +285,10 @@ const List = ({ stylist }) => {
               </Grid.Row>
               <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
-                  <Button id="loadMore" style={{ backgroundColor: "orange", color: "white" }}>
+                  <Button
+                    id="loadMore"
+                    style={{ backgroundColor: "orange", color: "white" }}
+                  >
                     🡣 Show All 🡣
                   </Button>
                 </div>
@@ -428,7 +431,10 @@ const List = ({ stylist }) => {
               </Grid.Row>
               <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
-                  <Button id="loadMore" style={{ backgroundColor: "orange", color: "white" }}>
+                  <Button
+                    id="loadMore"
+                    style={{ backgroundColor: "orange", color: "white" }}
+                  >
                     🡣 Show All 🡣
                   </Button>
                 </div>
