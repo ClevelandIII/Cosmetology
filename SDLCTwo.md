@@ -178,4 +178,4 @@
 
 - Cleveland: Added visits to client, now in student profile you can add a visit array to a client. Working on making it visible in index.
 
-- Abdi: 
+- Abdi: password recovery, search
