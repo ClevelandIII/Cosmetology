@@ -16,8 +16,6 @@ wouldnt be too bad.
 
 • w̶h̶e̶n̶ ̶l̶o̶g̶g̶e̶d̶ ̶i̶n̶ ̶a̶s̶ ̶a̶ ̶t̶e̶a̶c̶h̶e̶r̶ ̶a̶n̶d̶ ̶w̶h̶e̶n̶ ̶c̶l̶i̶c̶k̶i̶n̶g̶ ̶o̶n̶ ̶a̶ ̶s̶t̶u̶d̶e̶n̶t̶ ̶i̶t̶ ̶s̶h̶o̶u̶l̶d̶ ̶g̶o̶ ̶t̶o̶ ̶t̶h̶e̶r̶e̶ ̶p̶r̶o̶f̶i̶l̶e̶ ̶p̶a̶g̶e
 
-• For clients, if there is already a client that visits again, we have to make a popup that can add another visit. - Cleveland
-
 •when logged in as a student clicking a teacher it should show their profile -Daniel
 
 • Add delete function to student lists so teachers can delete old students (This instead of adding year 3s, 4s, 5s, etc) - Cleveland 

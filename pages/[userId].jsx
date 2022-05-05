@@ -19,9 +19,11 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
+//currently bugged. When logged in as a teacher, it would show my other account's profile picture instead of the teachers picture
+//This is when you click on the profile link, not when you click on a student
 const profilePage = ({ stylist, profile }) => {
   const router = useRouter();
-  const [stylists, setStylist] = useState([]);
+  const [stylists, setStylists] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
@@ -29,11 +31,7 @@ const profilePage = ({ stylist, profile }) => {
   const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
-
-  //All three for visits
-  const [addVisits, setAddVisits] = useState("");
-  const [hairStyle, setHairStyle] = useState("");
-  const [specialTreatment, setSpecialTreatment] = useState("");
+  const [clientUser, setClientUser] = useState("")
 
   useEffect(() => {
     setTeachName(stylist.firstName);
@@ -75,7 +73,7 @@ const profilePage = ({ stylist, profile }) => {
   const getStylists = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      setStylist(results.data);
+      setStylists(results.data);
       console.log(results);
     } catch (error) {
       console.log(error);
@@ -97,6 +95,14 @@ const profilePage = ({ stylist, profile }) => {
     return console.log(count);
   });
 
+  const [visit, setVisit] = useState({
+    addVisits: "",
+    hairStyle: "",
+    specialTreatment: "",
+  });
+  const { addVisits, hairStyle, specialTreatment } = visit;
+
+  //Hours Start
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
@@ -119,15 +125,36 @@ const profilePage = ({ stylist, profile }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
-    if (name === "media" && files.length > 0) {
-      setMedia(() => files[0]);
-      setMediaPreview(() => URL.createObjectURL(files[0]));
-      setHighlighted(true);
-    } else {
-      setHours(value);
-    }
+    setHours(value);
   };
+  //Hours End
+
+  //Visit Start
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    try {
+      const res = await axios.patch("/api/v1/client/clientCreator", {
+        addVisits,
+        hairStyle,
+        specialTreatment,
+        clientUser
+      });
+      setToken(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setVisit("");
+    setFormLoading(false);
+  };
+
+  const handleChange2 = (e) => {
+    const { name, value, files } = e.target;
+    setVisit((prev) => ({ ...prev, [name]: value }));
+  };
+  //Visit End
+
 
   let decide = "";
   if (stylist.isTeacher === "true") {
@@ -255,44 +282,44 @@ const profilePage = ({ stylist, profile }) => {
                   ) {
                     return (
                       <>
-                      <Grid.Column
-                        className="Indexcolumn clientListColumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter listLink">
-                          <Link
-                            className="listLink"
-                            href={`/${stylist.userId}`}
-                          >
-                            <p>
-                              {stylist.firstName} {stylist.lastName}
-                            </p>
-                          </Link>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{stylist.hours}</p>
-                        </Segment>
-                      </Grid.Column>
-                      <Grid.Column
-                        className="Indexcolumn"
-                        key={stylist._id}
-                        setStylists={stylists}
-                        style={{ textAlign: "center" }}
-                      >
-                        <Segment className="indexCenter">
-                          <p>{stylist.pastClients.length}</p>
-                        </Segment>
-                      </Grid.Column>
-                    </>
+                        <Grid.Column
+                          className="Indexcolumn clientListColumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter listLink">
+                            <Link
+                              className="listLink"
+                              href={`/${stylist.userId}`}
+                            >
+                              <p>
+                                {stylist.firstName} {stylist.lastName}
+                              </p>
+                            </Link>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{stylist.hours}</p>
+                          </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                          className="Indexcolumn"
+                          key={stylist._id}
+                          setStylists={stylists}
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                            <p>{stylist.pastClients.length}</p>
+                          </Segment>
+                        </Grid.Column>
+                      </>
                     );
                   } else {
                     <></>;
@@ -335,6 +362,7 @@ const profilePage = ({ stylist, profile }) => {
                 </Card>
               </Grid.Row>
             </Grid.Column>
+
             <Grid.Column
               width={7}
               style={{ textalign: "center", marginTop: "10rem" }}
@@ -407,7 +435,7 @@ const profilePage = ({ stylist, profile }) => {
                   textalign: "center",
                   paddingTop: "1.2rem",
                 }}
-                >
+              >
                 <h1>Number of Clients: {stylist.pastClients.length}</h1>
               </Grid.Row>
               <Divider hidden />
@@ -428,10 +456,6 @@ const profilePage = ({ stylist, profile }) => {
             </Grid.Column>
           </Grid>
 
-
-
-
-
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
@@ -447,6 +471,7 @@ const profilePage = ({ stylist, profile }) => {
                 />
               </div>
             </Grid.Row>
+
             <Grid.Row
               columns={3}
               style={{
@@ -493,27 +518,52 @@ const profilePage = ({ stylist, profile }) => {
                             pinned
                             on="click"
                             position="top center"
+                            onClick={() => {setClientUser(client._id)}}
                           >
-                            <Form>
+                            <Form
+                              loading={formLoading}
+                              onSubmit={handleSubmit2}
+                            >
                               <Form.Input
                                 required
                                 label="Add Visit"
                                 placeholder="Today"
-                                name="appointmentDate"
+                                name="addVisits"
                                 value={addVisits}
-                                onChange={handleChange}
+                                onChange={handleChange2}
                                 icon="time"
                                 iconPosition="left"
                                 style={{ width: "300px", height: "42px" }}
-                                type="date"
+                                type="text"
                               />
-                              <h4>
-                                Hair Style <input></input>
-                              </h4>
-                              <h4>
-                                Special Treatments <input></input>
-                              </h4>
-                              <button>Submit</button>
+                              <Form.Input
+                                label="Hair Style"
+                                placeholder="Bob, Curly"
+                                name="hairStyle"
+                                value={hairStyle}
+                                onChange={handleChange2}
+                                icon="user"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="text"
+                              />
+                              <Form.Input
+                                label="Special Treatments"
+                                placeholder="Additional Requirements"
+                                name="specialTreatment"
+                                value={specialTreatment}
+                                onChange={handleChange2}
+                                icon="star outline"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="text"
+                              />
+                              <Button
+                                color="orange"
+                                inverted
+                                content="Signup"
+                                type="submit"
+                              />
                             </Form>
                           </Popup>
                         </Grid.Column>

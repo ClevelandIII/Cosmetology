@@ -27,11 +27,15 @@ const UserProfile = ({ stylist }) => {
   const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
+  const [clientUser, setClientUser] = useState("")
 
-  //All three for visits
-  const [addVisits, setAddVisits] = useState("");
-  const [hairStyle, setHairStyle] = useState("");
-  const [specialTreatment, setSpecialTreatment] = useState("");
+
+  const [visit, setVisit] = useState({
+    addVisits: "",
+    hairStyle: "",
+    specialTreatment: "",
+  });
+  const { addVisits, hairStyle, specialTreatment } = visit;
 
   useEffect(() => {
     setTeachName(stylist.firstName);
@@ -149,6 +153,32 @@ const UserProfile = ({ stylist }) => {
     getClients();
     // console.log(stylists);
   }, []);
+
+  //Visit Start
+  const handleSubmit2 = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    try {
+      const res = await axios.patch("/api/v1/client/clientCreator", {
+        addVisits,
+        hairStyle,
+        specialTreatment,
+        clientUser
+      });
+      setToken(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setVisit("");
+    setFormLoading(false);
+  };
+
+  const handleChange2 = (e) => {
+    const { name, value, files } = e.target;
+    setVisit((prev) => ({ ...prev, [name]: value }));
+  };
+  //Visit End
 
   return (
     <>
@@ -425,11 +455,7 @@ const UserProfile = ({ stylist }) => {
               {/* </Grid.Row> */}
             </Grid.Column>
           </Grid>
-          {/* */}
 
-
-
-          
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
@@ -445,6 +471,7 @@ const UserProfile = ({ stylist }) => {
                 />
               </div>
             </Grid.Row>
+
             <Grid.Row
               columns={3}
               style={{
@@ -491,28 +518,52 @@ const UserProfile = ({ stylist }) => {
                             pinned
                             on="click"
                             position="top center"
-                            
+                            onClick={() => {setClientUser(client._id)}}
                           >
-                            <Form>
+                            <Form
+                              loading={formLoading}
+                              onSubmit={handleSubmit2}
+                            >
                               <Form.Input
                                 required
                                 label="Add Visit"
                                 placeholder="Today"
-                                name="appointmentDate"
+                                name="addVisits"
                                 value={addVisits}
-                                onChange={handleChange}
+                                onChange={handleChange2}
                                 icon="time"
                                 iconPosition="left"
                                 style={{ width: "300px", height: "42px" }}
-                                type="date"
+                                type="text"
                               />
-                              <h4>
-                                Hair Style <input></input>
-                              </h4>
-                              <h4>
-                                Special Treatments <input></input>
-                              </h4>
-                              <button>Submit</button>
+                              <Form.Input
+                                label="Hair Style"
+                                placeholder="Bob, Curly"
+                                name="hairStyle"
+                                value={hairStyle}
+                                onChange={handleChange2}
+                                icon="user"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="text"
+                              />
+                              <Form.Input
+                                label="Special Treatments"
+                                placeholder="Additional Requirements"
+                                name="specialTreatment"
+                                value={specialTreatment}
+                                onChange={handleChange2}
+                                icon="star outline"
+                                iconPosition="left"
+                                style={{ width: "300px", height: "42px" }}
+                                type="text"
+                              />
+                              <Button
+                                color="orange"
+                                inverted
+                                content="Signup"
+                                type="submit"
+                              />
                             </Form>
                           </Popup>
                         </Grid.Column>

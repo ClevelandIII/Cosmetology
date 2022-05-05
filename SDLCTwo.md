@@ -173,3 +173,9 @@
 - Cleveland: Restyled all lists on the website to be consistant with each other. Will eventually add teacher pic to student list.Added sort by to list.
 
 - Abdi: Password Recovery, search
+
+5/4/2022
+
+- Cleveland: Added visits to client, now in student profile you can add a visit array to a client. Working on making it visible in index.
+
+- Abdi: 

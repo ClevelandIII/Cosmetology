@@ -134,4 +134,18 @@ const getAllClients = async (req, res) => {
   }
 };
 
-module.exports = { createClient, getAllClients };
+const addVisit = async (req, res) => {
+  const { addVisits, hairStyle, specialTreatment, clientUser } = req.body;
+
+  try {
+    const client = await ClientModel.findOne({ _id: clientUser });
+
+    client.visits.push([addVisits, hairStyle, specialTreatment])
+    await client.save();
+    return res.status(200).send("All Good");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports = { createClient, getAllClients, addVisit };

@@ -21,11 +21,13 @@ const index = ({ stylist, client }) => {
     document.title = `Welcome, ${stylist.firstName}`;
   }, []);
   const [clients, setClients] = useState([]);
+  const [clientModal, setClientModal] = useState("");
   const [option, setOption] = useState("");
-  const [sortType, setSortType] = useState('clients');
+  const [sortType, setSortType] = useState("clients");
 
   //usestate for modal closage
   const [open, setOpen] = useState(false);
+  const [show, setShow] = useState(true);
 
   const Options = [
     {
@@ -54,8 +56,6 @@ const index = ({ stylist, client }) => {
     },
   ];
 
-
-
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -66,8 +66,6 @@ const index = ({ stylist, client }) => {
     }
   };
 
-
-
   useEffect(() => {
     getClients();
     // console.log(stylists);
@@ -76,7 +74,7 @@ const index = ({ stylist, client }) => {
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
 
-//( ͡° ͜ʖ ͡°)
+  //( ͡° ͜ʖ ͡°)
   let decide = "";
   if (stylist.isTeacher === "true") {
     // setIsTeacher(true);
@@ -141,7 +139,6 @@ const index = ({ stylist, client }) => {
             <Grid.Column>
               <Segment>Last Visited</Segment>
             </Grid.Column>
-
           </>
         </Grid.Row>
 
@@ -152,88 +149,92 @@ const index = ({ stylist, client }) => {
                 <>
                   <Grid.Column
                     className="Indexcolumn clientListColumn"
-                    setClients={clients}
+                    // setClients={clients}
                     style={{ textAlign: "center" }}
+                    onClick={() => {
+                      setClientModal(client._id);
+                    }}
                   >
-                    <Modal
-                      centered={false}
-                      onClose={() => setOpen(false)}
-                      onOpen={() => setOpen(true)}
-                      open={open}
-                      trigger={ 
-                        <Segment className="indexCenter">
-                          <p>
-                            {client.firstName} {client.lastName}
-                          </p>
-                        </Segment>
-                      }
-                    >
-                      <Modal.Content className="indexClientInfo" scrolling>
+                    {show ? (
+                      <Segment
+                        className="indexCenter"
+                        onClick={() => {
+                          setShow(false);
+                        }}
+                      >
                         <p>
-                          <h3>First Name: {client.firstName}</h3>
-                          {/* <p style={{ fontSize: "25px" }}>{client.firstName}</p> */}
-                          <h3>Last Name: {client.lastName}</h3>
-                          {/* <p style={{ fontSize: "25px" }}> {client.lastName}</p> */}
-                          <h3>
-                            Appointment Date:{" "}
-                            {client.appointmentDate.split("T")[0]}
-                          </h3>
-                          {/* <p style={{ fontSize: "20px" }}>
-                            {client.appointmentDate}
-                          </p> */}
-                          <h3>Service Request: {client.serviceRequest}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.serviceRequest}
-                          </p> */}
-                          <h3>Hair Condition: {client.hairCondition}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairCondition}
-                          </p> */}
-                          <h3>
-                            Hair Classification: {client.hairClassification}
-                          </h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairClassification}
-                          </p> */}
-                          <h3>Hair Density: {client.hairDensity}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairDensity}
-                          </p> */}
-                          <h3>Hair Elasticity: {client.hairElasticity}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairElasticity}
-                          </p> */}
-                          <h3>Hair Porosity: {client.hairPorosity}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairPorosity}
-                          </p> */}
-                          <h3>Hair Length: {client.hairLength}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairLength}
-                          </p> */}
-                          <h3>Hair Texture: {client.hairTexture}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.hairTexture}
-                          </p> */}
-                          <h3>Growth Patterns: {client.growthPatterns}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.growthPatterns}
-                          </p> */}
-                          <h3>Scalp Condition: {client.scalpClassification}</h3>
-                          {/* <p style={{ fontSize: "17px" }}>
-                            {client.scalpClassification}
-                          </p> */}
+                          {client.firstName} {client.lastName}
                         </p>
-                      </Modal.Content>
-                      <Modal.Actions>
-                        <Button
-                          content="Proceed"
-                          labelPosition="right"
-                          onClick={() => setOpen(false)}
-                          warning
-                        />
-                      </Modal.Actions>
-                    </Modal>
+                      </Segment>
+                    ) : (
+                      <></>
+                    )}
+
+                    {client._id === clientModal ? (
+                      <Modal
+                        centered={false}
+                        onClose={() => setOpen(false)}
+                        onOpen={() => setOpen(true)}
+                        open={open}
+                        trigger={
+                          show ? (
+                            <div></div>
+                          ) : (
+                            <Segment
+                              className="indexCenter"
+                              onClick={() => {
+                                setShow(true);
+                              }}
+                            >
+                              <p>
+                                {client.firstName} {client.lastName}
+                              </p>
+                            </Segment>
+                          )
+                        }
+                      >
+                        <>
+                          <Modal.Content className="indexClientInfo" scrolling>
+                            <p>
+                              <h3>First Name: {client.firstName}</h3>
+                              <h3>Last Name: {client.lastName}</h3>
+                              <h3>
+                                Appointment Date:
+                                {client.appointmentDate.split("T")[0]}
+                              </h3>
+                              <h3>Service Request: {client.serviceRequest}</h3>
+                              <h3>Hair Condition: {client.hairCondition}</h3>
+                              <h3>
+                                Hair Classification: {client.hairClassification}
+                              </h3>
+                              <h3>Hair Density: {client.hairDensity}</h3>
+                              <h3>Hair Elasticity: {client.hairElasticity}</h3>
+                              <h3>Hair Porosity: {client.hairPorosity}</h3>
+                              <h3>Hair Length: {client.hairLength}</h3>
+                              <h3>Hair Texture: {client.hairTexture}</h3>
+                              <h3>Growth Patterns: {client.growthPatterns}</h3>
+                              <h3>
+                                Scalp Condition: {client.scalpClassification}
+                              </h3>
+                              <h3>Visits: {client.visits}</h3>
+                            </p>
+                          </Modal.Content>
+                          <Modal.Actions>
+                            <Button
+                              content="Proceed"
+                              labelPosition="right"
+                              onClick={() => setOpen(false)}
+                              warning
+                            />
+                          </Modal.Actions>
+                        </>
+                        {/* ) : (
+                        <></>
+                      )} */}
+                      </Modal>
+                    ) : (
+                      <></>
+                    )}
                   </Grid.Column>
 
                   <Grid.Column
@@ -264,21 +265,22 @@ const index = ({ stylist, client }) => {
         </Grid.Row>
       </Grid>
       {open ? (
-        <div class="Back2Top" style={{left:"51rem"}}>
-          <a href="#" className="Back2TopText" >🡹</a>
+        <div class="Back2Top" style={{ left: "51rem" }}>
+          <a href="#" className="Back2TopText">
+            🡹
+          </a>
         </div>
       ) : (
         <>
-        <div class="Back2Top" style={{left:"103rem"}}>
-          <a href="#" className="Back2TopText">🡹</a>
-        </div>
+          <div class="Back2Top" style={{ left: "103rem" }}>
+            <a href="#" className="Back2TopText">
+              🡹
+            </a>
+          </div>
         </>
       )}
     </div>
-      
   );
-
 };
-
 
 export default index;
