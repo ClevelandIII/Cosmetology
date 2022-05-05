@@ -20,6 +20,7 @@ const defaultProfilePicURL = require("../server/util/defaultPic");
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
   const [semester, setSemester] = useState([]);
+  const [teachLink, setTeachLink] = useState("");
   const [clients, setClients] = useState([]);
   const [stylistEmail, setStylistEmail] = useState("");
   const [open, setOpen] = useState(false);
@@ -58,10 +59,27 @@ const List = ({ stylist }) => {
       console.log(error);
     }
   };
+  const getTeacher = async () => {
+    if(stylist.teacher === "potassium"){
+      setTeachLink("/1651522057278")
+      // teachLink = "/1651522057278"
+    } else if (stylist.teacher === "Sussy"){
+      setTeachLink("/1651263834506")
+      // teachLink = "/1651263834506"
+    } else if (stylist.teacher === "davs"){
+      setTeachLink("/1651624257170")
+      // teachLink = "/1651624257170"
+    } else {
+      setTeachLink("/")
+      // teachLink = "/"
+    }
+  }
+
   useEffect(() => {
     getStylists();
     getSemester();
     getClients();
+    getTeacher();
   }, []);
 
   let decide = "";
@@ -72,6 +90,8 @@ const List = ({ stylist }) => {
     // setIsTeacher(false);
     decide = false;
   }
+
+
 
   const $ = (function () {
     $(".nextContent").slice(0, 2).show();
@@ -230,7 +250,9 @@ const List = ({ stylist }) => {
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
+                              <Link href={`/${teachLink}`}>
                               <p>{stylist.teacher}</p>
+                              </Link>
                             </Segment>
                           </Grid.Column>
 
