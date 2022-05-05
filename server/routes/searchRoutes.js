@@ -1,8 +1,6 @@
 const router = require("express").Router();
 
-const { searchUsers } = require("../controllers/search");
-const { auth } = require("../middleware/auth");
 
-router.route("/").get(auth, searchUsers);
+router.route("/:searchText");
 
 module.exports = router;
