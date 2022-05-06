@@ -5,7 +5,7 @@ import {
   Divider,
   Button,
   Message,
-  Header
+  Header,
 } from "semantic-ui-react";
 import catchErrors from "./util/catchErrors";
 import axios from "axios";
@@ -127,10 +127,6 @@ const Login = () => {
             type={showPassword ? "text" : "password"}
           />
           <Divider hidden />
-          {/* <Link href="/ForgotPassword">
-          <p>Forgot Password?</p>
-        </Link> */}
-          
           <Button
             color="orange"
             content="Login"
@@ -140,6 +136,7 @@ const Login = () => {
             className="loginButton"
           />
         </Segment>
+        <Link href="/ForgotPassword" ><p className="forgotPassword"> Forgot Password ?</p></Link>
       </Form>
     </>
   );

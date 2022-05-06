@@ -1,115 +1,50 @@
-// import React, { Component } from "react";
-// import TextField from "@material-ui/core/TextField";
-// import axios from "axios";
+import React, { Component } from 'react'
+import { Form, Header, Segment } from 'semantic-ui-react'
+
+class FormExampleClearOnSubmit extends Component {
+  state = {}
 
 
-// // import { } from "semantic-ui-react";
+  handleSubmit = () => this.setState({ email: '', })
 
+  render() {
+    const { email } = this.state
 
-// const title = {
-//     pageTitle : 'Forgot Password'
-// }
+    return (
+      <Form className="loginComponent"  style={{
+        width: "100px",
+        margin: "0 auto",
+        marginTop: "3rem",
+        overflow: "scroll",
+      }}  textAlign="center">
+          <Header
+          as="h2"
+          color="orange"
+          textAlign="center"
+        >
+          Enter Your Email
+        </Header>
+        <Segment>
+        <Form.Group>
+        <Form.Input
+            required
+            label="Email"
+            placeholder="Email"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+            icon="envelope"
+            iconPosition="left"
+            type="email"
+            className="forgotPassword2"
+            />
+          
+          <Form.Button content='Submit'className="forgotPassword3" />
+        </Form.Group>
+        </Segment>
+      </Form>
+    )
+  }
+}
 
-
-// class ForgotPassword extends Component {
-//     constructor(){
-//         super()
-    
-
-//     this.state = {
-//         email: "",
-//         showError: false,
-//         messageFromServer: '',
-
-//     }
-// }
-
-// handleChange = name => event => {
-//     this.setState({
-//         [name]: event.target.value
-//     })
-// }
-
-// sendEmail = e => {
-//     e.preventDefault();
-//     if (this.state.email === ''){
-//         this.setState({
-//             showError: false,
-//             messageFromServer: '',
-//         })
-//     } else {
-//         axios
-//         .post('http://localhost:3002/forgotPassword', {
-//             email: this.state.email,
-//         })
-//         .then(response => {
-//             console.log(response.data);
-//             if (response.data === 'email not in db '){
-//                 this.setState({
-//                     showError: true,
-//                     messageFromServer: '',
-//                 })
-//             } else if (response.data === 'recovery email sent ') {
-//                 this.setState({
-//                     showError: false, 
-//                     messageFromServer: 'recovery email sent '
-//                 });
-//             }
-//         })
-//         .catch(error => {
-//             console.log(error.data);
-//         })
-//     }
-// }
-
-// render(){
-//     const {email, messageFromServer, showNullError, showError} = this.state;
-
-//     return (
-//         <div>
-//             <HeaderBar title={title}/>
-//             <form className="profile-form" onSubmit={this.sendEmail}>
-//                 <TextField 
-//                 style={inputStyle}
-//                 id="email"
-//                 label="email"
-//                 value={email}
-//                 onChange={this.handleChange('email')}
-//                 placeholder="Email Address"
-//                 />
-//                 <SubmitButton 
-//                 buttonStyle={forgotButton}
-//                 buttonText={'Send Password Reset Email'}
-//                 />
-//             </form>
-//             {showNullError && (
-//                 <div>
-//                     <p>The email address cannot be null</p>
-//                 </div>
-//             )}
-//             {showError && (
-//                 <div>
-//                     <p>That email address isn't recognized. Please try again or register for a new account </p>
-//                     <LinkButton 
-//                     buttonText={'Register'}
-//                     buttonStyle={registerButton}
-//                     link={'/signup'}
-//                     />
-//                 </div>
-//             )}
-//             {messageFromServer === 'recovery email sent' && (
-//                 <div>
-//                     <h1>Password Reset Email Successfully Sent!</h1>
-//                 </div>
-//             )}
-//             <LinkButton 
-//             buttonText={'Go Home'}
-//             buttonStyle={homeButton}
-//             link="/"
-//             />
-//         </div>
-//     )
-// }
-// }
-
-// module.exports = ForgotPassword;
+export default FormExampleClearOnSubmit
