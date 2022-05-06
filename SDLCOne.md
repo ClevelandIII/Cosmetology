@@ -258,3 +258,12 @@ Reid Gill: working with the "Show more" button
 Daniel: Working on clickable teacher links on student List
 
 Joshua Ruvalcaba: helping people
+
+5/5/22
+Jason Enciso:  
+
+Reid Gill: Absent
+
+Daniel: Trying to fix errors and broken parts of site
+
+Joshua Ruvalcaba: helping people

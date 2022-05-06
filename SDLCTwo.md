@@ -149,7 +149,7 @@
 
 4/28/2022
 
-(To whoever changed all the textAlign to textalign, please keep it as textAlign, because even though the error shows up, witout textAlign none of the css for it works.)
+(To whoever changed all the textAlign to textAlign, please keep it as textAlign, because even though the error shows up, witout textAlign none of the css for it works.)
 (Also, keep stylistName params in Client creater as stylist.email instead of stylist.Name. More explained at clientCreator)
 
 - Cleveland: Finally finished hours (thanks Peck), made teacher addition on signup work (currently you can have multiple teachers), made clientList and studentList into one page dependant on if you are a student or teacher, made date in profile and name in client list look better
@@ -179,3 +179,9 @@
 - Cleveland: Added visits to client, now in student profile you can add a visit array to a client. Working on making it visible in index.
 
 - Abdi: password recovery, search
+
+5/5/2022
+
+- Cleveland: Bug fixed & formmatted index modal, made it so that you can add visits in list page in addition to profile page, working on the sort buttons.
+
+- Abdi: password recovery and search work

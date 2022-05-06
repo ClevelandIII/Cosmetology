@@ -56,7 +56,7 @@ const StylistSchema = new Schema(
     pastClients: { type: Array },
 
     userId: {
-      type: String,
+      type: Schema.Types.ObjectId,
       default: new Date().getTime(),
     },
 

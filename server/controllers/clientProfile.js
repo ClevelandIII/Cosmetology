@@ -140,7 +140,7 @@ const addVisit = async (req, res) => {
   try {
     const client = await ClientModel.findOne({ _id: clientUser });
 
-    client.visits.push([addVisits, hairStyle, specialTreatment])
+    client.visits.push([[addVisits], [hairStyle], [specialTreatment]]);
     await client.save();
     return res.status(200).send("All Good");
   } catch (error) {
