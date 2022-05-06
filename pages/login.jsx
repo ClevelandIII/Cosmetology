@@ -5,26 +5,25 @@ import {
   Divider,
   Button,
   Message,
-  Header,
+  Header
 } from "semantic-ui-react";
 import catchErrors from "./util/catchErrors";
 import axios from "axios";
 import { setToken } from "./util/auth";
 import Cookies from "js-cookie";
- 
+import Link from "next/link";
+
 const Login = () => {
   const [stylist, setStylist] = useState({
     email: "",
     password: "",
   });
 
-  
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
   const [formLoading, setFormLoading] = useState(false);
   const [submitDisabled, setSubmitDisabled] = useState(true);
- 
 
   //* Handlers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -58,7 +57,7 @@ const Login = () => {
   useEffect(() => {
     setSubmitDisabled(!(email && password));
   }, [stylist]);
-  
+
   useEffect(() => {
     document.title = "Welcome Back";
     const email = Cookies.get("stylistEmail");
@@ -66,18 +65,12 @@ const Login = () => {
     if (email) setStylist((prev) => ({ ...prev, email }));
   }, []);
 
-
-  const divStyle={
-   
-    overflowY: "hidden"
-    
- 
+  const divStyle = {
+    overflowY: "hidden",
   };
 
   return (
     <>
-
-
       <Divider hidden />
 
       <Form
@@ -88,9 +81,17 @@ const Login = () => {
         className="loginComponent"
         textAlign="center"
       >
-              <Header as="h2" color="orange" textAlign="center" style={{textDecoration: "underline", textDecorationColor: "	#B8B8B8"}} >
-        Log-in to your account
-      </Header>
+        <Header
+          as="h2"
+          color="orange"
+          textAlign="center"
+          style={{
+            textDecoration: "underline",
+            textDecorationColor: "	#B8B8B8",
+          }}
+        >
+          Log-in to your account
+        </Header>
         <Message
           error
           header="Oops!"
@@ -126,6 +127,10 @@ const Login = () => {
             type={showPassword ? "text" : "password"}
           />
           <Divider hidden />
+          {/* <Link href="/ForgotPassword">
+          <p>Forgot Password?</p>
+        </Link> */}
+          
           <Button
             color="orange"
             content="Login"
@@ -136,7 +141,6 @@ const Login = () => {
           />
         </Segment>
       </Form>
-
     </>
   );
 };
