@@ -19,11 +19,9 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
-//currently bugged. When logged in as a teacher, it would show my other account's profile picture instead of the teachers picture
-//This is when you click on the profile link, not when you click on a student
 const profilePage = ({ stylist, profile }) => {
   const router = useRouter();
-  const [stylists, setStylists] = useState([]);
+  const [stylists, setStylist] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
@@ -31,7 +29,11 @@ const profilePage = ({ stylist, profile }) => {
   const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
-  const [clientUser, setClientUser] = useState("");
+
+  //All three for visits
+  const [addVisits, setAddVisits] = useState("");
+  const [hairStyle, setHairStyle] = useState("");
+  const [specialTreatment, setSpecialTreatment] = useState("");
 
   useEffect(() => {
     setTeachName(stylist.firstName);
@@ -73,7 +75,7 @@ const profilePage = ({ stylist, profile }) => {
   const getStylists = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      setStylists(results.data);
+      setStylist(results.data);
       console.log(results);
     } catch (error) {
       console.log(error);
@@ -95,14 +97,6 @@ const profilePage = ({ stylist, profile }) => {
     return console.log(count);
   });
 
-  const [visit, setVisit] = useState({
-    addVisits: "",
-    hairStyle: "",
-    specialTreatment: "",
-  });
-  const { addVisits, hairStyle, specialTreatment } = visit;
-
-  //Hours Start
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
@@ -125,35 +119,15 @@ const profilePage = ({ stylist, profile }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    setHours(value);
-  };
-  //Hours End
 
-  //Visit Start
-  const handleSubmit2 = async (e) => {
-    e.preventDefault();
-    setFormLoading(true);
-
-    try {
-      const res = await axios.patch("/api/v1/client/clientCreator", {
-        addVisits,
-        hairStyle,
-        specialTreatment,
-        clientUser,
-      });
-      setToken(res.data);
-    } catch (error) {
-      console.log(error);
+    if (name === "media" && files.length > 0) {
+      setMedia(() => files[0]);
+      setMediaPreview(() => URL.createObjectURL(files[0]));
+      setHighlighted(true);
+    } else {
+      setHours(value);
     }
-    setVisit("");
-    setFormLoading(false);
   };
-
-  const handleChange2 = (e) => {
-    const { name, value, files } = e.target;
-    setVisit((prev) => ({ ...prev, [name]: value }));
-  };
-  //Visit End
 
   let decide = "";
   if (stylist.isTeacher === "true") {
@@ -185,7 +159,7 @@ const profilePage = ({ stylist, profile }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textAlign: "center" }}
+                style={{ margin: "3.8rem", textalign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -198,7 +172,7 @@ const profilePage = ({ stylist, profile }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -216,7 +190,7 @@ const profilePage = ({ stylist, profile }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textAlign: "center", marginTop: "10rem" }}
+              style={{ textalign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -225,7 +199,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -236,7 +210,7 @@ const profilePage = ({ stylist, profile }) => {
 
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textAlign: "center", paddingLeft: "4%" }}>
+              <div style={{ textalign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
                 <Dropdown
                   placeholder="Sort By..."
@@ -253,7 +227,7 @@ const profilePage = ({ stylist, profile }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textAlign: "center",
+                textalign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -281,44 +255,44 @@ const profilePage = ({ stylist, profile }) => {
                   ) {
                     return (
                       <>
-                        <Grid.Column
-                          className="Indexcolumn clientListColumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textAlign: "center" }}
-                        >
-                          <Segment className="indexCenter listLink">
-                            <Link
-                              className="listLink"
-                              href={`/${stylist.userId}`}
-                            >
-                              <p>
-                                {stylist.firstName} {stylist.lastName}
-                              </p>
-                            </Link>
-                          </Segment>
-                        </Grid.Column>
-                        <Grid.Column
-                          className="Indexcolumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textAlign: "center" }}
-                        >
-                          <Segment className="indexCenter">
-                            <p>{stylist.hours}</p>
-                          </Segment>
-                        </Grid.Column>
-                        <Grid.Column
-                          className="Indexcolumn"
-                          key={stylist._id}
-                          setStylists={stylists}
-                          style={{ textAlign: "center" }}
-                        >
-                          <Segment className="indexCenter">
-                            <p>{stylist.pastClients.length}</p>
-                          </Segment>
-                        </Grid.Column>
-                      </>
+                      <Grid.Column
+                        className="Indexcolumn clientListColumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter listLink">
+                          <Link
+                            className="listLink"
+                            href={`/${stylist.userId}`}
+                          >
+                            <p>
+                              {stylist.firstName} {stylist.lastName}
+                            </p>
+                          </Link>
+                        </Segment>
+                      </Grid.Column>
+                      <Grid.Column
+                        className="Indexcolumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter">
+                          <p>{stylist.hours}</p>
+                        </Segment>
+                      </Grid.Column>
+                      <Grid.Column
+                        className="Indexcolumn"
+                        key={stylist._id}
+                        setStylists={stylists}
+                        style={{ textAlign: "center" }}
+                      >
+                        <Segment className="indexCenter">
+                          <p>{stylist.pastClients.length}</p>
+                        </Segment>
+                      </Grid.Column>
+                    </>
                     );
                   } else {
                     <></>;
@@ -333,7 +307,7 @@ const profilePage = ({ stylist, profile }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textAlign: "center" }}
+                style={{ margin: "3.8rem", textalign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -345,7 +319,7 @@ const profilePage = ({ stylist, profile }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -361,10 +335,9 @@ const profilePage = ({ stylist, profile }) => {
                 </Card>
               </Grid.Row>
             </Grid.Column>
-
             <Grid.Column
               width={7}
-              style={{ textAlign: "center", marginTop: "10rem" }}
+              style={{ textalign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -373,7 +346,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -431,10 +404,10 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.2rem",
                 }}
-              >
+                >
                 <h1>Number of Clients: {stylist.pastClients.length}</h1>
               </Grid.Row>
               <Divider hidden />
@@ -444,7 +417,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textAlign: "center",
+                  textalign: "center",
                   paddingTop: "1.6rem",
                 }}
               > */}
@@ -454,6 +427,10 @@ const profilePage = ({ stylist, profile }) => {
               {/* </Grid.Row> */}
             </Grid.Column>
           </Grid>
+
+
+
+
 
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
@@ -470,7 +447,6 @@ const profilePage = ({ stylist, profile }) => {
                 />
               </div>
             </Grid.Row>
-
             <Grid.Row
               columns={3}
               style={{
@@ -517,54 +493,27 @@ const profilePage = ({ stylist, profile }) => {
                             pinned
                             on="click"
                             position="top center"
-                            onClick={() => {
-                              setClientUser(client._id);
-                            }}
                           >
-                            <Form
-                              loading={formLoading}
-                              onSubmit={handleSubmit2}
-                            >
+                            <Form>
                               <Form.Input
                                 required
                                 label="Add Visit"
                                 placeholder="Today"
-                                name="addVisits"
+                                name="appointmentDate"
                                 value={addVisits}
-                                onChange={handleChange2}
+                                onChange={handleChange}
                                 icon="time"
                                 iconPosition="left"
                                 style={{ width: "300px", height: "42px" }}
-                                type="text"
+                                type="date"
                               />
-                              <Form.Input
-                                label="Hair Style"
-                                placeholder="Bob, Curly"
-                                name="hairStyle"
-                                value={hairStyle}
-                                onChange={handleChange2}
-                                icon="user"
-                                iconPosition="left"
-                                style={{ width: "300px", height: "42px" }}
-                                type="text"
-                              />
-                              <Form.Input
-                                label="Special Treatments"
-                                placeholder="Additional Requirements"
-                                name="specialTreatment"
-                                value={specialTreatment}
-                                onChange={handleChange2}
-                                icon="star outline"
-                                iconPosition="left"
-                                style={{ width: "300px", height: "42px" }}
-                                type="text"
-                              />
-                              <Button
-                                color="orange"
-                                inverted
-                                content="Signup"
-                                type="submit"
-                              />
+                              <h4>
+                                Hair Style <input></input>
+                              </h4>
+                              <h4>
+                                Special Treatments <input></input>
+                              </h4>
+                              <button>Submit</button>
                             </Form>
                           </Popup>
                         </Grid.Column>
