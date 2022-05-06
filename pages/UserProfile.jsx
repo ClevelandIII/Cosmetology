@@ -27,8 +27,7 @@ const UserProfile = ({ stylist }) => {
   const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
-  const [clientUser, setClientUser] = useState("")
-
+  const [clientUser, setClientUser] = useState("");
 
   const [visit, setVisit] = useState({
     addVisits: "",
@@ -164,7 +163,7 @@ const UserProfile = ({ stylist }) => {
         addVisits,
         hairStyle,
         specialTreatment,
-        clientUser
+        clientUser,
       });
       setToken(res.data);
     } catch (error) {
@@ -179,6 +178,7 @@ const UserProfile = ({ stylist }) => {
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
   //Visit End
+  let mySort = { firstName: 1 };
 
   return (
     <>
@@ -518,7 +518,9 @@ const UserProfile = ({ stylist }) => {
                             pinned
                             on="click"
                             position="top center"
-                            onClick={() => {setClientUser(client._id)}}
+                            onClick={() => {
+                              setClientUser(client._id);
+                            }}
                           >
                             <Form
                               loading={formLoading}

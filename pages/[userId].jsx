@@ -31,7 +31,7 @@ const profilePage = ({ stylist, profile }) => {
   const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
-  const [clientUser, setClientUser] = useState("")
+  const [clientUser, setClientUser] = useState("");
 
   useEffect(() => {
     setTeachName(stylist.firstName);
@@ -139,7 +139,7 @@ const profilePage = ({ stylist, profile }) => {
         addVisits,
         hairStyle,
         specialTreatment,
-        clientUser
+        clientUser,
       });
       setToken(res.data);
     } catch (error) {
@@ -154,7 +154,6 @@ const profilePage = ({ stylist, profile }) => {
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
   //Visit End
-
 
   let decide = "";
   if (stylist.isTeacher === "true") {
@@ -186,7 +185,7 @@ const profilePage = ({ stylist, profile }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textalign: "center" }}
+                style={{ margin: "3.8rem", textAlign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -199,7 +198,7 @@ const profilePage = ({ stylist, profile }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -217,7 +216,7 @@ const profilePage = ({ stylist, profile }) => {
             </Grid.Column>
             <Grid.Column
               width={7}
-              style={{ textalign: "center", marginTop: "10rem" }}
+              style={{ textAlign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -226,7 +225,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -237,7 +236,7 @@ const profilePage = ({ stylist, profile }) => {
 
           <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
             <Grid.Row className="mini3">
-              <div style={{ textalign: "center", paddingLeft: "4%" }}>
+              <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
                 <Dropdown
                   placeholder="Sort By..."
@@ -254,7 +253,7 @@ const profilePage = ({ stylist, profile }) => {
                 // height: "35rem",
                 background: "orange",
                 color: "black",
-                textalign: "center",
+                textAlign: "center",
                 // overflow: "scroll",
                 justifyContent: "space-evenly",
               }}
@@ -334,7 +333,7 @@ const profilePage = ({ stylist, profile }) => {
           <Grid stackable style={{ margin: "3rem" }}>
             <Grid.Column width={8} className="roz">
               <Grid.Row
-                style={{ margin: "3.8rem", textalign: "center" }}
+                style={{ margin: "3.8rem", textAlign: "center" }}
                 className="roz3"
               >
                 <Image
@@ -346,7 +345,7 @@ const profilePage = ({ stylist, profile }) => {
                   circular
                 />
               </Grid.Row>
-              <Grid.Row style={{ marginLeft: "15rem", textalign: "center" }}>
+              <Grid.Row style={{ marginLeft: "15rem", textAlign: "center" }}>
                 <Card>
                   <Card.Content>
                     <Card.Header>
@@ -365,7 +364,7 @@ const profilePage = ({ stylist, profile }) => {
 
             <Grid.Column
               width={7}
-              style={{ textalign: "center", marginTop: "10rem" }}
+              style={{ textAlign: "center", marginTop: "10rem" }}
               className="roz2"
             >
               <Grid.Row
@@ -374,7 +373,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -432,7 +431,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.2rem",
                 }}
               >
@@ -445,7 +444,7 @@ const profilePage = ({ stylist, profile }) => {
                   height: "5rem",
                   background: "orange",
                   color: "white",
-                  textalign: "center",
+                  textAlign: "center",
                   paddingTop: "1.6rem",
                 }}
               > */}
@@ -518,7 +517,9 @@ const profilePage = ({ stylist, profile }) => {
                             pinned
                             on="click"
                             position="top center"
-                            onClick={() => {setClientUser(client._id)}}
+                            onClick={() => {
+                              setClientUser(client._id);
+                            }}
                           >
                             <Form
                               loading={formLoading}
