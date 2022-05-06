@@ -8,9 +8,7 @@ import {
   Divider,
   Button,
   Dropdown,
-  Image,
-  Header,
-  Icon,
+ 
   Segment,
   Modal,
 } from "semantic-ui-react";
