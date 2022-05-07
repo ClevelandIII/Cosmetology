@@ -103,15 +103,19 @@ const List = ({ stylist }) => {
   };
   const setStylist = async () => {
     try {
-      function Comparator(a, b) {
-        // you can use the `String.prototype.toLowerCase()` method
-        // if the comparison should be case insensitive
-        if (a[1] < b[1]) return -1;
-        if (a[1] > b[1]) return 1;
-        return 0;
-    }
-
-      setStylists(stylists.sort(Comparator));
+      setStylists(
+        stylists.sort(function (a, b) {
+          const nameA = a.firstName.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.firstName.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        })
+      );
       console.log(stylists);
     } catch (error) {
       console.log(error);
@@ -196,7 +200,6 @@ const List = ({ stylist }) => {
       value: "Name",
     },
   ];
-
 
   return (
     <>

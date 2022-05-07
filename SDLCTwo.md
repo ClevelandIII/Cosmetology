@@ -185,3 +185,9 @@
 - Cleveland: Bug fixed & formmatted index modal, made it so that you can add visits in list page in addition to profile page, working on the sort buttons.
 
 - Abdi: password recovery and search work
+
+5/6/2022
+
+- Cleveland: Fixed list bug that logged the user out, worked on sort function
+
+- Abdi: Fixed new bugs, password recovery and search

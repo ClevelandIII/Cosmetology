@@ -15,3 +15,5 @@ wouldnt be too bad.
 •when logged in as a student clicking a teacher it should show their profile -Daniel
 
 • Add delete function to student lists so teachers can delete old students (This instead of adding year 3s, 4s, 5s, etc) 
+
+• iPad Formatting where neccessary
