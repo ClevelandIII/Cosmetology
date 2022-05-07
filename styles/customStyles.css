@@ -305,7 +305,7 @@ div.ui.page.modals.dimmer.transition.visible.active {
 .forgotPassword2{
   position: relative !important;
   justify-content: center;
-  left: auto;
+  left: 200px;
   
 
 }
@@ -313,7 +313,8 @@ div.ui.page.modals.dimmer.transition.visible.active {
   position: relative !important;
   top: 25px;
   justify-content: center;
-  left: auto;
+  left: 200px;
+  
   
 
 }
