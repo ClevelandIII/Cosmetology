@@ -12,7 +12,11 @@ import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
 
 const List = ({ stylist }) => {
+  //For grabbing info
   const [stylists, setStylists] = useState([]);
+  //For sorting that info
+  // const [stylists2, setStylists2] = useState();
+
   const [semester, setSemester] = useState([]);
   const [teachLink, setTeachLink] = useState("");
   const [clients, setClients] = useState([]);
@@ -97,12 +101,29 @@ const List = ({ stylist }) => {
       // teachLink = "/"
     }
   };
+  const setStylist = async () => {
+    try {
+      function Comparator(a, b) {
+        // you can use the `String.prototype.toLowerCase()` method
+        // if the comparison should be case insensitive
+        if (a[1] < b[1]) return -1;
+        if (a[1] > b[1]) return 1;
+        return 0;
+    }
+
+      setStylists(stylists.sort(Comparator));
+      console.log(stylists);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     getStylists();
     getSemester();
     getClients();
     getTeacher();
+    setStylist();
   }, []);
 
   let decide = "";
@@ -175,6 +196,7 @@ const List = ({ stylist }) => {
       value: "Name",
     },
   ];
+
 
   return (
     <>

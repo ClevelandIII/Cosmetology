@@ -132,7 +132,7 @@ const index = ({ stylist, client }) => {
             <Divider hidden />
             <Link href="/clientCreator">
               <Grid.Row className="mini2">
-                <Button style={{ backgroundColor: "orange" }}>
+                <Button style={{ backgroundColor: "orange", marginLeft: "1rem" }}>
                   New Visitor
                 </Button>
               </Grid.Row>

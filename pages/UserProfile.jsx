@@ -207,9 +207,7 @@ const UserProfile = ({ stylist }) => {
                       {stylist.firstName} {stylist.lastName}
                     </Card.Header>
                     <Card.Meta>
-                      <span className="date">
-                        Teacher: {stylist.teacher} | {stylist.session}
-                      </span>
+                      <span className="date">{stylist.session}</span>
                     </Card.Meta>
                     <Card.Description>Teacher </Card.Description>
                   </Card.Content>
@@ -400,7 +398,7 @@ const UserProfile = ({ stylist }) => {
                         type="submit"
                         style={{
                           color: "white",
-                          backgroundColor: "orange",
+                          backgroundColor: "lightBlue",
                           cursor: "pointer",
                           marginLeft: "2%",
                           border: "1px solid black",
@@ -416,7 +414,7 @@ const UserProfile = ({ stylist }) => {
                       Hours: {actualHours}
                       <Icon
                         name="plus"
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: "lightBlue" }}
                         onClick={() => {
                           setHidden(true);
                         }}

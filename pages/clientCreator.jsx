@@ -112,7 +112,6 @@ const ClientCreator = ({ stylist }) => {
       const res = await axios.post("/api/v1/client/clientCreator", {
         client,
       });
-      setToken(res.data);
     } catch (error) {
       const errorMsg = catchErrors(error);
       setErrorMsg(errorMsg);
