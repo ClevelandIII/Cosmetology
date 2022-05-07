@@ -188,8 +188,9 @@ const profilePage = ({ stylist, profile }) => {
                 style={{ margin: "3.8rem", textAlign: "center" }}
                 className="roz3"
               >
+                {/*Temp Change for correctness */}
                 <Image
-                  src={profile.profilePicURL}
+                  src={stylist.profilePicURL}
                   // avatar
                   className="profileAvatar"
                   size="medium"
@@ -202,12 +203,11 @@ const profilePage = ({ stylist, profile }) => {
                 <Card>
                   <Card.Content>
                     <Card.Header>
-                      {profile.firstName} {profile.lastName}
+                      {/*Temp Change for correctness */}
+                      {stylist.firstName} {stylist.lastName}
                     </Card.Header>
                     <Card.Meta>
-                      <span className="date">
-                        Teacher: {profile.teacher} | Session: {profile.session}
-                      </span>
+                      <span className="date">{profile.session}</span>
                     </Card.Meta>
                     <Card.Description>Teacher </Card.Description>
                   </Card.Content>
@@ -399,7 +399,7 @@ const profilePage = ({ stylist, profile }) => {
                         type="submit"
                         style={{
                           color: "white",
-                          backgroundColor: "orange",
+                          backgroundColor: "lightBlue",
                           cursor: "pointer",
                           marginLeft: "2%",
                           border: "1px solid black",
@@ -415,7 +415,7 @@ const profilePage = ({ stylist, profile }) => {
                       Hours: {actualHours}
                       <Icon
                         name="plus"
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer", color: "lightBlue" }}
                         onClick={() => {
                           setHidden(true);
                         }}
