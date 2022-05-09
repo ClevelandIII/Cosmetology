@@ -2,7 +2,7 @@ this will be were everything that is left to do will be if you finish something 
 this is in no order
 
 I will also say, I would add names if you are doing something. That way there is no overlap, though at this point tiny overlap
-wouldnt be too bad.
+wouldn't be too bad.
 
 • implement the search bar - Abdi
 
@@ -10,10 +10,19 @@ wouldnt be too bad.
 
 • password recovery - Abdi
 
-• add a "click to load more" for all lists - Reid
-
-•when logged in as a student clicking a teacher it should show their profile -Daniel
+• when logged in as a student clicking a teacher it should show their profile -Daniel
 
 • Add delete function to student lists so teachers can delete old students (This instead of adding year 3s, 4s, 5s, etc) 
 
-• iPad Formatting where neccessary
+• iPad Formatting where necessary - Reid
+
+• when signing up you only be able to choose one teacher
+• on signup merge year with Class (Cosmetology 1 = year 1, Cosmetology 2 = year 2)
+
+• when creating a client it should bering you back to the home page (there is also a email error that happens no matter what email is in there but it doesn't stop the clients creation)
+
+•
+
+
+
+

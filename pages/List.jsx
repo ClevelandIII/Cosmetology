@@ -397,16 +397,16 @@ const List = ({ stylist }) => {
                 </>
               </Grid.Row>
 
-              <Grid.Row className="containeindex" columns={4}>
+              <Grid.Row className="containeindex" columns={4} >
                 <>
                   {clients.map((client) => {
                     return (
                       <>
-                        <Grid.Column
+                        <Grid.Column 
                           className="Indexcolumn clientListColumn"
                           setClients={clients}
                           style={{
-                            textAlign: "center",
+                            textAlign: "center"
                           }}
                         >
                           <Popup
@@ -535,12 +535,18 @@ const List = ({ stylist }) => {
                             <p>{client.appointmentDate.split("T")[0]}</p>
                           </Segment>
                         </Grid.Column>
-                      </>
+                      </>    
                     );
                   })}
                 </>
+                {/* <div class="Back2Top" style={{ left: "103rem" }}>
+              <a href="#" className="Back2TopText">
+              🠉
+              </a>
+            </div> */}
               </Grid.Row>
-              <Grid.Column style={{ textAlign: "center" }} width={16}>
+              
+              {/* <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
                   <Button
                     id="loadMore"
@@ -549,13 +555,13 @@ const List = ({ stylist }) => {
                     🡣 Show All 🡣
                   </Button>
                 </div>
-              </Grid.Column>
+              </Grid.Column> */}
             </Grid>
-            <div class="Back2Top" style={{ left: "103rem" }}>
+            {/* <div class="Back2Top" style={{ left: "103rem" }}>
               <a href="#" className="Back2TopText">
                 🠉
               </a>
-            </div>
+            </div> */}
           </div>
         </>
       )}

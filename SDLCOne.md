@@ -244,7 +244,7 @@ Joshua Ruvalcaba: absent
 5/4/22
 Jason Enciso:  
 
-Reid Gill: working with the "Show more" button
+Reid Gill: working with the "Show more" button 
 
 Daniel Nijdl: Made it so when you click profile button on sidebar, it leads you to your personal profile, moved everything from userprofile to [userId], and fixed list
 
@@ -262,9 +262,17 @@ Joshua Ruvalcaba: helping people
 5/6/22
 Jason Enciso:  
 
-Reid Gill: working with the "Show more" button
+Reid Gill: absent
 
-Daniel: Attempting to fix problems with list and singup
+Daniel: trying to fix server breaking bugs
 
 Joshua Ruvalcaba: helping people
 
+5/9/22
+Jason Enciso:  
+
+Reid Gill: no more "show more" just made the list show less at a time (i need to implement the back2top button to effect the list )
+
+Daniel: trying to fix server breaking bugs
+
+Joshua Ruvalcaba: helping people

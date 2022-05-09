@@ -268,9 +268,10 @@ a.item :hover {
   border-top: 10px solid orange;
   background: orange;
   color: black;
+  overflow-y: scroll;
 
-  /*Commented out due to spacing out client boxes waay to much*/
-  /* height: 35rem; */
+  /*Commented out due to spacing out client boxes way to much*/
+  height: 26.8rem;
   overflow-x: hidden;
 }
 
@@ -337,6 +338,7 @@ color: orange;
     color: black;
     overflow-y: scroll;
     overflow-x: hidden;
+    height: 55rem;
   }
   .indexClientInfo {
     border-bottom: 10px solid orange;
@@ -359,7 +361,7 @@ color: orange;
 }
 
 .Back2Top {
-  position: sticky;
+  /* position: sticky; */
   width: 60px;
   height: 60px;
   bottom: 40px;
