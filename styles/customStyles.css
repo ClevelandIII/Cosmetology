@@ -297,6 +297,30 @@ div.ui.page.modals.dimmer.transition.visible.active {
   color: black;*/
   /* overflow-x: hidden; */
 }
+.forgotPassword{
+    color: white;
+    cursor: pointer;
+  
+}
+.forgotPassword2{
+  position: relative !important;
+  justify-content: center;
+  left: 200px;
+  
+
+}
+.forgotPassword3{
+  position: relative !important;
+  top: 25px;
+  justify-content: center;
+  left: 200px;
+  
+  
+
+}
+.forgotPassword:hover{
+color: orange;
+}
 
 .tableindex {
   position: relative;

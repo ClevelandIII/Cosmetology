@@ -90,18 +90,40 @@ const index = ({ stylist, client }) => {
       stylist={stylist.firstName}
     >
       <Grid style={{ textAlign: "center" }}>
-        <Grid.Row style={{ width: "100%" }} className="mini">
-          <p>
-            {`Welcome ${stylist.firstName}.`} To get started, add a new visitor,
-            or update a visitor from the list below.
-          </p>
-        </Grid.Row>
-        <Divider hidden />
-        <Link href="/clientCreator">
-          <Grid.Row className="mini2">
-            <Button style={{ backgroundColor: "orange" }}>New Visitor</Button>
-          </Grid.Row>
-        </Link>
+        {stylist.isTeacher === "true" ? (
+          <>
+            <Grid.Row style={{ width: "100%" }} className="mini">
+              <p>
+                {`Welcome ${stylist.firstName}. To get started, check on your students, or see all clients in the list below.`}
+              </p>
+            </Grid.Row>
+            <Divider hidden />
+            <Link href="/UserProfile">
+              <Grid.Row className="mini2">
+                <Button style={{ backgroundColor: "orange" }}>
+                  See Students
+                </Button>
+              </Grid.Row>
+            </Link>
+          </>
+        ) : (
+          <>
+            <Grid.Row style={{ width: "100%" }} className="mini">
+              <p>
+                {`Welcome ${stylist.firstName}. To get started, add a new visitor, or update a visitor from the list
+              below.`}
+              </p>
+            </Grid.Row>
+            <Divider hidden />
+            <Link href="/clientCreator">
+              <Grid.Row className="mini2">
+                <Button style={{ backgroundColor: "orange", marginLeft: "1rem" }}>
+                  New Visitor
+                </Button>
+              </Grid.Row>
+            </Link>
+          </>
+        )}
       </Grid>
       {/* <Divider hidden /> */}
       <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
