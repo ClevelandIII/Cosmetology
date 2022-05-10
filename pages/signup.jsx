@@ -23,7 +23,6 @@ const Signup = () => {
     lastName: "",
     email: "",
     password: "",
-    className: "",
     teacherCode: "",
     session: "",
     teacher: "",
@@ -37,7 +36,6 @@ const Signup = () => {
     lastName,
     email,
     password,
-    className,
     session,
     teacherCode,
     teacher,
@@ -59,9 +57,6 @@ const Signup = () => {
   const [mediaPreview, setMediaPreview] = useState(null);
 
   //Usestates for radio buttons
-  //room for classname
-  const [room1, setRoom1] = useState(false);
-  const [room2, setRoom2] = useState(false);
   //session for session
   const [session1, setSession1] = useState(false);
   const [session2, setSession2] = useState(false);
@@ -70,6 +65,8 @@ const Signup = () => {
   const [year2, setYear2] = useState(false);
   //teacher for teacher
   const [checkbox, setCheckbox] = useState("");
+  const [selectedTeacher, setSelectedTeacher] = useState(false);
+  const [teacherChecked, setTeacherChecked] = useState(false)
 
   //* Functions */
 
@@ -92,11 +89,6 @@ const Signup = () => {
     }
 
     //Radio Button Checks
-    if (room1 === true) {
-      className = "Cosmetology 1";
-    } else if (room2 === true) {
-      className = "Cosmetology 2";
-    }
 
     if (session1 === true) {
       session = "Session 1";
@@ -110,7 +102,7 @@ const Signup = () => {
       studentYear = "Year 2";
     }
 
-    teacher = checkbox
+    teacher = checkbox;
 
     if (media !== null) {
       const formData = new FormData();
@@ -134,7 +126,6 @@ const Signup = () => {
         lastName,
         email,
         password,
-        className,
         session,
         teacherCode,
         teacher,
@@ -178,7 +169,6 @@ const Signup = () => {
           email &&
           password &&
           teacherCode &&
-          className &&
           session &&
           teacher &&
           studentYear &&
@@ -308,31 +298,6 @@ const Signup = () => {
           />
           <Form.Input
             required
-            label="Class"
-            placeholder="Cosmetology I"
-            name="className"
-            value={className}
-            onChange={handleChange}
-            icon="book"
-            iconPosition="left"
-          >
-            <Form.Radio
-              label="Cosmetology 1"
-              checked={room1}
-              onClick={() => {
-                setRoom1(true), setRoom2(false);
-              }}
-            />
-            <Form.Radio
-              label="Cosmetology 2"
-              checked={room2}
-              onClick={() => {
-                setRoom2(true), setRoom1(false);
-              }}
-            />
-          </Form.Input>
-          <Form.Input
-            required
             label="Teacher"
             placeholder="John Doe"
             name="teacher"
@@ -341,39 +306,50 @@ const Signup = () => {
             icon="male"
             iconPosition="left"
           >
-            {/*Currently shows teachers, but you cannot select/unselect one yet. */}
             {stylists.map((iteration) => {
               if (iteration.isTeacher === "true") {
                 return (
                   <>
-                    <Form.Checkbox
-                      label={iteration.firstName}
-                      onClick={() => {
-                        setCheckbox(iteration.firstName);
-                      }}
-                    />
+                    {selectedTeacher ? (
+                      <Form.Checkbox
+                        label={iteration.firstName}
+                        disabled
+                        checked={teacherChecked}
+                        key={iteration._id}
+                        onClick={() => {
+                          setCheckbox(iteration.firstName);
+                          setSelectedTeacher(true);
+                        }}
+                      />
+                    ) : (
+                      <Form.Checkbox
+                        label={iteration.firstName}
+                        key={iteration._id}
+                        onClick={() => {
+                          setCheckbox(iteration.firstName);
+                          setSelectedTeacher(true);
+                        }}
+                      />
+                    )}
                   </>
                 );
               } else {
                 return <></>;
               }
             })}
-
-            {/* <Form.Dropdown
-              // commit this out if not working yet
-              placeholder="Teacher"
-              options={teachers}
-            /> */}
           </Form.Input>
-          <Form.Input
-            label="Teacher code"
-            placeholder="secret code"
-            name="teacherCode"
-            value={teacherCode}
-            onChange={handleChange}
-            icon="user secret"
-            iconPosition="left"
-          ></Form.Input>
+
+          {selectedTeacher ? (
+            <div style={{ textAlign: "center" }}>
+              <Button
+                onClick={() => {
+                  setSelectedTeacher(false), setCheckbox(""), setTeacherChecked(false)
+                }}
+              >{`You have selected ${checkbox} as your teacher. Press this button to reset this choice.`}</Button>
+            </div>
+          ) : (
+            <></>
+          )}
 
           <Form.Input
             required
@@ -404,41 +380,38 @@ const Signup = () => {
           {/* the year will be removed in the end it being used as testing now */}
           <Form.Input
             required
-            label="Year"
-            placeholder="Year 1"
+            label="Class Year"
             name="studentYear"
             value={studentYear}
             onChange={handleChange}
             icon="calendar alternate outline"
             iconPosition="left"
           >
-            {/* <input
-              type="radio"
-              name="Year"
-              onclick={myFunction(studentYear)}
-              value="Year 1"
-            />
-            <input
-              type="radio"
-              name="Year"
-              onclick={myFunction(studentYear)}
-              value="Year 2"
-            /> */}
             <Form.Radio
-              label="Year 1"
+              label="Cosmotology 1 Year 1"
               checked={year1}
               onClick={() => {
                 setYear1(true), setYear2(false);
               }}
             />
             <Form.Radio
-              label="Year 2"
+              label="Cosmotology 2 Year 2"
               checked={year2}
               onClick={() => {
                 setYear2(true), setYear1(false);
               }}
             />
           </Form.Input>
+
+          <Form.Input
+            label="Teacher code (Only For Teachers, not required for students.)"
+            placeholder="secret code"
+            name="teacherCode"
+            value={teacherCode}
+            onChange={handleChange}
+            icon="user secret"
+            iconPosition="left"
+          ></Form.Input>
 
           <Button color="orange" content="Signup" icon="signup" type="submit" />
         </Segment>

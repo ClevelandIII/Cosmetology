@@ -105,13 +105,11 @@ const ClientCreator = ({ stylist }) => {
       return res.status(500).send("Image Upload Failure");
     }
 
-    //Good idea but this doesnt allow you to create a client for some reason...
-    // Router.push("/");
-
     try {
       const res = await axios.post("/api/v1/client/clientCreator", {
         client,
       });
+          Router.push("/");
     } catch (error) {
       const errorMsg = catchErrors(error);
       setErrorMsg(errorMsg);

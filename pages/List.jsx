@@ -14,8 +14,6 @@ const defaultProfilePicURL = require("../server/util/defaultPic");
 const List = ({ stylist }) => {
   //For grabbing info
   const [stylists, setStylists] = useState([]);
-  //For sorting that info
-  // const [stylists2, setStylists2] = useState();
 
   const [semester, setSemester] = useState([]);
   const [teachLink, setTeachLink] = useState([]);
@@ -28,6 +26,7 @@ const List = ({ stylist }) => {
   });
   const { addVisits, hairStyle, specialTreatment } = visit;
   const [clientUser, setClientUser] = useState("");
+  const [sortType, setSortType] = useState("");
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
@@ -51,7 +50,6 @@ const List = ({ stylist }) => {
     const { name, value, files } = e.target;
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
-
   const getStylists = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
@@ -87,7 +85,7 @@ const List = ({ stylist }) => {
     }
   };
   const getTeacher = async () => {
-    try{
+    try {
       if (stylist.teacher === "potassium") {
         setTeachLink("1651522057278");
         // teachLink = "/1651522057278"
@@ -101,28 +99,31 @@ const List = ({ stylist }) => {
         setTeachLink("");
         // teachLink = "/"
       }
-    }catch (error) {
-      console.log(error);
-    }
-
-  };
-  const setStylist = async () => {
-    try {
-      function Comparator(a, b) {
-        // you can use the `String.prototype.toLowerCase()` method
-        // if the comparison should be case insensitive
-        if (a[1] < b[1]) return -1;
-        if (a[1] > b[1]) return 1;
-        return 0;
-    }
-
-      setStylists(stylists.sort(Comparator));
-      console.log(stylists);
     } catch (error) {
       console.log(error);
     }
   };
 
+  //In progress
+  const setStylist = async () => {
+    try {
+      function compare(a, b) {
+        if (a[1] < b[1]) {
+          return -1;
+        }
+        if (a[1] > b[1]) {
+          return 1;
+        }
+        return 0;
+      }
+
+      stylists.sort(compare);
+
+      console.log(stylists);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getStylists();
     getSemester();
@@ -133,14 +134,10 @@ const List = ({ stylist }) => {
 
   let decide = "";
   if (stylist.isTeacher === "true") {
-    // setIsTeacher(true);
     decide = true;
   } else if (stylist.isTeacher === "false") {
-    // setIsTeacher(false);
     decide = false;
   }
-
-  
 
   // const loadMore = document.querySelector("#loadMore");
   // let currentItems = 2;
@@ -204,9 +201,12 @@ const List = ({ stylist }) => {
     },
   ];
 
-
   return (
     <>
+      {/*Commented div was for display tests when console.log didnt work */}
+      {/* <div>{`Cool: ${stylists.map((iteration) => {
+        return iteration.firstName;
+      })}`}</div> */}
       {decide ? (
         <>
           <div class="list">
@@ -219,7 +219,9 @@ const List = ({ stylist }) => {
                     fluid
                     selection
                     options={Students}
-                    onChange={(e) => setSortType(e.target.value)}
+                    onChange={(e) => {
+                      setSortType(e.target.value);
+                    }}
                   />
                 </div>
               </Grid.Row>
@@ -397,16 +399,16 @@ const List = ({ stylist }) => {
                 </>
               </Grid.Row>
 
-              <Grid.Row className="containeindex" columns={4} >
+              <Grid.Row className="containeindex" columns={4}>
                 <>
                   {clients.map((client) => {
                     return (
                       <>
-                        <Grid.Column 
+                        <Grid.Column
                           className="Indexcolumn clientListColumn"
                           setClients={clients}
                           style={{
-                            textAlign: "center"
+                            textAlign: "center",
                           }}
                         >
                           <Popup
@@ -535,7 +537,7 @@ const List = ({ stylist }) => {
                             <p>{client.appointmentDate.split("T")[0]}</p>
                           </Segment>
                         </Grid.Column>
-                      </>    
+                      </>
                     );
                   })}
                 </>
@@ -545,7 +547,7 @@ const List = ({ stylist }) => {
               </a>
             </div> */}
               </Grid.Row>
-              
+
               {/* <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
                   <Button

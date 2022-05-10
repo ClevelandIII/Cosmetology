@@ -34,11 +34,6 @@ const StylistSchema = new Schema(
       // required: true,
     },
 
-    className: {
-      type: String,
-      // required: true,
-    },
-
     session: {
       type: String,
       // required: true,

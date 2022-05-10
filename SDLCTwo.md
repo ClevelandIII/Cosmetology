@@ -191,3 +191,9 @@
 - Cleveland: Fixed list bug that logged the user out, worked on sort function
 
 - Abdi: Fixed new bugs, password recovery and search
+
+5/9/2022
+
+- Cleveland: Merged year and class, added back index modal changes. Also made it return the user to the homepage after creating a client and made it so that you can only choose one teacher in signup, struggled with sort feature.
+
+- Abdi: password recovery and search
