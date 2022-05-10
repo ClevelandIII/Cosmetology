@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Form, Header, Segment, Button } from 'semantic-ui-react'
 
-class FormExampleClearOnSubmit extends Component {
+const FormExampleClearOnSubmit = ()  => {
   state = {}
   sendEmail = async (e) => {
     e.preventDefault();
@@ -41,13 +41,11 @@ class FormExampleClearOnSubmit extends Component {
     }
   };
 
-  handleChange = name => (event) => {
-    this.setState({
-      [name]: event.target.value,
-    });
+const  handleChange =  (e) => {
+    const { name, value } = e.target;
+    setStylist((prev) => ({ ...prev, [name]: value }));
   };
 
-  render() {
     const { email } = this.state
 
     return (
@@ -74,7 +72,7 @@ class FormExampleClearOnSubmit extends Component {
             placeholder="Email"
             name="email"
             value={email}
-            onChange={this.handleChange('email')}
+            onChange={handleChange}
             icon="envelope"
             iconPosition="left"
             type="email"
@@ -89,9 +87,9 @@ class FormExampleClearOnSubmit extends Component {
       </Form>
     )
   }
-}
 
-export default FormExampleClearOnSubmit
+
+export default FormExampleClearOnSubmit;
 
 
 // /* eslint-disable no-console */
@@ -227,3 +225,159 @@ export default FormExampleClearOnSubmit
 // }
 
 // export default ForgotPassword;
+
+
+// import React, { Component, useState} from "react"; 
+
+// // import { Form, Header, Segment, Button } from 'semantic-ui-react' 
+
+// import TextField from "@material-ui/core/TextField"; 
+
+// import SubmitButtons from "../pages/components/SubmitButtons"; 
+
+ 
+ 
+
+// class FormExampleClearOnSubmit extends Component { 
+
+    
+
+//   state = {}; 
+
+ 
+ 
+
+//   sendEmail = async (e) => { 
+
+//     e.preventDefault(); 
+
+//     const { email, password } = stylist; 
+
+//     if (email === "") { 
+
+//       this.setState({ 
+
+//         showError: false, 
+
+//         messageFromServer: "", 
+
+//         showNullError: true, 
+
+//       }); 
+
+//     } else { 
+
+//       try { 
+
+//         const response = await axios.post( 
+
+//           "http://localhost:3001/api/v1/forgotPassword", {email} 
+
+//         ); 
+
+//         console.log(response.data); 
+
+//         if (response.data === "recovery email sent") { 
+
+//           this.setState({ 
+
+//             showError: false, 
+
+//             messageFromServer: "recovery email sent", 
+
+//             showNullError: false, 
+
+//           }); 
+
+//         } 
+
+//       } catch (error) { 
+
+//         console.error(error.response.data); 
+
+//         if (error.response.data === "email not in db") { 
+
+//           this.setState({ 
+
+//             showError: true, 
+
+//             messageFromServer: "", 
+
+//             showNullError: false, 
+
+//           }); 
+
+//         } 
+
+//       } 
+
+//     } 
+
+//   }; 
+
+ 
+ 
+
+//   handleChange = (name) => (event) => { 
+
+//     this.setState({ 
+
+//       [name]: event.target.value, 
+
+//     }); 
+
+//   }; 
+
+ 
+ 
+
+//   render() { 
+
+//     const { email, messageFromServer, showNullError, showError } = this.state; 
+
+//     return ( 
+
+//       <div> 
+
+//         <form onSubmit={this.sendEmail}> 
+
+//           <TextField 
+
+//             id="email" 
+
+//             label="email" 
+
+//             value={email} 
+
+//             onChange={this.handleChange("email")} 
+
+//             placeholder="Email Address" 
+
+//           /> 
+
+//           <SubmitButtons buttonText="Send Password Reset Email" /> 
+
+//           {showNullError && ( 
+
+//             <div> 
+
+//               <p>The email address cannot be null.</p> 
+
+//             </div> 
+
+//           )} 
+
+//         </form> 
+
+//       </div> 
+
+//     ); 
+
+//   } 
+
+// } 
+
+ 
+ 
+
+// export default FormExampleClearOnSubmit; 
