@@ -28,6 +28,7 @@ const Signup = () => {
     teacher: "",
     studentYear: "",
     isTeacher: "",
+    teachId: "",
     // userId: "",
   });
 
@@ -41,6 +42,7 @@ const Signup = () => {
     teacher,
     studentYear,
     isTeacher,
+    teachId,
     // userId
   } = stylist;
 
@@ -132,6 +134,7 @@ const Signup = () => {
         studentYear,
         isTeacher,
         profilePicURL,
+        teachId,
         // userId,
       });
 
@@ -172,7 +175,8 @@ const Signup = () => {
           session &&
           teacher &&
           studentYear &&
-          isTeacher
+          isTeacher &&
+          teachId
         )
         // userId
       )
@@ -308,6 +312,7 @@ const Signup = () => {
           >
             {stylists.map((iteration) => {
               if (iteration.isTeacher === "true") {
+                teachId = iteration.userId
                 return (
                   <>
                     {selectedTeacher ? (

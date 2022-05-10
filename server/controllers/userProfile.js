@@ -4,7 +4,7 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
-const emailRegex = /(\W|^)[\w.+\-]*@west-mec\.org(\W|$)/
+const emailRegex = /(\W|^)[\w.+\-]*@west-mec\.org(\W|$)/;
 
 // const TeacherModel = require("../model/TeacherModel");
 
@@ -24,19 +24,21 @@ const createUser = async (req, res) => {
     studentYear,
     teacherCode,
     isTeacher,
+    // userId,
+    teachId,
   } = req.body;
 
   if (!isEmail(email)) return res.status(401).send("Invalid Email");
   if (password.length < 6)
     return res.status(401).send("Password must be at least 6 characters long");
 
-    //! This makes it so you can only create an account using a West-Mec email.  
-    //! I commented it out for now so you can test with any email
+  //! This makes it so you can only create an account using a West-Mec email.
+  //! I commented it out for now so you can test with any email
 
-    // const test = emailRegex.test(email);
-    // if (!(test || emailRegex.test(email))) {
-    //   return res.status(401).send("Invalid email");
-    // }
+  // const test = emailRegex.test(email);
+  // if (!(test || emailRegex.test(email))) {
+  //   return res.status(401).send("Invalid email");
+  // }
 
   try {
     let stylist;
@@ -53,6 +55,7 @@ const createUser = async (req, res) => {
       session,
       studentYear,
       isTeacher,
+      teachId,
       profilePicURL: req.body.profilePicURL || defaultProfilePicURL,
       hours,
       // userId,
@@ -124,16 +127,16 @@ const getAllUsers = async (req, res) => {
 };
 
 const addHours = async (req, res) => {
-  const {hour, user} = req.body
+  const { hour, user } = req.body;
   // console.log(`hours: ${hour}`);
   // console.log(`userID: ${user}`)
   try {
     const getStylists = async () => {
       try {
-        const stylist = await StylistModel.findOne({userId: user});
- 
+        const stylist = await StylistModel.findOne({ userId: user });
+
         // console.log(`stylist`, stylist);
-        stylist.hours = (+stylist.hours + +hour) + ""
+        stylist.hours = +stylist.hours + +hour + "";
         // console.log(`stylist`, stylist);
         await stylist.save();
         return res.status(200).send("All Good");
@@ -147,4 +150,24 @@ const addHours = async (req, res) => {
   }
 };
 
-module.exports = { createUser, postLoginUser, getAllUsers, addHours };
+const deleteStylist = async (req, res) => {
+  const { id } = req.params;
+  console.log(id);
+
+  try {
+    const stylist = await StylistModel.findByIdAndDelete(id);
+    if (!stylist) return res.status(401).send(`No stylist with id ${id}`);
+    // res.json({ method: req.method, task: stylist, id: req.params });
+  } catch (err) {
+    console.log(err);
+    res.json(`Error @ deleteStylist`);
+  }
+};
+
+module.exports = {
+  createUser,
+  postLoginUser,
+  getAllUsers,
+  addHours,
+  deleteStylist,
+};

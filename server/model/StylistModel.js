@@ -48,6 +48,8 @@ const StylistSchema = new Schema(
 
     teacher: { type: String },
 
+    teachId: { type: String },
+
     pastClients: { type: Array },
 
     userId: {
@@ -75,4 +77,4 @@ const StylistSchema = new Schema(
 
 // module.exports = { User, validate };
 
-module.exports = mongoose.model("Stylist", StylistSchema)
+module.exports = mongoose.model("Stylist", StylistSchema);

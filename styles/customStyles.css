@@ -237,6 +237,10 @@ a.item :hover {
   justify-content: space-between;
 }
 
+.listLink:hover {
+  color: #6ea1ff;
+}
+
 .clientListColumn:hover {
   color: #6ea1ff;
 }

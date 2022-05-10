@@ -304,8 +304,8 @@ const List = ({ stylist }) => {
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
-                              <Link href={`/${teachLink}`}>
-                                <p>{stylist.teacher}</p>
+                              <Link href={`/${stylist.teachId}`}>
+                                <p className="listLink">{stylist.teacher}</p>
                               </Link>
                             </Segment>
                           </Grid.Column>
