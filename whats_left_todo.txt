@@ -13,11 +13,9 @@ I will also say, I would add names if you are doing something. That way there is
 
 • iPad Formatting where necessary - Reid
 
-• there is also a email error that happens no matter what email is in there but it doesn't stop the clients creation
-
 • currently, last visit only shows the first appointment date. It should show the last appointment date in visits array. - Cleveland
 
-
+• some how remove the need to use the back2top button to see a clients info on the homepage it should appear in the center of your screen always -Reid
 
 
 

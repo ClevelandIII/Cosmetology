@@ -541,13 +541,8 @@ const List = ({ stylist }) => {
                     );
                   })}
                 </>
-                {/* <div class="Back2Top" style={{ left: "103rem" }}>
-              <a href="#" className="Back2TopText">
-              🠉
-              </a>
-            </div> */}
+                
               </Grid.Row>
-
               {/* <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">
                   <Button

@@ -294,6 +294,9 @@ div.ui.page.modals.dimmer.transition.visible.active {
 }
 
 .indexClientInfo {
+  position: absolute !important;
+  top: 1000% !important;
+ 
   /* border-bottom: 10px solid orange;
   border-top: 10px solid orange; */
   /* height: 45rem; */
@@ -302,6 +305,8 @@ div.ui.page.modals.dimmer.transition.visible.active {
   color: black;*/
   /* overflow-x: hidden; */
 }
+
+
 .forgotPassword{
     color: white;
     cursor: pointer;

@@ -213,6 +213,7 @@ const index = ({ stylist, client }) => {
                         >
                           <>
                             <Modal.Content
+                              style={{ position: "absolute", top: "1000%" }}
                               className="indexClientInfo"
                               scrolling
                             >
@@ -260,16 +261,21 @@ const index = ({ stylist, client }) => {
                                 </div>
                               </p>
                             </Modal.Content>
-                            <Modal.Actions>
-                              <Button
+                            <Divider hidden />
+                            {/* <Modal.Actions
+                            className="disappear"
+                              style={{position:"relative",top:"1000%",backgroundColor:"ffffff00"}}
+                            > */}
+                            {/* <Button
+                                
                                 content="Proceed"
                                 labelPosition="right"
                                 onClick={() =>
                                   dispatch({ type: "CLOSE_MODAL" })
                                 }
                                 warning
-                              />
-                            </Modal.Actions>
+                              /> */}
+                            {/* </Modal.Actions> */}
                           </>
                           {/* ) : (
                         <></>
@@ -309,11 +315,7 @@ const index = ({ stylist, client }) => {
         </Grid>
       </div>
       {open ? (
-        <div class="Back2Top" style={{ left: "51rem" }}>
-          <a href="#" className="Back2Top">
-            🡹
-          </a>
-        </div>
+        <></>
       ) : (
         <div class="Back2Top" style={{ left: "103rem" }}>
           <a href="#" className="Back2TopText">

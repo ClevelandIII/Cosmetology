@@ -271,8 +271,17 @@ Joshua Ruvalcaba: helping people
 5/9/22
 Jason Enciso:  
 
-Reid Gill: no more "show more" just made the list show less at a time (i need to implement the back2top button to effect the list )
+Reid Gill: no more "show more" just made the list show less (i need to implement the back2top button to effect the list )
 
 Daniel: trying to fix server breaking bugs
+
+Joshua Ruvalcaba: helping people
+
+5/10/22
+Jason Enciso:  
+
+Reid Gill: working on centering indexClientInfo 
+
+Daniel: 
 
 Joshua Ruvalcaba: helping people
