@@ -200,7 +200,7 @@ const index = ({ stylist, client }) => {
                           dispatch({ type: "OPEN_MODAL", dimmer: "blurring" })
                         }
                       >
-                        <p>
+                        <p className="listLink">
                           {client.firstName} {client.lastName}
                         </p>
                       </Segment>

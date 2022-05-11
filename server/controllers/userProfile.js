@@ -152,18 +152,26 @@ const addHours = async (req, res) => {
 };
 
 const deleteStylist = async (req, res) => {
-  const { id } = req.params;
-  console.log(id);
-
+  const { userId } = req.params;
   try {
-    const stylist = await StylistModel.findByIdAndDelete(id);
-    if (!stylist) return res.status(401).send(`No stylist with id ${id}`);
-    // res.json({ method: req.method, task: stylist, id: req.params });
-  } catch (err) {
-    console.log(err);
-    res.json(`Error @ deleteStylist`);
+    const stylist = await StylistModel.deleteOne({ userId });
+    
+    if (!stylist) {
+      return res.status(404).send("No Stylist Found");
+    }
+
+    return res.status(200).json({
+      stylist,
+    });
+  } catch (error) {
+    // console.log(userId);
+    // console.log(error, userId);
+    return res.status(500).send("Error @deleteStylist");
   }
 };
+
+
+
 
 module.exports = {
   createUser,
