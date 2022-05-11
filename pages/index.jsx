@@ -293,7 +293,7 @@ const index = ({ stylist, client }) => {
                       style={{ textAlign: "center" }}
                     >
                       <Segment className="indexCenter">
-                        <p>{client.dateCreated.split("T")[0]}</p>
+                        <p>{client.appointmentDate.split("T")[0]}</p>
                       </Segment>
                     </Grid.Column>
 
@@ -304,7 +304,16 @@ const index = ({ stylist, client }) => {
                       style={{ textAlign: "center" }}
                     >
                       <Segment className="indexCenter">
-                        <p>{client.appointmentDate.split("T")[0]}</p>
+                        {/*Returns the date in the most recent visit array. If no input returns first visit.*/}
+                        {client.visits == "" ? (
+                          <p>{client.appointmentDate.split("T")[0]}</p>
+                        ) : (
+                          <p>
+                            {client.visits.slice(-1).map((i) => {
+                              return i[0];
+                            })}
+                          </p>
+                        )}
                       </Segment>
                     </Grid.Column>
                   </>

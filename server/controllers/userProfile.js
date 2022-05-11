@@ -46,7 +46,8 @@ const createUser = async (req, res) => {
     if (stylist) return res.status(401).send("Email Already in Use");
 
     stylist = new StylistModel({
-      firstName,
+      //sets the first letter to be auto capital
+      firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1),
       lastName,
       email: email.toLowerCase(),
       password,

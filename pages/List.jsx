@@ -26,7 +26,13 @@ const List = ({ stylist }) => {
   });
   const { addVisits, hairStyle, specialTreatment } = visit;
   const [clientUser, setClientUser] = useState("");
+
+  //For sort function. Currently unfinished
   const [sortType, setSortType] = useState("");
+  // const [state, dispatch] = React.useReducer(exampleReducer, {
+  //   key: "",
+  // });
+  // const { key } = state;
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
@@ -107,19 +113,7 @@ const List = ({ stylist }) => {
   //In progress
   const setStylist = async () => {
     try {
-      function compare(a, b) {
-        if (a[1] < b[1]) {
-          return -1;
-        }
-        if (a[1] > b[1]) {
-          return 1;
-        }
-        return 0;
-      }
-
-      stylists.sort(compare);
-
-      console.log(stylists);
+      // if()
     } catch (error) {
       console.log(error);
     }
@@ -206,7 +200,8 @@ const List = ({ stylist }) => {
       {/*Commented div was for display tests when console.log didnt work */}
       {/* <div>{`Cool: ${stylists.map((iteration) => {
         return iteration.firstName;
-      })}`}</div> */}
+      })}`}</div>
+      <div>{`Not Cool: ${sortType}`}</div> */}
       {decide ? (
         <>
           <div class="list">
@@ -219,12 +214,13 @@ const List = ({ stylist }) => {
                     fluid
                     selection
                     options={Students}
-                    onChange={(e) => {
-                      setSortType(e.target.value);
+                    onChange={() => {
+                      setSortType(Students.text);
                     }}
                   />
                 </div>
               </Grid.Row>
+
               <Grid.Row
                 columns={4}
                 style={{
@@ -466,6 +462,7 @@ const List = ({ stylist }) => {
                                 type="text"
                               />
                               <Form.Input
+                                required
                                 label="Hair Style"
                                 placeholder="Bob, Curly"
                                 name="hairStyle"
@@ -477,6 +474,7 @@ const List = ({ stylist }) => {
                                 type="text"
                               />
                               <Form.Input
+                                required
                                 label="Special Treatments"
                                 placeholder="Additional Requirements"
                                 name="specialTreatment"
@@ -523,7 +521,7 @@ const List = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                            <p>{client.dateCreated.split("T")[0]}</p>
+                            <p>{client.appointmentDate.split("T")[0]}</p>
                           </Segment>
                         </Grid.Column>
 
@@ -534,14 +532,22 @@ const List = ({ stylist }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                            <p>{client.appointmentDate.split("T")[0]}</p>
+                            {/*Returns the date in the most recent visit array. If no input returns first visit.*/}
+                            {client.visits == "" ? (
+                              <p>{client.appointmentDate.split("T")[0]}</p>
+                            ) : (
+                              <p>
+                                {client.visits.slice(-1).map((i) => {
+                                  return i[0];
+                                })}
+                              </p>
+                            )}
                           </Segment>
                         </Grid.Column>
                       </>
                     );
                   })}
                 </>
-                
               </Grid.Row>
               {/* <Grid.Column style={{ textAlign: "center" }} width={16}>
                 <div class="showMore">

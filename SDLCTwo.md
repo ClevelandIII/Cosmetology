@@ -145,7 +145,7 @@
 
 - Cleveland: Fixed the signup buttons so that they now work, updated teacher select but doesnt currently work, updated hours, controller grabs hours but does not yet work, working on hours
 
-- Abdi: ClientList additions, signup bugfixing, searchbar 
+- Abdi: ClientList additions, signup bugfixing, searchbar
 
 4/28/2022
 
@@ -197,3 +197,9 @@
 - Cleveland: Merged year and class, added back index modal changes. Also made it return the user to the homepage after creating a client and made it so that you can only choose one teacher in signup, struggled with sort feature.
 
 - Abdi: password recovery and search
+
+5/10/2022
+
+- Cleveland: Made it so that the first letter in the name is auto capitalized. Last visit now shows last visit. Working on dispatch for sort function, currently still unfinished.
+
+- Abdi: Absent.
