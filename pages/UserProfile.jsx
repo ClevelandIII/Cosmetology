@@ -537,6 +537,7 @@ const UserProfile = ({ stylist }) => {
                                 type="text"
                               />
                               <Form.Input
+                                required
                                 label="Hair Style"
                                 placeholder="Bob, Curly"
                                 name="hairStyle"
@@ -548,6 +549,7 @@ const UserProfile = ({ stylist }) => {
                                 type="text"
                               />
                               <Form.Input
+                                required
                                 label="Special Treatments"
                                 placeholder="Additional Requirements"
                                 name="specialTreatment"
@@ -567,20 +569,31 @@ const UserProfile = ({ stylist }) => {
                             </Form>
                           </Popup>
                         </Grid.Column>
-                        <Grid.Column
-                          className="Indexcolumn"
-                          style={{ textAlign: "center" }}
-                        >
-                          <Segment className="indexCenter">
-                            <p>{client.dateCreated.split("T")[0]}</p>
-                          </Segment>
-                        </Grid.Column>
+
                         <Grid.Column
                           className="Indexcolumn"
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
                             <p>{client.appointmentDate.split("T")[0]}</p>
+                          </Segment>
+                        </Grid.Column>
+
+                        <Grid.Column
+                          className="Indexcolumn"
+                          style={{ textAlign: "center" }}
+                        >
+                          <Segment className="indexCenter">
+                          {/*Returns the date in the most recent visit array. If no input returns first visit.*/}
+                          {client.visits == "" ? (
+                              <p>{client.appointmentDate.split("T")[0]}</p>
+                            ) : (
+                              <p>
+                                {client.visits.slice(-1).map((i) => {
+                                  return i[0];
+                                })}
+                              </p>
+                            )}
                           </Segment>
                         </Grid.Column>
                       </>
