@@ -210,8 +210,26 @@ const index = ({ stylist, client }) => {
                           centered={false}
                           onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                           open={open}
+                          
                         >
                           <>
+
+                            {/* <Modal
+                              trigger={<Button>Show Modal</Button>}
+                              header="Reminder!"
+                              actions={[
+                                "Snooze",
+                                {
+                                  key: "done",
+                                  content: "Done",
+                                  positive: true,
+                                },
+                              ]}
+                            >
+                              <p>hi there</p>
+                            </Modal> */}
+
+                            {/* <Divider hidden style={{ height: "0.1px" }} /> */}
                             <Modal.Content
                               style={{ position: "absolute", top: "1000%" }}
                               className="indexClientInfo"
@@ -261,13 +279,16 @@ const index = ({ stylist, client }) => {
                                 </div>
                               </p>
                             </Modal.Content>
-                            <Divider hidden />
-                            {/* <Modal.Actions
-                            className="disappear"
-                              style={{position:"relative",top:"1000%",backgroundColor:"ffffff00"}}
-                            > */}
-                            {/* <Button
-                                
+                            {/* <Divider hidden /> */}
+                            <Modal.Actions
+                              style={{
+                                position: "relative",
+                                top: "1000%",
+                                backgroundColor: "ffffff00",
+                              }}
+                            >
+                              {/* <Button
+                              // style={{ position: "absolute", top: "1000%" }}
                                 content="Proceed"
                                 labelPosition="right"
                                 onClick={() =>
@@ -275,7 +296,7 @@ const index = ({ stylist, client }) => {
                                 }
                                 warning
                               /> */}
-                            {/* </Modal.Actions> */}
+                            </Modal.Actions>
                           </>
                           {/* ) : (
                         <></>
@@ -326,11 +347,12 @@ const index = ({ stylist, client }) => {
       {open ? (
         <></>
       ) : (
-        <div class="Back2Top" style={{ left: "103rem" }}>
-          <a href="#" className="Back2TopText">
-            🡹
-          </a>
-        </div>
+        <></>
+        // <div class="Back2Top" style={{ left: "103rem" }}>
+        //   <a href="#" className="Back2TopText">
+        //     🡹
+        //   </a>
+        // </div>
       )}
     </>
   );

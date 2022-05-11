@@ -285,3 +285,12 @@ Reid Gill: working on centering indexClientInfo
 Daniel: 
 
 Joshua Ruvalcaba: helping people
+
+5/11/22
+Jason Enciso:  
+
+Reid Gill: working on centering indexClientInfo 
+
+Daniel: Finished delete stylist function (fixed bug that wouldn’t grad id”
+
+Joshua Ruvalcaba: absent

@@ -334,21 +334,21 @@ const List = ({ stylist }) => {
                 </>
               </Grid.Row>
               <Grid.Column style={{ textAlign: "center" }} width={16}>
-                <div class="showMore">
+                {/* <div class="showMore">
                   <Button
                     id="loadMore"
                     style={{ backgroundColor: "orange", color: "white" }}
                   >
                     🡣 Show All 🡣
                   </Button>
-                </div>
+                </div> */}
               </Grid.Column>
             </Grid>
-            <div class="Back2Top" style={{ left: "103rem" }}>
+            {/* <div class="Back2Top" style={{ left: "103rem" }}>
               <a href="#" className="Back2TopText">
                 🠉
               </a>
-            </div>
+            </div> */}
           </div>
         </>
       ) : (
