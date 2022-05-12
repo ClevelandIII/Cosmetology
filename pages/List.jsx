@@ -12,13 +12,13 @@ import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
 
 const List = ({ stylist }) => {
-  //For grabbing info
   const [stylists, setStylists] = useState([]);
-
   const [semester, setSemester] = useState([]);
   const [teachLink, setTeachLink] = useState([]);
   const [clients, setClients] = useState([]);
   const [formLoading, setFormLoading] = useState(false);
+
+  //For adding visits
   const [visit, setVisit] = useState({
     addVisits: "",
     hairStyle: "",
@@ -26,13 +26,6 @@ const List = ({ stylist }) => {
   });
   const { addVisits, hairStyle, specialTreatment } = visit;
   const [clientUser, setClientUser] = useState("");
-
-  //For sort function. Currently unfinished
-  const [sortType, setSortType] = useState("");
-  // const [state, dispatch] = React.useReducer(exampleReducer, {
-  //   key: "",
-  // });
-  // const { key } = state;
 
   const handleSubmit2 = async (e) => {
     e.preventDefault();
@@ -47,7 +40,7 @@ const List = ({ stylist }) => {
       });
       setToken(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit2: ${error}`);
     }
     setVisit("");
     setFormLoading(false);
@@ -56,22 +49,44 @@ const List = ({ stylist }) => {
     const { name, value, files } = e.target;
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
-  const getStylists = async () => {
+  //
+
+  //For sort function. Currently unfinished
+  const [sortType, setSortType] = useState("");
+  const initGetStylists = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
-      console.log(results);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const sortStylist = async (sort) => {
+    let query = "";
+    if (sort) query = `?sort=${sortType}`;
+    try {
+      useEffect(async () => {
+        await axios.post(`http://localhost:3001/api/v1/stylists${query}`);
+      }, []);
+
+      //
+      const filteredResults = await axios.get(
+        `http://localhost:3001/api/v1/outList`
+      );
+      setStylists(filteredResults.data);
+    } catch (error) {
+      console.log(`Error at sortStylist: ${error}`);
+    }
+  };
+
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`This is clients: ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients: ${error}`);
     }
   };
   const getSemester = async () => {
@@ -79,7 +94,6 @@ const List = ({ stylist }) => {
       let currentDate = new Date();
 
       let currentMonth = currentDate.getMonth() + 1;
-      // console.log(currentMonth);
 
       if (currentMonth >= 8 && currentMonth <= 12) {
         setSemester("Semester 1");
@@ -87,7 +101,7 @@ const List = ({ stylist }) => {
         setSemester("Semester 2");
       }
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getSemester: ${error}`);
     }
   };
   const getTeacher = async () => {
@@ -106,25 +120,20 @@ const List = ({ stylist }) => {
         // teachLink = "/"
       }
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getTeacher: ${error}`);
     }
   };
 
-  //In progress
-  const setStylist = async () => {
-    try {
-      // if()
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    getStylists();
+    initGetStylists();
     getSemester();
     getClients();
     getTeacher();
-    setStylist();
   }, []);
+
+  useEffect(() => {
+    sortStylist(sortType);
+  }, [sortType]);
 
   let decide = "";
   if (stylist.isTeacher === "true") {
@@ -155,21 +164,33 @@ const List = ({ stylist }) => {
       key: "Number of Visits",
       text: "Number of Visits",
       value: "Number of Visits",
+      onClick: () => {
+        setSortType("Number of Visits");
+      },
     },
     {
       key: "First Visit",
       text: "First Visit",
       value: "First Visit",
+      onClick: () => {
+        setSortType("First Visit");
+      },
     },
     {
       key: "Most Recently Created",
       text: "Most Recently Created",
       value: "Most Recently Created",
+      onClick: () => {
+        setSortType("Most Recently Created");
+      },
     },
     {
       key: "Name",
       text: "Name",
       value: "Name",
+      onClick: () => {
+        setSortType("Name");
+      },
     },
   ];
   const Students = [
@@ -177,34 +198,41 @@ const List = ({ stylist }) => {
       key: "Teacher",
       text: "Teacher",
       value: "Teacher",
+      onClick: () => {
+        setSortType("Teacher");
+      },
     },
     {
-      key: "Semester",
-      text: "Semester",
-      value: "Semester",
+      key: "Session",
+      text: "Session",
+      value: "Session",
+      onClick: () => {
+        setSortType("Semester");
+      },
     },
     {
       key: "Year",
       text: "Year",
       value: "Year",
+      onClick: () => {
+        setSortType("Year");
+      },
     },
     {
       key: "Name",
       text: "Name",
       value: "Name",
+      onClick: () => {
+        setSortType("Name");
+      },
     },
   ];
 
   return (
     <>
-      {/*Commented div was for display tests when console.log didnt work */}
-      {/* <div>{`Cool: ${stylists.map((iteration) => {
-        return iteration.firstName;
-      })}`}</div>
-      <div>{`Not Cool: ${sortType}`}</div> */}
       {decide ? (
         <>
-          <div class="list">
+          <div className="list">
             <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
               <Grid.Row className="mini3">
                 <div style={{ textAlign: "center" }}>
@@ -214,9 +242,6 @@ const List = ({ stylist }) => {
                     fluid
                     selection
                     options={Students}
-                    onChange={() => {
-                      setSortType(Students.text);
-                    }}
                   />
                 </div>
               </Grid.Row>
@@ -241,7 +266,7 @@ const List = ({ stylist }) => {
                     <Segment>Teacher</Segment>
                   </Grid.Column>
                   <Grid.Column>
-                    <Segment>Semester</Segment>
+                    <Segment>Session</Segment>
                   </Grid.Column>
                   <Grid.Column>
                     <Segment>Year</Segment>
@@ -296,7 +321,7 @@ const List = ({ stylist }) => {
                           {/* Will eventually also show teacher */}
                           <Grid.Column
                             className="Indexcolumn"
-                            setStylist={stylists}
+                            setStylists={stylists}
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
@@ -308,7 +333,7 @@ const List = ({ stylist }) => {
 
                           <Grid.Column
                             className="Indexcolumn"
-                            setStylist={stylists}
+                            setStylists={stylists}
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
@@ -318,7 +343,7 @@ const List = ({ stylist }) => {
 
                           <Grid.Column
                             className="Indexcolumn"
-                            setStylist={stylists}
+                            setStylists={stylists}
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">

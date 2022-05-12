@@ -151,11 +151,35 @@ const addHours = async (req, res) => {
   }
 };
 
+const sortStylists = async (req, res) => {
+  const { sort } = req.query;
+  let outList;
+
+  try {
+    console.log(sort);
+    if (sort == "Teacher") {
+      outList = StylistModel.find({}).sort({ teacher: 1 });
+    }
+    // if (query == "?sort=Semester") {
+    //   StylistModel.find({}).sort({ "session": 1 });
+    // }
+    // if (query == "?sort=Year") {
+    //   StylistModel.find({}).sort({ "studentYear": 1 });
+    // }
+    // if (query == "?sort=Name") {
+    //   StylistModel.find({}).sort({ "firstName": 1 });
+    // }
+    res.status(200).json(outList);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const deleteStylist = async (req, res) => {
   const { userId } = req.params;
   try {
     const stylist = await StylistModel.deleteOne({ userId });
-    
+
     if (!stylist) {
       return res.status(404).send("No Stylist Found");
     }
@@ -170,13 +194,11 @@ const deleteStylist = async (req, res) => {
   }
 };
 
-
-
-
 module.exports = {
   createUser,
   postLoginUser,
   getAllUsers,
   addHours,
+  sortStylists,
   deleteStylist,
 };

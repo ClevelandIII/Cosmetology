@@ -202,4 +202,10 @@
 
 - Cleveland: Made it so that the first letter in the name is auto capitalized. Last visit now shows last visit. Working on dispatch for sort function, currently still unfinished.
 
-- Abdi: Absent.
+- Abdi: Absent
+
+5/11/2022
+
+- Cleveland: Still working on sort
+
+- Abdi: Password recovery, search
