@@ -335,7 +335,7 @@
 // // export default FormExampleClearOnSubmit;
 
 
-import { useEffect, useState } from "react";
+import {  useState, useRef } from "react";
 import {
   Form,
   Segment,
@@ -344,72 +344,40 @@ import {
   Message,
   Header,
 } from "semantic-ui-react";
-import catchErrors from "./util/catchErrors";
-import axios from "axios";
-import { setToken } from "./util/auth";
-import Cookies from "js-cookie";
+import { useAuth } from "../pages/components/contexts/AuthContext"
 import Link from "next/link";
 
-const ForgotPassword = () => {
-  const [stylist, setStylist] = useState({
-    email: "",
-    password: "",
-  });
+export default function ForgotPassword() {
+ 
 
-  const { email } = stylist;
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [formLoading, setFormLoading] = useState(false);
-  const [submitDisabled, setSubmitDisabled] = useState(true);
+  const emailRef = useRef()
+  const { resetPassword } = useAuth()
+  const [error, setError] = useState("")
+  const [message, setMessage] = useState("")
+  const [loading, setLoading] = useState(false)
 
   //* Handlers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setStylist((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    setFormLoading(true);
+  async function handleSubmit(e) {
+    e.preventDefault()
 
     try {
-      const res = await axios.post("/api/v1/user/login", { email });
-      setToken(res.data);
-      console.log("User Logged In");
-    } catch (error) {
-      console.log(error);
-      console.log("User Login Error");
-
-      const errorMsg = catchErrors(error);
-      setErrorMsg(errorMsg);
+      setMessage("")
+      setError("")
+      setLoading(true)
+      await resetPassword(emailRef.current.value)
+      setMessage("Check your inbox for further instructions")
+    } catch {
+      setError("Failed to reset password")
     }
 
-    setFormLoading(false);
-  };
-
-  //* UseEffects ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-  useEffect(() => {
-    setSubmitDisabled(!(email));
-  }, [stylist]);
-
-  useEffect(() => {
-    document.title = "Welcome Back";
-    const email = Cookies.get("stylistEmail");
-
-    if (email) setStylist((prev) => ({ ...prev, email }));
-  }, []);
-
- function resetPassword(email){
-   return auth.sendPasswordResetEmail(email)
- }
-
-
+    setLoading(false)
+  }
 
   return (
     <>
       <Divider hidden />
+      {error && <Alert variant="danger">{error}</Alert>}
 
       <Form
         loading={formLoading}
@@ -437,26 +405,14 @@ const ForgotPassword = () => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
-          <Form.Input
-            required
-            label="Email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            icon="envelope"
-            iconPosition="left"
-            type="email"
-          ></Form.Input>
+        <Form.Group id="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="email" ref={emailRef} required />
+            </Form.Group>
           <Divider hidden />
-          <Button
-            color="orange"
-            content="Reset Password"
-            icon="unlock alternate"
-            type="submit"
-            disabled={submitDisabled}
-            className="loginButton"
-          />
+          <Button disabled={loading} className="w-100" type="submit">
+              Reset Password
+            </Button>
         </Segment>
         <Link href="/login" ><p className="forgotPassword"> Login</p></Link>
       </Form>
@@ -464,4 +420,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+
