@@ -5,11 +5,13 @@ import {
   Segment,
   Button,
   Form,
+  Icon,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
+import { deleteStylist } from "../server/controllers/userProfile";
 
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
@@ -61,6 +63,12 @@ const List = ({ stylist }) => {
       console.log(error);
     }
   };
+
+  // function changeImage() {
+  //   document.getele("studentAvatar").src="https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png";
+  // }
+
+
 
   const sortStylist = async (sort) => {
     let query = "";
@@ -123,6 +131,9 @@ const List = ({ stylist }) => {
       console.log(`Error at getTeacher: ${error}`);
     }
   };
+
+
+
 
   useEffect(() => {
     initGetStylists();
@@ -278,9 +289,12 @@ const List = ({ stylist }) => {
                 <>
                   {stylists.map((stylist) => {
                     if (stylist.isTeacher === "false") {
+                      // const changeImage = () => {
+                      //   let delImg = "https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png"
+                      //   document.getElementById("changeImg").src = {delImg}
+                      // }
                       return (
                         <>
-                          <Link href={`/${stylist.userId}`}>
                             <Grid.Column
                               className="Indexcolumn clientListColumn"
                               setStylists={stylists}
@@ -290,8 +304,12 @@ const List = ({ stylist }) => {
                             >
                               <img
                                 className="listAvatar"
+                                id="changeImg"
                                 src={stylist.profilePicURL}
+                                // onMouseOver={changeImage()}
+                                // onClick={deleteStylist(stylist.userId)}
                               />
+                                  <Link href={`/${stylist.userId}`}>
                               <Segment
                                 style={{
                                   width: "70%",
@@ -299,7 +317,7 @@ const List = ({ stylist }) => {
                                   marginBottom: "1rem",
                                 }}
                                 floated="right"
-                              >
+                                >
                                 {stylist.firstName.length > 15 ||
                                 stylist.lastName.length > 15 ? (
                                   <>
@@ -314,9 +332,10 @@ const List = ({ stylist }) => {
                                     </p>
                                   </>
                                 )}
+                                {/* <Icon name="delete" color="red"></Icon> */}
                               </Segment>
+                                </Link>
                             </Grid.Column>
-                          </Link>
 
                           {/* Will eventually also show teacher */}
                           <Grid.Column
