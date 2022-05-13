@@ -15,6 +15,7 @@ import { deleteStylist } from "../server/controllers/userProfile";
 
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
+  const [tempS, setTempS] = useState([]);
   const [semester, setSemester] = useState([]);
   const [teachLink, setTeachLink] = useState([]);
   const [clients, setClients] = useState([]);
@@ -68,26 +69,6 @@ const List = ({ stylist }) => {
   //   document.getele("studentAvatar").src="https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png";
   // }
 
-
-
-  const sortStylist = async (sort) => {
-    let query = "";
-    if (sort) query = `?sort=${sortType}`;
-    try {
-      useEffect(async () => {
-        await axios.post(`http://localhost:3001/api/v1/stylists${query}`);
-      }, []);
-
-      //
-      const filteredResults = await axios.get(
-        `http://localhost:3001/api/v1/outList`
-      );
-      setStylists(filteredResults.data);
-    } catch (error) {
-      console.log(`Error at sortStylist: ${error}`);
-    }
-  };
-
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -131,16 +112,34 @@ const List = ({ stylist }) => {
       console.log(`Error at getTeacher: ${error}`);
     }
   };
-
-
-
-
   useEffect(() => {
     initGetStylists();
     getSemester();
     getClients();
     getTeacher();
   }, []);
+
+  const sortStylist = async (sort) => {
+    try {
+      if (sort != "") {
+        setTempS(sort);
+        useEffect(async () => {
+          await axios.post(`http://localhost:3001/api/v1/user/List`, { sort });
+        }, []);
+
+        const results = await axios.get(`http://localhost:3001/api/v1/List`);
+        //functional
+        setStylists(results.data);
+        //reading
+        setTempS(results.data);
+      } else {
+        console.log("no query");
+        setTempS(sort);
+      }
+    } catch (error) {
+      console.log(`Error at sortStylist: ${error}`);
+    }
+  };
 
   useEffect(() => {
     sortStylist(sortType);
@@ -204,6 +203,7 @@ const List = ({ stylist }) => {
       },
     },
   ];
+
   const Students = [
     {
       key: "Teacher",
@@ -241,6 +241,9 @@ const List = ({ stylist }) => {
 
   return (
     <>
+    {/*Again, helpful when console.log wont work */}
+      {/* <div>{`Its dangerous to display stuff alone. Take this: ${sortType}`}</div>
+      <div>{`Its dangerous to display stuff alone. Take this: ${tempS}`}</div> */}
       {decide ? (
         <>
           <div className="list">
@@ -295,21 +298,21 @@ const List = ({ stylist }) => {
                       // }
                       return (
                         <>
-                            <Grid.Column
-                              className="Indexcolumn clientListColumn"
-                              setStylists={stylists}
-                              style={{
-                                textAlign: "center",
-                              }}
-                            >
-                              <img
-                                className="listAvatar"
-                                id="changeImg"
-                                src={stylist.profilePicURL}
-                                // onMouseOver={changeImage()}
-                                // onClick={deleteStylist(stylist.userId)}
-                              />
-                                  <Link href={`/${stylist.userId}`}>
+                          <Grid.Column
+                            className="Indexcolumn clientListColumn"
+                            setStylists={stylists}
+                            style={{
+                              textAlign: "center",
+                            }}
+                          >
+                            <img
+                              className="listAvatar"
+                              id="changeImg"
+                              src={stylist.profilePicURL}
+                              // onMouseOver={changeImage()}
+                              // onClick={deleteStylist(stylist.userId)}
+                            />
+                            <Link href={`/${stylist.userId}`}>
                               <Segment
                                 style={{
                                   width: "70%",
@@ -317,7 +320,7 @@ const List = ({ stylist }) => {
                                   marginBottom: "1rem",
                                 }}
                                 floated="right"
-                                >
+                              >
                                 {stylist.firstName.length > 15 ||
                                 stylist.lastName.length > 15 ? (
                                   <>
@@ -334,8 +337,8 @@ const List = ({ stylist }) => {
                                 )}
                                 {/* <Icon name="delete" color="red"></Icon> */}
                               </Segment>
-                                </Link>
-                            </Grid.Column>
+                            </Link>
+                          </Grid.Column>
 
                           {/* Will eventually also show teacher */}
                           <Grid.Column

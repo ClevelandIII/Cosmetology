@@ -209,3 +209,9 @@
 - Cleveland: Still working on sort (may be unfixed errors in list page, just temp comment them)
 
 - Abdi: Password recovery, search
+
+5/12/2022
+
+- Cleveland: working on sort (A lot of the functionality is done, the rest is routing. If anyone who is decent with routing wants to help, it would be appriciated.)
+
+- Abdi: Password recovery and search
