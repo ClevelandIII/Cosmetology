@@ -212,6 +212,6 @@
 
 5/12/2022
 
-- Cleveland: working on sort (A lot of the functionality is done, the rest is routing. If anyone who is decent with routing wants to help, it would be appriciated.)
+- Cleveland: working on sort (A lot of the functionality is done, the rest is routing. If anyone who is decent with routing wants to help, it would be appreciated.)
 
 - Abdi: Password recovery and search
