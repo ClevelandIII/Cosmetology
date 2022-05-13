@@ -29,6 +29,10 @@ const List = ({ stylist }) => {
   const { addVisits, hairStyle, specialTreatment } = visit;
   const [clientUser, setClientUser] = useState("");
 
+  //for delete
+  const [deleteUser, setDeleteUser] = useState(false);
+  const [userIds, setUserIds] = useState("");
+
   const handleSubmit2 = async (e) => {
     e.preventDefault();
     setFormLoading(true);
@@ -51,7 +55,28 @@ const List = ({ stylist }) => {
     const { name, value, files } = e.target;
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
-  //
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormLoading(true);
+
+    try {
+      const res = await axios.delete(
+        `http://localhost:3001/api/v1/user/UserProfile`,
+        {
+          userIds,
+        }
+      );
+      setToken(res.data);
+      setDeleteUser(false);
+
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      setStylists(results.data);
+    } catch (error) {
+      console.log(`Error at handleSubmit: ${error}`);
+    }
+    setFormLoading(false);
+  };
 
   //For sort function. Currently unfinished
   const [sortType, setSortType] = useState("");
@@ -64,10 +89,6 @@ const List = ({ stylist }) => {
     }
   };
 
-  // function changeImage() {
-  //   document.getele("studentAvatar").src="https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png";
-  // }
-
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -77,26 +98,6 @@ const List = ({ stylist }) => {
       console.log(`Error at getClients: ${error}`);
     }
   };
-
-
-//Not working for frontend
-  const deleteStylist = async () => {
-    try {
-      useEffect(async () => {
-        await axios.delete(`http://localhost:3001/api/v1/user`, {
-          userId,
-        });
-
-          const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-          setStylists(results.data);
-
-      }, []);
-    } catch(err) {
-      console.log(err);
-    }
-  };
-
-
 
   const getSemester = async () => {
     try {
@@ -261,9 +262,6 @@ const List = ({ stylist }) => {
 
   return (
     <>
-      {/*Again, helpful when console.log wont work */}
-      {/* <div>{`Its dangerous to display stuff alone. Take this: ${sortType}`}</div>
-      <div>{`Its dangerous to display stuff alone. Take this: ${tempS}`}</div> */}
       {decide ? (
         <>
           <div className="list">
@@ -312,26 +310,55 @@ const List = ({ stylist }) => {
                 <>
                   {stylists.map((stylist) => {
                     if (stylist.isTeacher === "false") {
-                      // const changeImage = () => {
-                      //   let delImg = "https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png"
-                      //   document.getElementById("changeImg").src = {delImg}
-                      // }
                       return (
                         <>
                           <Grid.Column
                             className="Indexcolumn clientListColumn"
                             setStylists={stylists}
+                            key={stylist._id}
                             style={{
                               textAlign: "center",
                             }}
                           >
-                            <img
-                              className="listAvatar"
-                              id="changeImg"
-                              src={stylist.profilePicURL}
-                              // onMouseOver={changeImage()}
-                              onClick={deleteStylist}
-                            />
+                            <Popup
+                              trigger={
+                                <img
+                                  className="listAvatar"
+                                  id="changeImg"
+                                  src={
+                                    deleteUser
+                                      ? "https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png"
+                                      : stylist.profilePicURL
+                                  }
+                                />
+                              }
+                              hoverable
+                              pinned
+                              on="click"
+                              position="top left"
+                              onClick={() => {
+                                setUserIds(stylist._id);
+                              }}
+                            >
+                              <Form
+                                loading={formLoading}
+                                onSubmit={handleSubmit}
+                              >
+                                <h3>
+                                  Are you sure you want to delete{" "}
+                                  {stylist.firstName}? This action is
+                                  irreversible!!
+                                </h3>
+
+                                <Button
+                                  color="red"
+                                  inverted
+                                  content="I am sure"
+                                  type="submit"
+                                />
+                              </Form>
+                            </Popup>
+
                             <Link href={`/${stylist.userId}`}>
                               <Segment
                                 style={{
@@ -350,17 +377,20 @@ const List = ({ stylist }) => {
                                   </>
                                 ) : (
                                   <>
-                                    <p className="listLink">
+                                    <p
+                                      className="listLink"
+                                      style={{
+                                        justifyContent: "space-between",
+                                      }}
+                                    >
                                       {stylist.firstName} {stylist.lastName}
                                     </p>
                                   </>
                                 )}
-                                {/* <Icon name="delete" color="red"></Icon> */}
                               </Segment>
                             </Link>
                           </Grid.Column>
 
-                          {/* Will eventually also show teacher */}
                           <Grid.Column
                             className="Indexcolumn"
                             setStylists={stylists}
