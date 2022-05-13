@@ -12,12 +12,40 @@ import axios from "axios";
 import { setToken } from "./util/auth";
 import Cookies from "js-cookie";
 import Link from "next/link";
-
-const Login = () => {
+// import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { accountService } from "./_services/account.service";
+import { alertService } from "./_services/alert.service";
+const Login = ({ history, location }) => {
   const [stylist, setStylist] = useState({
     email: "",
     password: "",
   });
+
+  const initialValues = {
+    email: '',
+    password: ''
+};
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+      .email('Email is invalid')
+      .required('Email is required'),
+  password: Yup.string().required('Password is required')
+});
+
+function onSubmit({ email, password }, { setSubmitting }) {
+  alertService.clear();
+  accountService.login(email, password)
+      .then(() => {
+          const { from } = location.state || { from: { pathname: "/" } };
+          history.push(from);
+      })
+      .catch(error => {
+          setSubmitting(false);
+          alertService.error(error);
+      });
+}
 
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
@@ -99,12 +127,16 @@ const Login = () => {
           onDismiss={() => setErrorMsg(null)}
         />
         <Segment>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+          {({ errors, touched }) => (
+            <>
           <Form.Input
             required
             label="Email"
             placeholder="Email"
             name="email"
             value={email}
+            className={(errors.email && touched.email ? ' is-invalid' : '')}
             onChange={handleChange}
             icon="envelope"
             iconPosition="left"
@@ -115,6 +147,7 @@ const Login = () => {
             label="Password"
             placeholder="Password"
             name="password"
+            className={(errors.password && touched.password ? ' is-invalid' : '')}
             value={password}
             onChange={handleChange}
             icon={{
@@ -126,6 +159,9 @@ const Login = () => {
             iconPosition="left"
             type={showPassword ? "text" : "password"}
           />
+          </>
+          )}
+          </Formik>
           <Divider hidden />
           <Button
             color="orange"
