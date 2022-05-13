@@ -335,47 +335,62 @@
 // // export default FormExampleClearOnSubmit;
 
 
-import {  useState, useRef } from "react";
-import {
-  Form,
-  Segment,
-  Divider,
-  Button,
-  Message,
-  Header,
-} from "semantic-ui-react";
-import { useAuth } from "../pages/components/contexts/AuthContext"
-import Link from "next/link";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import accountService from '../pages/_services/account.service'
+import alertService from '../pages/_services/alert.service'
 
-export default function ForgotPassword() {
- 
+function ForgotPassword() {
+    const initialValues = {
+        email: ''
+    };
 
-  const emailRef = useRef()
-  const { resetPassword } = useAuth()
-  const [error, setError] = useState("")
-  const [message, setMessage] = useState("")
-  const [loading, setLoading] = useState(false)
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .email('Email is invalid')
+            .required('Email is required')
+    });
 
-  //* Handlers ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-  async function handleSubmit(e) {
-    e.preventDefault()
-
-    try {
-      setMessage("")
-      setError("")
-      setLoading(true)
-      await resetPassword(emailRef.current.value)
-      setMessage("Check your inbox for further instructions")
-    } catch {
-      setError("Failed to reset password")
+    function onSubmit({ email }, { setSubmitting }) {
+        alertService.clear();
+        accountService.forgotPassword(email)
+            .then(() => alertService.success('Please check your email for password reset instructions'))
+            .catch(error => alertService.error(error))
+            .finally(() => setSubmitting(false));
     }
 
-    setLoading(false)
-  }
+    return (
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+            {({ errors, touched, isSubmitting }) => (
+                <Form>
+                    <h3 className="card-header">Forgot Password</h3>
+                    <div className="card-body">
+                        <div className="form-group">
+                            <label>Email</label>
+                            <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                            <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                        </div>
+                        <div className="form-row">
+                            <div className="form-group col">
+                                <button type="submit" disabled={isSubmitting} className="btn btn-primary">
+                                    {isSubmitting && <span className="spinner-border spinner-border-sm mr-1"></span>}
+                                    Submit
+                                </button>
+                                <Link to="login" className="btn btn-link">Cancel</Link>
+                            </div>
+                        </div>
+                    </div>
+                </Form>
+            )}
+        </Formik>        
+    )
+}
 
-  return (
-    <>
+export { ForgotPassword }; 
+
+{/* <>
       <Divider hidden />
       {error && <Alert variant="danger">{error}</Alert>}
 
@@ -410,14 +425,11 @@ export default function ForgotPassword() {
               <Form.Control type="email" ref={emailRef} required />
             </Form.Group>
           <Divider hidden />
-          <Button disabled={loading} className="w-100" type="submit">
+          <Button disabled={formLoading} className="w-100" type="submit">
               Reset Password
             </Button>
         </Segment>
         <Link href="/login" ><p className="forgotPassword"> Login</p></Link>
       </Form>
-    </>
-  );
-};
-
+    </> */}
 

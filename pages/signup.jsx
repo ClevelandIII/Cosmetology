@@ -8,15 +8,21 @@ import {
   Select,
   Input,
   Checkbox,
+  
 } from "semantic-ui-react";
 import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
+import { Formik, Field,  ErrorMessage } from 'formik';
+// import { accountService } from "./_services/account.service";
+// import { alertService } from "./_services/alert.service";
+
+import * as Yup from 'yup';
 let cancel;
 
-const Signup = () => {
+const Signup = ({history}) => {
   const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -31,6 +37,42 @@ const Signup = () => {
     teachId: "",
     // userId: "",
   });
+
+  const initialValues = {
+    
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+};
+
+  
+  const validationSchema = Yup.object().shape({
+
+    firstName: Yup.string()
+        .required('First Name is required'),
+    lastName: Yup.string()
+        .required('Last Name is required'),
+    email: Yup.string()
+        .email('Email is invalid')
+        .required('Email is required'),
+    password: Yup.string()
+        .min(6, 'Password must be at least 6 characters')
+        .required('Password is required'),
+});
+
+function onSubmit(fields, { setStatus, setSubmitting }) {
+  setStatus();
+  accountService.register(fields)
+      .then(() => {
+          alertService.success('Registration successful, please check your email for verification instructions', { keepAfterRouteChange: true });
+          history.push('login');
+      })
+      .catch(error => {
+          setSubmitting(false);
+          alertService.error(error);
+      });
+}
 
   const {
     firstName,
@@ -203,6 +245,7 @@ const Signup = () => {
 
   return (
     <>
+    
       {/* <iframe
         src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
         autoPlay
@@ -250,7 +293,11 @@ const Signup = () => {
             header="There was an Error!"
             icon="meh"
           />
+          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+          {({ errors, touched }) => (
+            <>
           <Form.Input
+          className={(errors.firstName && touched.firstName ? ' is-invalid' : '')} 
             required
             label="First name"
             placeholder="John"
@@ -266,6 +313,7 @@ const Signup = () => {
             label="Last name"
             placeholder="Doe"
             name="lastName"
+            className={(errors.lastName && touched.lastName ? ' is-invalid' : '')}
             value={lastName}
             onChange={handleChange}
             icon="user"
@@ -277,6 +325,7 @@ const Signup = () => {
             label="Email"
             placeholder="johndoe@example.com"
             name="email"
+            className={(errors.email && touched.email ? ' is-invalid' : '')}
             value={email}
             onChange={handleChange}
             icon="envelope"
@@ -289,6 +338,7 @@ const Signup = () => {
             label="Password"
             placeholder="password"
             name="password"
+            className={(errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')}
             value={password}
             onChange={handleChange}
             icon={{
@@ -300,6 +350,9 @@ const Signup = () => {
             iconPosition="left"
             type={showPassword ? "text" : "password"}
           />
+          </>
+          )}
+          </Formik>
           <Form.Input
             required
             label="Teacher"
@@ -422,6 +475,7 @@ const Signup = () => {
         </Segment>
       </Form>
       <Divider hidden />
+      
     </>
   );
 };

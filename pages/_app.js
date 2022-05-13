@@ -16,6 +16,24 @@ function MyApp({ Component, pageProps }) {
 }
 
 
+import { Router } from 'react-router-dom';
+import { render } from 'react-dom';
+import { history } from '../pages/_helpers/history';
+import { accountService } from "./_services/account.service";
+import { configureFakeBackend } from '../pages/_helpers/fake-backend';
+configureFakeBackend();
+
+// attempt silent token refresh before startup
+accountService.refreshToken().finally(startApp);
+
+function startApp() { 
+  render(
+      <Router history={history}>
+          <Layout />
+      </Router>,
+      document.getElementById('app')
+  );
+}
 
 MyApp.getInitialProps = async ({ ctx, Component }) => {
   const { token } = parseCookies(ctx);
