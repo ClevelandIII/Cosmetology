@@ -3,7 +3,9 @@ import { alertService } from '../_services/alert.service';
 
 // array in local storage for registered users
 const usersKey = 'react-signup-verification-boilerplate-users';
+
 let users = JSON.parse(localStorage.getItem(usersKey)) || [];
+
 
 export function configureFakeBackend() {
     let realFetch = window.fetch;

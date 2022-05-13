@@ -121,6 +121,14 @@ a.item :hover {
   width: 100%;
 }
 
+.ui.modal.scrolling{
+/* margin-top: auto !important; */
+margin: 0 auto;
+align-self: center;
+align-content: center;
+text-align: center;
+}
+
 /*width sizing */
 
 /* @media screen and (min-width: 900px) { */
@@ -137,6 +145,18 @@ a.item :hover {
   cursor: pointer !important;
 }
 
+.ui.modal {
+  margin-top: 0 !important;
+  }
+
+.ui.page.modals.transition.visible {
+  display: flex !important;
+}
+
+/* .brokeDivider{
+  visibility: hidden !important;
+  color: red Im !important;
+  } */
 
 
 @media screen and (min-width: 800px) {
@@ -148,6 +168,7 @@ a.item :hover {
     border: black solid 2px;
     border-radius: 50px;
   }
+
 
   .studentListName {
     position: relative !important;

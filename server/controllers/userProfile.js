@@ -152,9 +152,9 @@ const addHours = async (req, res) => {
 };
 
 const deleteStylist = async (req, res) => {
-  const { userId } = req.params;
+  const { userId } = req.body;
   try {
-    const stylist = await StylistModel.deleteOne({ userId });
+    const stylist = await StylistModel.findOneAndDelete({userId})
 
     if (!stylist) {
       return res.status(404).send("No Stylist Found");

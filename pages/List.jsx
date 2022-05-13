@@ -11,7 +11,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 const defaultProfilePicURL = require("../server/util/defaultPic");
-import { deleteStylist } from "../server/controllers/userProfile";
+// import { deleteStylist } from "../server/controllers/userProfile";
 
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
@@ -20,7 +20,6 @@ const List = ({ stylist }) => {
   const [teachLink, setTeachLink] = useState([]);
   const [clients, setClients] = useState([]);
   const [formLoading, setFormLoading] = useState(false);
-
   //For adding visits
   const [visit, setVisit] = useState({
     addVisits: "",
@@ -78,6 +77,27 @@ const List = ({ stylist }) => {
       console.log(`Error at getClients: ${error}`);
     }
   };
+
+
+//Not working for frontend
+  const deleteStylist = async () => {
+    try {
+      useEffect(async () => {
+        await axios.delete(`http://localhost:3001/api/v1/user`, {
+          userId,
+        });
+
+          const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+          setStylists(results.data);
+
+      }, []);
+    } catch(err) {
+      console.log(err);
+    }
+  };
+
+
+
   const getSemester = async () => {
     try {
       let currentDate = new Date();
@@ -241,7 +261,7 @@ const List = ({ stylist }) => {
 
   return (
     <>
-    {/*Again, helpful when console.log wont work */}
+      {/*Again, helpful when console.log wont work */}
       {/* <div>{`Its dangerous to display stuff alone. Take this: ${sortType}`}</div>
       <div>{`Its dangerous to display stuff alone. Take this: ${tempS}`}</div> */}
       {decide ? (
@@ -310,7 +330,7 @@ const List = ({ stylist }) => {
                               id="changeImg"
                               src={stylist.profilePicURL}
                               // onMouseOver={changeImage()}
-                              // onClick={deleteStylist(stylist.userId)}
+                              onClick={deleteStylist}
                             />
                             <Link href={`/${stylist.userId}`}>
                               <Segment

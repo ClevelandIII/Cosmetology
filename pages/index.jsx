@@ -169,6 +169,7 @@ const index = ({ stylist, client }) => {
             }}
           >
             <>
+            <Divider hidden></Divider>
               <Grid.Column>
                 <Segment>Client</Segment>
               </Grid.Column>
@@ -207,16 +208,18 @@ const index = ({ stylist, client }) => {
 
                       {client._id === clientModal ? (
                         <Modal
+                      
                           centered={false}
+                          // textAlign="center"
                           onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                           open={open}
                           
                         >
+
                           <>
 
                            
 
-                            {/* <Divider hidden style={{ height: "0.1px" }} /> */}
                             <Modal.Content
                               style={{position: "absolute", top:"500%"}}
                               className="indexClientInfo"
@@ -267,7 +270,9 @@ const index = ({ stylist, client }) => {
                                 </div>
                               </Segment>
                             </Modal.Content>
-                            <Divider clearing hidden className="zIndex"/>
+                            {/* <div className="ui hidden"></div> */}
+                            {/* <Divider  hidden className="zIndex"/> */}
+                            
                             {/* <Modal.Actions
                               style={{
                                 position: "relative",
@@ -289,7 +294,9 @@ const index = ({ stylist, client }) => {
                           {/* ) : (
                         <></>
                       )} */}
+                      {/* <br /> */}
                         </Modal>
+                        
                       ) : (
                         <></>
                       )}
