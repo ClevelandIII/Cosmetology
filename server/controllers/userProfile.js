@@ -152,9 +152,10 @@ const addHours = async (req, res) => {
 };
 
 const deleteStylist = async (req, res) => {
-  const { userId } = req.body;
+  const { userIds } = req.body;
   try {
-    const stylist = await StylistModel.findOneAndDelete({userId})
+    console.log(`This is: ${userIds}`);
+    const stylist = await StylistModel.findOneAndDelete({ userIds });
 
     if (!stylist) {
       return res.status(404).send("No Stylist Found");
@@ -164,7 +165,7 @@ const deleteStylist = async (req, res) => {
       stylist,
     });
   } catch (error) {
-    // console.log(userId);
+    console.log(`Failed userIds: ${userIds}`);
     // console.log(error, userId);
     return res.status(500).send("Error @deleteStylist");
   }
