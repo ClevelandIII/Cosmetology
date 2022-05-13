@@ -295,18 +295,17 @@ div.ui.page.modals.dimmer.transition.visible.active {
   background-color: rgba(255, 255, 255, 0);
 }
 
-.indexClientInfo {
-  position: absolute !important;
-  top: 1000% !important;
+/* .indexClientInfo { */
+  
  
   /* border-bottom: 10px solid orange;
   border-top: 10px solid orange; */
   /* height: 45rem; */
-  height: 100rem;
+  /* height: 100rem; */
   /* background: orange;
   color: black;*/
   /* overflow-x: hidden; */
-}
+/* } */
 
 
 .forgotPassword{
@@ -354,13 +353,21 @@ color: orange;
   .indexClientInfo {
     border-bottom: 10px solid orange;
     border-top: 10px solid orange;
-    height: 35rem;
+    height: 100rem;
     background: orange;
-    color: black;
+    color: rgb(0, 0, 0);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    position: absolute  !important;
+  top: 1000% !important;
+  
   }
 }
+
+/* .zIndex{
+z-index: -1000000000000000000000000000000000000000000000000000;
+} */
 
 @media screen and (min-height: 800px) {
   .clientCreatorHandheld {

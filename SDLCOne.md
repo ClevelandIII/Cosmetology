@@ -291,6 +291,15 @@ Jason Enciso:
 
 Reid Gill: working on centering indexClientInfo 
 
-Daniel: Finished delete stylist function (fixed bug that wouldn’t grad id”
+Daniel: Finished delete stylist function (fixed bug that wouldn’t grad id”)
 
 Joshua Ruvalcaba: absent
+
+5/12/22
+Jason Enciso:  
+
+Reid Gill: done with centering indexClientInfo (i just can't get rid of the Divider but its able to be read)
+
+Daniel: attempting to get deleteStylist to work on list page
+
+Joshua Ruvalcaba: 

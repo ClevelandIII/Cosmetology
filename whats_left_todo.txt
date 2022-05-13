@@ -13,7 +13,6 @@ I will also say, I would add names if you are doing something. That way there is
 
 • iPad Formatting where necessary - Reid
 
-• remove the need to use back2top button to see client info on the homepage, it should just appear in the center of your screen -Reid
 
 
 

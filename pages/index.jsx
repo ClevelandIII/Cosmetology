@@ -214,28 +214,16 @@ const index = ({ stylist, client }) => {
                         >
                           <>
 
-                            {/* <Modal
-                              trigger={<Button>Show Modal</Button>}
-                              header="Reminder!"
-                              actions={[
-                                "Snooze",
-                                {
-                                  key: "done",
-                                  content: "Done",
-                                  positive: true,
-                                },
-                              ]}
-                            >
-                              <p>hi there</p>
-                            </Modal> */}
+                           
 
                             {/* <Divider hidden style={{ height: "0.1px" }} /> */}
                             <Modal.Content
-                              style={{ position: "absolute", top: "1000%" }}
+                              style={{position: "absolute", top:"500%"}}
                               className="indexClientInfo"
                               scrolling
                             >
-                              <p>
+                              <Divider clearing  style={{position: "absolute", top:"500%"}}/>
+                              <Segment>
                                 <h3>First Name: {client.firstName}</h3>
                                 <h3>Last Name: {client.lastName}</h3>
                                 <h3>
@@ -277,16 +265,16 @@ const index = ({ stylist, client }) => {
                                     );
                                   })}
                                 </div>
-                              </p>
+                              </Segment>
                             </Modal.Content>
-                            {/* <Divider hidden /> */}
-                            <Modal.Actions
+                            <Divider clearing hidden className="zIndex"/>
+                            {/* <Modal.Actions
                               style={{
                                 position: "relative",
                                 top: "1000%",
                                 backgroundColor: "ffffff00",
                               }}
-                            >
+                            > */}
                               {/* <Button
                               // style={{ position: "absolute", top: "1000%" }}
                                 content="Proceed"
@@ -296,7 +284,7 @@ const index = ({ stylist, client }) => {
                                 }
                                 warning
                               /> */}
-                            </Modal.Actions>
+                            {/* </Modal.Actions> */}
                           </>
                           {/* ) : (
                         <></>
