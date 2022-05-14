@@ -32,7 +32,7 @@ const dev = process.env.NODE_ENV !== "production";
 //! there are giant error warnings that pop up when in dev.
 const nextApp = next({ dev });
 
-//! this is a built in next router that will handle ALL requests made to the server
+//! Handler is a built in next router that will handle ALL requests made to the server
 const handler = nextApp.getRequestHandler();
 
 //* MIDDLEWARES */
@@ -50,7 +50,6 @@ const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
 const forgotRoutes = require("./server/routes/forgotPassword")
 const searchRoutes = require("./server/routes/searchRoutes");
-const listRoute = require("./server/routes/listRoute")
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
@@ -61,7 +60,6 @@ app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
 app.use("/api/v1/ForgotPassword", forgotRoutes);
 app.use("/api/v1/search", searchRoutes);
-app.use("/api/v1/List", listRoute);
 
 //*SOCKETS */
 

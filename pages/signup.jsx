@@ -276,7 +276,7 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
         onSubmit={handleSubmit}
       >
         <Segment>
-          {/* This is where you drag and drop/upload your profile picture */}
+          {/* Where you drag and drop/upload your profile picture */}
           <DragNDrop
             inputRef={inputRef}
             handleChange={handleChange}

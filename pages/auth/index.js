@@ -12,7 +12,7 @@ router.post("/signup", (req, res) => {
             email: req.body.email,
             password: hashed,
         };
-        createUser(user);
+        createUser(user); 
         res.status(201).json();
     })
 });

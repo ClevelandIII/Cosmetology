@@ -155,6 +155,11 @@ const deleteStylist = async (req, res) => {
   const { userIds } = req.body;
   try {
     console.log(`This is: ${userIds}`);
+
+    if (userIds === undefined) {
+      return res.status(404).send("No UserId");
+    }
+
     const stylist = await StylistModel.findOneAndDelete({ userIds });
 
     if (!stylist) {
