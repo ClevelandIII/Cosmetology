@@ -298,8 +298,8 @@ Joshua Ruvalcaba: absent
 5/12/22
 Jason Enciso:  
 
-Reid Gill: done with centering indexClientInfo (i just can't get rid of the Divider but its able to be read)
+Reid Gill: was going to turn the hair menu options in to some kind of dropbox but scraped the idea
 
 Daniel: attempting to get deleteStylist to work on list page
 
-Joshua Ruvalcaba: 
+Joshua Ruvalcaba: helping Daniel and Reid
