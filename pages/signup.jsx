@@ -8,21 +8,13 @@ import {
   Select,
   Input,
   Checkbox,
-  
 } from "semantic-ui-react";
 import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
-import { setToken } from "./util/auth";
-import { Formik, Field,  ErrorMessage } from 'formik';
-// import { accountService } from "./_services/account.service";
-// import { alertService } from "./_services/alert.service";
 
-import * as Yup from 'yup';
-let cancel;
-
-const Signup = ({history}) => {
+const Signup = () => {
   const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -37,42 +29,6 @@ const Signup = ({history}) => {
     teachId: "",
     // userId: "",
   });
-
-  const initialValues = {
-    
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: ''
-};
-
-  
-  const validationSchema = Yup.object().shape({
-
-    firstName: Yup.string()
-        .required('First Name is required'),
-    lastName: Yup.string()
-        .required('Last Name is required'),
-    email: Yup.string()
-        .email('Email is invalid')
-        .required('Email is required'),
-    password: Yup.string()
-        .min(6, 'Password must be at least 6 characters')
-        .required('Password is required'),
-});
-
-function onSubmit(fields, { setStatus, setSubmitting }) {
-  setStatus();
-  accountService.register(fields)
-      .then(() => {
-          alertService.success('Registration successful, please check your email for verification instructions', { keepAfterRouteChange: true });
-          history.push('login');
-      })
-      .catch(error => {
-          setSubmitting(false);
-          alertService.error(error);
-      });
-}
 
   const {
     firstName,
@@ -110,7 +66,7 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
   //teacher for teacher
   const [checkbox, setCheckbox] = useState("");
   const [selectedTeacher, setSelectedTeacher] = useState(false);
-  const [teacherChecked, setTeacherChecked] = useState(false)
+  const [teacherChecked, setTeacherChecked] = useState(false);
 
   //* Functions */
 
@@ -245,7 +201,6 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
 
   return (
     <>
-    
       {/* <iframe
         src="https://streamable.com/e/rjm3r4?autoplay=1&nocontrols=1"
         autoPlay
@@ -293,11 +248,9 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             header="There was an Error!"
             icon="meh"
           />
-          <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-          {({ errors, touched }) => (
-            <>
+
           <Form.Input
-          className={(errors.firstName && touched.firstName ? ' is-invalid' : '')} 
+            
             required
             label="First name"
             placeholder="John"
@@ -313,7 +266,6 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             label="Last name"
             placeholder="Doe"
             name="lastName"
-            className={(errors.lastName && touched.lastName ? ' is-invalid' : '')}
             value={lastName}
             onChange={handleChange}
             icon="user"
@@ -325,7 +277,6 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             label="Email"
             placeholder="johndoe@example.com"
             name="email"
-            className={(errors.email && touched.email ? ' is-invalid' : '')}
             value={email}
             onChange={handleChange}
             icon="envelope"
@@ -338,7 +289,6 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             label="Password"
             placeholder="password"
             name="password"
-            className={(errors.confirmPassword && touched.confirmPassword ? ' is-invalid' : '')}
             value={password}
             onChange={handleChange}
             icon={{
@@ -350,9 +300,7 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             iconPosition="left"
             type={showPassword ? "text" : "password"}
           />
-          </>
-          )}
-          </Formik>
+
           <Form.Input
             required
             label="Teacher"
@@ -365,7 +313,7 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
           >
             {stylists.map((iteration) => {
               if (iteration.isTeacher === "true") {
-                teachId = iteration.userId
+                teachId = iteration.userId;
                 return (
                   <>
                     {selectedTeacher ? (
@@ -401,7 +349,9 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
             <div style={{ textAlign: "center" }}>
               <Button
                 onClick={() => {
-                  setSelectedTeacher(false), setCheckbox(""), setTeacherChecked(false)
+                  setSelectedTeacher(false),
+                    setCheckbox(""),
+                    setTeacherChecked(false);
                 }}
               >{`You have selected ${checkbox} as your teacher. Press this button to reset this choice.`}</Button>
             </div>
@@ -475,7 +425,6 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
         </Segment>
       </Form>
       <Divider hidden />
-      
     </>
   );
 };

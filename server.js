@@ -3,6 +3,8 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
+const authRouter = require("./pages/auth");
 // const http = require("http");
 // const bodyParser = require("body-parser");
 // const route = require("./server/routes");
@@ -40,7 +42,9 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use("/auth", authRouter);
 //* ROUTERS */
 // const profileRoutes = require("./server/routes/profileRoute");
 const userRoute = require("./server/routes/userRoute");
@@ -59,7 +63,7 @@ app.use("/api/v1/client", clientRoute);
 app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
-app.use("/api/v1/ForgotPassword", forgotRoutes);
+app.use("forgot", forgotRoutes);
 app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/List", listRoute);
 
