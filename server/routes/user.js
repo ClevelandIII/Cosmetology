@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
         res.send(user)
     } catch(error){
         res.send("An error occured");
-        console.log(error);
+        console.log(`Error at User.js ${error}`);
     }
 })
 

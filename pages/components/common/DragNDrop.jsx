@@ -36,15 +36,12 @@ const DragNDrop = ({
               e.preventDefault();
               setHighlighted(true);
 
-              // console.log(e.dataTransfer.files);
-
               const droppedFile = e.dataTransfer.files[0];
               setMedia(droppedFile);
               setMediaPreview(URL.createObjectURL(droppedFile));
             }}
             onClick={() => {
               inputRef.current.click();
-              // console.log(mediaPreview);
             }}
           >
             {mediaPreview === null ? (

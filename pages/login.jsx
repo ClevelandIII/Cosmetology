@@ -45,7 +45,7 @@ const Login = ({ history, location }) => {
       setToken(res.data);
       console.log("User Logged In");
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit ${error}`);
       console.log("User Login Error");
 
       const errorMsg = catchErrors(error);

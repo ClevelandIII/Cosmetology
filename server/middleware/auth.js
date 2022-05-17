@@ -15,7 +15,7 @@ const authMiddleware = (req, res, next) => {
     req.stylistId = stylistId;
     next();
   } catch (error) {
-    console.log(error);
+    console.log(`Error at authMiddleware ${error}`);
     return res.status(401).send("Unauthorized");
   }
 };

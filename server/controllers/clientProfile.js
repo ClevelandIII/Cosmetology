@@ -80,7 +80,7 @@ const createClient = async (req, res) => {
           `http://localhost:3001/api/v1/stylists`
         );
         stylists = results.data;
-        console.log(stylists);
+        console.log(`Stylists: ${stylists}`);
 
         let Testr = stylists.find(
           (stylist) => client.stylistName === stylist.email
@@ -96,7 +96,6 @@ const createClient = async (req, res) => {
         ]);
         console.log(`stylist`, stylist);
         await stylist.save();
-        // console.log(`stylist2`, stylist);
         return res.status(200).send("All Good");
 
         // stylists.map((stylist) => {
@@ -105,20 +104,18 @@ const createClient = async (req, res) => {
         //       stylist.pastClients.push(
         //         `${client.firstName} + ${client.lastName} + ${client.dateCreated}`,
         //       );
-        //       console.log(stylist.pastClients);
-        //       console.log(stylist);
         //     }
         //   } catch (error) {
         //     return res.status(500).send("Server Error");
         //   }
         // });
       } catch (error) {
-        console.log(error);
+        console.log(`Error at getStylist ${error}`);
       }
     };
     getStylists();
   } catch (error) {
-    console.log(error);
+    console.log(`Error at createClient ${error}`);
     return res.status(500).send("Server Error");
   }
 };
@@ -129,7 +126,7 @@ const getAllClients = async (req, res) => {
     clients = await ClientModel.find();
     return res.status(200).json(clients);
   } catch (error) {
-    console.log(error);
+    console.log(`Error at getAllClients ${error}`);
     return res.status(500).send("Server Error @ getAllClients");
   }
 };
@@ -144,7 +141,7 @@ const addVisit = async (req, res) => {
     await client.save();
     return res.status(200).send("All Good");
   } catch (error) {
-    console.log(error);
+    console.log(`Error at addVisit ${error}`);
   }
 };
 module.exports = { createClient, getAllClients, addVisit };

@@ -3,6 +3,7 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
+const morgan  = require('morgan')
 // const http = require("http");
 // const bodyParser = require("body-parser");
 // const route = require("./server/routes");
@@ -40,6 +41,7 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+app.use(morgan('short'))
 
 //* ROUTERS */
 // const profileRoutes = require("./server/routes/profileRoute");
@@ -70,7 +72,7 @@ connectDB();
 nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));
   app.listen(PORT, (err) => {
-    if (err) console.log(err);
+    if (err) console.log(`err at nextApp ${err}`);
     else console.log(`Server listening @ port ${PORT}`);
   });
 });

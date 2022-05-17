@@ -6,7 +6,7 @@ import { Button, Icon } from "semantic-ui-react";
 const ScrollButton = () => {
 	const { onScroll, onVisbile, visible } = props
 
-	console.log(visible)
+    console.log(`Visible: ${visible}`);
 	if (typeof window === 'object') window.addEventListener('scroll', onVisbile)
 
 	return (

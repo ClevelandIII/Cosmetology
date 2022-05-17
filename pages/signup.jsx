@@ -229,9 +229,9 @@ function onSubmit(fields, { setStatus, setSubmitting }) {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
-      console.log(results);
+      console.log(`results: ${results}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getStylists ${error}`);
     }
   };
   useEffect(() => {

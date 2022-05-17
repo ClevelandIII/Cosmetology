@@ -75,17 +75,16 @@ const index = ({ stylist, client }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`clients: ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients ${error}`);
     }
   };
 
   useEffect(() => {
     getClients();
-    // console.log(stylists);
   }, []);
-  console.log(clients);
+  console.log(`clients: ${clients}`);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
 
