@@ -30,7 +30,6 @@ function exampleReducer(state, action) {
   }
 }
 
-//This is the navbar. Of course, search and sign out dont currently work, but the sidebar button does.
 function NormNavbar({ stylist }) {
   const VerticalSidebar = ({ animation, visible }) => (
     <Sidebar

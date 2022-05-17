@@ -25,9 +25,6 @@ const getProfile = async (req, res) => {
   }
 };
 
-
-
-
 const getTeacher = async (req, res) => {
   const { userId } = req.params;
   try {

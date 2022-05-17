@@ -95,7 +95,7 @@
 
 4/15/2022
 
-- Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (this is so that every stylist will have a list of clients).
+- Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (so that every stylist will have a list of clients).
 
 - Abdi: Client Profile (displaying client on stylist profile).
 

@@ -298,8 +298,27 @@ Joshua Ruvalcaba: absent
 5/12/22
 Jason Enciso:  
 
-Reid Gill: done with centering indexClientInfo (i just can't get rid of the Divider but its able to be read)
+Reid Gill: was going to turn the hair menu options in to some kind of dropbox but scraped the idea
 
 Daniel: attempting to get deleteStylist to work on list page
 
-Joshua Ruvalcaba: 
+Joshua Ruvalcaba: helping Daniel and Reid
+
+5/13/22
+Jason Enciso:  general bug fixes
+
+Reid Gill: done with centering indexClientInfo (i just can't get rid of the Divider but its able to be read)
+
+Daniel: Backend for delete is complete and works in postman, frontend needs to be worked on
+
+Joshua Ruvalcaba: Helping with delete function
+
+
+5/16/22
+Jason Enciso: absent
+
+Reid Gill: trying to set up the vercel (this may not work out fill free to try yourself)
+
+Daniel: attempting to get deleteStylist to work on list page
+
+Joshua Ruvalcaba: helping Daniel and Reid

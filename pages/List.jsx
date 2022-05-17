@@ -59,7 +59,7 @@ const List = ({ stylist }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormLoading(true);
-
+    console.log('tset',userIds);
     try {
       const res = await axios.delete(
         `http://localhost:3001/api/v1/user/UserProfile`,
@@ -93,7 +93,7 @@ const List = ({ stylist }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(`This is clients: ${clients}`);
+      console.log(`Clients: ${clients}`);
     } catch (error) {
       console.log(`Error at getClients: ${error}`);
     }
@@ -262,6 +262,7 @@ const List = ({ stylist }) => {
 
   return (
     <>
+    <div>{userIds}</div>
       {decide ? (
         <>
           <div className="list">
@@ -320,6 +321,7 @@ const List = ({ stylist }) => {
                               textAlign: "center",
                             }}
                           >
+                            {/*On monday, remove the form from the popup */}
                             <Popup
                               trigger={
                                 <img
@@ -336,9 +338,6 @@ const List = ({ stylist }) => {
                               pinned
                               on="click"
                               position="top left"
-                              onClick={() => {
-                                setUserIds(stylist._id);
-                              }}
                             >
                               <Form
                                 loading={formLoading}
