@@ -1,7 +1,7 @@
 const express = require('express').Router;
 const router = express();
 const bcrypt = require("bcrypt");
-const uuidv1 = require('uuid/v1');
+const uuidv1 = require('uuidv1');
 const { createUser, getUser, updateUser } = require("../model/users");
 const { getResetRequest, createResetRequest } = require("../model/resetRequests");
 const sendResetLink = require("./sendEmail");
