@@ -121,6 +121,14 @@ a.item :hover {
   width: 100%;
 }
 
+.ui.modal.scrolling{
+/* margin-top: auto !important; */
+margin: 0 auto;
+align-self: center;
+align-content: center;
+text-align: center;
+}
+
 /*width sizing */
 
 /* @media screen and (min-width: 900px) { */
@@ -137,6 +145,18 @@ a.item :hover {
   cursor: pointer !important;
 }
 
+.ui.modal {
+  margin-top: 0 !important;
+  }
+
+.ui.page.modals.transition.visible {
+  display: flex !important;
+}
+
+/* .brokeDivider{
+  visibility: hidden !important;
+  color: red Im !important;
+  } */
 
 
 @media screen and (min-width: 800px) {
@@ -148,6 +168,7 @@ a.item :hover {
     border: black solid 2px;
     border-radius: 50px;
   }
+
 
   .studentListName {
     position: relative !important;
@@ -295,18 +316,17 @@ div.ui.page.modals.dimmer.transition.visible.active {
   background-color: rgba(255, 255, 255, 0);
 }
 
-.indexClientInfo {
-  position: absolute !important;
-  top: 1000% !important;
+/* .indexClientInfo { */
+  
  
   /* border-bottom: 10px solid orange;
   border-top: 10px solid orange; */
   /* height: 45rem; */
-  height: 100rem;
+  /* height: 100rem; */
   /* background: orange;
   color: black;*/
   /* overflow-x: hidden; */
-}
+/* } */
 
 
 .forgotPassword{
@@ -354,13 +374,21 @@ color: orange;
   .indexClientInfo {
     border-bottom: 10px solid orange;
     border-top: 10px solid orange;
-    height: 35rem;
+    height: 100rem;
     background: orange;
-    color: black;
+    color: rgb(0, 0, 0);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    position: absolute  !important;
+  top: 1000% !important;
+  
   }
 }
+
+/* .zIndex{
+z-index: -1000000000000000000000000000000000000000000000000000;
+} */
 
 @media screen and (min-height: 800px) {
   .clientCreatorHandheld {

@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 
 const config = new AWS.Config({
     region: "us-east-1",
-    secretAccessKey: process.env.SECRET,
+    secretAccessKey: process.env.JWT_SECRET,
     accessKeyId: process.env.KEY_ID
 });
 const ses = new AWS.SES(config);
@@ -31,7 +31,7 @@ function sendResetLink(email, id) {
 
     ses.sendEmail(params, (err) => {
         if (err) {
-            console.log(err);
+            console.log(`Error at sendResetLink ${err}`);
         }
     });
 }

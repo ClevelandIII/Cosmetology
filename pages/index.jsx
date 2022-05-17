@@ -75,17 +75,16 @@ const index = ({ stylist, client }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`clients: ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients ${error}`);
     }
   };
 
   useEffect(() => {
     getClients();
-    // console.log(stylists);
   }, []);
-  console.log(clients);
+  console.log(`clients: ${clients}`);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
 
@@ -169,6 +168,7 @@ const index = ({ stylist, client }) => {
             }}
           >
             <>
+            <Divider hidden></Divider>
               <Grid.Column>
                 <Segment>Client</Segment>
               </Grid.Column>
@@ -207,35 +207,25 @@ const index = ({ stylist, client }) => {
 
                       {client._id === clientModal ? (
                         <Modal
+                      
                           centered={false}
+                          // textAlign="center"
                           onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                           open={open}
                           
                         >
+
                           <>
 
-                            {/* <Modal
-                              trigger={<Button>Show Modal</Button>}
-                              header="Reminder!"
-                              actions={[
-                                "Snooze",
-                                {
-                                  key: "done",
-                                  content: "Done",
-                                  positive: true,
-                                },
-                              ]}
-                            >
-                              <p>hi there</p>
-                            </Modal> */}
+                           
 
-                            {/* <Divider hidden style={{ height: "0.1px" }} /> */}
                             <Modal.Content
-                              style={{ position: "absolute", top: "1000%" }}
+                              style={{position: "absolute", top:"500%"}}
                               className="indexClientInfo"
                               scrolling
                             >
-                              <p>
+                              <Divider clearing  style={{position: "absolute", top:"500%"}}/>
+                              <Segment>
                                 <h3>First Name: {client.firstName}</h3>
                                 <h3>Last Name: {client.lastName}</h3>
                                 <h3>
@@ -277,16 +267,18 @@ const index = ({ stylist, client }) => {
                                     );
                                   })}
                                 </div>
-                              </p>
+                              </Segment>
                             </Modal.Content>
-                            {/* <Divider hidden /> */}
-                            <Modal.Actions
+                            {/* <div className="ui hidden"></div> */}
+                            {/* <Divider  hidden className="zIndex"/> */}
+                            
+                            {/* <Modal.Actions
                               style={{
                                 position: "relative",
                                 top: "1000%",
                                 backgroundColor: "ffffff00",
                               }}
-                            >
+                            > */}
                               {/* <Button
                               // style={{ position: "absolute", top: "1000%" }}
                                 content="Proceed"
@@ -296,12 +288,14 @@ const index = ({ stylist, client }) => {
                                 }
                                 warning
                               /> */}
-                            </Modal.Actions>
+                            {/* </Modal.Actions> */}
                           </>
                           {/* ) : (
                         <></>
                       )} */}
+                      {/* <br /> */}
                         </Modal>
+                        
                       ) : (
                         <></>
                       )}

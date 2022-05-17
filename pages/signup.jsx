@@ -13,9 +13,8 @@ import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
-import { setToken } from "./util/auth";
 
-const Signup = (props) => {
+const Signup = () => {
   const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -202,9 +201,9 @@ const Signup = (props) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
-      console.log(results);
+      console.log(`results: ${results}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getStylists ${error}`);
     }
   };
   useEffect(() => {
@@ -248,7 +247,7 @@ const Signup = (props) => {
         onSubmit={handleSubmit}
       >
         <Segment>
-          {/* This is where you drag and drop/upload your profile picture */}
+          {/* Where you drag and drop/upload your profile picture */}
           <DragNDrop
             inputRef={inputRef}
             handleChange={handleChange}
@@ -267,6 +266,8 @@ const Signup = (props) => {
           />
 
           <Form.Input
+            
+            required
             label="First name"
             placeholder="John"
             name="firstName"

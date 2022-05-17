@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import Form from "../pages/components copy/Form";
-// import Row from "../pages/components copy/Row";
-// import Input from "../pages/components copy/Input";
-// import Button from "../pages/components copy/Button";
+import { Form,  Button, Row, Input } from "semantic-ui-react";
 
 const ResetPassword = (props) => {
 

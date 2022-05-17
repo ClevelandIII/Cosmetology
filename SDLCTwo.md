@@ -95,7 +95,7 @@
 
 4/15/2022
 
-- Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (this is so that every stylist will have a list of clients).
+- Cleveland: You can now sign out, added styling for desktop to client, made navbar display name, when you make a new client it now tracks who made the client (so that every stylist will have a list of clients).
 
 - Abdi: Client Profile (displaying client on stylist profile).
 
@@ -212,6 +212,19 @@
 
 5/12/2022
 
-- Cleveland: working on sort (A lot of the functionality is done, the rest is routing. If anyone who is decent with routing wants to help, it would be appriciated.)
+- Cleveland: working on sort (A lot of the functionality is done, the rest is routing. If anyone who is decent with routing wants to help, it would be appreciated.)
 
 - Abdi: Password recovery and search
+
+5/13/2022
+
+- Cleveland: working on delete
+
+- Abdi: Working on password recovery and search
+
+5/16/2022
+
+- Cleveland: finished delete, added to sort
+
+- Abdi: Working on password recovery and search
+

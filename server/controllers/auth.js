@@ -12,7 +12,7 @@ const getStylistAuth = async (req, res) => {
     const stylist = await StylistModel.findById(stylistId)
     return res.status(200).json({stylist})
   } catch (err) {
-    console.log(err);
+    console.log(`Error at getStylistAuth ${err}`);
     return res.status(500).send("server error in getStylistAuth")
   }
 };
@@ -30,7 +30,7 @@ const getTeacherAuth = async (req, res) => {
     const teacher = await TeacherModel.findById(teacherId)
     return res.status(200).json({teacher})
   } catch (err) {
-    console.log(err);
+    console.log(`Error at getTeacherAuth ${err}`);
     return res.status(500).send("server error in getTeacherAuth")
   }
 };

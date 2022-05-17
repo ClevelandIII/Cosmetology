@@ -3,6 +3,10 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
+const morgan  = require('morgan')
+
+const bodyParser = require("body-parser");
+const authRouter = require("./pages/auth");
 // const http = require("http");
 // const bodyParser = require("body-parser");
 // const route = require("./server/routes");
@@ -32,7 +36,7 @@ const dev = process.env.NODE_ENV !== "production";
 //! there are giant error warnings that pop up when in dev.
 const nextApp = next({ dev });
 
-//! this is a built in next router that will handle ALL requests made to the server
+//! Handler is a built in next router that will handle ALL requests made to the server
 const handler = nextApp.getRequestHandler();
 
 //* MIDDLEWARES */
@@ -40,7 +44,11 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+app.use(morgan('short'))
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use("/auth", authRouter);
 //* ROUTERS */
 // const profileRoutes = require("./server/routes/profileRoute");
 const userRoute = require("./server/routes/userRoute");
@@ -50,8 +58,7 @@ const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
 // const forgotRoutes = require("./server/routes/forgotPassword")
 const searchRoutes = require("./server/routes/searchRoutes");
-const listRoute = require("./server/routes/listRoute")
-// const resetPassword = require("./pages/ResetPassword")
+const listRoutes = require("./server/routes/listRoute")
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
@@ -60,10 +67,10 @@ app.use("/api/v1/client", clientRoute);
 app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
-// app.use("/api/v1/ForgotPassword", forgotRoutes);
+// app.use("forgot", forgotRoutes);
 app.use("/api/v1/search", searchRoutes);
-app.use("/api/v1/List", listRoute);
-// app.use("/reset/:id)", resetPassword);
+app.use("/api/v1/List", listRoutes);
+
 //*SOCKETS */
 
 connectDB();
@@ -71,7 +78,7 @@ connectDB();
 nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));
   app.listen(PORT, (err) => {
-    if (err) console.log(err);
+    if (err) console.log(`err at nextApp ${err}`);
     else console.log(`Server listening @ port ${PORT}`);
   });
 });
