@@ -3,12 +3,10 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
-<<<<<<< HEAD
 const morgan  = require('morgan')
-=======
+
 const bodyParser = require("body-parser");
 const authRouter = require("./pages/auth");
->>>>>>> cb563a185321259780c5252a5318f06aa7245897
 // const http = require("http");
 // const bodyParser = require("body-parser");
 // const route = require("./server/routes");
