@@ -398,14 +398,14 @@ const Signup = () => {
             iconPosition="left"
           >
             <Form.Radio
-              label="Cosmotology 1 Year 1"
+              label="Cosmetology 1"
               checked={year1}
               onClick={() => {
                 setYear1(true), setYear2(false);
               }}
             />
             <Form.Radio
-              label="Cosmotology 2 Year 2"
+              label="Cosmetology 2"
               checked={year2}
               onClick={() => {
                 setYear2(true), setYear1(false);

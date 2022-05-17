@@ -270,7 +270,7 @@ const index = ({ stylist, client }) => {
                               </Segment>
                             </Modal.Content>
                             {/* <div className="ui hidden"></div> */}
-                            {/* <Divider  hidden className="zIndex"/> */}
+                            <Divider  hidden />
                             
                             {/* <Modal.Actions
                               style={{

@@ -81,6 +81,8 @@ const ClientCreator = ({ stylist }) => {
   const [mediaPreview, setMediaPreview] = useState(null);
   const [hidden, setHidden] = useState(false);
 
+  const [checkbox, setCheckbox] = useState("");
+
   //* Functions */
 
   // Sets form loading to true while form is being submitted
@@ -99,7 +101,7 @@ const ClientCreator = ({ stylist }) => {
       const res = await axios.post("/api/v1/uploads", formData);
       profilePicURL = res.data.src;
     }
- 
+
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
       return res.status(500).send("Image Upload Failure");
@@ -109,7 +111,7 @@ const ClientCreator = ({ stylist }) => {
       const res = await axios.post("/api/v1/client/clientCreator", {
         client,
       });
-          Router.push("/");
+      Router.push("/");
     } catch (error) {
       const errorMsg = catchErrors(error);
       setErrorMsg(errorMsg);
@@ -119,7 +121,7 @@ const ClientCreator = ({ stylist }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
- 
+
     if (name === "media" && files.length > 0) {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
@@ -174,10 +176,7 @@ const ClientCreator = ({ stylist }) => {
         onSubmit={handleSubmit}
       >
         <h1 style={{ textAlign: "center" }}>Fill out the form below.</h1>
-        <Segment 
-        style={{overflow:"auto"}} 
-        className="clientCreatorHandheld"
-        >
+        <Segment style={{ overflow: "auto" }} className="clientCreatorHandheld">
           <Message
             error
             content={errorMsg}
@@ -187,7 +186,7 @@ const ClientCreator = ({ stylist }) => {
           {/*FirstName, LastName, Age */}
           <Form.Group
             unstackable
-            style={{ justifyContent: "space-between", textAlign: "left",}}
+            style={{ justifyContent: "space-between", textAlign: "left" }}
             className="inputClient"
           >
             <Form.Input
@@ -271,7 +270,7 @@ const ClientCreator = ({ stylist }) => {
               type="text"
             />
           </Form.Group>
-          <Divider hidden className="clientCreatorDivider"/>
+          <Divider hidden className="clientCreatorDivider" />
           {/*Address, City, State*/}
           <Form.Group
             unstackable
@@ -315,7 +314,7 @@ const ClientCreator = ({ stylist }) => {
               type="text"
             />
           </Form.Group>
-          <Divider hidden className="clientCreatorDivider"/>
+          <Divider hidden className="clientCreatorDivider" />
           {/*Zip Code, Phone, Email */}
           <Form.Group
             unstackable
@@ -361,9 +360,9 @@ const ClientCreator = ({ stylist }) => {
               style={{ width: "435px", height: "42px" }}
             />
           </Form.Group>
-          <Divider hidden className="clientCreatorDivider"/>
+          <Divider hidden className="clientCreatorDivider" />
           {/*Hair Menu */}
-          <Divider hidden className="clientCreatorDivider"/>
+          <Divider hidden className="clientCreatorDivider" />
           <Button
             onClick={() => setHidden(!hidden)}
             type="button"
@@ -372,7 +371,7 @@ const ClientCreator = ({ stylist }) => {
           >
             Show Hair Menu
           </Button>
-          <Divider hidden className="clientCreatorDivider"/>
+          <Divider hidden className="clientCreatorDivider" />
           <Form.Group>
             {hidden ? (
               <div
@@ -426,7 +425,7 @@ const ClientCreator = ({ stylist }) => {
                     type="text"
                   />
                 </Form.Group>
-                <Divider hidden className="clientCreatorDivider"/>
+                <Divider hidden className="clientCreatorDivider" />
                 {/*Hair texture, growth patterns, hair density */}
                 <Form.Group
                   unstackable
@@ -472,7 +471,7 @@ const ClientCreator = ({ stylist }) => {
                     type="text"
                   />
                 </Form.Group>
-                <Divider hidden className="clientCreatorDivider"/>
+                <Divider hidden className="clientCreatorDivider" />
                 {/*Hair Porosity, Hair Elasticity, Hair Length */}
                 <Form.Group
                   unstackable
@@ -516,8 +515,39 @@ const ClientCreator = ({ stylist }) => {
                       width: "400px",
                       height: "38px",
                     }}
-                    type="text"
-                  />
+                    // type="text"
+                  >
+                    <Form.Checkbox
+                      label="Long"
+                      // disabled
+                      // checked={teacherChecked}
+                      // key={iteration._id}
+                      onClick={() => {
+                        setCheckbox("Long");
+                      //   setSelectedTeacher(true);
+                      }}
+                    />
+                    <Form.Checkbox
+                      label="Middle"
+                      // disabled
+                      // checked={teacherChecked}
+                      // key={iteration._id}
+                      onClick={() => {
+                        setCheckbox("Long");
+                      //   setSelectedTeacher(true);
+                      }}
+                    />
+                    <Form.Checkbox
+                      label="Short"
+                      // disabled
+                      // checked={teacherChecked}
+                      // key={iteration._id}
+                      onClick={() => {
+                        setCheckbox("Long");
+                      //   setSelectedTeacher(true);
+                      }}
+                    />
+                  </Form.Input>
                 </Form.Group>
               </div>
             ) : (
