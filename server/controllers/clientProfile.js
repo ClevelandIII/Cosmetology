@@ -147,16 +147,4 @@ const addVisit = async (req, res) => {
     console.log(error);
   }
 };
-
-//Not done yet
-const sortClients = async (req, res) => {
-  const { query } = req.body;
-
-  try {
-    console.log(`This is old: ${query}`);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-module.exports = { createClient, getAllClients, addVisit, sortClients };
+module.exports = { createClient, getAllClients, addVisit };

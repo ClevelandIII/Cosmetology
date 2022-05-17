@@ -14,9 +14,8 @@ import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
-let cancel;
 
-const Signup = () => {
+const Signup = (props) => {
   const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
     firstName: "",
@@ -68,8 +67,10 @@ const Signup = () => {
   //teacher for teacher
   const [checkbox, setCheckbox] = useState("");
   const [selectedTeacher, setSelectedTeacher] = useState(false);
-  const [teacherChecked, setTeacherChecked] = useState(false)
+  const [teacherChecked, setTeacherChecked] = useState(false);
 
+  const [email1, setEmail] = useState("");
+  const [password2, setPassword] = useState("");
   //* Functions */
 
   // const myFunction = (studentYear) => {
@@ -89,6 +90,18 @@ const Signup = () => {
     } else {
       isTeacher = false;
     }
+    //ResetPassword
+    // const body = {
+    //   email1,
+    //   password2,
+    // };
+    // axios({
+    //   method: "post",
+    //   url: "/auth/signup",
+    //   data: body,
+    // }).then(() => {
+    //   props.history.push("/login");
+    // });
 
     //Radio Button Checks
 
@@ -153,6 +166,8 @@ const Signup = () => {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
       setHighlighted(true);
+      setPassword(e.target.value)
+      setEmail(e.target.value)
     } else {
       setStylist((prev) => ({ ...prev, [name]: value }));
     }
@@ -250,8 +265,8 @@ const Signup = () => {
             header="There was an Error!"
             icon="meh"
           />
+
           <Form.Input
-            required
             label="First name"
             placeholder="John"
             name="firstName"
@@ -300,6 +315,7 @@ const Signup = () => {
             iconPosition="left"
             type={showPassword ? "text" : "password"}
           />
+
           <Form.Input
             required
             label="Teacher"
@@ -312,7 +328,7 @@ const Signup = () => {
           >
             {stylists.map((iteration) => {
               if (iteration.isTeacher === "true") {
-                teachId = iteration.userId
+                teachId = iteration.userId;
                 return (
                   <>
                     {selectedTeacher ? (
@@ -348,7 +364,9 @@ const Signup = () => {
             <div style={{ textAlign: "center" }}>
               <Button
                 onClick={() => {
-                  setSelectedTeacher(false), setCheckbox(""), setTeacherChecked(false)
+                  setSelectedTeacher(false),
+                    setCheckbox(""),
+                    setTeacherChecked(false);
                 }}
               >{`You have selected ${checkbox} as your teacher. Press this button to reset this choice.`}</Button>
             </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   Segment,
@@ -19,6 +19,9 @@ const Login = () => {
     password: "",
   });
 
+  // const [email1, setEmail] = useState("");
+  // const [password2, setPassword] = useState("");
+
   const { email, password } = stylist;
   const [showPassword, setShowPassword] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -30,11 +33,24 @@ const Login = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStylist((prev) => ({ ...prev, [name]: value }));
+    // setEmail(e.target.value)
+    // setPassword(e.target.value)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  //   const body = {
+  //     email,
+  //     password,
+  // };
+  // axios({
+  //     url: "/auth/login",
+  //     data: body,
+  //     method: "post",
+  // }).then(res => {
+  //     localStorage.setItem("cwcToken", res.data.token);
+  //     props.history.push("/");
+  // })
     setFormLoading(true);
 
     try {
@@ -105,6 +121,7 @@ const Login = () => {
             placeholder="Email"
             name="email"
             value={email}
+            
             onChange={handleChange}
             icon="envelope"
             iconPosition="left"
@@ -115,6 +132,7 @@ const Login = () => {
             label="Password"
             placeholder="Password"
             name="password"
+           
             value={password}
             onChange={handleChange}
             icon={{

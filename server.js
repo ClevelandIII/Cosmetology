@@ -48,8 +48,10 @@ const uploadRoute = require("./server/routes/uploadPicRoute");
 const authRoute = require("./server/routes/authRoutes");
 const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
-const forgotRoutes = require("./server/routes/forgotPassword")
+// const forgotRoutes = require("./server/routes/forgotPassword")
 const searchRoutes = require("./server/routes/searchRoutes");
+const listRoute = require("./server/routes/listRoute")
+// const resetPassword = require("./pages/ResetPassword")
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
@@ -57,11 +59,11 @@ app.use("/api/v1/uploads", uploadRoute);
 app.use("/api/v1/client", clientRoute);
 app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
-app.use("/api/v1/UserRoute", userRoute, clientRoute);
-app.use("/api/v1/List", userRoute, clientRoute);
-app.use("/api/v1/ForgotPassword", forgotRoutes);
+app.use("/api/v1/UserRoute", userRoute);
+// app.use("/api/v1/ForgotPassword", forgotRoutes);
 app.use("/api/v1/search", searchRoutes);
-
+app.use("/api/v1/List", listRoute);
+// app.use("/reset/:id)", resetPassword);
 //*SOCKETS */
 
 connectDB();

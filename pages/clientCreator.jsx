@@ -99,7 +99,7 @@ const ClientCreator = ({ stylist }) => {
       const res = await axios.post("/api/v1/uploads", formData);
       profilePicURL = res.data.src;
     }
-
+ 
     if (media !== null && !profilePicURL) {
       setFormLoading(false);
       return res.status(500).send("Image Upload Failure");
@@ -119,7 +119,7 @@ const ClientCreator = ({ stylist }) => {
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-
+ 
     if (name === "media" && files.length > 0) {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));

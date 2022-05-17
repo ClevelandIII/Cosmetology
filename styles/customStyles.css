@@ -137,6 +137,8 @@ a.item :hover {
   cursor: pointer !important;
 }
 
+
+
 @media screen and (min-width: 800px) {
   .studentListPic {
     position: absolute !important;
