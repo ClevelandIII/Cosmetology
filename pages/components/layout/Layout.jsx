@@ -41,7 +41,7 @@ const Layout = ({ children, stylist }, req, res) => {
     <>
       {stylist ? (
         <>
-          <NormNavbar stylist={stylist} />
+          <NormNavbar stylist={stylist} style={{maxHeight: "80px"}} />
 
           {/* <Ref innerref={contextRef}>
             <Grid.Column>

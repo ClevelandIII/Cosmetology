@@ -285,7 +285,7 @@ const List = ({ stylist }) => {
                             <Popup
                               trigger={
                                 <img
-                                  className="listAvatar"
+                                  className="listAvatar listLink"
                                   id="changeImg"
                                   src={
                                     deleteUser
@@ -465,9 +465,9 @@ const List = ({ stylist }) => {
                         >
                           <Popup
                             trigger={
-                              <div>
+                              <div className="listLink">
                                 <img
-                                  className="listAvatar"
+                                  className="listAvatar "
                                   src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
                                 />
                                 <Segment

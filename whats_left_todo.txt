@@ -8,9 +8,7 @@ I will also say, I would add names if you are doing something. That way there is
 
 • password recovery - Abdi
 
-* Add delete function to student lists so teachers can delete old students (This instead of adding year 3s, 4s, 5s, etc) - Daniel
-
-* iPad Formatting where necessary - Reid
+• * iPad Formatting where necessary - Reid
 
 
 

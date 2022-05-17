@@ -13,6 +13,8 @@ import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
+import { setToken } from "./util/auth";
+
 
 const Signup = () => {
   const [stylists, setStylists] = useState([]);

@@ -114,7 +114,7 @@ const index = ({ stylist, client }) => {
                 </p>
               </Grid.Row>
               <Divider hidden />
-              <Link href="/UserProfile">
+              <Link href="/List">
                 <Grid.Row className="mini2">
                   <Button style={{ backgroundColor: "orange" }}>
                     See Students

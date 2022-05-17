@@ -492,8 +492,8 @@ const profilePage = ({ stylist, profile }) => {
                         >
                           <Popup
                             trigger={
-                              <Segment className="indexCenter">
-                                <p>{`${client.firstName} ${client.lastName}`}</p>
+                              <Segment className="indexCenter ">
+                                <p className="listLink">{`${client.firstName} ${client.lastName}`}</p>
                               </Segment>
                             }
                             hoverable
