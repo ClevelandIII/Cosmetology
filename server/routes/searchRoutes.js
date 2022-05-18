@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
 
-router.route("/:searchText");
+router.route("/search");
 
 module.exports = router;

@@ -53,7 +53,7 @@ const authRoute = require("./server/routes/authRoutes");
 const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
 const forgotRoutes = require("./server/routes/forgotPassword")
-const searchRoutes = require("./server/routes/searchRoutes");
+// const searchRoutes = require("./server/routes/searchRoutes");
 const listRoutes = require("./server/routes/listRoute")
 
 app.use("/api/v1/user", userRoute);
@@ -64,7 +64,7 @@ app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
 app.use("forgot", forgotRoutes);
-app.use("/api/v1/search", searchRoutes);
+// app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/List", listRoutes);
 
 //*SOCKETS */

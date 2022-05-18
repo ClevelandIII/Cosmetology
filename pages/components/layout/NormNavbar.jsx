@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
-import Search from "./SearchComponent";
+// import Search from "./SearchComponent";
 
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
@@ -196,7 +196,7 @@ function NormNavbar({ stylist }) {
             style={{ width: "30%" }}
             position="right"
           >
-            <Search />
+            {/* <Search /> */}
           </Menu.Item>
           <Menu.Item name="sign-in" position="right">
             <Button
