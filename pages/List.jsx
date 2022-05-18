@@ -14,7 +14,7 @@ import Link from "next/link";
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
   const [semester, setSemester] = useState([]);
-  const [teachLink, setTeachLink] = useState([]);
+  const [teachId, setTeachId] = useState([]);
   const [clients, setClients] = useState([]);
   const [formLoading, setFormLoading] = useState(false);
   //For adding visits
@@ -102,30 +102,30 @@ const List = ({ stylist }) => {
       console.log(`Error at getSemester: ${error}`);
     }
   };
-  const getTeacher = async () => {
-    try {
-      if (stylist.teacher === "potassium") {
-        setTeachLink("1651522057278");
-        // teachLink = "/1651522057278"
-      } else if (stylist.teacher === "Sussy") {
-        setTeachLink("1651263834506");
-        // teachLink = "/1651263834506"
-      } else if (stylist.teacher === "davs") {
-        setTeachLink("1651624257170");
-        // teachLink = "/1651624257170"
-      } else {
-        setTeachLink("");
-        // teachLink = "/"
-      }
-    } catch (error) {
-      console.log(`Error at getTeacher: ${error}`);
-    }
-  };
+  // const getTeacher = async () => {
+  //   try {
+  //     if (stylist.teacher === "potassium") {
+  //       setTeachId("1651522057278");
+  //       // teachLink = "/1651522057278"
+  //     } else if (stylist.teacher === "Sussy") {
+  //       setTeachId("1651263834506");
+  //       // teachLink = "/1651263834506"
+  //     } else if (stylist.teacher === "davs") {
+  //       setTeachId("1651624257170");
+  //       // teachLink = "/1651624257170"
+  //     } else {
+  //       setTeachId("");
+  //       // teachLink = "/"
+  //     }
+  //   } catch (error) {
+  //     console.log(`Error at getTeacher: ${error}`);
+  //   }
+  // };
   useEffect(() => {
     initGetStylists();
     getSemester();
     getClients();
-    getTeacher();
+    // getTeacher();
   }, []);
 
   const sortStylist = async (text) => {
@@ -275,6 +275,7 @@ const List = ({ stylist }) => {
                 <>
                   {stylists.map((stylist) => {
                     if (stylist.isTeacher === "false") {
+                      // console.log(`Teacher Id: ${stylist.teachId}`)
                       return (
                         <>
                           <Grid.Column
@@ -359,7 +360,7 @@ const List = ({ stylist }) => {
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
-                              <Link href={`/${stylist.teachId}`}>
+                              <Link className="testClass" onClick={console.log(stylist.teachId)} href={`/${stylist.teachId}`}>
                                 <p className="listLink">{stylist.teacher}</p>
                               </Link>
                             </Segment>
