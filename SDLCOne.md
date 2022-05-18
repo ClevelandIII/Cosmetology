@@ -331,3 +331,12 @@ Reid Gill: do to how vercel is only going to work when we are 100% done, turning
 Daniel: Made clickable names show pointer cursor where needed, added testimonials scroll to nav bar, fixed bugs.
 
 Joshua Ruvalcaba: helping Daniel and Reid
+
+5/18/22
+Jason Enciso: dying inside
+
+Reid Gill: CIW 
+
+Daniel: absent
+
+Joshua Ruvalcaba: absent
