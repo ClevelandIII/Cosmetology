@@ -240,12 +240,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
-                <Dropdown
+                {/* <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
-                />
+                /> */}
               </div>
             </Grid.Row>
             <Grid.Row
@@ -446,12 +446,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
-                <Dropdown
+                {/* <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
-                />
+                /> */}
               </div>
             </Grid.Row>
             <Grid.Row

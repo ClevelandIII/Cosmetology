@@ -228,3 +228,8 @@
 
 - Abdi: Working on password recovery and search
 
+5/17/2022
+
+- Cleveland: finished sort for teacher (thanks sean), given time will finish sort for other pages, commented features not finished currently.
+
+- Abdi: password

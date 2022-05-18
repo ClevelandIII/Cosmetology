@@ -44,7 +44,7 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
-app.use(morgan('short'))
+// app.use(morgan('short'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

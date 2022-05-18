@@ -143,7 +143,7 @@ const Login = ({ history, location }) => {
             className="loginButton"
           />
         </Segment>
-        <Link href="/ForgotPassword" ><p className="forgotPassword"> Forgot Password ?</p></Link>
+        {/* <Link href="/ForgotPassword" ><p className="forgotPassword"> Forgot Password ?</p></Link> */}
       </Form>
     </>
   );

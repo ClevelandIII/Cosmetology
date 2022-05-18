@@ -195,7 +195,7 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             name="testimonials"
             // style={{ width: "30%" }}
             position="right"
@@ -229,7 +229,7 @@ function NormNavbar({ stylist }) {
               </p>
             </div>
             {/* <Search /> */}
-          </Menu.Item>
+          {/* </Menu.Item> */}
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}

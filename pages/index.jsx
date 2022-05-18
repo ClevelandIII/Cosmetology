@@ -146,13 +146,13 @@ const index = ({ stylist, client }) => {
           <Grid.Row className="mini3">
             <div style={{ textAlign: "center" }}>
               <h1>Previous Clients</h1>
-              <Dropdown
+              {/* <Dropdown
                 placeholder="Sort By..."
                 fluid
                 selection
                 options={Options}
                 onChange={(e) => setSortType(e.target.value)}
-              />
+              /> */}
             </div>
           </Grid.Row>
           <Grid.Row

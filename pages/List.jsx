@@ -131,14 +131,18 @@ const List = ({ stylist }) => {
   const sortStylist = async (text) => {
     console.log(`Here is the text: ${text}`);
     try {
-      console.log("This could work");
       const res = await axios.post(`http://localhost:3001/api/v1/List/sort`, {
-        sortType,
+        text,
       });
-      console.log("This works");
-      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      //functional
-      setStylists(results.data);
+
+      console.log(res.data);
+      console.log("middle");
+
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      // console.log(res.data);
+      setStylists(res.data.stylists);
+      console.log("done");
     } catch (error) {
       console.log(`Error at sortStylist: ${error}`);
     }
@@ -192,7 +196,7 @@ const List = ({ stylist }) => {
       text: "Teacher",
       value: "Teacher",
       onClick: () => {
-        setSortType("Teacher"), sortStylist("teacher");
+        setSortType("Teacher"), sortStylist("Teacher");
       },
     },
     {
@@ -200,7 +204,7 @@ const List = ({ stylist }) => {
       text: "Session",
       value: "Session",
       onClick: () => {
-        setSortType("Semester"), sortStylist("session");
+        setSortType("Session"), sortStylist("Session");
       },
     },
     {
@@ -208,7 +212,7 @@ const List = ({ stylist }) => {
       text: "Year",
       value: "Year",
       onClick: () => {
-        setSortType("Year"), sortStylist("year");
+        setSortType("Year"), sortStylist("Year");
       },
     },
     {
@@ -216,14 +220,13 @@ const List = ({ stylist }) => {
       text: "Name",
       value: "Name",
       onClick: () => {
-        setSortType("Name"), sortStylist("name");
+        setSortType("Name"), sortStylist("Name");
       },
     },
   ];
 
   return (
     <>
-      <div>{sortType}</div>
       {decide ? (
         <>
           <div className="list">
@@ -414,13 +417,13 @@ const List = ({ stylist }) => {
               <Grid.Row className="mini3">
                 <div style={{ textAlign: "center" }}>
                   <h1>List of All Clients</h1>
-                  <Dropdown
+                  {/* <Dropdown
                     placeholder="Sort By..."
                     fluid
                     selection
                     options={Options}
                     onChange={(e) => setSortType(e.target.value)}
-                  />
+                  /> */}
                 </div>
               </Grid.Row>
               <Grid.Row

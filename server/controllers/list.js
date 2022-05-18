@@ -42,33 +42,37 @@ const deleteStylist = async (req, res) => {
 };
 
 const sortStylists = async (req, res) => {
-  const { sortType } = req.body;
+  const { text } = req.body;
   let stylists;
 
   try {
-    console.log(`Sort ${sortType}`);
+    console.log(`This is text: ${text}`);
 
-    if (sortType === "") {
+    if (text === "") {
       console.log("Sort is undefined.");
     }
 
-    if (sortType == "Teacher") {
-      stylists = StylistModel.find({}).sort({ teacher: 1 });
+    if (text === "Teacher") {
+      stylists = await StylistModel.find().sort({ teacher: 1 });
     }
-    if (sortType == "Semester") {
-      stylists = StylistModel.find({}).sort({ session: 1 });
+    if (text === "Session") {
+      stylists = await StylistModel.find().sort({ session: 1 });
     }
-    if (sortType == "Year") {
-      stylists = StylistModel.find({}).sort({ studentYear: 1 });
+    if (text === "Year") {
+      stylists = await StylistModel.find().sort({ studentYear: 1 });
     }
-    if (sortType == "Name") {
-      stylists = StylistModel.find({}).sort({ firstName: 1 });
+    if (text === "Name") {
+      stylists = await StylistModel.find().sort({ firstName: 1 });
     }
-    res.status(200).json({ stylists });
 
     console.log(`stylists: ${stylists}`);
+
+    return res.status(200).json({
+      stylists,
+    });
   } catch (error) {
     console.log(`Error at sortStylists ${error}`);
+    return res.status(400).send("Error at sortStylist");
   }
 };
 

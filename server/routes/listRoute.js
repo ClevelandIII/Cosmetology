@@ -7,6 +7,7 @@ const {
 } = require("../controllers/list");
 
 router.route("/").get(getAllUsers).post(deleteStylist)
-router.route("/sort").post(sortStylists);
+router.post("/sort", sortStylists)
+// router.route("/sort").put(sortStylists);
 
 module.exports = router;
