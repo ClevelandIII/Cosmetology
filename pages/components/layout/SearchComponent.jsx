@@ -37,7 +37,6 @@
 //         }
 //         setResults(res.data);
 //       } catch (error) {
-//         console.log("Error Searching", error);
 //       }
 //     } else {
 //       setResults([]);

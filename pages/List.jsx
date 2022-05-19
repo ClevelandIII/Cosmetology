@@ -82,7 +82,6 @@ const List = ({ stylist }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(`Clients: ${clients}`);
     } catch (error) {
       console.log(`Error at getClients: ${error}`);
     }
@@ -102,25 +101,7 @@ const List = ({ stylist }) => {
       console.log(`Error at getSemester: ${error}`);
     }
   };
-  // const getTeacher = async () => {
-  //   try {
-  //     if (stylist.teacher === "potassium") {
-  //       setTeachId("1651522057278");
-  //       // teachLink = "/1651522057278"
-  //     } else if (stylist.teacher === "Sussy") {
-  //       setTeachId("1651263834506");
-  //       // teachLink = "/1651263834506"
-  //     } else if (stylist.teacher === "davs") {
-  //       setTeachId("1651624257170");
-  //       // teachLink = "/1651624257170"
-  //     } else {
-  //       setTeachId("");
-  //       // teachLink = "/"
-  //     }
-  //   } catch (error) {
-  //     console.log(`Error at getTeacher: ${error}`);
-  //   }
-  // };
+
   useEffect(() => {
     initGetStylists();
     getSemester();
@@ -135,12 +116,12 @@ const List = ({ stylist }) => {
         text,
       });
 
-      console.log(res.data);
+      console.log(`Data for list sort: ${res.data}`);
       console.log("middle");
 
       //Thanks Sean for fixing the main error.
       //Now res.data needs to be shown, as it is the sorted data.
-      // console.log(res.data);
+
       setStylists(res.data.stylists);
       console.log("done");
     } catch (error) {
@@ -275,7 +256,6 @@ const List = ({ stylist }) => {
                 <>
                   {stylists.map((stylist) => {
                     if (stylist.isTeacher === "false") {
-                      // console.log(`Teacher Id: ${stylist.teachId}`)
                       return (
                         <>
                           <Grid.Column
@@ -360,7 +340,13 @@ const List = ({ stylist }) => {
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
-                              <Link className="testClass" onClick={console.log(stylist.teachId)} href={`/${stylist.teachId}`}>
+                              <Link
+                                className="testClass"
+                                onClick={console.log(
+                                  `This is stylist.teachId: ${stylist.teachId}`
+                                )}
+                                href={`/${stylist.teachId}`}
+                              >
                                 <p className="listLink">{stylist.teacher}</p>
                               </Link>
                             </Segment>

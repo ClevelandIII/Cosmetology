@@ -21,15 +21,14 @@ import axios from "axios";
 
 const profilePage = ({ stylist, profile }) => {
   const router = useRouter();
-  const [stylists, setStylist] = useState([]);
+  const [stylists, setStylists] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
   const [formLoading, setFormLoading] = useState(false);
-  const [initalDate, setInitalDate] = useState("");
-  const [lastDate, setLastDate] = useState("");
   const [teachName, setTeachName] = useState("");
   const [clients, setClients] = useState([]);
   const [clientUser, setClientUser] = useState("");
+  const [sortType, setSortType] = useState("");
 
   const [visit, setVisit] = useState({
     addVisits: "",
@@ -42,9 +41,6 @@ const profilePage = ({ stylist, profile }) => {
     setTeachName(stylist.firstName);
   }, []);
 
-  //In the future, option will allow for the sort buttons to work
-  const [option, setOption] = useState("");
-
   //This variable updates hours on the page so that the user doesnt have to reset to see their new hours.
   //Thats what i would say... If it actually worked! For now the user will have to reset to see the hours.
   const [actualHours, setActualHours] = useState("");
@@ -53,40 +49,16 @@ const profilePage = ({ stylist, profile }) => {
   }, []);
 
   let user = stylist.userId;
-  const Options = [
-    {
-      key: "Number of Visits",
-      text: "Number of Visits",
-      value: "Number of Visits",
-    },
-    {
-      key: "First Visit",
-      text: "First Visit",
-      value: "First Visit",
-    },
-    {
-      key: "Most Recently Created",
-      text: "Most Recently Created",
-      value: "Most Recently Created",
-    },
-    {
-      key: "Name",
-      text: "Name",
-      value: "Name",
-    },
-  ];
   const getStylists = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
-      setStylist(results.data);
-      console.log(`results: ${results}`);
+      setStylists(results.data);
     } catch (error) {
       console.log(`Error at getStylists ${error}`);
     }
   };
   useEffect(() => {
     getStylists();
-    console.log(`stylists: ${stylists}`);
   }, []);
 
   //Separates the teachers from the students
@@ -119,7 +91,6 @@ const profilePage = ({ stylist, profile }) => {
     setHidden(false);
     setActualHours(stylist.hours);
   };
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
@@ -145,7 +116,6 @@ const profilePage = ({ stylist, profile }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(`clients: ${clients}`);
     } catch (error) {
       console.log(`Error at getClients ${error}`);
     }
@@ -173,12 +143,73 @@ const profilePage = ({ stylist, profile }) => {
     setVisit("");
     setFormLoading(false);
   };
-
   const handleChange2 = (e) => {
     const { name, value, files } = e.target;
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
   //Visit End
+
+  //Dating Start!
+  //Dating End... ?
+
+  const sortStylist = async (text) => {
+    console.log(`Here is the text: ${text}`);
+    try {
+      const res = await axios.post(
+        `http://localhost:3001/api/v1/UserRoute/sort`,
+        {
+          text,
+        }
+      );
+
+      console.log(`First log for [userId]: ${res.data}`);
+      console.log("middle");
+      
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      console.log(`Second Log for [userId]: ${res.data.stylists}`);
+
+      setStylists(res.data.stylists);
+      console.log("done");
+    } catch (error) {
+      console.log(`Error at sortStylist: ${error}`);
+    }
+  };
+
+  const Students = [
+    {
+      key: "Teacher",
+      text: "Teacher",
+      value: "Teacher",
+      onClick: () => {
+        setSortType("Teacher"), sortStylist("Teacher");
+      },
+    },
+    {
+      key: "Session",
+      text: "Session",
+      value: "Session",
+      onClick: () => {
+        setSortType("Session"), sortStylist("Session");
+      },
+    },
+    {
+      key: "Total Hours",
+      text: "Total Hours",
+      value: "Total Hours",
+      onClick: () => {
+        setSortType("Hour"), sortStylist("Hour");
+      },
+    },
+    {
+      key: "Name",
+      text: "Name",
+      value: "Name",
+      onClick: () => {
+        setSortType("Name"), sortStylist("Name");
+      },
+    },
+  ];
 
   return (
     <>
@@ -192,7 +223,6 @@ const profilePage = ({ stylist, profile }) => {
               >
                 <Image
                   src={profile.profilePicURL}
-                  // avatar
                   className="profileAvatar"
                   size="medium"
                   bordered
@@ -240,12 +270,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
-                {/* <Dropdown
+                <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
-                  options={Options}
-                /> */}
+                  options={Students}
+                />
               </div>
             </Grid.Row>
             <Grid.Row
@@ -287,9 +317,11 @@ const profilePage = ({ stylist, profile }) => {
                           className="Indexcolumn clientListColumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textAlign: "center" }}
+                          style={{ textAlign: "center"}}
                         >
-                          <Segment className="indexCenter listLink">
+                          <Segment
+                            className="indexCenter listLink"
+                          >
                             <Link
                               className="listLink"
                               href={`/${stylist.userId}`}
@@ -300,6 +332,7 @@ const profilePage = ({ stylist, profile }) => {
                             </Link>
                           </Segment>
                         </Grid.Column>
+
                         <Grid.Column
                           className="Indexcolumn"
                           key={stylist._id}
@@ -310,6 +343,7 @@ const profilePage = ({ stylist, profile }) => {
                             <p>{stylist.hours}</p>
                           </Segment>
                         </Grid.Column>
+
                         <Grid.Column
                           className="Indexcolumn"
                           key={stylist._id}
@@ -568,8 +602,8 @@ const profilePage = ({ stylist, profile }) => {
                           style={{ textAlign: "center" }}
                         >
                           <Segment className="indexCenter">
-                         {/*Returns the date in the most recent visit array. If no input returns first visit.*/}
-                         {client.visits == "" ? (
+                            {/*Returns the date in the most recent visit array. If no input returns first visit.*/}
+                            {client.visits == "" ? (
                               <p>{client.appointmentDate.split("T")[0]}</p>
                             ) : (
                               <p>

@@ -147,9 +147,45 @@ const addHours = async (req, res) => {
   }
 };
 
+const sortStylists = async (req, res) => {
+  const { text } = req.body;
+  let stylists;
+
+  try {
+    console.log(`Is userProfile receiving text? ${text}`);
+
+    if (text === "") {
+      console.log("Sort is undefined.");
+    }
+
+    if (text === "Teacher") {
+      stylists = await StylistModel.find().sort({ teacher: 1 });
+    }
+    if (text === "Session") {
+      stylists = await StylistModel.find().sort({ session: 1 });
+    }
+    if (text === "Hour") {
+      stylists = await StylistModel.find().sort({ studentYear: 1 });
+    }
+    if (text === "Name") {
+      stylists = await StylistModel.find().sort({ firstName: 1 });
+    }
+
+    console.log(`stylists: ${stylists}`);
+
+    return res.status(200).json({
+      stylists,
+    });
+  } catch (error) {
+    console.log(`Error at sortStylists ${error}`);
+    return res.status(400).send("Error at sortStylist");
+  }
+};
+
 module.exports = {
   createUser,
   postLoginUser,
   getAllUsers,
   addHours, 
+  sortStylists
 };

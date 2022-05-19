@@ -9,5 +9,5 @@ const {
 router.route("/").get(getAllUsers).post(deleteStylist)
 router.post("/sort", sortStylists)
 // router.route("/sort").put(sortStylists);
-
+ 
 module.exports = router;

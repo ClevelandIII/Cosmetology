@@ -8,7 +8,7 @@ const getAllUsers = async (req, res) => {
   } catch (error) {
     console.log(`Error at getAllUsers ${error}`);
     return res.status(500).send("Server Error @ getAllStylists");
-  }
+  } 
 };
 
 const deleteStylist = async (req, res) => {
@@ -64,8 +64,6 @@ const sortStylists = async (req, res) => {
     if (text === "Name") {
       stylists = await StylistModel.find().sort({ firstName: 1 });
     }
-
-    console.log(`stylists: ${stylists}`);
 
     return res.status(200).json({
       stylists,

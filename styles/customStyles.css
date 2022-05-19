@@ -272,7 +272,7 @@ text-align: center;
 }
 
 .Indexcolumn {
-  position: relative;
+  /* position: relative; */
   width: 2rem;
   justify-content: center;
 }
@@ -370,9 +370,6 @@ text-align: center;
 .indexCenter {
   justify-content: center;
 }
-/* .indexCenter {
-  justify-content: center;
-} */
 
 #changeImg:hover{
   border: rgb(255, 0, 0) 5px solid !important;
