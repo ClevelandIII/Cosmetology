@@ -233,3 +233,9 @@
 - Cleveland: finished sort for teacher (thanks sean), given time will finish sort for other pages, commented features not finished currently.
 
 - Abdi: password
+
+5/18/2022
+
+- Cleveland: added sort to teacher, working on sort for index
+
+- Abdi: password additions, may not be done in time.
