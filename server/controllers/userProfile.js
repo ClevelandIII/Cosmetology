@@ -1,6 +1,7 @@
 const defaultProfilePicURL = require("../util/defaultPic");
 const StylistModel = require("../model/StylistModel");
 const axios = require("axios");
+const ClientModel = require("../model/ClientModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
@@ -182,10 +183,44 @@ const sortStylists = async (req, res) => {
   }
 };
 
+const sortClient = async (req, res) => {
+  const { text } = req.body;
+  let clients;
+
+  try {
+    console.log(`This is text: ${text}`);
+
+    if (text === "") {
+      console.log("Sort is undefined.");
+    }
+
+    if (text === "First Name") {
+      clients = await ClientModel.find().sort({ firstName: 1 });
+    }
+    if (text === "Last Name") {
+      clients = await ClientModel.find().sort({ lastName: 1 });
+    }
+    if (text === "Age") {
+      clients = await ClientModel.find().sort({ age: 1 });
+    }
+    if (text === "Date Created") {
+      clients = await ClientModel.find().sort({ dateCreated: 1 });
+    }
+    console.log(clients);
+    return res.status(200).json({
+      clients,
+    });
+  } catch (error) {
+    console.log(`Error at sortClients ${error}`);
+    return res.status(400).send("Error at sortClients");
+  }
+};
+
 module.exports = {
   createUser,
   postLoginUser,
   getAllUsers,
   addHours, 
-  sortStylists
+  sortStylists,
+  sortClient
 };

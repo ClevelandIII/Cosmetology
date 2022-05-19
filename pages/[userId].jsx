@@ -164,7 +164,7 @@ const profilePage = ({ stylist, profile }) => {
 
       console.log(`First log for [userId]: ${res.data}`);
       console.log("middle");
-      
+
       //Thanks Sean for fixing the main error.
       //Now res.data needs to be shown, as it is the sorted data.
       console.log(`Second Log for [userId]: ${res.data.stylists}`);
@@ -173,6 +173,27 @@ const profilePage = ({ stylist, profile }) => {
       console.log("done");
     } catch (error) {
       console.log(`Error at sortStylist: ${error}`);
+    }
+  };
+
+  const sortClient = async (text) => {
+    console.log(`Here is the text: ${text}`);
+    try {
+      const res = await axios.post(`http://localhost:3001/api/v1/UserRoute/sort2`, {
+        text,
+      });
+
+      console.log(`First log for [userId client]: ${res.data}`);
+      console.log("middle");
+
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      console.log(`Second Log for [userId client]: ${res.data.clients}`);
+
+      setClients(res.data.clients);
+      console.log("done");
+    } catch (error) {
+      console.log(`Error at sortClient: ${error}`);
     }
   };
 
@@ -207,6 +228,45 @@ const profilePage = ({ stylist, profile }) => {
       value: "Name",
       onClick: () => {
         setSortType("Name"), sortStylist("Name");
+      },
+    },
+  ];
+
+  const Options = [
+    {
+      id: 1,
+      key: "First Name",
+      text: "First Name",
+      value: "First Name",
+      onClick: () => {
+        setSortType("First Name"), sortClient("First Name");
+      },
+    },
+    {
+      id: 2,
+      key: "Last Name",
+      text: "Last Name",
+      value: "Last Name",
+      onClick: () => {
+        setSortType("Last Name"), sortClient("Last Name");
+      },
+    },
+    {
+      id: 3,
+      key: "Age",
+      text: "Age",
+      value: "Age",
+      onClick: () => {
+        setSortType("Age"), sortClient("Age");
+      },
+    },
+    {
+      id: 4,
+      key: "Date Created",
+      text: "Date Created",
+      value: "Date Created",
+      onClick: () => {
+        setSortType("Date Created"), sortClient("Date Created");
       },
     },
   ];
@@ -266,7 +326,11 @@ const profilePage = ({ stylist, profile }) => {
             </Grid.Column>
           </Grid>
 
-          <Grid className="tableindex" stackable style={{ padding: "3rem" }}>
+          <Grid
+            className="tableindex"
+            stackable
+            style={{ padding: "3rem", marginLeft: "2%" }}
+          >
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
@@ -317,11 +381,9 @@ const profilePage = ({ stylist, profile }) => {
                           className="Indexcolumn clientListColumn"
                           key={stylist._id}
                           setStylists={stylists}
-                          style={{ textAlign: "center"}}
+                          style={{ textAlign: "center" }}
                         >
-                          <Segment
-                            className="indexCenter listLink"
-                          >
+                          <Segment className="indexCenter listLink">
                             <Link
                               className="listLink"
                               href={`/${stylist.userId}`}
@@ -335,7 +397,6 @@ const profilePage = ({ stylist, profile }) => {
 
                         <Grid.Column
                           className="Indexcolumn"
-                          key={stylist._id}
                           setStylists={stylists}
                           style={{ textAlign: "center" }}
                         >
@@ -346,7 +407,6 @@ const profilePage = ({ stylist, profile }) => {
 
                         <Grid.Column
                           className="Indexcolumn"
-                          key={stylist._id}
                           setStylists={stylists}
                           style={{ textAlign: "center" }}
                         >
@@ -480,12 +540,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
-                {/* <Dropdown
+                <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
-                /> */}
+                />
               </div>
             </Grid.Row>
             <Grid.Row
@@ -523,6 +583,7 @@ const profilePage = ({ stylist, profile }) => {
                         <Grid.Column
                           className="Indexcolumn clientListColumn"
                           style={{ textAlign: "center" }}
+                          key={client._id}
                         >
                           <Popup
                             trigger={

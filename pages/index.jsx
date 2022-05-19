@@ -73,12 +73,9 @@ const index = ({ stylist, client }) => {
   const sortClient = async (text) => {
     console.log(`Here is the text: ${text}`);
     try {
-      const res = await axios.post(
-        `http://localhost:3001/api/v1/index`,
-        {
-          text,
-        }
-      );
+      const res = await axios.post(`http://localhost:3001/api/v1/index`, {
+        text,
+      });
 
       console.log(`First log for index: ${res.data}`);
       console.log("middle");
@@ -180,12 +177,12 @@ const index = ({ stylist, client }) => {
           <Grid.Row className="mini3">
             <div style={{ textAlign: "center" }}>
               <h1>Previous Clients</h1>
-              {/* <Dropdown
+              <Dropdown
                 placeholder="Sort By..."
                 fluid
                 selection
                 options={Options}
-              /> */}
+              />
             </div>
           </Grid.Row>
           <Grid.Row
@@ -220,8 +217,9 @@ const index = ({ stylist, client }) => {
                 return (
                   <>
                     <Grid.Column
+                      key={client._id}
+                      setClients={clients}
                       className="Indexcolumn clientListColumn"
-                      // setClients={clients}
                       style={{ textAlign: "center" }}
                       onClick={() => {
                         setClientModal(client._id);
@@ -332,7 +330,6 @@ const index = ({ stylist, client }) => {
 
                     <Grid.Column
                       className="Indexcolumn"
-                      key={client._id}
                       setClients={clients}
                       style={{ textAlign: "center" }}
                     >
@@ -343,7 +340,6 @@ const index = ({ stylist, client }) => {
 
                     <Grid.Column
                       className="Indexcolumn"
-                      key={client._id}
                       setClients={clients}
                       style={{ textAlign: "center" }}
                     >

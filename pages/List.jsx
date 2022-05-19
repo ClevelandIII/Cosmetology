@@ -129,6 +129,30 @@ const List = ({ stylist }) => {
     }
   };
 
+  const sortClient = async (text) => {
+    console.log(`Here is the text: ${text}`);
+    try {
+      const res = await axios.post(
+        `http://localhost:3001/api/v1/List/sort2`,
+        {
+          text,
+        }
+      );
+
+      console.log(`First log for list client: ${res.data}`);
+      console.log("middle");
+
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      console.log(`Second Log for list client: ${res.data.clients}`);
+
+      setClients(res.data.clients);
+      console.log("done");
+    } catch (error) {
+      console.log(`Error at sortClient: ${error}`);
+    }
+  };
+
   let decide = "";
   if (stylist.isTeacher === "true") {
     decide = true;
@@ -138,35 +162,39 @@ const List = ({ stylist }) => {
 
   const Options = [
     {
-      key: "Number of Visits",
-      text: "Number of Visits",
-      value: "Number of Visits",
+      id: 1,
+      key: "First Name",
+      text: "First Name",
+      value: "First Name",
       onClick: () => {
-        setSortType("Number of Visits");
+        setSortType("First Name"), sortClient("First Name");
       },
     },
     {
-      key: "First Visit",
-      text: "First Visit",
-      value: "First Visit",
+      id: 2,
+      key: "Last Name",
+      text: "Last Name",
+      value: "Last Name",
       onClick: () => {
-        setSortType("First Visit");
+        setSortType("Last Name"), sortClient("Last Name");
       },
     },
     {
-      key: "Most Recently Created",
-      text: "Most Recently Created",
-      value: "Most Recently Created",
+      id: 3,
+      key: "Age",
+      text: "Age",
+      value: "Age",
       onClick: () => {
-        setSortType("Most Recently Created");
+        setSortType("Age"), sortClient("Age");
       },
     },
     {
-      key: "Name",
-      text: "Name",
-      value: "Name",
+      id: 4,
+      key: "Date Created",
+      text: "Date Created",
+      value: "Date Created",
       onClick: () => {
-        setSortType("Name");
+        setSortType("Date Created"), sortClient("Date Created");
       },
     },
   ];
@@ -404,13 +432,12 @@ const List = ({ stylist }) => {
               <Grid.Row className="mini3">
                 <div style={{ textAlign: "center" }}>
                   <h1>List of All Clients</h1>
-                  {/* <Dropdown
+                  <Dropdown
                     placeholder="Sort By..."
                     fluid
                     selection
                     options={Options}
-                    onChange={(e) => setSortType(e.target.value)}
-                  /> */}
+                  />
                 </div>
               </Grid.Row>
               <Grid.Row
@@ -448,6 +475,7 @@ const List = ({ stylist }) => {
                       <>
                         <Grid.Column
                           className="Indexcolumn clientListColumn"
+                          key={client._id}
                           setClients={clients}
                           style={{
                             textAlign: "center",
@@ -543,7 +571,6 @@ const List = ({ stylist }) => {
 
                         <Grid.Column
                           className="Indexcolumn"
-                          key={client._id}
                           setClients={clients}
                           style={{ textAlign: "center" }}
                         >
@@ -562,7 +589,6 @@ const List = ({ stylist }) => {
 
                         <Grid.Column
                           className="Indexcolumn"
-                          key={client._id}
                           setClients={clients}
                           style={{ textAlign: "center" }}
                         >
@@ -573,7 +599,6 @@ const List = ({ stylist }) => {
 
                         <Grid.Column
                           className="Indexcolumn"
-                          key={client._id}
                           setClients={clients}
                           style={{ textAlign: "center" }}
                         >
