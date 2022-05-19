@@ -3,6 +3,12 @@
   margin-right: 1.5rem !important;
 }
 
+.vertSidebar{
+  /* height: 100vh !important; */
+  position: fixed !important;
+  height: 100% !important;
+}
+
 .ui.container {
   margin-left: 0 !important;
 }
@@ -321,6 +327,14 @@ text-align: center;
   }
 }
 
+.quantity-button.quantity-up {
+  position: absolute !important;
+  height: 50% !important;
+  top: 0 !important;
+  color: red !important;
+  border-bottom: 1px solid #eee !important;
+}
+
 
 .scrollText{
     /* animation properties */
@@ -383,6 +397,14 @@ div.ui.page.modals.dimmer.transition.visible.active {
   background-color: rgba(255, 255, 255, 0);
 }
 
+
+  /* .number-wrapper:after {
+    color: blue;
+    content: "\25B2";
+    margin-top: 1px;
+  } */
+
+
 /* .indexClientInfo { */
   
  
@@ -424,6 +446,14 @@ color: orange;
 .tableindex {
   position: relative;
 }
+
+.ui.segment:first-child{
+  margin-top: 0 !important;
+}
+
+/* .ui.segment:last-child{
+  margin-bottom: 0 !important;
+} */
 
 @media screen and (min-height: 800px) {
   .tableindex {
@@ -524,6 +554,9 @@ z-index: -1000000000000000000000000000000000000000000000000000;
 .profileAvatar {
   width: 27rem !important;
   height: 27rem !important;
+  max-height: 27rem;
+  min-height: 27rem;
+  /* min-width: 27rem; */
   background-color: rgb(255, 255, 255) !important;
 
   /* fill the container, preserving aspect ratio, and cropping to fit */
@@ -533,4 +566,19 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  .profileAvatar{
+    height: 15rem !important;
+    width: 15rem !important;
+    min-height: 15rem !important;
+    min-width: 15rem !important;
+    max-height: 15rem !important;
+    max-width: 15rem !important;
+  }
+}
+
+.ui.grid>.row{
+  height: auto  !important;
 }

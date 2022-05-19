@@ -37,6 +37,7 @@ function NormNavbar({ stylist }) {
       animation={animation}
       direction="left"
       icon="labeled"
+      className="vertSidebar"
       vertical
       visible={visible}
       width="thin"
@@ -133,8 +134,9 @@ function NormNavbar({ stylist }) {
         target={segmentRef}
       />
       <Sidebar.Pusher
-        style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
+        style={{ boxShadow: "0px 0.5px 2px 1px gray"}}
         innerref={segmentRef}
+        fixed='top'
       >
         <Menu
           stackable
