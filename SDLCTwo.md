@@ -236,6 +236,6 @@
 
 5/18/2022
 
-- Cleveland: added sort to teacher, working on sort for index
+- Cleveland: added sort to teacher, working on sort for index, no netlify yet because it wont build, looking into it tommorow
 
 - Abdi: password additions, may not be done in time.
