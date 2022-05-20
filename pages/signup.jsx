@@ -187,7 +187,6 @@ const Signup = () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
-      console.log(`results: ${results}`);
     } catch (error) {
       console.log(`Error at getStylists ${error}`);
     }

@@ -233,3 +233,12 @@
 - Cleveland: finished sort for teacher (thanks sean), given time will finish sort for other pages, commented features not finished currently.
 
 - Abdi: password
+<<<<<<< HEAD
+=======
+
+5/18/2022
+
+- Cleveland: added sort to teacher, working on sort for index, no netlify yet because it wont build, looking into it tommorow
+
+- Abdi: password additions, may not be done in time.
+>>>>>>> dfedca029b4e7c64df663a39ccdefc918668b20e

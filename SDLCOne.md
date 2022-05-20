@@ -340,3 +340,13 @@ Reid Gill: CIW
 Daniel: absent
 
 Joshua Ruvalcaba: absent
+
+
+5/19/22
+Jason Enciso: absent
+
+Daniel: Worked on and fixed some bugs in the css and fixed the userId being the same if you create multiple accounts without refreshing
+
+Joshua Ruvalcaba: helping Daniel and Reid
+
+Reid Gill: CIW retake
