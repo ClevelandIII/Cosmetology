@@ -322,3 +322,31 @@ Reid Gill: trying to set up the vercel (this may not work out fill free to try y
 Daniel: attempting to get deleteStylist to work on list page
 
 Joshua Ruvalcaba: helping Daniel and Reid
+
+5/17/22
+Jason Enciso: dying inside
+
+Reid Gill: do to how vercel is only going to work when we are 100% done, turning the hair menu options in to some kind of dropbox again
+
+Daniel: Made clickable names show pointer cursor where needed, added testimonials scroll to nav bar, fixed bugs.
+
+Joshua Ruvalcaba: helping Daniel and Reid
+
+5/18/22
+Jason Enciso: dying inside
+
+Reid Gill: CIW 
+
+Daniel: absent
+
+Joshua Ruvalcaba: absent
+
+
+5/19/22
+Jason Enciso: absent
+
+Daniel: Worked on and fixed some bugs in the css and fixed the userId being the same if you create multiple accounts without refreshing
+
+Joshua Ruvalcaba: helping Daniel and Reid
+
+Reid Gill: CIW retake

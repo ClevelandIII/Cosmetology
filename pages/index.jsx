@@ -30,13 +30,14 @@ function exampleReducer(state, action) {
 }
 
 const index = ({ stylist, client }) => {
-  useEffect(() => {
+  const setName = () => {
     document.title = `Welcome, ${stylist.firstName}`;
-  }, []);
+  };
+
   const [clients, setClients] = useState([]);
   const [clientModal, setClientModal] = useState("");
   const [option, setOption] = useState("");
-  const [sortType, setSortType] = useState("clients");
+  const [sortType, setSortType] = useState("");
 
   const [state, dispatch] = React.useReducer(exampleReducer, {
     open: false,
@@ -44,47 +45,18 @@ const index = ({ stylist, client }) => {
   });
   const { open, dimmer } = state;
 
-  const Options = [
-    {
-      id: 1,
-      key: "Number of Visits",
-      text: "Number of Visits",
-      value: "Number of Visits",
-    },
-    {
-      id: 2,
-      key: "First Visit",
-      text: "First Visit",
-      value: "First Visit",
-    },
-    {
-      id: 3,
-      key: "Most Recently Created",
-      text: "Most Recently Created",
-      value: "Most Recently Created",
-    },
-    {
-      id: 4,
-      key: "Name",
-      text: "Name",
-      value: "Name",
-    },
-  ];
-
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(`clients: ${clients}`);
     } catch (error) {
       console.log(`Error at getClients ${error}`);
     }
   };
 
   useEffect(() => {
-    getClients();
+    getClients(), setName();
   }, []);
-  console.log(`clients: ${clients}`);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
 
@@ -98,6 +70,66 @@ const index = ({ stylist, client }) => {
     // setIsTeacher(false);
     decide = false;
   }
+
+  const sortClient = async (text) => {
+    console.log(`Here is the text: ${text}`);
+    try {
+      const res = await axios.post(`http://localhost:3001/api/v1/index`, {
+        text,
+      });
+
+      console.log(`First log for index: ${res.data}`);
+      console.log("middle");
+
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      console.log(`Second Log for index: ${res.data.clients}`);
+
+      setClients(res.data.clients);
+      console.log("done");
+    } catch (error) {
+      console.log(`Error at sortClient: ${error}`);
+    }
+  };
+
+  const Options = [
+    {
+      id: 1,
+      key: "First Name",
+      text: "First Name",
+      value: "First Name",
+      onClick: () => {
+        setSortType("First Name"), sortClient("First Name");
+      },
+    },
+    {
+      id: 2,
+      key: "Last Name",
+      text: "Last Name",
+      value: "Last Name",
+      onClick: () => {
+        setSortType("Last Name"), sortClient("Last Name");
+      },
+    },
+    {
+      id: 3,
+      key: "Age",
+      text: "Age",
+      value: "Age",
+      onClick: () => {
+        setSortType("Age"), sortClient("Age");
+      },
+    },
+    {
+      id: 4,
+      key: "Date Created",
+      text: "Date Created",
+      value: "Date Created",
+      onClick: () => {
+        setSortType("Date Created"), sortClient("Date Created");
+      },
+    },
+  ];
 
   return (
     <>
@@ -114,7 +146,7 @@ const index = ({ stylist, client }) => {
                 </p>
               </Grid.Row>
               <Divider hidden />
-              <Link href="/UserProfile">
+              <Link href="/List">
                 <Grid.Row className="mini2">
                   <Button style={{ backgroundColor: "orange" }}>
                     See Students
@@ -151,7 +183,6 @@ const index = ({ stylist, client }) => {
                 fluid
                 selection
                 options={Options}
-                onChange={(e) => setSortType(e.target.value)}
               />
             </div>
           </Grid.Row>
@@ -168,7 +199,7 @@ const index = ({ stylist, client }) => {
             }}
           >
             <>
-            <Divider hidden></Divider>
+              <Divider hidden></Divider>
               <Grid.Column>
                 <Segment>Client</Segment>
               </Grid.Column>
@@ -187,8 +218,9 @@ const index = ({ stylist, client }) => {
                 return (
                   <>
                     <Grid.Column
+                      key={client._id}
+                      setClients={clients}
                       className="Indexcolumn clientListColumn"
-                      // setClients={clients}
                       style={{ textAlign: "center" }}
                       onClick={() => {
                         setClientModal(client._id);
@@ -207,24 +239,21 @@ const index = ({ stylist, client }) => {
 
                       {client._id === clientModal ? (
                         <Modal
-                      
                           centered={false}
                           // textAlign="center"
                           onClose={() => dispatch({ type: "CLOSE_MODAL" })}
                           open={open}
-                          
                         >
-
                           <>
-
-                           
-
                             <Modal.Content
-                              style={{position: "absolute", top:"500%"}}
+                              style={{ position: "absolute", top: "500%" }}
                               className="indexClientInfo"
                               scrolling
                             >
-                              <Divider clearing  style={{position: "absolute", top:"500%"}}/>
+                              <Divider
+                                clearing
+                                style={{ position: "absolute", top: "500%" }}
+                              />
                               <Segment>
                                 <h3>First Name: {client.firstName}</h3>
                                 <h3>Last Name: {client.lastName}</h3>
@@ -270,8 +299,8 @@ const index = ({ stylist, client }) => {
                               </Segment>
                             </Modal.Content>
                             {/* <div className="ui hidden"></div> */}
-                            {/* <Divider  hidden className="zIndex"/> */}
-                            
+                            <Divider hidden />
+
                             {/* <Modal.Actions
                               style={{
                                 position: "relative",
@@ -279,7 +308,7 @@ const index = ({ stylist, client }) => {
                                 backgroundColor: "ffffff00",
                               }}
                             > */}
-                              {/* <Button
+                            {/* <Button
                               // style={{ position: "absolute", top: "1000%" }}
                                 content="Proceed"
                                 labelPosition="right"
@@ -293,9 +322,8 @@ const index = ({ stylist, client }) => {
                           {/* ) : (
                         <></>
                       )} */}
-                      {/* <br /> */}
+                          {/* <br /> */}
                         </Modal>
-                        
                       ) : (
                         <></>
                       )}
@@ -303,7 +331,6 @@ const index = ({ stylist, client }) => {
 
                     <Grid.Column
                       className="Indexcolumn"
-                      key={client._id}
                       setClients={clients}
                       style={{ textAlign: "center" }}
                     >
@@ -314,7 +341,6 @@ const index = ({ stylist, client }) => {
 
                     <Grid.Column
                       className="Indexcolumn"
-                      key={client._id}
                       setClients={clients}
                       style={{ textAlign: "center" }}
                     >

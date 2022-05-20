@@ -54,7 +54,7 @@ const StylistSchema = new Schema(
 
     userId: {
       type: String,
-      default: new Date().getTime(),
+      default: Math.floor(Math.random() * 100) + (new Date().getTime()),
     },
 
     resetToken: { type: String },

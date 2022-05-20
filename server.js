@@ -34,7 +34,7 @@ const next = require("next");
 const dev = process.env.NODE_ENV !== "production";
 
 //! there are giant error warnings that pop up when in dev.
-const nextApp = next({ dev });
+const nextApp = next({ dev }); 
 
 //! Handler is a built in next router that will handle ALL requests made to the server
 const handler = nextApp.getRequestHandler();
@@ -44,6 +44,8 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+
+//Shows where routes are being called. Useful if anyone wants to see why they arent calling something in controllers.
 app.use(morgan('short'))
 
 app.use(bodyParser.json());
@@ -59,6 +61,7 @@ const profileRoute = require("./server/routes/profileRoute");
 // const forgotRoutes = require("./server/routes/forgotPassword")
 const searchRoutes = require("./server/routes/searchRoutes");
 const listRoutes = require("./server/routes/listRoute")
+const indexRoute = require("./server/routes/indexRoute")
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/auth", authRoute);
@@ -70,6 +73,7 @@ app.use("/api/v1/UserRoute", userRoute);
 // app.use("forgot", forgotRoutes);
 app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/List", listRoutes);
+app.use("/api/v1/index", indexRoute)
 
 //*SOCKETS */
 

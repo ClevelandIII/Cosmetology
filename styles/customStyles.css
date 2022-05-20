@@ -3,6 +3,12 @@
   margin-right: 1.5rem !important;
 }
 
+.vertSidebar{
+  /* height: 100vh !important; */
+  position: fixed !important;
+  height: 100% !important;
+}
+
 .ui.container {
   margin-left: 0 !important;
 }
@@ -272,7 +278,7 @@ text-align: center;
 }
 
 .Indexcolumn {
-  position: relative;
+  /* position: relative; */
   width: 2rem;
   justify-content: center;
 }
@@ -290,6 +296,83 @@ text-align: center;
   backdrop-filter: blur(20px) !important;
 }
 
+.testimonial{
+  margin-right: 10rem;
+  /* background-color: #353434; */
+  font-size: medium;
+  /* align-items: center */
+  justify-self: center;
+  /* margin: 0 auto !important; */
+}
+
+.testHeader{
+  margin-right: 10rem;
+}
+
+/* @media screen and (max-width: 768px) {
+  .scrollContainer{
+    width: 20% !important;
+  }
+} */
+
+
+/* @media screen and (min-width: 800px) {
+  .scrollContainer{
+    overflow: hidden;
+    justify-items: center !important;
+    justify-content: center !important;
+    /* background-color: #edd390 !important; */
+    /* border: black solid 1px !important; */
+    /* width: 20% !important; */
+  /* }
+} */ */
+
+
+
+
+
+.quantity-button.quantity-up {
+  position: absolute !important;
+  height: 50% !important;
+  top: 0 !important;
+  color: red !important;
+  border-bottom: 1px solid #eee !important;
+}
+
+
+.scrollText{
+    /* animation properties */
+    -moz-transform: translateX(60%);
+    -webkit-transform: translateX(60%);
+    transform: translateX(60%);
+    
+    -moz-animation: my-animation 30s linear infinite;
+    -webkit-animation: my-animation 30s linear infinite;
+    animation: my-animation 30s linear infinite;
+    display: flex;
+    /* float:left; */
+    align-content: space-between;
+    white-space: nowrap;
+}
+
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(60%); }
+  to { -webkit-transform: translateX(-60%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(60%);
+    -webkit-transform: translateX(60%);
+    transform: translateX(60%);
+  }
+  to {
+    -moz-transform: translateX(-60%);
+    -webkit-transform: translateX(-60%);
+    transform: translateX(-60%);
+  }
+}
+
 .containeindex {
   border-bottom: 10px solid orange;
   border-top: 10px solid orange;
@@ -305,9 +388,11 @@ text-align: center;
 .indexCenter {
   justify-content: center;
 }
-/* .indexCenter {
-  justify-content: center;
-} */
+
+#changeImg:hover{
+  border: rgb(255, 0, 0) 5px solid !important;
+  background-image: url("https://i.postimg.cc/G3M0HdCg/rc-Lx-ML7-Ri.png") !important;
+}
 
 div.ui.page.modals.dimmer.transition.visible.active {
   /* display: block !important; */
@@ -315,6 +400,14 @@ div.ui.page.modals.dimmer.transition.visible.active {
   overflow-x: hidden;
   background-color: rgba(255, 255, 255, 0);
 }
+
+
+  /* .number-wrapper:after {
+    color: blue;
+    content: "\25B2";
+    margin-top: 1px;
+  } */
+
 
 /* .indexClientInfo { */
   
@@ -357,6 +450,14 @@ color: orange;
 .tableindex {
   position: relative;
 }
+
+.ui.segment:first-child{
+  margin-top: 0 !important;
+}
+
+/* .ui.segment:last-child{
+  margin-bottom: 0 !important;
+} */
 
 @media screen and (min-height: 800px) {
   .tableindex {
@@ -457,6 +558,9 @@ z-index: -1000000000000000000000000000000000000000000000000000;
 .profileAvatar {
   width: 27rem !important;
   height: 27rem !important;
+  max-height: 27rem;
+  min-height: 27rem;
+  /* min-width: 27rem; */
   background-color: rgb(255, 255, 255) !important;
 
   /* fill the container, preserving aspect ratio, and cropping to fit */
@@ -466,4 +570,19 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+  .profileAvatar{
+    height: 15rem !important;
+    width: 15rem !important;
+    min-height: 15rem !important;
+    min-width: 15rem !important;
+    max-height: 15rem !important;
+    max-width: 15rem !important;
+  }
+}
+
+.ui.grid>.row{
+  height: auto  !important;
 }

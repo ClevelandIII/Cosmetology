@@ -40,13 +40,14 @@ function NormNavbar({ stylist }) {
   Router.onRouteChangeComplete = () => nprogress.done();
   Router.onRouteChangeError = () => nprogress.done();
 
-  const contextRef = createRef();
+  // const contextRef = createRef();
   const VerticalSidebar = ({ animation, visible }) => (
     <Sidebar
       as={Menu}
       animation={animation}
       direction="left"
       icon="labeled"
+      className="vertSidebar"
       vertical
       visible={visible}
       width="thin"
@@ -143,10 +144,15 @@ function NormNavbar({ stylist }) {
         target={segmentRef}
       />
       <Sidebar.Pusher
-        style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
+        style={{ boxShadow: "0px 0.5px 2px 1px gray"}}
         innerref={segmentRef}
+        fixed='top'
       >
-        <Menu stackable secondary>
+        <Menu
+          stackable
+          secondary
+          style={{ maxHeight: "80px", overflow: "hidden" }}
+        >
           <Menu.Item name="features">
             {hamDog ? (
               <Icon
@@ -201,21 +207,7 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
-          <Ref innerRef={contextRef}>
-          <Menu.Item
-            name="testimonials"
-            style={{ width: "30%" }}
-            position="right"
-          >
-            <Grid.Column floated="left" width={4}>
-          <Sticky context={contextRef}>
-            <Segment basic>
-              <Search />
-            </Segment>
-          </Sticky>
-        </Grid.Column>
-          </Menu.Item>
-          </Ref>
+          
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}
@@ -228,6 +220,23 @@ function NormNavbar({ stylist }) {
           </Menu.Item>
         </Menu>
       </Sidebar.Pusher>
+
+      
+          <Menu.Item
+            name="testimonials"
+            // style={{ width: "30%" }}
+            position="right"
+            className="scrollContainer"
+          >
+            <Grid.Column floated="left" width={4}>
+          <Sticky >
+            <Segment basic>
+              <Search />
+            </Segment>
+          </Sticky>
+        </Grid.Column>
+          </Menu.Item>
+          
     </div>
   );
 }

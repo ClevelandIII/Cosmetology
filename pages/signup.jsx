@@ -13,6 +13,8 @@ import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
+import { setToken } from "./util/auth";
+
 
 const Signup = () => {
   const [stylists, setStylists] = useState([]);
@@ -201,7 +203,6 @@ const Signup = () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
-      console.log(`results: ${results}`);
     } catch (error) {
       console.log(`Error at getStylists ${error}`);
     }
@@ -412,14 +413,14 @@ const Signup = () => {
             iconPosition="left"
           >
             <Form.Radio
-              label="Cosmotology 1 Year 1"
+              label="Cosmetology 1"
               checked={year1}
               onClick={() => {
                 setYear1(true), setYear2(false);
               }}
             />
             <Form.Radio
-              label="Cosmotology 2 Year 2"
+              label="Cosmetology 2"
               checked={year2}
               onClick={() => {
                 setYear2(true), setYear1(false);
