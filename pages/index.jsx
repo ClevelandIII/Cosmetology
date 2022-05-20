@@ -30,9 +30,10 @@ function exampleReducer(state, action) {
 }
 
 const index = ({ stylist, client }) => {
-  useEffect(() => {
+  const setName = () => {
     document.title = `Welcome, ${stylist.firstName}`;
-  }, []);
+  };
+
   const [clients, setClients] = useState([]);
   const [clientModal, setClientModal] = useState("");
   const [option, setOption] = useState("");
@@ -54,7 +55,7 @@ const index = ({ stylist, client }) => {
   };
 
   useEffect(() => {
-    getClients();
+    getClients(), setName();
   }, []);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
