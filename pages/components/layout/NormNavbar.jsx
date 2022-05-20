@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Button,
   Icon,
@@ -8,10 +8,18 @@ import {
   Sidebar,
   Input,
   List,
+  Sticky,
+  Grid,
+  Ref
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
+<<<<<<< HEAD
 // import Search from "./SearchComponent";
+=======
+import { createRef } from "react";
+import Search from "./SearchComponent";
+>>>>>>> d5fee5910bbc23d63b9f2668d3305a5ceabf667e
 
 //whole lotta semantic and a whole lotta random stuff from me
 //I also used the sidebar instead of the buttons because it looks better since there are more pages.
@@ -29,8 +37,14 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
-
+import nprogress from "nprogress";
+import Router from "next/router";
 function NormNavbar({ stylist }) {
+  Router.onRouteChangeStart = () => nprogress.start();
+  Router.onRouteChangeComplete = () => nprogress.done();
+  Router.onRouteChangeError = () => nprogress.done();
+
+  // const contextRef = createRef();
   const VerticalSidebar = ({ animation, visible }) => (
     <Sidebar
       as={Menu}
@@ -197,41 +211,7 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
-          {/* <Menu.Item
-            name="testimonials"
-            // style={{ width: "30%" }}
-            position="right"
-            className="scrollContainer"
-          >
-            <div className="scrollText">
-              <h2 className="testHeader">
-                {" "}
-                West-Mec Hairstyling || Client Reviews:{" "}
-              </h2>
-
-              <p className="testimonial">
-                Amazing staff, amazing service, best cosmetologist in Arizona ||
-                ⭐⭐⭐⭐⭐ - Ashley Monroe
-              </p>
-
-              <p className="testimonial">
-                Haircut was amazing. Staff were kind and talkative || ⭐⭐⭐⭐⭐
-                - David Deans
-              </p>
-
-              <p className="testimonial">
-                Staff were really nice and styled my hair perfectly ||
-                ⭐⭐⭐⭐⭐ - Samuel Adams
-              </p>
-
-              <p className="testimonial">
-                Never a long wait if you use check in. Very clean. I go there
-                regularly. Love the haircut and the price || ⭐⭐⭐⭐⭐ - Judy
-                Jones
-              </p>
-            </div>
-            {/* <Search /> */}
-          {/* </Menu.Item> */}
+          
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}
@@ -244,6 +224,23 @@ function NormNavbar({ stylist }) {
           </Menu.Item>
         </Menu>
       </Sidebar.Pusher>
+
+      
+          <Menu.Item
+            name="testimonials"
+            // style={{ width: "30%" }}
+            position="right"
+            className="scrollContainer"
+          >
+            <Grid.Column floated="left" width={4}>
+          <Sticky >
+            <Segment basic>
+              <Search />
+            </Segment>
+          </Sticky>
+        </Grid.Column>
+          </Menu.Item>
+          
     </div>
   );
 }

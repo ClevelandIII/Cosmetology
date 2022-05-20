@@ -17,4 +17,5 @@ router.route("/UserProfile").get(getAllUsers).patch(addHours);
 router.route("/sort").post(sortStylists);
 router.route("/sort2").post(sortClient);
 
+
 module.exports = router;

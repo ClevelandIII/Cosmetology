@@ -309,23 +309,27 @@ text-align: center;
   margin-right: 10rem;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .scrollContainer{
     width: 20% !important;
   }
-}
+} */
 
 
-@media screen and (min-width: 800px) {
+/* @media screen and (min-width: 800px) {
   .scrollContainer{
     overflow: hidden;
     justify-items: center !important;
     justify-content: center !important;
     /* background-color: #edd390 !important; */
     /* border: black solid 1px !important; */
-    width: 20% !important;
-  }
-}
+    /* width: 20% !important; */
+  /* }
+} */ */
+
+
+
+
 
 .quantity-button.quantity-up {
   position: absolute !important;

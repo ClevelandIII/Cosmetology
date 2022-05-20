@@ -70,6 +70,8 @@ const Signup = () => {
   const [selectedTeacher, setSelectedTeacher] = useState(false);
   const [teacherChecked, setTeacherChecked] = useState(false);
 
+  const [email1, setEmail] = useState("");
+  const [password2, setPassword] = useState("");
   //* Functions */
 
   // const myFunction = (studentYear) => {
@@ -89,6 +91,18 @@ const Signup = () => {
     } else {
       isTeacher = false;
     }
+    //ResetPassword
+    // const body = {
+    //   email1,
+    //   password2,
+    // };
+    // axios({
+    //   method: "post",
+    //   url: "/auth/signup",
+    //   data: body,
+    // }).then(() => {
+    //   props.history.push("/login");
+    // });
 
     //Radio Button Checks
 
@@ -153,6 +167,8 @@ const Signup = () => {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
       setHighlighted(true);
+      setPassword(e.target.value)
+      setEmail(e.target.value)
     } else {
       setStylist((prev) => ({ ...prev, [name]: value }));
     }

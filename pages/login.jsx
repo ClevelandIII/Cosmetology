@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   Segment,
@@ -33,11 +33,24 @@ const Login = ({ history, location }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStylist((prev) => ({ ...prev, [name]: value }));
+    // setEmail(e.target.value)
+    // setPassword(e.target.value)
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  //   const body = {
+  //     email,
+  //     password,
+  // };
+  // axios({
+  //     url: "/auth/login",
+  //     data: body,
+  //     method: "post",
+  // }).then(res => {
+  //     localStorage.setItem("cwcToken", res.data.token);
+  //     props.history.push("/");
+  // })
     setFormLoading(true);
 
     try {
@@ -132,7 +145,6 @@ const Login = ({ history, location }) => {
             iconPosition="left"
             type={showPassword ? "text" : "password"}
           />
-
           <Divider hidden />
           <Button
             color="orange"

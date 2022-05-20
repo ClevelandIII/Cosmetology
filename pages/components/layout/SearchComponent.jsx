@@ -1,5 +1,9 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { List, Image, Search, Item } from "semantic-ui-react";
+=======
+import { List,  Search, Item } from "semantic-ui-react";
+>>>>>>> d5fee5910bbc23d63b9f2668d3305a5ceabf667e
 import axios from "axios";
 import Cookies from "js-cookie";
 import Router from "next/router";
@@ -64,6 +68,7 @@ const SearchComponent = () => {
   );
 };
 
+<<<<<<< HEAD
 const ResultRenderer = ({ _id,  firstName }) => {
   return (
     <List key={_id}>
@@ -79,6 +84,17 @@ const ResultRenderer = ({ _id,  firstName }) => {
           avatar
         />
         <Item.Content header={firstName} as="a" />
+=======
+const ResultRenderer = ({ _id,  firstName, lastName, stylistName }) => {
+  return (
+    <List key={_id}>
+      <List.Item>
+        <h3>Client:</h3>
+        <Item.Content header={firstName} as="a" />
+        <Item.Content header={lastName} as="a" />
+        <h3>Stylist</h3>
+        <Item.Content header={stylistName} as="a" />
+>>>>>>> d5fee5910bbc23d63b9f2668d3305a5ceabf667e
       </List.Item>
     </List>
   );
