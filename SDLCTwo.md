@@ -239,3 +239,9 @@
 - Cleveland: added sort to teacher, working on sort for index, no netlify yet because it wont build, looking into it tommorow
 
 - Abdi: password additions, may not be done in time.
+
+5/19/2022
+
+- Cleveland: FInished all sorts, working on sitewide errors that are causing the site to not build.
+
+- Abdi: Working on search bar, added functionality so that all names can be seen, not finished.

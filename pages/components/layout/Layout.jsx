@@ -3,36 +3,24 @@ import { Grid, Ref, Visibility } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav";
+import { useRouter } from "next/router";
 // import { Link, Route, Switch, useLocation } from "react-router-dom";
 
 const Layout = ({ children, stylist }, req, res) => {
-  {
-    
-    stylist
-      // ? useEffect(() => {
-      //     document.querySelector("body").classList.remove("noScroll");
-      //   })
-      // : useEffect(() => {
-      //     document.querySelector("body").classList.add("noScroll");
-      //   });
-      ?   useEffect(() => {
-        document.querySelector("body").classList.add("otherOrangeBackground");
-      })
-      :   useEffect(() => {
-        document.querySelector("body").classList.add("orangeBackground");
-      });
-  }
+  //commented out because it errored on build attempts
+  // {
+  //   stylist
+  //     ? document.querySelector("body").classList.add("otherOrangeBackground")
+  //     : document.querySelector("body").classList.add("orangeBackground");
+  // }
 
-  
-
-  // if (req.originalUrl === "http://localhost:3001/login") {
-  //   useEffect(() => {
-  //     document.querySelector("body").classList.add("noScroll");
-  //   });
+  // const router = useRouter();
+  // if (router.pathname === "/login") {
+  //   document.querySelector("body").classList.add("otherOrangeBackground");
+  // } else if (router.pathname === "/signup") {
+  //   document.querySelector("body").classList.add("orangeBackground");
   // } else {
-  //   useEffect(() => {
-  //     document.querySelector("body").classList.remove("noScroll");
-  //   });
+  //   console.log(`Testing for layout: ${router.pathname}`);
   // }
 
   const contextRef = createRef();
@@ -41,13 +29,7 @@ const Layout = ({ children, stylist }, req, res) => {
     <>
       {stylist ? (
         <>
-          <NormNavbar stylist={stylist} style={{maxHeight: "80px"}} />
-
-          {/* <Ref innerref={contextRef}>
-            <Grid.Column>
-              <Visibility context={contextRef}>{children}</Visibility>
-            </Grid.Column>
-          </Ref> */}
+          <NormNavbar stylist={stylist} style={{ maxHeight: "80px" }} />
           <div style={{ margin: "0 auto" }} stylist={stylist}>
             {children}
           </div>
@@ -56,10 +38,12 @@ const Layout = ({ children, stylist }, req, res) => {
         <>
           <SignupLoginNav />
 
-          <div style={{ margin: "0 auto" }} className="signupLogin">
+          <div
+            style={{ margin: "0 auto" }}
+            className="signupLogin"
+          >
             {children}
           </div>
-
         </>
       )}
     </>
