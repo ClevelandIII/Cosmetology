@@ -19,8 +19,7 @@ const getProfile = async (req, res) => {
       profile,
     });
   } catch (error) {
-    // console.log(userId);
-    console.log(error, userId);
+    console.log(`Error at getProfile ${error}`, userId);
     return res.status(500).send("Error @getProfile");
   }
 };
@@ -45,8 +44,7 @@ const getTeacher = async (req, res) => {
       teacher,
     });
   } catch (error) {
-    // console.log(userId);
-    console.log(error, userId);
+    console.log(`Error at Get Teacher ${error}`, userId);
     return res.status(500).send("Error @getTeacher");
   }
 };

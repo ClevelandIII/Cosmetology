@@ -21,8 +21,7 @@ mongo.connect(new_db ,(error , db) => {
 	//accessing the collection
 	db.collection("new").find().sort(method).toArray( (err , collection) => {
 		if(err) throw err;
-		//console.log(collection.result.n + "Record(s) deleted successfully");
-		console.log(collection);
+		console.log(`collection: ${collection}`);
 		db.close();
 	});
 });

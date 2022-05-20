@@ -10,14 +10,11 @@ import {
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
-const defaultProfilePicURL = require("../server/util/defaultPic");
-// import { deleteStylist } from "../server/controllers/userProfile";
 
 const List = ({ stylist }) => {
   const [stylists, setStylists] = useState([]);
-  const [tempS, setTempS] = useState([]);
   const [semester, setSemester] = useState([]);
-  const [teachLink, setTeachLink] = useState([]);
+  const [teachId, setTeachId] = useState([]);
   const [clients, setClients] = useState([]);
   const [formLoading, setFormLoading] = useState(false);
   //For adding visits
@@ -56,18 +53,12 @@ const List = ({ stylist }) => {
     setVisit((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setFormLoading(true);
-    console.log('tset',userIds);
+  const handleSubmit = async (string) => {
+    console.log(`Tester String: ${string}`, userIds);
     try {
-      const res = await axios.delete(
-        `http://localhost:3001/api/v1/user/UserProfile`,
-        {
-          userIds,
-        }
-      );
-      setToken(res.data);
+      const res = await axios.post(`http://localhost:3001/api/v1/List`, {
+        userIds,
+      });
       setDeleteUser(false);
 
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
@@ -75,7 +66,6 @@ const List = ({ stylist }) => {
     } catch (error) {
       console.log(`Error at handleSubmit: ${error}`);
     }
-    setFormLoading(false);
   };
 
   //For sort function. Currently unfinished
@@ -85,10 +75,9 @@ const List = ({ stylist }) => {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at initGetStylists ${error}`);
     }
   };
-
   const getClients = async () => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
@@ -98,7 +87,6 @@ const List = ({ stylist }) => {
       console.log(`Error at getClients: ${error}`);
     }
   };
-
   const getSemester = async () => {
     try {
       let currentDate = new Date();
@@ -114,57 +102,51 @@ const List = ({ stylist }) => {
       console.log(`Error at getSemester: ${error}`);
     }
   };
-  const getTeacher = async () => {
-    try {
-      if (stylist.teacher === "potassium") {
-        setTeachLink("1651522057278");
-        // teachLink = "/1651522057278"
-      } else if (stylist.teacher === "Sussy") {
-        setTeachLink("1651263834506");
-        // teachLink = "/1651263834506"
-      } else if (stylist.teacher === "davs") {
-        setTeachLink("1651624257170");
-        // teachLink = "/1651624257170"
-      } else {
-        setTeachLink("");
-        // teachLink = "/"
-      }
-    } catch (error) {
-      console.log(`Error at getTeacher: ${error}`);
-    }
-  };
+  // const getTeacher = async () => {
+  //   try {
+  //     if (stylist.teacher === "potassium") {
+  //       setTeachId("1651522057278");
+  //       // teachLink = "/1651522057278"
+  //     } else if (stylist.teacher === "Sussy") {
+  //       setTeachId("1651263834506");
+  //       // teachLink = "/1651263834506"
+  //     } else if (stylist.teacher === "davs") {
+  //       setTeachId("1651624257170");
+  //       // teachLink = "/1651624257170"
+  //     } else {
+  //       setTeachId("");
+  //       // teachLink = "/"
+  //     }
+  //   } catch (error) {
+  //     console.log(`Error at getTeacher: ${error}`);
+  //   }
+  // };
   useEffect(() => {
     initGetStylists();
     getSemester();
     getClients();
-    getTeacher();
+    // getTeacher();
   }, []);
 
-  const sortStylist = async (sort) => {
+  const sortStylist = async (text) => {
+    console.log(`Here is the text: ${text}`);
     try {
-      if (sort != "") {
-        setTempS(sort);
-        useEffect(async () => {
-          await axios.post(`http://localhost:3001/api/v1/user/List`, { sort });
-        }, []);
+      const res = await axios.post(`http://localhost:3001/api/v1/List/sort`, {
+        text,
+      });
 
-        const results = await axios.get(`http://localhost:3001/api/v1/List`);
-        //functional
-        setStylists(results.data);
-        //reading
-        setTempS(results.data);
-      } else {
-        console.log("no query");
-        setTempS(sort);
-      }
+      console.log(res.data);
+      console.log("middle");
+
+      //Thanks Sean for fixing the main error.
+      //Now res.data needs to be shown, as it is the sorted data.
+      // console.log(res.data);
+      setStylists(res.data.stylists);
+      console.log("done");
     } catch (error) {
       console.log(`Error at sortStylist: ${error}`);
     }
   };
-
-  useEffect(() => {
-    sortStylist(sortType);
-  }, [sortType]);
 
   let decide = "";
   if (stylist.isTeacher === "true") {
@@ -172,23 +154,6 @@ const List = ({ stylist }) => {
   } else if (stylist.isTeacher === "false") {
     decide = false;
   }
-
-  // const loadMore = document.querySelector("#loadMore");
-  // let currentItems = 2;
-  // loadMore.addEventListener("click", (e) => {
-  //   const elementList = [...document.querySelectorAll(".list .list-element")];
-  //   for (let i = currentItems; i < currentItems + 2; i++) {
-  //     if (elementList[i]) {
-  //       elementList[i].style.display = "block";
-  //     }
-  //   }
-  //   currentItems += 2;
-
-  //   // Load more button will be hidden after list fully loaded
-  //   if (currentItems >= elementList.length) {
-  //     event.target.style.display = "none";
-  //   }
-  // });
 
   const Options = [
     {
@@ -231,7 +196,7 @@ const List = ({ stylist }) => {
       text: "Teacher",
       value: "Teacher",
       onClick: () => {
-        setSortType("Teacher");
+        setSortType("Teacher"), sortStylist("Teacher");
       },
     },
     {
@@ -239,7 +204,7 @@ const List = ({ stylist }) => {
       text: "Session",
       value: "Session",
       onClick: () => {
-        setSortType("Semester");
+        setSortType("Session"), sortStylist("Session");
       },
     },
     {
@@ -247,7 +212,7 @@ const List = ({ stylist }) => {
       text: "Year",
       value: "Year",
       onClick: () => {
-        setSortType("Year");
+        setSortType("Year"), sortStylist("Year");
       },
     },
     {
@@ -255,14 +220,13 @@ const List = ({ stylist }) => {
       text: "Name",
       value: "Name",
       onClick: () => {
-        setSortType("Name");
+        setSortType("Name"), sortStylist("Name");
       },
     },
   ];
 
   return (
     <>
-    <div>{userIds}</div>
       {decide ? (
         <>
           <div className="list">
@@ -311,6 +275,7 @@ const List = ({ stylist }) => {
                 <>
                   {stylists.map((stylist) => {
                     if (stylist.isTeacher === "false") {
+                      // console.log(`Teacher Id: ${stylist.teachId}`)
                       return (
                         <>
                           <Grid.Column
@@ -321,42 +286,41 @@ const List = ({ stylist }) => {
                               textAlign: "center",
                             }}
                           >
-                            {/*On monday, remove the form from the popup */}
                             <Popup
                               trigger={
                                 <img
-                                  className="listAvatar"
+                                  className="listAvatar listLink"
                                   id="changeImg"
                                   src={
                                     deleteUser
                                       ? "https://res.cloudinary.com/product-image/image/upload/v1652387171/rcLxML7Ri_rmox1s.png"
                                       : stylist.profilePicURL
                                   }
+                                  onClick={() => {
+                                    setUserIds(stylist.userId);
+                                  }}
                                 />
+                              }
+                              content={
+                                <>
+                                  <h3>
+                                    Are you sure you want to delete{" "}
+                                    {stylist.firstName}? This action is
+                                    irreversible!!
+                                  </h3>
+                                  <Button
+                                    color="red"
+                                    inverted
+                                    content="I am sure"
+                                    onClick={() => handleSubmit("testing")}
+                                  />
+                                </>
                               }
                               hoverable
                               pinned
                               on="click"
                               position="top left"
-                            >
-                              <Form
-                                loading={formLoading}
-                                onSubmit={handleSubmit}
-                              >
-                                <h3>
-                                  Are you sure you want to delete{" "}
-                                  {stylist.firstName}? This action is
-                                  irreversible!!
-                                </h3>
-
-                                <Button
-                                  color="red"
-                                  inverted
-                                  content="I am sure"
-                                  type="submit"
-                                />
-                              </Form>
-                            </Popup>
+                            />
 
                             <Link href={`/${stylist.userId}`}>
                               <Segment
@@ -396,7 +360,7 @@ const List = ({ stylist }) => {
                             style={{ textAlign: "center" }}
                           >
                             <Segment className="indexCenter">
-                              <Link href={`/${stylist.teachId}`}>
+                              <Link className="testClass" onClick={console.log(stylist.teachId)} href={`/${stylist.teachId}`}>
                                 <p className="listLink">{stylist.teacher}</p>
                               </Link>
                             </Segment>
@@ -454,13 +418,13 @@ const List = ({ stylist }) => {
               <Grid.Row className="mini3">
                 <div style={{ textAlign: "center" }}>
                   <h1>List of All Clients</h1>
-                  <Dropdown
+                  {/* <Dropdown
                     placeholder="Sort By..."
                     fluid
                     selection
                     options={Options}
                     onChange={(e) => setSortType(e.target.value)}
-                  />
+                  /> */}
                 </div>
               </Grid.Row>
               <Grid.Row
@@ -505,9 +469,9 @@ const List = ({ stylist }) => {
                         >
                           <Popup
                             trigger={
-                              <div>
+                              <div className="listLink">
                                 <img
-                                  className="listAvatar"
+                                  className="listAvatar "
                                   src="https://t4.ftcdn.net/jpg/02/15/84/43/240_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
                                 />
                                 <Segment

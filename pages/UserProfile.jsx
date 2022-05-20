@@ -77,14 +77,14 @@ const UserProfile = ({ stylist }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylist(results.data);
-      console.log(results);
+      console.log(`results: ${results}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getStylists ${error}`);
     }
   };
   useEffect(() => {
     getStylists();
-    console.log(stylists);
+    console.log(`stylists: ${stylists}`);
   }, []);
 
   //Separates the teachers from the students
@@ -95,7 +95,7 @@ const UserProfile = ({ stylist }) => {
     } else {
       count = count;
     }
-    return console.log(count);
+    return console.log(`Count: ${count}`);
   });
 
   const handleSubmit = async (e) => {
@@ -110,7 +110,7 @@ const UserProfile = ({ stylist }) => {
       });
       setToken(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit ${error}`);
     }
     setHours("");
     setFormLoading(false);
@@ -143,14 +143,13 @@ const UserProfile = ({ stylist }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`clients ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients ${error}`);
     }
   };
   useEffect(() => {
     getClients();
-    // console.log(stylists);
   }, []);
 
   //Visit Start
@@ -167,7 +166,7 @@ const UserProfile = ({ stylist }) => {
       });
       setToken(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit2 ${error}`);
     }
     setVisit("");
     setFormLoading(false);
@@ -463,9 +462,6 @@ const UserProfile = ({ stylist }) => {
                   fluid
                   selection
                   options={Options}
-                  // onClick={() => {
-                  //   console.log("1");
-                  // }}
                 />
               </div>
             </Grid.Row>

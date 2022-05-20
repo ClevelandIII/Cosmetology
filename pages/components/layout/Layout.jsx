@@ -1,8 +1,10 @@
 import NormNavbar from "./NormNavbar";
-import { Grid, Ref, Visibility } from "semantic-ui-react";
+import { Grid, Ref, Visibility, Sticky, Segment } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav";
+import Search from "./SearchComponent";
+
 // import { Link, Route, Switch, useLocation } from "react-router-dom";
 
 const Layout = ({ children, stylist }, req, res) => {
@@ -41,7 +43,7 @@ const Layout = ({ children, stylist }, req, res) => {
     <>
       {stylist ? (
         <>
-          <NormNavbar stylist={stylist} />
+          <NormNavbar stylist={stylist} style={{maxHeight: "80px"}} />
 
           {/* <Ref innerref={contextRef}>
             <Grid.Column>
@@ -51,6 +53,11 @@ const Layout = ({ children, stylist }, req, res) => {
           <div style={{ margin: "0 auto" }} stylist={stylist}>
             {children}
           </div>
+          <Sticky context={contextRef}>
+                    <Segment basic>
+                      <Search />
+                    </Segment>
+                  </Sticky>
         </>
       ) : (
         <>

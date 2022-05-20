@@ -136,7 +136,11 @@ function NormNavbar({ stylist }) {
         style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
         innerref={segmentRef}
       >
-        <Menu stackable secondary>
+        <Menu
+          stackable
+          secondary
+          style={{ maxHeight: "80px", overflow: "hidden" }}
+        >
           <Menu.Item name="features">
             {hamDog ? (
               <Icon
@@ -191,13 +195,41 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
-          <Menu.Item
+          {/* <Menu.Item
             name="testimonials"
-            style={{ width: "30%" }}
+            // style={{ width: "30%" }}
             position="right"
+            className="scrollContainer"
           >
+            <div className="scrollText">
+              <h2 className="testHeader">
+                {" "}
+                West-Mec Hairstyling || Client Reviews:{" "}
+              </h2>
+
+              <p className="testimonial">
+                Amazing staff, amazing service, best cosmetologist in Arizona ||
+                ⭐⭐⭐⭐⭐ - Ashley Monroe
+              </p>
+
+              <p className="testimonial">
+                Haircut was amazing. Staff were kind and talkative || ⭐⭐⭐⭐⭐
+                - David Deans
+              </p>
+
+              <p className="testimonial">
+                Staff were really nice and styled my hair perfectly ||
+                ⭐⭐⭐⭐⭐ - Samuel Adams
+              </p>
+
+              <p className="testimonial">
+                Never a long wait if you use check in. Very clean. I go there
+                regularly. Love the haircut and the price || ⭐⭐⭐⭐⭐ - Judy
+                Jones
+              </p>
+            </div>
             {/* <Search /> */}
-          </Menu.Item>
+          {/* </Menu.Item> */}
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}

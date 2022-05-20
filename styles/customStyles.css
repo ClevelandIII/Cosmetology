@@ -290,6 +290,71 @@ text-align: center;
   backdrop-filter: blur(20px) !important;
 }
 
+.testimonial{
+  margin-right: 10rem;
+  /* background-color: #353434; */
+  font-size: medium;
+  /* align-items: center */
+  justify-self: center;
+  /* margin: 0 auto !important; */
+}
+
+.testHeader{
+  margin-right: 10rem;
+}
+
+@media screen and (max-width: 768px) {
+  .scrollContainer{
+    width: 20% !important;
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+  .scrollContainer{
+    overflow: hidden;
+    justify-items: center !important;
+    justify-content: center !important;
+    /* background-color: #edd390 !important; */
+    /* border: black solid 1px !important; */
+    width: 20% !important;
+  }
+}
+
+
+.scrollText{
+    /* animation properties */
+    -moz-transform: translateX(60%);
+    -webkit-transform: translateX(60%);
+    transform: translateX(60%);
+    
+    -moz-animation: my-animation 30s linear infinite;
+    -webkit-animation: my-animation 30s linear infinite;
+    animation: my-animation 30s linear infinite;
+    display: flex;
+    /* float:left; */
+    align-content: space-between;
+    white-space: nowrap;
+}
+
+@-webkit-keyframes my-animation {
+  from { -webkit-transform: translateX(60%); }
+  to { -webkit-transform: translateX(-60%); }
+}
+
+@keyframes my-animation {
+  from {
+    -moz-transform: translateX(60%);
+    -webkit-transform: translateX(60%);
+    transform: translateX(60%);
+  }
+  to {
+    -moz-transform: translateX(-60%);
+    -webkit-transform: translateX(-60%);
+    transform: translateX(-60%);
+  }
+}
+
 .containeindex {
   border-bottom: 10px solid orange;
   border-top: 10px solid orange;
@@ -308,6 +373,11 @@ text-align: center;
 /* .indexCenter {
   justify-content: center;
 } */
+
+#changeImg:hover{
+  border: rgb(255, 0, 0) 5px solid !important;
+  background-image: url("https://i.postimg.cc/G3M0HdCg/rc-Lx-ML7-Ri.png") !important;
+}
 
 div.ui.page.modals.dimmer.transition.visible.active {
   /* display: block !important; */

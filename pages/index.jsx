@@ -75,17 +75,16 @@ const index = ({ stylist, client }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`clients: ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients ${error}`);
     }
   };
 
   useEffect(() => {
     getClients();
-    // console.log(stylists);
   }, []);
-  console.log(clients);
+  console.log(`clients: ${clients}`);
 
   //Ninja Coding!!! Yaaa! No but actually all the classnames are mini in order, and those are for organization with ipad css
 
@@ -115,7 +114,7 @@ const index = ({ stylist, client }) => {
                 </p>
               </Grid.Row>
               <Divider hidden />
-              <Link href="/UserProfile">
+              <Link href="/List">
                 <Grid.Row className="mini2">
                   <Button style={{ backgroundColor: "orange" }}>
                     See Students
@@ -147,13 +146,13 @@ const index = ({ stylist, client }) => {
           <Grid.Row className="mini3">
             <div style={{ textAlign: "center" }}>
               <h1>Previous Clients</h1>
-              <Dropdown
+              {/* <Dropdown
                 placeholder="Sort By..."
                 fluid
                 selection
                 options={Options}
                 onChange={(e) => setSortType(e.target.value)}
-              />
+              /> */}
             </div>
           </Grid.Row>
           <Grid.Row
@@ -271,7 +270,7 @@ const index = ({ stylist, client }) => {
                               </Segment>
                             </Modal.Content>
                             {/* <div className="ui hidden"></div> */}
-                            {/* <Divider  hidden className="zIndex"/> */}
+                            <Divider  hidden />
                             
                             {/* <Modal.Actions
                               style={{

@@ -216,6 +216,20 @@
 
 - Abdi: Password recovery and search
 
+5/13/2022
+
+- Cleveland: working on delete
+
+- Abdi: Working on password recovery and search
+
 5/16/2022
 
-- Abdi: Password recovery and search
+- Cleveland: finished delete, added to sort
+
+- Abdi: Working on password recovery and search
+
+5/17/2022
+
+- Cleveland: finished sort for teacher (thanks sean), given time will finish sort for other pages, commented features not finished currently.
+
+- Abdi: password

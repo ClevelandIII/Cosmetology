@@ -3,6 +3,8 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
+// const morgan  = require('morgan')
+
 const bodyParser = require("body-parser");
 const authRouter = require("./pages/auth");
 // const http = require("http");
@@ -42,6 +44,8 @@ const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
+// app.use(morgan('short'))
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use("/auth", authRouter);
@@ -53,7 +57,7 @@ const authRoute = require("./server/routes/authRoutes");
 const clientRoute = require("./server/routes/clientRoute");
 const profileRoute = require("./server/routes/profileRoute");
 const forgotRoutes = require("./server/routes/forgotPassword")
-// const searchRoutes = require("./server/routes/searchRoutes");
+const searchRoutes = require("./server/routes/searchRoutes");
 const listRoutes = require("./server/routes/listRoute")
 
 app.use("/api/v1/user", userRoute);
@@ -64,7 +68,7 @@ app.use("/api/v1/stylists", userRoute);
 app.use("/api/v1/profile", profileRoute);
 app.use("/api/v1/UserRoute", userRoute);
 app.use("forgot", forgotRoutes);
-// app.use("/api/v1/search", searchRoutes);
+app.use("/api/v1/search", searchRoutes);
 app.use("/api/v1/List", listRoutes);
 
 //*SOCKETS */
@@ -74,7 +78,7 @@ connectDB();
 nextApp.prepare().then(() => {
   app.all("*", (req, res) => handler(req, res));
   app.listen(PORT, (err) => {
-    if (err) console.log(err);
+    if (err) console.log(`err at nextApp ${err}`);
     else console.log(`Server listening @ port ${PORT}`);
   });
 });

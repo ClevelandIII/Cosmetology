@@ -79,14 +79,14 @@ const profilePage = ({ stylist, profile }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylist(results.data);
-      console.log(results);
+      console.log(`results: ${results}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getStylists ${error}`);
     }
   };
   useEffect(() => {
     getStylists();
-    console.log(stylists);
+    console.log(`stylists: ${stylists}`);
   }, []);
 
   //Separates the teachers from the students
@@ -97,7 +97,7 @@ const profilePage = ({ stylist, profile }) => {
     } else {
       count = count;
     }
-    return console.log(count);
+    return console.log(`count: ${count}`);
   });
 
   const handleSubmit = async (e) => {
@@ -112,7 +112,7 @@ const profilePage = ({ stylist, profile }) => {
       });
       setToken(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit ${error}`);
     }
     setHours("");
     setFormLoading(false);
@@ -145,14 +145,13 @@ const profilePage = ({ stylist, profile }) => {
     try {
       const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
-      console.log(clients);
+      console.log(`clients: ${clients}`);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at getClients ${error}`);
     }
   };
   useEffect(() => {
     getClients();
-    // console.log(stylists);
   }, []);
 
   //Visit Start
@@ -169,7 +168,7 @@ const profilePage = ({ stylist, profile }) => {
       });
       setToken(res.data);
     } catch (error) {
-      console.log(error);
+      console.log(`Error at handleSubmit ${error}`);
     }
     setVisit("");
     setFormLoading(false);
@@ -241,12 +240,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center", paddingLeft: "4%" }}>
                 <h1>All Students</h1>
-                <Dropdown
+                {/* <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
-                />
+                /> */}
               </div>
             </Grid.Row>
             <Grid.Row
@@ -447,15 +446,12 @@ const profilePage = ({ stylist, profile }) => {
             <Grid.Row className="mini3">
               <div style={{ textAlign: "center" }}>
                 <h1>All Clients of {stylist.firstName}</h1>
-                <Dropdown
+                {/* <Dropdown
                   placeholder="Sort By..."
                   fluid
                   selection
                   options={Options}
-                  // onClick={() => {
-                  //   console.log("1");
-                  // }}
-                />
+                /> */}
               </div>
             </Grid.Row>
             <Grid.Row
@@ -496,8 +492,8 @@ const profilePage = ({ stylist, profile }) => {
                         >
                           <Popup
                             trigger={
-                              <Segment className="indexCenter">
-                                <p>{`${client.firstName} ${client.lastName}`}</p>
+                              <Segment className="indexCenter ">
+                                <p className="listLink">{`${client.firstName} ${client.lastName}`}</p>
                               </Segment>
                             }
                             hoverable
@@ -602,7 +598,7 @@ const profilePage = ({ stylist, profile }) => {
 profilePage.getInitialProps = async (ctx) => {
   try {
     const { userId } = ctx.query;
-    console.log(userId);
+    console.log(`userId: ${userId}`);
     const { token } = parseCookies(ctx);
     const res = await axios.get(
       `http://localhost:3001/api/v1/profile/${userId}`,
@@ -613,7 +609,7 @@ profilePage.getInitialProps = async (ctx) => {
     const { profile } = res.data;
     return { profile };
   } catch (error) {
-    console.log(error);
+    console.log(`Error at profilePage ${error}`);
   }
 };
 

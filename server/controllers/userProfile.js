@@ -73,12 +73,12 @@ const createUser = async (req, res) => {
       { expiresIn: "1d" },
       (err, token) => {
         if (err) throw err;
-        console.log(err);
+        console.log(`Error at jwt.sign ${err}`);
         res.status(200).json(token);
       }
     );
   } catch (error) {
-    console.log(error);
+    console.log(`Error at CreateUser ${error}`);
     return res.status(500).send("Server Error");
   }
 };
@@ -111,7 +111,7 @@ const postLoginUser = async (req, res) => {
       }
     );
   } catch (error) {
-    console.log(error);
+    console.log(`Error at postUserLogin ${error}`);
     return res.status(500).send("Server Error");
   }
 };
@@ -122,57 +122,28 @@ const getAllUsers = async (req, res) => {
     stylists = await StylistModel.find();
     return res.status(200).json(stylists);
   } catch (error) {
-    console.log(error);
+    console.log(`Error at getAllUsers ${error}`);
     return res.status(500).send("Server Error @ getAllStylists");
   }
 };
 
 const addHours = async (req, res) => {
   const { hour, user } = req.body;
-  // console.log(`hours: ${hour}`);
-  // console.log(`userID: ${user}`)
   try {
     const getStylists = async () => {
       try {
         const stylist = await StylistModel.findOne({ userId: user });
 
-        // console.log(`stylist`, stylist);
         stylist.hours = +stylist.hours + +hour + "";
-        // console.log(`stylist`, stylist);
         await stylist.save();
         return res.status(200).send("All Good");
       } catch (error) {
-        console.log(error);
+        console.log(`Error at GetStylists ${error}`);
       }
     };
     getStylists();
   } catch (error) {
-    console.log(error);
-  }
-};
-
-const deleteStylist = async (req, res) => {
-  const { userIds } = req.body;
-  try {
-    console.log(`This is: ${userIds}`);
-
-    if (userIds === undefined) {
-      return res.status(404).send("No UserId");
-    }
-
-    const stylist = await StylistModel.findOneAndDelete({ userIds });
-
-    if (!stylist) {
-      return res.status(404).send("No Stylist Found");
-    }
-
-    return res.status(200).json({
-      stylist,
-    });
-  } catch (error) {
-    console.log(`Failed userIds: ${userIds}`);
-    // console.log(error, userId);
-    return res.status(500).send("Error @deleteStylist");
+    console.log(`Error at addHours ${error}`);
   }
 };
 
@@ -180,6 +151,5 @@ module.exports = {
   createUser,
   postLoginUser,
   getAllUsers,
-  addHours,
-  deleteStylist,
+  addHours, 
 };

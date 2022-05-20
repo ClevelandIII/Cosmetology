@@ -8,9 +8,29 @@ I will also say, I would add names if you are doing something. That way there is
 
 • password recovery - Abdi
 
-* Add delete function to student lists so teachers can delete old students (This instead of adding year 3s, 4s, 5s, etc) - Daniel
+• * iPad Formatting where necessary - Reid
 
-* iPad Formatting where necessary - Reid
+
+
+Extra stuff that was commented.
+
+//Load more
+  // const loadMore = document.querySelector("#loadMore");
+  // let currentItems = 2;
+  // loadMore.addEventListener("click", (e) => {
+  //   const elementList = [...document.querySelectorAll(".list .list-element")];
+  //   for (let i = currentItems; i < currentItems + 2; i++) {
+  //     if (elementList[i]) {
+  //       elementList[i].style.display = "block";
+  //     }
+  //   }
+  //   currentItems += 2;
+
+  //   // Load more button will be hidden after list fully loaded
+  //   if (currentItems >= elementList.length) {
+  //     event.target.style.display = "none";
+  //   }
+  // });
 
 
 

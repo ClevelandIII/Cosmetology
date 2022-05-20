@@ -31,7 +31,7 @@ function sendResetLink(email, id) {
 
     ses.sendEmail(params, (err) => {
         if (err) {
-            console.log(err);
+            console.log(`Error at sendResetLink ${err}`);
         }
     });
 }

@@ -3,13 +3,13 @@ const catchErrors = (error) => {
 
   if (error.response) {
     errorMsg = error.response.data;
-    console.log(errorMsg);
+    console.log(`Error at error.response ${errorMsg}`);
   } else if (error.request) {
     errorMsg = error.request;
-    console.log(errorMsg);
+    console.log(`Error at error.request ${errorMsg}`);
   } else {
     errorMsg = error.msg;
-    console.log(errorMsg);
+    console.log(`Error at catchErrors ${errorMsg}`);
   }
   return errorMsg;
 };
