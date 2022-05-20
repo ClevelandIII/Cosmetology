@@ -51,6 +51,8 @@ const Layout = ({ children, stylist }, req, res) => {
           <div style={{ margin: "0 auto" }} stylist={stylist}>
             {children}
           </div>
+
+          
         </>
       ) : (
         <>

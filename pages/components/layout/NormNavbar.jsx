@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Button,
   Icon,
@@ -8,9 +8,13 @@ import {
   Sidebar,
   Input,
   List,
+  Sticky,
+  Grid,
+  Ref
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
+import { createRef } from "react";
 import Search from "./SearchComponent";
 
 //whole lotta semantic and a whole lotta random stuff from me
@@ -29,8 +33,14 @@ function exampleReducer(state, action) {
       throw new Error();
   }
 }
-
+import nprogress from "nprogress";
+import Router from "next/router";
 function NormNavbar({ stylist }) {
+  Router.onRouteChangeStart = () => nprogress.start();
+  Router.onRouteChangeComplete = () => nprogress.done();
+  Router.onRouteChangeError = () => nprogress.done();
+
+  const contextRef = createRef();
   const VerticalSidebar = ({ animation, visible }) => (
     <Sidebar
       as={Menu}
@@ -191,13 +201,21 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
+          <Ref innerRef={contextRef}>
           <Menu.Item
             name="testimonials"
             style={{ width: "30%" }}
             position="right"
           >
-            <Search />
+            <Grid.Column floated="left" width={4}>
+          <Sticky context={contextRef}>
+            <Segment basic>
+              <Search />
+            </Segment>
+          </Sticky>
+        </Grid.Column>
           </Menu.Item>
+          </Ref>
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}
