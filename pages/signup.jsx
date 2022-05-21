@@ -15,7 +15,6 @@ import axios from "axios";
 import catchErrors from "./util/catchErrors";
 import { setToken } from "./util/auth";
 
-
 const Signup = () => {
   const [stylists, setStylists] = useState([]);
   const [stylist, setStylist] = useState({
@@ -167,8 +166,8 @@ const Signup = () => {
       setMedia(() => files[0]);
       setMediaPreview(() => URL.createObjectURL(files[0]));
       setHighlighted(true);
-      setPassword(e.target.value)
-      setEmail(e.target.value)
+      setPassword(e.target.value);
+      setEmail(e.target.value);
     } else {
       setStylist((prev) => ({ ...prev, [name]: value }));
     }
@@ -267,7 +266,6 @@ const Signup = () => {
           />
 
           <Form.Input
-            
             required
             label="First name"
             placeholder="John"
@@ -319,7 +317,6 @@ const Signup = () => {
           />
 
           <Form.Input
-            required
             label="Teacher"
             placeholder="John Doe"
             name="teacher"
@@ -357,7 +354,7 @@ const Signup = () => {
                   </>
                 );
               } else {
-                return <></>;
+                <></>;
               }
             })}
           </Form.Input>

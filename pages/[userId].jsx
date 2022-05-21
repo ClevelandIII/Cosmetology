@@ -282,7 +282,7 @@ const ProfilePage = ({ stylist, profile }) => {
                 className="roz3"
               >
                 <Image
-                  src={profile.profilePicURL}
+                  src={stylist.profilePicURL}
                   className="profileAvatar"
                   size="medium"
                   bordered
