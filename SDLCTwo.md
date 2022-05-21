@@ -242,6 +242,6 @@
 
 5/19/2022
 
-- Cleveland: FInished all sorts, working on sitewide errors that are causing the site to not build.
+- Cleveland: Finished all sorts, working on sitewide errors that are causing the site to not build.
 
 - Abdi: Working on search bar, added functionality so that all names can be seen, not finished.

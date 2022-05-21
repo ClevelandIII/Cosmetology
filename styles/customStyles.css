@@ -4,7 +4,6 @@
 }
 
 .vertSidebar{
-  /* height: 100vh !important; */
   position: fixed !important;
   height: 100% !important;
 }
@@ -13,29 +12,22 @@
   margin-left: 0 !important;
 }
 
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: rgba(255, 2, 2, 0);
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: orange;
-  /* border-radius: 10px; */
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #cc8b00;
-  /* border-radius: 10px; */
 }
 
-/* Welcome User Paragraph */
 .welcomeItem {
   color: white !important;
 }
@@ -54,22 +46,9 @@
 .StudentGrid {
   margin: 0 auto !important;
   position: absolute !important;
-  /* width: 100vw !important; */
-  /* left: 53%; */
-  /* background: #6ea1ff; */
+
   background: #ffb81c;
 }
-
-/* .studentListPic { */
-/* color: transparent; */
-/* } */
-
-/* .studentListName { */
-/* position: relative !important; */
-/* left: 35%; */
-/* overflow: scroll hidden; */
-/* white-space: nowrap; */
-/* } */
 
 .background-video {
   position: absolute;
@@ -109,14 +88,9 @@ a.item :hover {
   background-color: transparent;
 }
 
-/* .navButtons{
-  left: 29rem !important;
-} */
-
 .loginComponent {
   min-width: 50vw !important;
   max-width: 50vw !important;
-  /* margin: 0 auto !important; */
   margin-top: 12rem !important;
 }
 
@@ -128,23 +102,18 @@ a.item :hover {
 }
 
 .ui.modal.scrolling{
-/* margin-top: auto !important; */
 margin: 0 auto;
 align-self: center;
 align-content: center;
 text-align: center;
 }
 
-/*width sizing */
-
-/* @media screen and (min-width: 900px) { */
 
 .studentListName {
   position: relative !important;
   left: 8%;
   cursor: pointer !important;
-  /* overflow: scroll hidden; */
-  /* white-space: nowrap; */
+
 }
 
 .listLink {
@@ -158,11 +127,6 @@ text-align: center;
 .ui.page.modals.transition.visible {
   display: flex !important;
 }
-
-/* .brokeDivider{
-  visibility: hidden !important;
-  color: red Im !important;
-  } */
 
 
 @media screen and (min-width: 800px) {
@@ -179,12 +143,10 @@ text-align: center;
   .studentListName {
     position: relative !important;
     left: 40%;
-    /* overflow: scroll hidden; */
     white-space: nowrap;
   }
 }
 
-/*All mini css is for index styling and ipad styling*/
 @media screen and (min-height: 800px) {
   .studentListPic {
     position: absolute !important;
@@ -192,7 +154,6 @@ text-align: center;
     width: 35% !important;
     height: 35% !important;
     right: 76%;
-    /* min-height: 35% !important; */
     max-width: 35% !important;
     max-height: 35% !important;
   }
@@ -200,7 +161,6 @@ text-align: center;
   .studentListName {
     position: relative !important;
     left: 25% !important;
-    /* white-space: nowrap; */
   }
 }
 
@@ -249,9 +209,6 @@ text-align: center;
   }
 }
 
-/*End of mini css*/
-
-/*start of clientList/index css */
 .clientListRow {
   position: relative !important;
   text-align: center;
@@ -261,7 +218,6 @@ text-align: center;
 }
 
 .clientListRow:hover {
-  /* color: #6ea1ff; */
   background-color: #6ea1ff;
   justify-content: space-between;
 }
@@ -278,7 +234,6 @@ text-align: center;
 }
 
 .Indexcolumn {
-  /* position: relative; */
   width: 2rem;
   justify-content: center;
 }
@@ -298,36 +253,13 @@ text-align: center;
 
 .testimonial{
   margin-right: 10rem;
-  /* background-color: #353434; */
   font-size: medium;
-  /* align-items: center */
   justify-self: center;
-  /* margin: 0 auto !important; */
 }
 
 .testHeader{
   margin-right: 10rem;
 }
-
-/* @media screen and (max-width: 768px) {
-  .scrollContainer{
-    width: 20% !important;
-  }
-} */
-
-
-/* @media screen and (min-width: 800px) {
-  .scrollContainer{
-    overflow: hidden;
-    justify-items: center !important;
-    justify-content: center !important;
-    /* background-color: #edd390 !important; */
-    /* border: black solid 1px !important; */
-    /* width: 20% !important; */
-  /* }
-} */ */
-
-
 
 
 
@@ -341,7 +273,6 @@ text-align: center;
 
 
 .scrollText{
-    /* animation properties */
     -moz-transform: translateX(60%);
     -webkit-transform: translateX(60%);
     transform: translateX(60%);
@@ -350,7 +281,6 @@ text-align: center;
     -webkit-animation: my-animation 30s linear infinite;
     animation: my-animation 30s linear infinite;
     display: flex;
-    /* float:left; */
     align-content: space-between;
     white-space: nowrap;
 }
@@ -380,7 +310,6 @@ text-align: center;
   color: black;
   overflow-y: scroll;
 
-  /*Commented out due to spacing out client boxes way to much*/
   height: 26.8rem;
   overflow-x: hidden;
 }
@@ -395,31 +324,10 @@ text-align: center;
 }
 
 div.ui.page.modals.dimmer.transition.visible.active {
-  /* display: block !important; */
   height: 100vw;
   overflow-x: hidden;
   background-color: rgba(255, 255, 255, 0);
 }
-
-
-  /* .number-wrapper:after {
-    color: blue;
-    content: "\25B2";
-    margin-top: 1px;
-  } */
-
-
-/* .indexClientInfo { */
-  
- 
-  /* border-bottom: 10px solid orange;
-  border-top: 10px solid orange; */
-  /* height: 45rem; */
-  /* height: 100rem; */
-  /* background: orange;
-  color: black;*/
-  /* overflow-x: hidden; */
-/* } */
 
 
 .forgotPassword{
@@ -455,9 +363,6 @@ color: orange;
   margin-top: 0 !important;
 }
 
-/* .ui.segment:last-child{
-  margin-bottom: 0 !important;
-} */
 
 @media screen and (min-height: 800px) {
   .tableindex {
@@ -487,10 +392,6 @@ color: orange;
   }
 }
 
-/* .zIndex{
-z-index: -1000000000000000000000000000000000000000000000000000;
-} */
-
 @media screen and (min-height: 800px) {
   .clientCreatorHandheld {
     overflow: auto;
@@ -504,9 +405,6 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   font-size: 60px;
   position: relative;
   top: 18px;
-
-  /*Bro i swear this additional z-index being this large is important*/
-  /*No but i just put this here for homescreen so that The user can see the modal when they click on a client at the bottom of the page.*/
   z-index: 100000000000000000000000000000000000000000;
 }
 
@@ -516,7 +414,6 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   top: 18px;
 }
 
-/*Styling for imgs. Please dont touch, work in progress*/
 .studentListPic {
   position: absolute !important;
   right: 81.8%;
@@ -527,7 +424,6 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   border-radius: 50px;
 }
 
-/*For Main List*/
 .listAvatar {
   width: 4rem !important;
   height: 4rem !important;
@@ -536,38 +432,28 @@ z-index: -1000000000000000000000000000000000000000000000000000;
   background-color: white;
 }
 
-/*Stack Overflow, mostly*/
 .avatar {
   position: absolute !important;
   right: 81.8%;
   bottom: -35%;
-  /* make a square container */
   width: 6rem !important;
   height: 6rem !important;
-  /* fill the container, preserving aspect ratio, and cropping to fit */
   background-size: cover;
-  /* center the image vertically and horizontally */
   background-position: top center;
-  /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
   background-color: #fff !important;
 }
 
-/* Fixes problem with profile avatars being to small and messing up rest of page */
 .profileAvatar {
   width: 27rem !important;
   height: 27rem !important;
   max-height: 27rem;
   min-height: 27rem;
-  /* min-width: 27rem; */
   background-color: rgb(255, 255, 255) !important;
 
-  /* fill the container, preserving aspect ratio, and cropping to fit */
   background-size: cover;
-  /* center the image vertically and horizontally */
   background-position: top center;
-  /* round the edges to a circle with border radius 1/2 container size */
   border-radius: 50%;
   border: rgb(0, 0, 0) solid 2px;
 }

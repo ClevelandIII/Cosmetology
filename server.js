@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));
 
 //Shows where routes are being called. Useful if anyone wants to see why they arent calling something in controllers.
-app.use(morgan('short'))
+// app.use(morgan('short'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
