@@ -59,7 +59,7 @@ const SearchComponent = () => {
       onSearchChange={handleChange}
       placeholder="Find other users"
       minCharacters={1}
-      onResultSelect={(e, data) => Router.push(`/${data.result.username}`)}
+      onResultSelect={(e, data) => Router.push(`/${data.result.firstName}`)}
     />
   );
 };

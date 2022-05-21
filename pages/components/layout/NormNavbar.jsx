@@ -10,7 +10,7 @@ import {
   List,
   Sticky,
   Grid,
-  Ref
+  Ref,
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
@@ -136,6 +136,7 @@ function NormNavbar({ stylist }) {
   const segmentRef = React.useRef();
 
   return (
+    <>
     <div style={{ backgroundColor: "white" }}>
       <VerticalSidebar
         animation={animation}
@@ -144,9 +145,9 @@ function NormNavbar({ stylist }) {
         target={segmentRef}
       />
       <Sidebar.Pusher
-        style={{ boxShadow: "0px 0.5px 2px 1px gray"}}
+        style={{ boxShadow: "0px 0.5px 2px 1px gray" }}
         innerref={segmentRef}
-        fixed='top'
+        fixed="top"
       >
         <Menu
           stackable
@@ -184,6 +185,7 @@ function NormNavbar({ stylist }) {
           <Menu.Item style={{ cursor: "pointer" }}>
             <Link href="/">
               <Image
+              alt="description of image"
                 size="small"
                 src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
                 onClick={() => {
@@ -207,7 +209,22 @@ function NormNavbar({ stylist }) {
               {`Welcome, ${stylist.firstName}. `}
             </h3>
           </Menu.Item>
-          
+
+          <Menu.Item
+        name="testimonials"
+        // style={{ width: "30%" }}
+        position="right"
+        className="scrollContainer"
+      >
+        <Grid.Column floated="left" width={4}>
+          <Sticky>
+            <Segment basic>
+              <Search />
+            </Segment>
+          </Sticky>
+        </Grid.Column>
+      </Menu.Item>
+
           <Menu.Item name="sign-in" position="right">
             <Button
               style={{ backgroundColor: "red", color: "white" }}
@@ -220,24 +237,11 @@ function NormNavbar({ stylist }) {
           </Menu.Item>
         </Menu>
       </Sidebar.Pusher>
-
       
-          <Menu.Item
-            name="testimonials"
-            // style={{ width: "30%" }}
-            position="right"
-            className="scrollContainer"
-          >
-            <Grid.Column floated="left" width={4}>
-          <Sticky >
-            <Segment basic>
-              <Search />
-            </Segment>
-          </Sticky>
-        </Grid.Column>
-          </Menu.Item>
-          
+     
     </div>
+    
+    </>
   );
 }
 

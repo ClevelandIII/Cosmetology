@@ -37,6 +37,7 @@ const SignupLoginNav = () => {
           <Image
             size="small"
             src="https://i.postimg.cc/RFDtVvtb/cosmetology-Logo.png"
+            alt="description of image"
           />
         </Link>
       </Menu.Item>

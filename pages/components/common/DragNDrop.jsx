@@ -62,6 +62,7 @@ const DragNDrop = ({
                     src={mediaPreview}
                     size="medium"
                     centered
+                    alt="description of image"
                     style={{ cursor: "pointer" }}
                     // onClick={() => inputRef.current.click()}
                   />

@@ -1,9 +1,10 @@
 import NormNavbar from "./NormNavbar";
-import { Grid, Ref, Visibility } from "semantic-ui-react";
+import { Grid, Ref, Visibility, Sticky, Segment } from "semantic-ui-react";
 import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav";
-import { useRouter } from "next/router";
+import Search from "./SearchComponent";
+
 // import { Link, Route, Switch, useLocation } from "react-router-dom";
 
 const Layout = ({ children, stylist }, req, res) => {

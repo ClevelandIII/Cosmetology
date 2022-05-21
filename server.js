@@ -3,7 +3,7 @@ const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
 const fileUpload = require("express-fileupload");
-const morgan  = require('morgan')
+// const morgan  = require('morgan')
 
 const bodyParser = require("body-parser");
 const authRouter = require("./pages/auth");

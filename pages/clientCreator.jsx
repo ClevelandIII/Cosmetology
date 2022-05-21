@@ -158,7 +158,8 @@ const ClientCreator = ({ stylist }) => {
         hairLength
       )
     );
-  }, [client]);
+    
+  }, []);
 
   return (
     <>

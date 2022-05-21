@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+
 const HeadTag = () => {
   return (
     <Head>
