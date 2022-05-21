@@ -309,11 +309,12 @@ text-align: center;
   margin-right: 10rem;
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .scrollContainer{
     width: 20% !important;
+    overflow:hidden;
   }
-} */
+}
 
 
 /* @media screen and (min-width: 800px) {

@@ -29,7 +29,7 @@ function exampleReducer(state, action) {
   }
 }
 
-const index = ({ stylist, client }) => {
+const Index = ({ stylist, client }) => {
   const setName = () => {
     document.title = `Welcome, ${stylist.firstName}`;
   };
@@ -286,7 +286,7 @@ const index = ({ stylist, client }) => {
                                   <h3>Additional Visits</h3>
                                   {client.visits.map((visit) => {
                                     return (
-                                      <Segment style={{ textAlign: "left" }}>
+                                      <Segment style={{ textAlign: "left" }} key={client._id}>
                                         <h3>Visits: {`${visit[0]}, `}</h3>
                                         <h3>Hair Style: {`${visit[1]}, `}</h3>
                                         <h3>
@@ -378,4 +378,4 @@ const index = ({ stylist, client }) => {
   );
 };
 
-export default index;
+export default Index;

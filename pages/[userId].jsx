@@ -19,8 +19,8 @@ import {
 } from "semantic-ui-react";
 import axios from "axios";
 
-const profilePage = ({ stylist, profile }) => {
-  const router = useRouter();
+const ProfilePage = ({ stylist, profile }) => {
+  
   const [stylists, setStylists] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [hours, setHours] = useState("");
@@ -690,7 +690,7 @@ const profilePage = ({ stylist, profile }) => {
   );
 };
 
-profilePage.getInitialProps = async (ctx) => {
+ProfilePage.getInitialProps = async (ctx) => {
   try {
     const { userId } = ctx.query;
     console.log(`userId: ${userId}`);
@@ -708,4 +708,4 @@ profilePage.getInitialProps = async (ctx) => {
   }
 };
 
-export default profilePage;
+export default ProfilePage;

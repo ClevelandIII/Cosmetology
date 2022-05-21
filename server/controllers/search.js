@@ -19,8 +19,5 @@ const searchUsers = async (req, res) => {
 };
 
 module.exports = { searchUsers };
-<<<<<<< HEAD
-=======
 
 
->>>>>>> d5fee5910bbc23d63b9f2668d3305a5ceabf667e

@@ -32,16 +32,8 @@ const Layout = ({ children, stylist }, req, res) => {
           <div style={{ margin: "0 auto" }} stylist={stylist}>
             {children}
           </div>
-<<<<<<< HEAD
-          <Sticky context={contextRef}>
-                    <Segment basic>
-                      <Search />
-                    </Segment>
-                  </Sticky>
-=======
 
           
->>>>>>> d5fee5910bbc23d63b9f2668d3305a5ceabf667e
         </>
       ) : (
         <>
