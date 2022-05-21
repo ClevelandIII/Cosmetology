@@ -245,3 +245,9 @@
 - Cleveland: Finished all sorts, working on sitewide errors that are causing the site to not build.
 
 - Abdi: Working on search bar, added functionality so that all names can be seen, not finished.
+
+5/20/2022
+
+- Cleveland: Trying to debug build
+
+- Abdi: Search additions, currently visible
