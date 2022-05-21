@@ -29,19 +29,10 @@ function exampleReducer(state, action) {
   }
 }
 
-<<<<<<< HEAD
 const Index = ({ stylist, client }) => {
-  const setName = () => {
+  useEffect(() => {
     document.title = `Welcome, ${stylist.firstName}`;
-  };
-=======
-const index = ({ stylist, client }) => {
-  if (stylist) {
-    useEffect(() => {
-      document.title = `Welcome, ${stylist.firstName}`;
-    }, []);
-  }
->>>>>>> 6e2c28e65f3c9ec2f364abe8fec7a705d4bfe8bc
+  }, []);
 
   const [clients, setClients] = useState([]);
   const [clientModal, setClientModal] = useState("");
@@ -312,6 +303,7 @@ const index = ({ stylist, client }) => {
                                       {client.visits.map((visit) => {
                                         return (
                                           <Segment
+                                            key={visit[0]}
                                             style={{ textAlign: "left" }}
                                           >
                                             <h3>Visits: {`${visit[0]}, `}</h3>
