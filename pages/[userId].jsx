@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import Link from "next/link";
 
 import {

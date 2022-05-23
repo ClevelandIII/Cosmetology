@@ -1,9 +1,9 @@
 import NormNavbar from "./NormNavbar";
-import { Grid, Ref, Visibility, Sticky, Segment } from "semantic-ui-react";
-import { useEffect, createRef } from "react";
+// import { Grid, Ref, Visibility, Sticky, Segment } from "semantic-ui-react";
+// import { useEffect, createRef } from "react";
 import React from "react";
 import SignupLoginNav from "./SignupLoginNav";
-import Search from "./SearchComponent";
+// import Search from "./SearchComponent";
 
 // import { Link, Route, Switch, useLocation } from "react-router-dom";
 

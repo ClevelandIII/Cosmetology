@@ -1,4 +1,4 @@
-//* EXPRESS APP SETUP */
+//* EXPRESS APP SETUP *//
 const express = require("express");
 const { connectDB } = require("./server/util/connect");
 const cloudinary = require("cloudinary").v2;
@@ -28,7 +28,7 @@ const PORT = process.env.PORT || 3001;
 //   res.send("<h1> Page not found </h1>");
 // });
 
-//* NEXT APP SETUP */
+//* NEXT APP SETUP *//
 const next = require("next");
 //!create a check for development vs production
 const dev = process.env.NODE_ENV !== "production";
@@ -39,8 +39,8 @@ const nextApp = next({ dev });
 //! Handler is a built in next router that will handle ALL requests made to the server
 const handler = nextApp.getRequestHandler();
 
-//* MIDDLEWARES */
-const { authMiddleware } = require("./server/middleware/auth");
+//* MIDDLEWARES *//
+// const { authMiddleware } = require("./server/middleware/auth");
 
 app.use(express.json());
 app.use(fileUpload({ useTempFiles: true }));

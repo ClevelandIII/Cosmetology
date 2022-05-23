@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { parseCookies } from "nookies";
+// import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
-import { baseURL } from "./util/auth";
+// import { baseURL } from "./util/auth";
 
 import {
   Grid,

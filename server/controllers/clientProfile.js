@@ -1,8 +1,8 @@
-const defaultProfilePicURL = require("../util/defaultPic");
+// const defaultProfilePicURL = require("../util/defaultPic");
 const ClientModel = require("../model/ClientModel");
 const StylistModel = require("../model/StylistModel");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcryptjs");
 const isEmail = require("validator/lib/isEmail");
 const axios = require("axios");
 

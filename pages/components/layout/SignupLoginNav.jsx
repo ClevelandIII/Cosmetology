@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import {
   Menu,
-  Container,
-  Icon,
+  // Container,
+  // Icon,
   Image,
   Button,
-  Sidebar,
-  Segment,
+  // Sidebar,
+  // Segment,
   // Input,
   Message,
 } from "semantic-ui-react";

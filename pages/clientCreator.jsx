@@ -4,13 +4,13 @@ import {
   Form,
   Message,
   Segment,
-  Dropdown,
-  Checkbox,
+  // Dropdown,
+  // Checkbox,
 } from "semantic-ui-react";
-import { useState, useRef, useEffect, Component } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
-import { setToken } from "./util/auth";
+// import { setToken } from "./util/auth";
 
 import Router from "next/router";
 

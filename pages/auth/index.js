@@ -1,4 +1,5 @@
 const express = require('express').Router;
+// import html from './index.html';
 const router = express();
 const bcrypt = require("bcrypt");
 const uuidv1 = require('uuidv1');

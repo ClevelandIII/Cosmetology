@@ -6,15 +6,15 @@ import {
   Menu,
   Segment,
   Sidebar,
-  Input,
-  List,
+  // Input,
+  // List,
   Sticky,
   Grid,
-  Ref,
+  // Ref,
 } from "semantic-ui-react";
 import Link from "next/link";
 import { logoutUser } from "../../util/auth";
-import { createRef } from "react";
+// import { createRef } from "react";
 import Search from "./SearchComponent";
 
 //whole lotta semantic and a whole lotta random stuff from me

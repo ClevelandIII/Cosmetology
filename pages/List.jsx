@@ -5,7 +5,7 @@ import {
   Segment,
   Button,
   Form,
-  Icon,
+  // Icon,
 } from "semantic-ui-react";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
