@@ -350,3 +350,22 @@ Daniel: Worked on and fixed some bugs in the css and fixed the userId being the 
 Joshua Ruvalcaba: helping Daniel and Reid
 
 Reid Gill: CIW retake
+
+5/20/22
+Jason Enciso: here
+
+Daniel: absent
+
+Reid: didn't do anything not feeling good
+
+Joshua absent
+
+
+5/23/22
+Jason Enciso: absent
+
+Daniel: trying to debug npm run build
+
+Reid: trying to debug to npm run build
+
+Joshua absent

@@ -4,11 +4,9 @@ I will also say, I would add names if you are doing something. That way there is
 
 • implement the search bar - Abdi
 
-• implement the "sort by..." feature - Cleveland
-
 • password recovery - Abdi
 
-• * iPad Formatting where necessary - Reid
+• get the site hosted - Cleveland, Daniel, Reid
 
 
 
