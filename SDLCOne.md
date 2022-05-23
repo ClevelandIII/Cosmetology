@@ -364,7 +364,7 @@ Joshua absent
 5/23/22
 Jason Enciso: absent
 
-Daniel: trying to debug npm run build
+Daniel: fixed all errors with building except trace for bcrypt, can't figure out whats wrong
 
 Reid: trying to debug to npm run build
 
