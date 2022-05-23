@@ -1,0 +1,213 @@
+Exactly as it sounds. Most of the unused stuff will be found here.
+
+//resetRequests.js
+const requests = [];
+
+function createResetRequest(resetRequest) {
+    requests.push(resetRequest);
+}
+
+function getResetRequest(id) {
+    const thisRequest = requests.find(req => req.id === id);
+    return thisRequest;
+}
+
+module.exports = {
+    createResetRequest,
+    getResetRequest,
+}
+
+//users.js
+const users = [];
+
+function createUser(user) {
+   users.push(user);
+}
+
+function getUser(email) {
+    const thisUser = users.find(user => user.email === email);
+    return thisUser;
+}
+
+function updateUser(user) {
+    const thisUserIndex = users.findIndex(local => local.email === user.email);
+    users[thisUserIndex] = user;
+}
+
+module.exports = {
+    createUser,
+    getUser,
+    updateUser,
+}
+
+//PrivateRoute.js 
+
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
+import { useAuth } from "./components/contexts/AuthContext"
+
+export default function PrivateRoute({ component: Component, ...rest }) {
+  const { currentUser } = useAuth()
+
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return currentUser ? <Component {...props} /> : <Redirect to="/login" />
+      }}
+    ></Route>
+  )
+}
+
+//ResetPassword.jsx
+import React, { useState } from "react";
+import axios from "axios";
+import { Form,  Button, Row, Input } from "semantic-ui-react";
+
+const ResetPassword = (props) => {
+
+    const [password, setPassword] = useState("");
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        const body = {
+            password,
+            id: props.match.params.id
+        };
+        axios({
+            url: "/auth/reset",
+            data: body,
+            method: "patch"
+        }).then(() => {
+            props.history.push("/login");
+        })
+    }
+
+    return (
+        <Form onSubmit={submitHandler}>
+            <Row>
+                <Input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="New Password"
+                />
+            </Row>
+            <Row>
+                <Button>Save</Button>
+            </Row>
+        </Form>
+    );
+};
+
+export default ResetPassword;
+
+//sendEmail.js
+const AWS = require("aws-sdk");
+
+const config = new AWS.Config({
+    region: "us-east-1",
+    secretAccessKey: process.env.JWT_SECRET,
+    accessKeyId: process.env.KEY_ID
+});
+const ses = new AWS.SES(config);
+
+function sendResetLink(email, id) {
+    const params = {
+        Destination: {
+            ToAddresses: [
+                email,
+            ]
+        },
+        Message: {
+            Body: {
+                Text: {
+                    Charset: "UTF-8",
+                    Data: `To reset your password, please click on this link: http://localhost:3000/reset/${id}`
+                }
+            },
+            Subject: {
+                Charset: "UTF-8",
+                Data: "Reset password instructions"
+            }
+        },
+        Source: "codingwithchaim@gmail.com",
+    };
+
+    ses.sendEmail(params, (err) => {
+        if (err) {
+            console.log(`Error at sendResetLink ${err}`);
+        }
+    });
+}
+
+
+module.exports = sendResetLink;
+
+//index.js
+const express = require('express').Router;
+// import html from './index.html';
+const router = express();
+const bcrypt = require("bcrypt");
+const uuidv1 = require('uuidv1');
+const { createUser, getUser, updateUser } = require("../model/users");
+const { getResetRequest, createResetRequest } = require("../model/resetRequests");
+const sendResetLink = require("./sendEmail");
+
+router.post("/signup", (req, res) => {
+    bcrypt.hash(req.body.password, 10).then(hashed => {
+        const user = {
+            email: req.body.email,
+            password: hashed,
+        };
+        createUser(user); 
+        res.status(201).json();
+    })
+});
+
+router.post("/login", (req, res) => {
+    const thisUser = getUser(req.body.email);
+    if (thisUser) {
+        bcrypt.compare(req.body.password, thisUser.password).then(result => {
+            if (result) {
+                const token = uuidv1();
+                res.status(200).json({ token });
+            } else {
+                res.status(401).json({ message: "Access denied" });
+            }
+        });
+    } else {
+        res.status(401).json({ message: "Access denied" });
+    }
+});
+
+router.post("/ForgotPassword", (req, res) => {
+    const thisUser = getUser(req.body.email);
+    if (thisUser) {
+        const id = uuidv1();
+        const request = {
+            id,
+            email: thisUser.email,
+        };
+        createResetRequest(request);
+        sendResetLink(thisUser.email, id);
+    }
+    res.status(200).json();
+});
+
+router.patch("/reset", (req, res) => {
+    const thisRequest = getResetRequest(req.body.id);
+    if (thisRequest) {
+        const user = getUser(thisRequest.email);
+        bcrypt.hash(req.body.password, 10).then(hashed => {
+            user.password = hashed;
+            updateUser(user);
+            res.status(204).json();
+        })
+    } else {
+        res.status(404).json();
+    }
+});
+
+module.exports = router;

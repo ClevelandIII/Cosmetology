@@ -9,7 +9,7 @@ import {
 } from "semantic-ui-react";
 import catchErrors from "./util/catchErrors";
 import axios from "axios";
-import { setToken } from "./util/auth";
+import { setToken } from "../server/util/auth";
 import Cookies from "js-cookie";
 import Link from "next/link";
 

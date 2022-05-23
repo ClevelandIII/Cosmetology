@@ -13,8 +13,7 @@ import {
   // Ref,
 } from "semantic-ui-react";
 import Link from "next/link";
-import { logoutUser } from "../../util/auth";
-// import { createRef } from "react";
+import { logoutUser } from "../../../server/util/auth"
 import Search from "./SearchComponent";
 
 //whole lotta semantic and a whole lotta random stuff from me
