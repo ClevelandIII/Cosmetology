@@ -13,7 +13,7 @@ import { useState, useRef, useEffect } from "react";
 import DragNDrop from "./components/common/DragNDrop";
 import axios from "axios";
 import catchErrors from "./util/catchErrors";
-import { setToken } from "../server/util/auth";
+import { setToken } from "./util/auth";
 
 const Signup = () => {
   const [stylists, setStylists] = useState([]);
@@ -200,7 +200,7 @@ const Signup = () => {
 
   const getStylists = async () => {
     try {
-      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
+      const results = await axios.get(`https://cosmotologywm.herokuapp.com/api/v1/stylists`);
       setStylists(results.data);
     } catch (error) {
       console.log(`Error at getStylists ${error}`);
