@@ -6,7 +6,7 @@ const fileUpload = require("express-fileupload");
 // const morgan  = require('morgan')
 
 const bodyParser = require("body-parser");
-const authRouter = require("./pages/auth");
+// const authRouter = require("./pages/auth");
 // const http = require("http");
 // const bodyParser = require("body-parser");
 // const route = require("./server/routes");
@@ -50,7 +50,7 @@ app.use(fileUpload({ useTempFiles: true }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use("/auth", authRouter);
+// app.use("/auth", authRouter);
 //* ROUTERS */
 // const profileRoutes = require("./server/routes/profileRoute");
 const userRoute = require("./server/routes/userRoute");
