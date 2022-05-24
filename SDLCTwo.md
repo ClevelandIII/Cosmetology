@@ -233,7 +233,7 @@
 - Cleveland: finished sort for teacher (thanks sean), given time will finish sort for other pages, commented features not finished currently.
 
 - Abdi: password
-<<<<<<< HEAD
+EAD
 =======
 
 5/18/2022
@@ -250,13 +250,15 @@
 - Cleveland: Finished all sorts, working on sitewide errors that are causing the site to not build.
 
 - Abdi: Working on search bar, added functionality so that all names can be seen, not finished.
-<<<<<<< HEAD
 
 5/20/2022
 
 - Cleveland: Trying to debug build
 
 - Abdi: Search additions, currently visible
-=======
->>>>>>> d066c7e81e1cbcce2a9f182f667232af769fa982
->>>>>>> 9c678b21a56e22a34f63498efb78f61f801797dc
+
+5/23/2022
+
+- Cleveland: Netlify attempts
+
+- Abdi: Heroku attempts with website
