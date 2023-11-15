@@ -51,7 +51,8 @@ const ProfilePage = ({ stylist, profile }) => {
   let user = stylist.userId;
   const getStylists = async () => {
     try {
-      const results = await axios.get(`https://cosmetology.vercel.app/api/v1/stylists`);
+      // const results = await axios.get(`https://cosmetology.vercel.app/api/v1/stylists`);
+      const results = await axios.get(`http://localhost:3001/api/v1/stylists`);
       setStylists(results.data);
     } catch (error) {
       console.log(`Error at getStylists ${error}`);
@@ -114,7 +115,8 @@ const ProfilePage = ({ stylist, profile }) => {
 
   const getClients = async () => {
     try {
-      const results = await axios.get(`https://cosmetology.vercel.app/api/v1/client`);
+      // const results = await axios.get(`https://cosmetology.vercel.app/api/v1/client`);
+      const results = await axios.get(`http://localhost:3001/api/v1/client`);
       setClients(results.data);
     } catch (error) {
       console.log(`Error at getClients ${error}`);
@@ -155,8 +157,14 @@ const ProfilePage = ({ stylist, profile }) => {
   const sortStylist = async (text) => {
     console.log(`Here is the text: ${text}`);
     try {
+      // const res = await axios.post(
+      //   `https://cosmetology.vercel.app/api/v1/UserRoute/sort`,
+      //   {
+      //     text,
+      //   }
+      // );
       const res = await axios.post(
-        `https://cosmetology.vercel.app/api/v1/UserRoute/sort`,
+        `http://localhost:3001/api/v1/UserRoute/sort`,
         {
           text,
         }
@@ -179,7 +187,10 @@ const ProfilePage = ({ stylist, profile }) => {
   const sortClient = async (text) => {
     console.log(`Here is the text: ${text}`);
     try {
-      const res = await axios.post(`https://cosmetology.vercel.app/api/v1/UserRoute/sort2`, {
+      // const res = await axios.post(`https://cosmetology.vercel.app/api/v1/UserRoute/sort2`, {
+      //   text,
+      // });
+      const res = await axios.post(`http://localhost:3001/api/v1/UserRoute/sort2`, {
         text,
       });
 
@@ -695,8 +706,14 @@ ProfilePage.getInitialProps = async (ctx) => {
     const { userId } = ctx.query;
     console.log(`userId: ${userId}`);
     const { token } = parseCookies(ctx);
+    // const res = await axios.get(
+    //   `https://cosmetology.vercel.app/api/v1/profile/${userId}`,
+    //   {
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   }
+    // );
     const res = await axios.get(
-      `https://cosmetology.vercel.app/api/v1/profile/${userId}`,
+      `http://localhost:3001/api/v1/profile/${userId}`,
       {
         headers: { Authorization: `Bearer ${token}` },
       }
